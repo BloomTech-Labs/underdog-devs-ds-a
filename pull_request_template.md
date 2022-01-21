@@ -8,18 +8,16 @@ Fixes # (issue)
 
 Please delete options that are not relevant.
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Bug fix
+- [ ] New feature
 - [ ] This change requires a documentation update
 
 ## Checklist:
 
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have removed unnecessary comments/console logs from my code
-- [ ] I have made corresponding changes to the documentation if necessary (optional)
-- [ ] My changes generate no new warnings
-- [ ] I have checked my code and corrected any misspellings
-- [ ] No duplicate code left within changed files
+- [ ] My code follows PEP8 style guide
+- [ ] I have removed unnecessary print statements from my code
+- [ ] I have made corresponding changes to the documentation if necessary
+- [ ] My changes generate no errors
+- [ ] No commented-out code
 - [ ] Size of pull request kept to a minimum
 - [ ] Pull request description clearly describes changes made & motivations for said changes
