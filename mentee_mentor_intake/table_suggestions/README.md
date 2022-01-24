@@ -3,7 +3,7 @@
 * Personally collected data to possibly include for dropdown fields. (I would love some brainstorming & input for more additions to these)
     * genders.csv - Includes a possible list of options for gender when a mentee / mentor fills out a application.
     * industry_categories.csv - Includes a possible list of options for industry categories when a mentee / mentor fills out a application.
-    * programming_languages_list.csv - Includes a possible list of options for industry categories when a mentee / mentor fills out a application.
+    * programming_languages_list.csv - Includes a possible list of options for programming languages when a mentee / mentor fills out a application.
     * tech_stack.csv - Includes a possible list of options for tech stacks when a mentee / mentor fills out a application.
 * Excel file serving as a data dictionary reflecting all suggested additions / revisions. (Looking for input on the best format for this information)
 
