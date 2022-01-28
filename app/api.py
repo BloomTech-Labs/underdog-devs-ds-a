@@ -23,3 +23,9 @@ API.add_middleware(
 @API.get("/version")
 async def version():
     return {"version": API.version}
+
+
+if __name__ == '__main__':
+    import uvicorn
+
+    uvicorn.run("app.api:API")
