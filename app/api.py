@@ -15,6 +15,8 @@ BloomTech Labs DS Machine Learning Operations Role
     - Admin
         - Admin Notes
 """
+from typing import Dict
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -44,19 +46,19 @@ async def version():
 
 
 @API.post("/create")
-async def create(collection_name: str, data: dict):
+async def create(collection_name: str, data: Dict):
     """ Creates a new record """
     return {"result": API.db.create(collection_name, data)}
 
 
 @API.post("/read")
-async def read(collection_name: str, data: dict):
+async def read(collection_name: str, data: Dict):
     """ Returns records based on query """
     return {"result": API.db.read(collection_name, data)}
 
 
 @API.post("/update")
-async def update(collection_name: str, query: dict, update_data: dict):
+async def update(collection_name: str, query: Dict, update_data: Dict):
     """ Returns the count of the updated records """
     API.db.update(collection_name, query, update_data)
     return {"result": (query, update_data)}

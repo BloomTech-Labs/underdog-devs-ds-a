@@ -10,7 +10,7 @@ What to store in MongoDB?
 """
 import json
 from os import getenv
-from typing import Optional
+from typing import Optional, List, Dict
 
 from pymongo import MongoClient
 from dotenv import load_dotenv
@@ -26,22 +26,22 @@ class MongoDB:
     def _connect(self, collection: str) -> MongoClient:
         return MongoClient(getenv("MONGO_URL"))[self.cluster][collection]
 
-    def create(self, collection: str, data: dict) -> dict:
+    def create(self, collection: str, data: Dict) -> Dict:
         self._connect(collection).insert_one(dict(data))
         return data
 
-    def read(self, collection: str, query: Optional[dict] = None) -> list[dict]:
+    def read(self, collection: str, query: Optional[Dict] = None) -> List[Dict]:
         return list(self._connect(collection).find(query, {"_id": False}))
 
-    def update(self, collection: str, query: dict, update_data: dict) -> int:
+    def update(self, collection: str, query: Dict, update_data: Dict) -> int:
         n_changed_records = self.count(collection, query)
         self._connect(collection).update_many(query, {"$set": update_data})
         return n_changed_records
 
-    def delete(self, collection: str, query: dict):
+    def delete(self, collection: str, query: Dict):
         self._connect(collection).delete_many(query)
 
-    def count(self, collection: str, query: dict) -> int:
+    def count(self, collection: str, query: Dict) -> int:
         return self._connect(collection).count_documents(query)
 
     def backup(self, collection: str):
@@ -55,5 +55,5 @@ class MongoDB:
     def drop_index(self, collection: str):
         self._connect(collection).drop_index([("$**", "text")])
 
-    def search(self, collection: str, user_search: str) -> list[dict]:
+    def search(self, collection: str, user_search: str) -> List[Dict]:
         return self.read(collection, {"$text": {"$search": user_search}})
