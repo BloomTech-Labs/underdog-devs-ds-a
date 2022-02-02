@@ -49,6 +49,7 @@ class MongoDB:
             json.dump(self.read(collection), file)
 
     def create_index(self, collection: str):
+        """ Only run once - internal only! """
         self._connect(collection).create_index([("$**", "text")])
 
     def drop_index(self, collection: str):

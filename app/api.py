@@ -58,10 +58,8 @@ async def read(collection_name: str, data: dict):
 @API.post("/update")
 async def update(collection_name: str, query: dict, update_data: dict):
     """ Returns the count of the updated records """
-    old_data = API.db.read(collection_name, query)
     API.db.update(collection_name, query, update_data)
-    new_data = API.db.read(collection_name, query)
-    return {"result": "What do we return?"}
+    return {"result": (query, update_data)}
 
 
 @API.post("/search")
