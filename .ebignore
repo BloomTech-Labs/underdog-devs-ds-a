@@ -1,0 +1,4 @@
+.env
+/venv/
+/mentee_mentor_intake
+/notebooks
