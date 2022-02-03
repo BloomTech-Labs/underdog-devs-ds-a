@@ -10,7 +10,7 @@ What to store in MongoDB?
 """
 import json
 from os import getenv
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Iterable
 
 from pymongo import MongoClient
 from dotenv import load_dotenv
@@ -29,6 +29,9 @@ class MongoDB:
     def create(self, collection: str, data: Dict) -> Dict:
         self._connect(collection).insert_one(dict(data))
         return data
+
+    def create_many(self, collection: str, data: Iterable[Dict]):
+        self._connect(collection).insert_many(data)
 
     def read(self, collection: str, query: Optional[Dict] = None) -> List[Dict]:
         return list(self._connect(collection).find(query, {"_id": False}))

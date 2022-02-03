@@ -1,4 +1,4 @@
-.env
+/.env
 /venv/
 
 # Elastic Beanstalk Files

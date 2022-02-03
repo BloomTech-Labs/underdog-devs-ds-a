@@ -1,4 +1,5 @@
-.env
+/.env
 /venv/
-/mentee_mentor_intake
-/notebooks
+/mentee_mentor_intake/
+/notebooks/
+/local_utilities/
