@@ -45,6 +45,15 @@ async def version():
     return {"result": API.version}
 
 
+<<<<<<< Updated upstream
+=======
+@API.get("/scan-collections")
+async def scan_collections():
+    """ Self scans and returns names of collections along with thier size """
+    return {"result": API.db.scan_collections()}
+
+
+>>>>>>> Stashed changes
 @API.post("/create")
 async def create(collection_name: str, data: Dict):
     """ Creates a new record """
