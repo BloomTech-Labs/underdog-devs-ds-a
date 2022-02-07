@@ -338,11 +338,18 @@ exp_level = (
 )
 
 
+def random_first_name(percent_male: int):
+    if r.randint(1, 100) > percent_male:
+        return r.choice(female_first_name)
+    else:
+        return r.choice(male_first_name)
+
+
 class Mentee:
 
     def __init__(self):
-        self.profile_id = f"mentee{r.randint(1000000, 70000000000000)}"
-        self.first_name = r.choice(male_first_name)
+        self.profile_id = f"mentee#{r.randint(1000000, 70000000000000)}"
+        self.first_name = random_first_name(70)
         self.last_name = r.choice(last_name)
         self.tech_or_career = r.sample(purpose, k=r.randint(1, 2))
         self.skills = r.sample(skills, k=3)
@@ -355,14 +362,14 @@ class Mentee:
 
     @classmethod
     def to_df(cls, num_rows):
-        return pd.DataFrame(vars(cls()) for _ in range(num_rows))
+        return pd.DataFrame(cls.generate(num_rows))
 
 
 class Mentor:
 
     def __init__(self):
-        self.profile_id = f"mentor{r.randint(1000000, 70000000000000)}"
-        self.first_name = r.choice(male_first_name)
+        self.profile_id = f"mentor#{r.randint(1000000, 70000000000000)}"
+        self.first_name = random_first_name(70)
         self.last_name = r.choice(last_name)
         self.tech_or_career = r.sample(purpose, k=r.randint(1, 2))
         self.skills = r.sample(skills, k=r.randint(1, 4))
@@ -370,30 +377,36 @@ class Mentor:
         self.time_zone = r.choice(time_zones)
 
     @classmethod
+    def generate(cls, num_rows):
+        return (vars(cls()) for _ in range(num_rows))
+
+    @classmethod
     def to_df(cls, num_rows):
-        return pd.DataFrame(vars(cls()) for _ in range(num_rows))
+        return pd.DataFrame(cls.generate(num_rows))
 
 
-def clean_data(df):
-    columns_needed = ['skills', 'skill_rank', 'time_zone', 'tech_or_career']
-    df = df[columns_needed]
-    df = pd.concat([pd.get_dummies(df[c].apply(pd.Series).stack()).groupby(level=0).sum() for c in columns_needed], axis=1)
-    return df
-
-
-def get_matches(mentee_name, top_n, mentees, mentors):
-    cos_sim = cosine_similarity(clean_data(mentees), clean_data(mentors))
-    cos_model = pd.DataFrame(
-        cos_sim,
-        index=mentees["full_name_mentee"],
-        columns=mentors["full_name_mentor"],
-    )
-    cos_model_df = cos_model.unstack().reset_index()
-    cos_model_df.columns = ["Mentor", "Mentee", "Score"]
-    cos_model_df["Stars"] = cos_model_df["Score"].apply(lambda x: "⭐️" * ceil(x * 5))
-    raw_result = cos_model_df.sort_values(by=["Score"], ascending=False)
-    result_df = raw_result[raw_result["Mentee"] == mentee_name][["Mentor", "Score", "Stars"]]
-    return result_df[:top_n].reset_index().drop(columns=['index'])
+# def clean_data(df):
+#     columns_needed = ['skills', 'skill_rank', 'time_zone', 'tech_or_career']
+#     df = df[columns_needed]
+#     return pd.concat([
+#         pd.get_dummies(df[c].apply(pd.Series).stack()).groupby(level=0).sum()
+#         for c in columns_needed
+#     ], axis=1)
+#
+#
+# def get_matches(mentee_name, top_n, mentees, mentors):
+#     cos_sim = cosine_similarity(clean_data(mentees), clean_data(mentors))
+#     cos_model = pd.DataFrame(
+#         cos_sim,
+#         index=mentees["full_name_mentee"],
+#         columns=mentors["full_name_mentor"],
+#     )
+#     cos_model_df = cos_model.unstack().reset_index()
+#     cos_model_df.columns = ["Mentor", "Mentee", "Score"]
+#     cos_model_df["Stars"] = cos_model_df["Score"].apply(lambda x: "⭐️" * ceil(x * 5))
+#     raw_result = cos_model_df.sort_values(by=["Score"], ascending=False)
+#     result_df = raw_result[raw_result["Mentee"] == mentee_name][["Mentor", "Score", "Stars"]]
+#     return result_df[:top_n].reset_index().drop(columns=['index'])
 
 
 # if __name__ == '__main__':
@@ -410,8 +423,19 @@ def get_matches(mentee_name, top_n, mentees, mentors):
 #         print(matches)
 #         print()
 
+
 mongo = MongoDB("UnderdogDevs")
-# mongo.delete("Mentees", {})
+
 # mentee_generator = Mentee()
+# mongo.delete("Mentees", {})
+# mongo.drop_index("Mentees")
+# mongo.create_index("Mentees")
 # mongo.create_many("Mentees", mentee_generator.generate(100))
 print(mongo.read("Mentees"))
+
+# mentor_generator = Mentor()
+# mongo.delete("Mentors", {})
+# mongo.drop_index("Mentors")
+# mongo.create_index("Mentors")
+# mongo.create_many("Mentors", mentor_generator.generate(20))
+print(mongo.read("Mentors"))
