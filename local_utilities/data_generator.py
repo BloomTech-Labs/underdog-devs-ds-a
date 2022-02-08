@@ -1,8 +1,6 @@
 import random as r
-from math import ceil
 
 import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
 
 from app.data import MongoDB
 
@@ -383,45 +381,6 @@ class Mentor:
     @classmethod
     def to_df(cls, num_rows):
         return pd.DataFrame(cls.generate(num_rows))
-
-
-# def clean_data(df):
-#     columns_needed = ['skills', 'skill_rank', 'time_zone', 'tech_or_career']
-#     df = df[columns_needed]
-#     return pd.concat([
-#         pd.get_dummies(df[c].apply(pd.Series).stack()).groupby(level=0).sum()
-#         for c in columns_needed
-#     ], axis=1)
-#
-#
-# def get_matches(mentee_name, top_n, mentees, mentors):
-#     cos_sim = cosine_similarity(clean_data(mentees), clean_data(mentors))
-#     cos_model = pd.DataFrame(
-#         cos_sim,
-#         index=mentees["full_name_mentee"],
-#         columns=mentors["full_name_mentor"],
-#     )
-#     cos_model_df = cos_model.unstack().reset_index()
-#     cos_model_df.columns = ["Mentor", "Mentee", "Score"]
-#     cos_model_df["Stars"] = cos_model_df["Score"].apply(lambda x: "⭐️" * ceil(x * 5))
-#     raw_result = cos_model_df.sort_values(by=["Score"], ascending=False)
-#     result_df = raw_result[raw_result["Mentee"] == mentee_name][["Mentor", "Score", "Stars"]]
-#     return result_df[:top_n].reset_index().drop(columns=['index'])
-
-
-# if __name__ == '__main__':
-#     random_mentee = Mentee()
-#     mentee_df = random_mentee.to_df(500)
-#
-#     random_mentor = Mentor()
-#     mentor_df = random_mentor.to_df(50)
-#
-#     for i in range(5):
-#         mentee = mentee_df.iloc[i]["full_name_mentee"]
-#         print(f"Mentee: {mentee}")
-#         matches = get_matches(mentee, 5, mentee_df, mentor_df)
-#         print(matches)
-#         print()
 
 
 mongo = MongoDB("UnderdogDevs")
