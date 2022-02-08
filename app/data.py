@@ -57,9 +57,6 @@ class MongoDB:
 
     def search(self, collection: str, user_search: str) -> List[Dict]:
         return self.read(collection, {"$text": {"$search": user_search}})
-<<<<<<< Updated upstream
-=======
 
     def scan_collections(self):
         return {col: self.count(col, {}) for col in self._connect().list_collection_names()}
->>>>>>> Stashed changes
