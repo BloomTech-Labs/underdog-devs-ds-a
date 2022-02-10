@@ -385,7 +385,7 @@ class Mentor:
 
 mongo = MongoDB("UnderdogDevs")
 
-# mentee_generator = Mentee()
+mentee_generator = Mentee()
 # mongo.delete("Mentees", {})
 # mongo.drop_index("Mentees")
 # mongo.create_index("Mentees")
