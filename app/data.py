@@ -57,3 +57,7 @@ class MongoDB:
 
     def search(self, collection: str, user_search: str) -> List[Dict]:
         return self.read(collection, {"$text": {"$search": user_search}})
+
+if __name__ == '__main__':
+    mongo = MongoDB("devdog")
+    print(mongo.read("Mantee"))
