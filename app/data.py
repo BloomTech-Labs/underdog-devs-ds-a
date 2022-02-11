@@ -9,6 +9,7 @@ What to store in MongoDB?
 - Survey Data
 """
 import json
+import pandas as pd
 from os import getenv
 from typing import Optional, List, Dict
 
@@ -57,3 +58,6 @@ class MongoDB:
 
     def search(self, collection: str, user_search: str) -> List[Dict]:
         return self.read(collection, {"$text": {"$search": user_search}})
+
+    def dataframe(self, collection: str) -> pd.DataFrame:
+        return pd.DataFrame(self.read(collection))

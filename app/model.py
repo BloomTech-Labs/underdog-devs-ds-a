@@ -6,12 +6,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 from app.data import MongoDB
 import pandas as pd
 import numpy as np
+import json
 
 
-db = MongoDB("UnderdogDevs")
-
-
-class Matcher(object):
+class Matcher:
     """Documentation for Matcher
     A class used to represent a Matcher. Matches a mentor and mentee.
 
@@ -26,8 +24,8 @@ class Matcher(object):
         returns N mentors randomly
     """
 
-    def __init__(self):
-        super(Matcher, self).__init__()
+    def __init__(self, db):
+        self.db = db
 
     def random_recommendations(self, N=5):
         """
@@ -38,6 +36,15 @@ class Matcher(object):
             N : int
                 number of recommendations to return
         """
-        mentors = db.read("Mentors", None)
-        recommendations = list(np.random.choice(mentors, N, replace=False))
-        return recommendations
+        mentors = self.db.dataframe("Mentors")
+        recommendations = mentors.iloc[
+            np.random.choice(range(len(mentors)), N, replace=False)
+        ]
+
+        return recommendations.to_dict(orient="records")
+
+
+if __name__ == "__main__":
+    db = MongoDB("UnderdogDevs")
+    matcher = Matcher(db)
+    assert len(matcher.random_recommendations(3)) == 3

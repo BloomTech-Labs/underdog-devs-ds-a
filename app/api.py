@@ -73,7 +73,7 @@ async def search(collection_name: str, user_search: str):
 @API.post("/random_mentors")
 async def random_mentors(num_recommendations: int):
     """ accepts N as the number of recommendations to return """
-    matcher = Matcher()
+    matcher = Matcher(API.db)
     return {
         "result": matcher.random_recommendations(
             num_recommendations,
