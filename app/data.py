@@ -24,7 +24,6 @@ class MongoDB:
         self.cluster = cluster
 
     def _connect(self, collection: str) -> MongoClient:
-        #return MongoClient(getenv("MONGO_URL"))[self.cluster][collection]
         # add certifi
         return MongoClient(getenv("MONGO_URL"), tlsCAFile=certifi.where())[self.cluster][collection]
 
