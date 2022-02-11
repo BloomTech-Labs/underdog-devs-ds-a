@@ -13,13 +13,31 @@ db = MongoDB("UnderdogDevs")
 
 class Matcher(object):
     """Documentation for Matcher
-    Matches potential mentors to mentee
+    A class used to represent a Matcher. Matches a mentor and mentee.
+
+    ...
+
+    Attributes
+    ----------
+
+    Methods
+    -------
+    random_recommendations(N=5)
+        returns N mentors randomly
     """
 
     def __init__(self):
         super(Matcher, self).__init__()
 
     def random_recommendations(self, N=5):
+        """
+        Reads all mentors in db, then returns a list of length N random mentors
+
+        Parameters
+        ----------
+            N : int
+                number of recommendations to return
+        """
         mentors = db.read("Mentors", None)
         recommendations = list(np.random.choice(mentors, N, replace=False))
         return recommendations
