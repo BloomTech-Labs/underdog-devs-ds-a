@@ -57,3 +57,10 @@ class MongoDB:
 
     def search(self, collection: str, user_search: str) -> List[Dict]:
         return self.read(collection, {"$text": {"$search": user_search}})
+
+    def scan_collections(self):
+        output = {}
+        cli = MongoClient(getenv("MONGO_URL"))[self.cluster]
+        for col in cli.list_collection_names():
+            output[col] = self.count(col, {})
+        return output
