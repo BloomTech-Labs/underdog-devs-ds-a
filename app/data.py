@@ -14,7 +14,7 @@ from typing import Optional, List, Dict
 
 from pymongo import MongoClient
 from dotenv import load_dotenv
-
+import certifi
 
 class MongoDB:
     """ CRUD """
@@ -24,7 +24,7 @@ class MongoDB:
         self.cluster = cluster
 
     def _connect(self, collection: str) -> MongoClient:
-        return MongoClient(getenv("MONGO_URL"))[self.cluster][collection]
+        return MongoClient(getenv("MONGO_URL"), tlsCAFile=certifi.where())[self.cluster][collection]
 
     def create(self, collection: str, data: Dict) -> Dict:
         self._connect(collection).insert_one(dict(data))
