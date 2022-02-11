@@ -21,7 +21,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.data import MongoDB
-
+from app.model import Matcher
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -68,6 +68,17 @@ async def update(collection_name: str, query: Dict, update_data: Dict):
 async def search(collection_name: str, user_search: str):
     """ Returns all records that match the user_search """
     return {"result": API.db.search(collection_name, user_search)}
+
+
+@API.post("/random_mentors")
+async def random_mentors(num_recommendations: int):
+    """ accepts N as the number of recommendations to return """
+    matcher = Matcher()
+    return {
+        "result": matcher.random_recommendations(
+            num_recommendations,
+        )
+    }
 
 
 if __name__ == '__main__':
