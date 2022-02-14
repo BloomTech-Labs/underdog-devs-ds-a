@@ -1,35 +1,19 @@
-"""
-BloomTech Labs DS Machine Learning Operations Role
-- Application Programming Interface
-
-- Project: UnderdogDevs
-- Cluster:
-- Databases:
-    - Mentee
-        - Mentee Application
-        - Mentee Exit Survey (When Mentees graduate)
-    - Mentor
-        - Mentor Application
-        - Mentor Exit Survey (When Mentees graduate)
-        - Mentor Notes
-    - Admin
-        - Admin Notes
-"""
-from typing import Dict
+from typing import Dict, Optional
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.data import MongoDB
-
+from app.model import MatcherSortSearch
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.0.2",
+    version="0.0.3",
     docs_url='/',
 )
 
 API.db = MongoDB("UnderdogDevs")
+API.matcher = MatcherSortSearch()
 
 API.add_middleware(
     CORSMiddleware,
@@ -42,41 +26,42 @@ API.add_middleware(
 
 @API.get("/version")
 async def version():
+    """ Returns the current version of the API. """
     return {"result": API.version}
 
 
-@API.get("/scan_collections")
-async def scan_collections():
-    """ Self scans and returns names of collections along with thier size """
+@API.get("/collections")
+async def collections():
+    """ Returns collection name and size of each collection. """
     return {"result": API.db.scan_collections()}
 
 
-@API.post("/create")
-async def create(collection_name: str, data: Dict):
-    """ Creates a new record """
-    return {"result": API.db.create(collection_name, data)}
+@API.post("/{collection}/create")
+async def create(collection: str, data: Dict):
+    """ Creates a new record. """
+    return {"result": API.db.create(collection, data)}
 
 
-@API.post("/read")
-async def read(collection_name: str, data: Dict):
-    """ Returns records based on query """
-    return {"result": API.db.read(collection_name, data)}
+@API.post("/{collection}/read")
+async def read(collection: str, data: Optional[Dict] = None):
+    """ Returns array of records that exactly match the query. """
+    return {"result": API.db.read(collection, data)}
 
 
-@API.post("/update")
-async def update(collection_name: str, query: Dict, update_data: Dict):
-    """ Returns the count of the updated records """
-    API.db.update(collection_name, query, update_data)
-    return {"result": (query, update_data)}
+@API.post("/{collection}/update")
+async def update(collection: str, query: Dict, update_data: Dict):
+    """ Returns an array containing the query and updated data. """
+    return {"result": API.db.update(collection, query, update_data)}
 
 
-@API.post("/search")
-async def search(collection_name: str, user_search: str):
-    """ Returns all records that match the user_search """
-    return {"result": API.db.search(collection_name, user_search)}
+@API.post("/{collection}/search")
+async def search(collection: str, user_search: str):
+    """ Returns array of records that loosely match the search,
+    automatically ordered by relevance. """
+    return {"result": API.db.search(collection, user_search)}
 
 
-if __name__ == '__main__':
-    import uvicorn
-
-    uvicorn.run("app.api:API")
+@API.post("/match/{mentee_id}")
+async def match(mentee_id: int, n_matches: int):
+    """ Returns array of mentor matches for any given mentee_id. """
+    return {"result": API.matcher(n_matches, mentee_id)}
