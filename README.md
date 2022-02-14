@@ -23,13 +23,21 @@ You can find the deployed project at [Underdogdevs](https://www.underdogdevs.org
 
 [Archana Coimbatore Sivagurunathan](https://github.com/archana062031)
 
+[Daniel Ho](https://github.com/djho57)
+
+[BhavaniLakshmi Annapurna Jagarlamudi](https://github.com/Annapurnaj91)
+
+[Kevin Lynner](https://github.com/LynnerKevin)
+
+[Olatomi Adigun](https://github.com/OlatomiAdigun)
+
+[Mohamed Mosaed](https://github.com/mohamedmosaed)
+
 # LABS FT 42
 
 [Cole Richards](https://github.com/Cole-Richards)
 
 [Matt Clibanoff](https://github.com/mattclibanoff)
-
-[Kevin Lynner](https://github.com/LynnerKevin)
 
 [Paul St.Germain](https://github.com/paulstgermain)
 
