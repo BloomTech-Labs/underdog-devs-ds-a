@@ -27,7 +27,7 @@ You can find the deployed project at [Underdogdevs](https://www.underdogdevs.org
 
 [Cole Richards](https://github.com/Cole-Richards)
 
-[Matt Clibanoff](https://github.com/mattclibanoff
+[Matt Clibanoff](https://github.com/mattclibanoff)
 
 [Kevin Lynner](https://github.com/LynnerKevin)
 
