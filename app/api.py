@@ -47,7 +47,7 @@ async def version():
 
 @API.get("/scan-collections")
 async def scan_collections():
-    """ Self scans and returns names of collections along with thier size """
+    """ Self scans and returns names of collections along with their size """
     return {"result": API.db.scan_collections()}
 
 
