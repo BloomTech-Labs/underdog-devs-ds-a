@@ -1,7 +1,7 @@
 # Underdog Devs DS
 A nonprofit that aims to help formerly incarcerated or disadvantaged people find careers in tech.
 
-You can find the deployed project at [Underdogdevs](https://www.underdogdevs.org/).
+You can find the deployed project at [Underdog Devs](https://www.underdogdevs.org/).
 
 
 # Contributors
@@ -23,12 +23,12 @@ You can find the deployed project at [Underdogdevs](https://www.underdogdevs.org
 
 
 # Key Features
-- Filtration system for connecting mentors with mentees based on skills and experience
+- Implement a model for connecting  viable mentor - mentees pairings based on skills and experience
 - Use sentiment analysis to better understand the significance of a session
-- Implement an algorithm or model to suggest viable mentor-mentee pairings
-- Make API interface for MongoDB that the backend can interface with
+- Created an API interface for MongoDB that the backend can interface with 
 - Create mock data in place holder of real data 
 - Begin building out test coverage for DS FastAPI
+- Reviewed proposed modifications, including meeting with directors to approve and implement beneficial changes.
 
 # Research
 Our research into this project stretches far and wide, covering a multitude of libraries. To better consolidate space, you can find our research [here](https://github.com/BloomTech-Labs/underdog-devs-ds-a/tree/main/notebooks)
