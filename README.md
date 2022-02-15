@@ -37,16 +37,18 @@ You can find the deployed project at [Underdogdevs](https://www.underdogdevs.org
 Our research into this project stretches far and wide, covering a multitude of libraries. To better consolidate space, you can find our research [here](https://github.com/BloomTech-Labs/underdog-devs-ds-a/tree/main/notebooks)
 
 # Tech Stack
+- Database: MongoDB
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
-- Database: MongoDB
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)  
+
 ![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square) 
+
 ![Python](https://img.shields.io/pypi/pyversions/VS)
 
 # Installation Instructions
