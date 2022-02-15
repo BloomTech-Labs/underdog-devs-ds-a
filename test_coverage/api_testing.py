@@ -4,14 +4,20 @@ from app.api import version, scan_collections, create, read, update, search
 from app.api import API
 
 
-link=''
-requests.get('link')
+version_link='http://underdog-devs-ds-a-dev.us-east-1.elasticbeanstalk.com/version'
+
+
+
 
 
 def test_coverage(version, scan_collections, create, read, update, search):
-    version({"result": API.version})
-
-    scan_collections({"result": API.db.scan_collections()})
+    '''
+    >>>requests.get(version_link)
+    <Response [200]>
+    >>>requests.get(version_link).json()==version()
+    True
+    '''
+    scan_collections({"result": API.db.scan_collections()})=={}
     """ Self scans and returns names of collections along with thier size """
 
     create({"result": API.db.create(collection_name, data)})
