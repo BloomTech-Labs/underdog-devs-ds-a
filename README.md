@@ -4,63 +4,27 @@ A nonprofit that aims to help formerly incarcerated or disadvantaged people find
 
 You can find the deployed project at [Underdogdevs](https://www.underdogdevs.org/).
 
+
 # Contributors
 
-## LABS FT 43
-[Christine Wang](https://github.com/ChristineWangcy)
-
-[Sirivennela Vempati](https://github.com/sirivennelavempati)
-
-[Rodrico Sanchez](https://github.com/rodricobsanchez)
-
-[Samuel Ulloa](https://github.com/ulloa)
-
-[Ryland Gomez](https://github.com/RylandGomez)
-
-[Michael Tran](https://github.com/mktran0417)
-
-[Evgeny Khoroshukhin](https://github.com/ev-horrosh)
-
-[Archana Coimbatore Sivagurunathan](https://github.com/archana062031)
-
-[Daniel Ho](https://github.com/djho57)
-
-[BhavaniLakshmi Annapurna Jagarlamudi](https://github.com/Annapurnaj91)
-
-[Kevin Lynner](https://github.com/LynnerKevin)
-
-[Olatomi Adigun](https://github.com/OlatomiAdigun)
-
-[Mohamed Mosaed](https://github.com/mohamedmosaed)
-
-## LABS FT 42
-[Cole Richards](https://github.com/Cole-Richards)
-
-[Matt Clibanoff](https://github.com/mattclibanoff)
-
-[Paul St.Germain](https://github.com/paulstgermain)
-
-[Nigel Clinton](https://github.com/NigelClinton)
-
-[Arthur Yang](https://github.com/sysgear)
-
-[Dan Kositzke](https://github.com/dankositzke)
-
-[Royce Roberts](https://github.com/jinjahninjah)
-
-[Viet Huynh](https://github.com/nhockcuncon77) 
-
-[Robert Sharp](https://github.com/BrokenShell)  
+| Senior Management Team  | Data Science Team FT43 | Data Science Team FT42 |
+| ------------- | ------------- | ------------ |
+| [Robert Sharp](https://github.com/BrokenShell)    | [Christine Wang](https://github.com/ChristineWangcy)  | [Cole Richards](https://github.com/Cole-Richards) |
+| [Paul St.Germain](https://github.com/paulstgermain)  | [Sirivennela Vempati](https://github.com/sirivennelavempati)  | [Cole Richards](https://github.com/Cole-Richards) |
+| | [Rodrico Sanchez](https://github.com/rodricobsanchez)  | [Matt Clibanoff](https://github.com/mattclibanoff) |
+| | [Samuel Ulloa](https://github.com/ulloa)  | [Nigel Clinton](https://github.com/NigelClinton) |
+| | [Ryland Gomez](https://github.com/RylandGomez)  | [Arthur Yang](https://github.com/sysgear) |
+| | [Michael Tran](https://github.com/mktran0417)  | [Dan Kositzke](https://github.com/dankositzke) |
+| | [Evgeny Khoroshukhin](https://github.com/ev-horrosh)  | [Royce Roberts](https://github.com/jinjahninjah) |
+| | [Archana Coimbatore Sivagurunathan](https://github.com/archana062031)  | [Viet Huynh](https://github.com/nhockcuncon77) |
+| | [Daniel Ho](https://github.com/djho57)  | |
+| | [BhavaniLakshmi Annapurna Jagarlamudi](https://github.com/Annapurnaj91)  | |
+| | [Kevin Lynner](https://github.com/LynnerKevin)  | |
+| | [Olatomi Adigun](https://github.com/OlatomiAdigun)  | |
+| | [Mohamed Mosaed](https://github.com/mohamedmosaed)  | |
 
 
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)  
-
-![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square) 
-
-![Python](https://img.shields.io/pypi/pyversions/VS)
-
-
-## Key Features
+# Key Features
 
 - Filtration system for connecting mentors with mentees based on skills and experience
 - Use sentiment analysis to rate if a match was successful
@@ -69,10 +33,10 @@ You can find the deployed project at [Underdogdevs](https://www.underdogdevs.org
 - Filtration system for connecting mentors with mentees based on skills and experience
 - Use sentiment analysis to rate if a match was successful
 
-## Research
+# Research
 Our research into this project stretches far and wide, covering a multitude of libraries. To better consolidate space, you can find our research [here](https://github.com/BloomTech-Labs/underdog-devs-ds-a/tree/main/notebooks)
 
-## Tech Stack
+# Tech Stack
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
@@ -80,6 +44,12 @@ Our research into this project stretches far and wide, covering a multitude of l
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 - Database: MongoDB
+
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)  
+
+![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square) 
+
+![Python](https://img.shields.io/pypi/pyversions/VS)
 
 # Installation Instructions
 
