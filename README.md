@@ -46,9 +46,7 @@ Our research into this project stretches far and wide, covering a multitude of l
 - Database: MongoDB
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)  
-
 ![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square) 
-
 ![Python](https://img.shields.io/pypi/pyversions/VS)
 
 # Installation Instructions
