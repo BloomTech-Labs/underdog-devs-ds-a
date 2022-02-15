@@ -10,7 +10,7 @@ You can find the deployed project at [Underdogdevs](https://www.underdogdevs.org
 | Senior Management Team  | Data Science Team FT43 | Data Science Team FT42 |
 | ------------- | ------------- | ------------ |
 | [Robert Sharp](https://github.com/BrokenShell)    | [Christine Wang](https://github.com/ChristineWangcy)  | [Cole Richards](https://github.com/Cole-Richards) |
-| [Paul St.Germain](https://github.com/paulstgermain)  | [Sirivennela Vempati](https://github.com/sirivennelavempati)  | [Cole Richards](https://github.com/Cole-Richards) |
+| [Paul St.Germain](https://github.com/paulstgermain)  | [Sirivennela Vempati](https://github.com/sirivennelavempati)  | [Lance Turbes](https://github.com/lanceturbes) |
 | | [Rodrico Sanchez](https://github.com/rodricobsanchez)  | [Matt Clibanoff](https://github.com/mattclibanoff) |
 | | [Samuel Ulloa](https://github.com/ulloa)  | [Nigel Clinton](https://github.com/NigelClinton) |
 | | [Ryland Gomez](https://github.com/RylandGomez)  | [Arthur Yang](https://github.com/sysgear) |
