@@ -37,8 +37,7 @@ You can find the deployed project at [Underdogdevs](https://www.underdogdevs.org
 Our research into this project stretches far and wide, covering a multitude of libraries. To better consolidate space, you can find our research [here](https://github.com/BloomTech-Labs/underdog-devs-ds-a/tree/main/notebooks)
 
 # Tech Stack
-- Database: MongoDB
-
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
