@@ -23,60 +23,49 @@ class Mentor:
         self.subject = choice(subjects)
         self.skill_level = choice(skill_levels)
 
+class MenteeFeedback:
+
+    def __init__(self, mentees_ids, mentors_ids):
+        self.mentee_id = choice(mentees_ids)
+        self.mentor_id = choice(mentors_ids)
+        self.ticket_id = int(str(self.mentee_id) + str(self.mentor_id))
+        self.feedback = choice(feedbacks)
+
+def create_many(collection, number_records):
+
+    if collection == 'Mentees':
+        try:
+            db._connect(collection).drop()
+            db._connect(collection).create_index("user_id", unique=True)
+            db.create_many(collection, (vars(Mentee()) for _ in range(number_records)))
+        except:
+            create_many(collection)
+
+    if collection == 'Mentors':
+        try:
+            db._connect(collection).drop()
+            db._connect(collection).create_index("user_id", unique=True)
+            db.create_many(collection, (vars(Mentor()) for _ in range(number_records)))
+        except:
+            create_many(collection)
+
+    if collection == 'Feedback':
+        try:
+            db._connect(collection).drop()
+            db._connect(collection).create_index("ticket_id", unique=True)
+            db.create_many(collection,
+                           (vars(MenteeFeedback([m['user_id'] for m in mentees],
+                                                [m['user_id'] for m in mentors]))
+                            for _ in range(number_records)))
+        except:
+            create_many(collection)
 
 if __name__ == '__main__':
-    '''
+
     # codes from github
     db = MongoDB("UnderdogDevs")
-
-    db.reset_collection("Mentees")
-    #db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
-
-    db.reset_collection("Mentors")
-    #db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
-    '''
-    import random
-    from os import getenv
-    from pymongo import MongoClient
-    from dotenv import load_dotenv
-    import certifi
-
-    load_dotenv()
-
-
-    def create_Mentees():
-        #create data for Mentees
-        connection = MongoClient(getenv("MONGO_URL"), tlsCAFile=certifi.where())["UnderdogDevs"]["Mentees"]
-        mentees_list = [
-            {
-                'user_id': random.randint(1000000, 9000000),
-                'last_name': random.choice(last_names),
-                'user_type': 'Mentee',
-                'subject': random.choice(subjects),
-                'skill_level': random.choice(skill_levels),
-                'feedback': random.choice(feedbacks)
-            }
-            for _ in range(100)]
-        connection.drop()
-        connection.insert_many(mentees_list)
-
-
-    def create_Mentors():
-        connection = MongoClient(getenv("MONGO_URL"), tlsCAFile=certifi.where())["UnderdogDevs"]["Mentors"]
-        mentors_list = [
-            {
-                'user_id': random.randint(1000000, 9000000),
-                'last_name': random.choice(last_names),
-                'user_type': 'Mentor',
-                'subject': random.choice(subjects),
-                'skill_level': random.choice(skill_levels)
-            }
-            for _ in range(20)]
-        connection.drop()
-        connection.insert_many(mentors_list)
-
-
-    if __name__ == '__main__':
-        db = MongoDB('UnderdogDevs')
-        create_Mentees()
-        create_Mentors()
+    create_many("Mentees", 100)
+    create_many("Mentors", 20)
+    mentees = db.read("Mentees")
+    mentors = db.read("Mentors")
+    create_many("Feedback", 100)
