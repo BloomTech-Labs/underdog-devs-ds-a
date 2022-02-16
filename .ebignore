@@ -5,7 +5,7 @@
 /CODEOWNERS
 /LICENSE
 /.gitignore
-/NOTES.md
 /pull_request_template.md
 /README.md
 /run.sh
+/data_generators/

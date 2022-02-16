@@ -1,20 +1,11 @@
-"""
-Labs DS Data Engineer Role
-- Database Interface
-- Visualization Interface
-
-
-What to store in MongoDB?
-- Admin Notes
-- Survey Data
-"""
 import json
 from os import getenv
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Iterator, Tuple
 
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import certifi
+
 
 class MongoDB:
     """ CRUD """
@@ -23,25 +14,33 @@ class MongoDB:
     def __init__(self, cluster: str):
         self.cluster = cluster
 
-    def _connect(self, collection: str) -> MongoClient:
-        return MongoClient(getenv("MONGO_URL"), tlsCAFile=certifi.where())[self.cluster][collection]
+    def _connect(self, collection: str):
+        return MongoClient(
+            getenv("MONGO_URL"),
+            tlsCAFile=certifi.where()
+        )[self.cluster][collection]
 
     def create(self, collection: str, data: Dict) -> Dict:
         self._connect(collection).insert_one(dict(data))
         return data
 
+    def create_many(self, collection: str, data: Iterator[Dict]):
+        self._connect(collection).insert_many(map(dict, data))
+
+    def first(self, collection: str, query: Optional[Dict] = None) -> Dict:
+        return self._connect(collection).find_one(query, {"_id": False})
+
     def read(self, collection: str, query: Optional[Dict] = None) -> List[Dict]:
         return list(self._connect(collection).find(query, {"_id": False}))
 
-    def update(self, collection: str, query: Dict, update_data: Dict) -> int:
-        n_changed_records = self.count(collection, query)
+    def update(self, collection: str, query: Dict, update_data: Dict) -> Tuple:
         self._connect(collection).update_many(query, {"$set": update_data})
-        return n_changed_records
+        return query, update_data
 
     def delete(self, collection: str, query: Dict):
         self._connect(collection).delete_many(query)
 
-    def count(self, collection: str, query: Dict) -> int:
+    def count(self, collection: str, query: Optional[Dict] = None) -> int:
         return self._connect(collection).count_documents(query)
 
     def backup(self, collection: str):
@@ -64,3 +63,8 @@ class MongoDB:
         for col in cli.list_collection_names():
             output[col] = self.count(col, {})
         return output
+
+    def reset_collection(self, collection: str):
+        self.delete(collection, {})
+        self.drop_index(collection)
+        self.create_index(collection)
