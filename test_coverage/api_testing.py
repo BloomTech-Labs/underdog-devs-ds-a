@@ -1,9 +1,11 @@
-def test():
+def test_api():
     '''
         >>> requests.get(version_link)
         <Response [200]>
-        >>> requests.get(version_link).json()
+        >>> requests.get(version_link).json() == {'result': '0.0.3'}
         {'result': '0.0.2'}
+        >>> requests.get(scan_collections_link).json()
+        {'detail': 'Not Found'}
     '''
 
 if __name__ == "__main__":
