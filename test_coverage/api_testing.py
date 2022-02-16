@@ -19,4 +19,4 @@ if __name__ == "__main__":
     read_link = 'http://underdog-devs-ds-a-dev.us-east-1.elasticbeanstalk.com/read'
     update_link = 'http://underdog-devs-ds-a-dev.us-east-1.elasticbeanstalk.com/update'
     search_link = 'http://underdog-devs-ds-a-dev.us-east-1.elasticbeanstalk.com/search'
-    doctest.testmod(name='test', verbose=True)
+    doctest.testmod(name='test_api', verbose=True)
