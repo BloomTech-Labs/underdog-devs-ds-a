@@ -1,11 +1,6 @@
 import json
 from os import getenv
-<<<<<<< HEAD
 from typing import Optional, List, Dict, Iterable
-=======
-from typing import Optional, List, Dict, Iterator, Tuple
->>>>>>> origin
-
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import certifi
