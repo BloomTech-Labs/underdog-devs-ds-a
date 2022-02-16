@@ -65,3 +65,9 @@ async def search(collection: str, user_search: str):
 async def match(mentee_id: int, n_matches: int):
     """ Returns array of mentor matches for any given mentee_id. """
     return {"result": API.matcher(n_matches, mentee_id)}
+
+
+@API.post("/{collection}/delete")
+async def delete(collection: str):
+    """ Deletes collection  """
+    return {"result": API.delete(collection)}
