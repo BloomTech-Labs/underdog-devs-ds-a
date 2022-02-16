@@ -14,7 +14,7 @@ from typing import Optional, List, Dict
 
 from pymongo import MongoClient
 from dotenv import load_dotenv
-
+import certifi
 
 class MongoDB:
     """ CRUD """

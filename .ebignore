@@ -1,4 +1,11 @@
-.env
+/.env
 /venv/
-/mentee_mentor_intake
-/notebooks
+/mentee_mentor_intake/
+/notebooks/
+/CODEOWNERS
+/LICENSE
+/.gitignore
+/NOTES.md
+/pull_request_template.md
+/README.md
+/run.sh
