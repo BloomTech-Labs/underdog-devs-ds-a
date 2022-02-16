@@ -21,7 +21,7 @@ class MongoDB:
         )[self.cluster][collection]
 
     def create(self, collection: str, data: Dict) -> Dict:
-        self._connect(collection).insert_one(dict(data))
+        self._connect()[collection].insert_one(dict(data))
         return data
 
     def create_many(self, collection: str, data: Iterator[Dict]):
@@ -31,14 +31,14 @@ class MongoDB:
         return self._connect(collection).find_one(query, {"_id": False})
 
     def read(self, collection: str, query: Optional[Dict] = None) -> List[Dict]:
-        return list(self._connect(collection).find(query, {"_id": False}))
+        return list(self._connect()[collection].find(query, {"_id": False}))
 
     def update(self, collection: str, query: Dict, update_data: Dict) -> Tuple:
         self._connect(collection).update_many(query, {"$set": update_data})
         return query, update_data
 
     def delete(self, collection: str, query: Dict):
-        self._connect(collection).delete_many(query)
+        self._connect()[collection].delete_many(query)
 
     def count(self, collection: str, query: Optional[Dict] = None) -> int:
         return self._connect(collection).count_documents(query)
@@ -49,10 +49,10 @@ class MongoDB:
 
     def create_index(self, collection: str):
         """ Only run once - internal only! """
-        self._connect(collection).create_index([("$**", "text")])
+        self._connect()[collection].create_index([("$**", "text")])
 
     def drop_index(self, collection: str):
-        self._connect(collection).drop_index([("$**", "text")])
+        self._connect()[collection].drop_index([("$**", "text")])
 
     def search(self, collection: str, user_search: str) -> List[Dict]:
         return self.read(collection, {"$text": {"$search": user_search}})
