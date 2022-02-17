@@ -26,11 +26,12 @@ def test_collections():
 
 def test_create_read_delete(collection: str, data: Dict):
     """ Creates a new record.
-        >>> client.get('/test/create')
+        >>> client.post('/test/create', json={'john': 'doe'})
+        {'result': [{'john': 'doe'}]}
+        >>> client.post('/test/read').json()
+        {'result': [{'john': 'doe'}]}
+        >>> client.post('test/delete')
         <Response [200]>
-        >>> client.get('/test/read').json()
-
-        >>> client.get('test/delete')
     """
 
 def test_update(collection: str, query: Dict, update_data: Dict):
