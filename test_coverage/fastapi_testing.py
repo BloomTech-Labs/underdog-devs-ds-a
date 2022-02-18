@@ -5,7 +5,6 @@ import sys
 client = TestClient(API)
 sys.tracebacklimit = 0
 
-
 def test_version():
     response = client.get("/version")
     print(response.json())

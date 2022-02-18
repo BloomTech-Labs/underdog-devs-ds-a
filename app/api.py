@@ -86,14 +86,15 @@ async def collection_search(collection: str, search: str):
     return {"result": API.db.search(collection, search)}
 
 
-@API.post("/match/{mentee_id}")
-async def match(mentee_id: int, n_matches: int):
-    """ Returns array of mentor matches for any given mentee_id. """
-    return {"result": API.matcher(n_matches, mentee_id)}
+@API.post("/match/{profile_id}")
+async def match(profile_id: str, n_matches: int):
+    """ Returns array of mentor matches for any given mentee profile_id
+    automatically ordered by relevance. """
+    return {"result": API.matcher(n_matches, profile_id)}
 
 
-@API.post("/{collection}/delete")
-async def delete(collection: str):
-    """ Deletes collection  """
-    return {"result": API.delete(collection)}
-
+@API.delete("/{collection}/delete/{profile_id}")
+async def delete(collection: str, profile_id: str):
+    """ Removes a user from the collection """
+    API.db.delete(collection, {"profile_id": profile_id})
+    return {"result": {"deleted": profile_id}}
