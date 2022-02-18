@@ -8,7 +8,7 @@ from app.model import MatcherSortSearch
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.0.3",
+    version="0.43.7",
     docs_url='/',
 )
 
@@ -33,12 +33,37 @@ async def version():
 @API.get("/collections")
 async def collections():
     """ Returns collection name and size of each collection. """
-    return {"result": API.db.scan_collections()}
+    return {"result": API.db.get_database_info()}
 
 
 @API.post("/{collection}/create")
 async def create(collection: str, data: Dict):
-    """ Creates a new record. """
+    """ Creates a new record.
+    Input Example:
+    collection = "Mentees"
+    data = {
+        "profile_id": "test001",
+        "first_name": "Luca",
+        "last_name": "Evans",
+        "email": "fake@email.com",
+        "city": "Ashland",
+        "state": "Oregon",
+        "country": "USA",
+        "formerly_incarcerated": true,
+        "underrepresented_group": true,
+        "low_income": true,
+        "list_convictions": [
+          "Infraction",
+          "Felony"
+        ],
+        "subject": "Web: HTML, CSS, JavaScript",
+        "experience_level": "Beginner",
+        "job_help": false,
+        "industry_knowledge": false,
+        "pair_programming": true,
+        "other_info": "Notes"
+    }
+    """
     return {"result": API.db.create(collection, data)}
 
 
@@ -55,10 +80,10 @@ async def update(collection: str, query: Dict, update_data: Dict):
 
 
 @API.post("/{collection}/search")
-async def search(collection: str, user_search: str):
+async def collection_search(collection: str, search: str):
     """ Returns array of records that loosely match the search,
     automatically ordered by relevance. """
-    return {"result": API.db.search(collection, user_search)}
+    return {"result": API.db.search(collection, search)}
 
 
 @API.post("/match/{mentee_id}")
