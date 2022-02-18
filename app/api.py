@@ -71,3 +71,4 @@ async def match(mentee_id: int, n_matches: int):
 async def delete(collection: str):
     """ Deletes collection  """
     return {"result": API.delete(collection)}
+
