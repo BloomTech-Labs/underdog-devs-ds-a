@@ -25,7 +25,9 @@ class Mentor:
 
 
 class MenteeFeedback:
-
+    """Create feedback record from mentee (randomly selected from Mentees Collection) to
+    mentor (randomly selected from Mentors Collection), which is stored in Feedbacks Collection.
+    1 mentee can give multiple feedbacks to 1 mentor."""
     def __init__(self, mentee_ids, mentor_ids):
         self.mentee_id = choice(mentee_ids)
         self.mentor_id = choice(mentor_ids)
