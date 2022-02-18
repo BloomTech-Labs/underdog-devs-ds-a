@@ -8,7 +8,7 @@ from app.model import MatcherSortSearch
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.0.3",
+    version="0.0.4",
     docs_url='/',
 )
 
@@ -33,7 +33,7 @@ async def version():
 @API.get("/collections")
 async def collections():
     """ Returns collection name and size of each collection. """
-    return {"result": API.db.scan_collections()}
+    return {"result": API.db.get_database_info()}
 
 
 @API.post("/{collection}/create")
@@ -55,13 +55,21 @@ async def update(collection: str, query: Dict, update_data: Dict):
 
 
 @API.post("/{collection}/search")
-async def search(collection: str, user_search: str):
+async def collection_search(collection: str, search: str):
     """ Returns array of records that loosely match the search,
     automatically ordered by relevance. """
-    return {"result": API.db.search(collection, user_search)}
+    return {"result": API.db.search(collection, search)}
 
 
-@API.post("/match/{mentee_id}")
-async def match(mentee_id: int, n_matches: int):
-    """ Returns array of mentor matches for any given mentee_id. """
-    return {"result": API.matcher(n_matches, mentee_id)}
+@API.post("/match/{profile_id}")
+async def match(profile_id: int, n_matches: int):
+    """ Returns array of mentor matches for any given mentee profile_id
+    automatically ordered by relevance. """
+    return {"result": API.matcher(n_matches, profile_id)}
+
+
+@API.delete("/{collection}/delete/{profile_id}")
+async def delete(collection: str, profile_id: int):
+    """ Removes a user from the collection """
+    API.db.delete(collection, {"profile_id": profile_id})
+    return {"result": {"deleted": profile_id}}
