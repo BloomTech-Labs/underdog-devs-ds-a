@@ -1,6 +1,7 @@
 .env
 /venv/
 app/__pycache__
+data_generators/__pycache__
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
