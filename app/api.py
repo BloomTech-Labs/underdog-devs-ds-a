@@ -38,7 +38,32 @@ async def collections():
 
 @API.post("/{collection}/create")
 async def create(collection: str, data: Dict):
-    """ Creates a new record. """
+    """ Creates a new record.
+    Input Example:
+    collection = "Mentees"
+    data = {
+        "profile_id": "test001",
+        "first_name": "Luca",
+        "last_name": "Evans",
+        "email": "fake@email.com",
+        "city": "Ashland",
+        "state": "Oregon",
+        "country": "USA",
+        "formerly_incarcerated": true,
+        "underrepresented_group": true,
+        "low_income": true,
+        "list_convictions": [
+          "Infraction",
+          "Felony"
+        ],
+        "subject": "Web: HTML, CSS, JavaScript",
+        "experience_level": "Beginner",
+        "job_help": false,
+        "industry_knowledge": false,
+        "pair_programming": true,
+        "other_info": "Notes"
+    }
+    """
     return {"result": API.db.create(collection, data)}
 
 

@@ -60,12 +60,12 @@ class Mentee:
 if __name__ == '__main__':
     db = MongoDB("UnderdogDevs")
 
-    db.reset_collection("Mentees")
+    # db.reset_collection("Mentees")
     # db.make_field_unique("Mentees", "profile_id")
-    db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
+    # db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
 
-    db.reset_collection("Mentors")
+    # db.reset_collection("Mentors")
     # db.make_field_unique("Mentors", "profile_id")
-    db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
+    # db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
 
-    print(db.read("Mentors"))
+    # print(db.read("Mentees")[0])
