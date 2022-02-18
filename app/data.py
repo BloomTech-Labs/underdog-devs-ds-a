@@ -43,7 +43,7 @@ class MongoDB:
         self.get_collection(collection).delete_many(query)
 
     def count(self, collection: str, query: Optional[Dict] = None) -> int:
-        return self.get_collection(collection).count_documents(query)
+        return self.get_collection(collection).count_documents(query or {})
 
     def backup(self, collection: str):
         with open("data.json", "w") as file:
@@ -72,9 +72,3 @@ class MongoDB:
 
     def make_field_unique(self, collection: str, field: str):
         self.get_collection(collection).create_index([(field, 1)], unique=True)
-
-
-if __name__ == '__main__':
-    db = MongoDB("UnderdogDevs")
-    db.get_collection("Mentees").drop_index([("user_id", 1)])
-    db.get_collection("Mentors").drop_index([("user_id", 1)])
