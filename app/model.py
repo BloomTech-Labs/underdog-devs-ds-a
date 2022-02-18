@@ -8,8 +8,8 @@ from app.utilities import dict_to_str
 class MatcherSort:
     db = MongoDB("UnderdogDevs")
 
-    def __call__(self, n_matches: int, mentee_id: int) -> List[int]:
-        mentee = self.db.first("Mentees", {"profile_id": mentee_id})
+    def __call__(self, n_matches: int, profile_id: str) -> List[str]:
+        mentee = self.db.first("Mentees", {"profile_id": profile_id})
 
         def sort_mentors(mentor: Dict) -> Tuple:
             return (
@@ -24,8 +24,8 @@ class MatcherSort:
 class MatcherSearch:
     db = MongoDB("UnderdogDevs")
 
-    def __call__(self, n_matches: int, mentee_id: int) -> List[int]:
-        mentee = self.db.first("Mentees", {"profile_id": mentee_id})
+    def __call__(self, n_matches: int, profile_id: str) -> List[str]:
+        mentee = self.db.first("Mentees", {"profile_id": profile_id})
         results = self.db.search("Mentors", mentee["subject"])[:n_matches]
         return [mentor["profile_id"] for mentor in results]
 
@@ -33,8 +33,8 @@ class MatcherSearch:
 class MatcherSortSearch:
     db = MongoDB("UnderdogDevs")
 
-    def __call__(self, n_matches: int, mentee_id: int) -> List[int]:
-        mentee = self.db.first("Mentees", {"profile_id": mentee_id})
+    def __call__(self, n_matches: int, profile_id: str) -> List[str]:
+        mentee = self.db.first("Mentees", {"profile_id": profile_id})
 
         def sort_mentors(mentor: Dict) -> Tuple:
             return (
@@ -54,7 +54,7 @@ class MatcherSortSearch:
 class MatcherRandom:
     db = MongoDB("UnderdogDevs")
 
-    def __call__(self, n_matches: int, mentee_id: int) -> List[int]:
+    def __call__(self, n_matches: int, profile_id: str) -> List[str]:
         results = sample(self.db.read("Mentors"), k=n_matches)
         return [mentor["profile_id"] for mentor in results]
 

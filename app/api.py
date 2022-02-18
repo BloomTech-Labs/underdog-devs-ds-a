@@ -8,7 +8,7 @@ from app.model import MatcherSortSearch
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.43.6",
+    version="0.43.7",
     docs_url='/',
 )
 
@@ -87,14 +87,14 @@ async def collection_search(collection: str, search: str):
 
 
 @API.post("/match/{profile_id}")
-async def match(profile_id: int, n_matches: int):
+async def match(profile_id: str, n_matches: int):
     """ Returns array of mentor matches for any given mentee profile_id
     automatically ordered by relevance. """
     return {"result": API.matcher(n_matches, profile_id)}
 
 
 @API.delete("/{collection}/delete/{profile_id}")
-async def delete(collection: str, profile_id: int):
+async def delete(collection: str, profile_id: str):
     """ Removes a user from the collection """
     API.db.delete(collection, {"profile_id": profile_id})
     return {"result": {"deleted": profile_id}}
