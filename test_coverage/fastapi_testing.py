@@ -3,7 +3,6 @@ from app.api import API
 
 client = TestClient(API)
 
-
 def test_version():
     response = client.get("/version")
     print(response.json())
