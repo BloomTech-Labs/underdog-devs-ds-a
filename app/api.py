@@ -8,7 +8,7 @@ from app.model import MatcherSortSearch
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.0.4",
+    version="0.43.4",
     docs_url='/',
 )
 
