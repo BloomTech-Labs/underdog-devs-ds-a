@@ -68,7 +68,7 @@ class MongoDB:
             data (dict): document formatted as dictionary to be added
 
         Returns:
-            data Iterator(dict): The data that was inserted into the collection
+            None
         """
         self._connect(collection).insert_many(map(dict, data))
 
@@ -116,7 +116,7 @@ class MongoDB:
             update_data (dict): Key value pairs to update
 
         Returns:
-            n_changed_records (int): Number of documents updated
+            Tuple containing the filter (dict) and the update_data (dict)
         """
         self._connect(collection).update_many(query, {"$set": update_data})
         return query, update_data
@@ -177,6 +177,7 @@ class MongoDB:
         return self.read(collection, {"$text": {"$search": user_search}})
 
     def scan_collections(self):
+        """Return dictionary of collection names and their doc counts."""
         output = {}
         cli = MongoClient(getenv("MONGO_URL"))[self.database]
         for col in cli.list_collection_names():
@@ -184,6 +185,7 @@ class MongoDB:
         return output
 
     def reset_collection(self, collection: str):
+        """Delete given collection and recreates it without documents."""
         self.delete(collection, {})
         self.drop_index(collection)
         self.create_index(collection)
