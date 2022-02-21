@@ -305,6 +305,16 @@ subjects = (
     "General Programming",
 )
 
+resources = ("Laptop", "Books", "Scholarships", "Mental Health Need", "Financial stipends")
+
+disability = (True , False)
+
+work_status = ( True, False)
+
+poverty_level =("Above", "Below")
+
+receiving_assistance = (True, False)
+
 
 def random_first_name(percent_male: int = 50):
     if randint(1, 100) > percent_male:

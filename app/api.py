@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.data import MongoDB
-from app.model import MatcherSortSearch
+from app.model import MatcherSortSearch, MatcherSortSearchResource
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -14,6 +14,7 @@ API = FastAPI(
 
 API.db = MongoDB("UnderdogDevs")
 API.matcher = MatcherSortSearch()
+API.resource_matcher = MatcherSortSearchResource()
 
 API.add_middleware(
     CORSMiddleware,
@@ -65,3 +66,9 @@ async def search(collection: str, user_search: str):
 async def match(mentee_id: int, n_matches: int):
     """ Returns array of mentor matches for any given mentee_id. """
     return {"result": API.matcher(n_matches, mentee_id)}
+
+
+@API.post("/match_resource/{item_id}")
+async def match_resource(item_id: int, n_matches: int):
+    """ Returns array of mentor matches for any given mentee_id. """
+    return {"result": API.resource_matcher(n_matches, item_id)}
