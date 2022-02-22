@@ -37,6 +37,7 @@ class MatcherSortSearch:
         mentee = self.db.first("Mentees", {"profile_id": profile_id})
 
         def sort_mentors(mentor: Dict) -> Tuple:
+            # Todo: Double Check Logic!!!
             return (
                 mentee["subject"] != mentor["subject"],
                 mentee["experience_level"] != mentor["experience_level"],
