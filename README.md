@@ -1,4 +1,4 @@
-![model_diagram](./assets/model_diagram.png)
+![banner](./assets/banner.png)
 
 # Underdog Devs - Data Science Github
 A nonprofit that aims to help formerly incarcerated or disadvantaged people find careers in tech.
