@@ -64,7 +64,10 @@ async def create(collection: str, data: Dict):
         "other_info": "Notes"
     }
     """
-    return {"result": API.db.create(collection, data)}
+    if collection in ["Mentees", "Mentors"]:
+        return {"result": API.db.create(collection, data)}
+    else:
+        return {"error": "Collection not found!"}
 
 
 @API.post("/{collection}/read")
