@@ -1,30 +1,23 @@
-from typing import Collection
-from black import json
 from fastapi.testclient import TestClient
 from app.api import API
-import sys
 client = TestClient(API)
-sys.tracebacklimit = 0
 
 
 def test_version():
     response = client.get("/version")
-    print(response.json())
     assert response.status_code == 200
-    assert response.json() == {'result': '0.0.3'}
+    assert response.json() == {'result': '0.43.7'}, 'Versions do not match'
 
 
 def test_collections():
     response = client.get("/collections")
-    print(response.json())
     assert response.status_code == 200
 
 
 def test_read():
-    ''''''
-    response = client.post("/Mentees/read", json={'first_name': 'Sage'})
+    response = client.post("/Mentees/read", json={'first_name': 'Jude'})
     assert response.status_code == 200
-    assert response.json()['result'][0]['first_name'] == 'Sage'
+    assert response.json()['result'][0]['first_name'] == 'Jude'
 
 
 def test_create_delete():
@@ -51,41 +44,49 @@ def test_create_delete():
         "other_info": "Notes"
     }''')
 
-    assert response.json()['result']['profile_id'] == 'test001', 'ERROR'
+    assert response.json()['result']['profile_id'] == 'test001'
     response = client.delete('/Mentees/delete/test001')
     read = client.post("/Mentees/read", json={'profile_id': 'test001'})
-    assert read.json()['result'] == [], 'ERROR'
+    assert read.json()['result'] == [], 'Profile_id was not deteted'
 
 
 def test_search():
     response = client.post('/Mentees/search?search=Python')
-    print(response.json())
     assert response.json()['result'][0]['subject'] == "Data Science: Python"
 
 
-# def test_update():
-#     response = client.post('/Mentees/update', query={''}, update_data=)
+def test_update():
+    profile_id = '1V165ASl8IXH7M54'
+    response = client.post('/Mentees/update',
+                           json={"query": {'profile_id': '1V165ASl8IXH7M54'},
+                                 "update_data": {'first_name': 'John'}})
+    read_mentees = client.post(
+        "/Mentees/read", json={'profile_id': profile_id})
+    assert read_mentees.json()['result'][0]['first_name'] == response.json()[
+        'result'][1]['first_name']
+    assert read_mentees.json()['result'][0]['first_name'] == 'John'
 
 
 def test_match():
-    '''get mentor matches for mentee'''
+    '''get 5 mentor matches for mentee'''
     profile_id = '1V165ASl8IXH7M54'
     response = client.post(f'/match/{profile_id}?n_matches=5')
     '''find mentor info by id of one of the mentors matches'''
     mentors_id = response.json()['result'][0]
     read_mentors = client.post(
         "/Mentors/read", json={'profile_id': mentors_id})
-    read_mentors = client.post(
+    read_mentees = client.post(
         "/Mentees/read", json={'profile_id': profile_id})
-    '''check if their subjects'''
-    assert read_mentors.json()['result'][0]['subject'] == read_mentors.json()[
+    '''check if their subjects indeed match'''
+    assert read_mentors.json()['result'][0]['subject'] == read_mentees.json()[
         'result'][0]['subject']
 
 
 if __name__ == '__main__':
-    # test_version()
-    # test_read()
-    # test_create_delete()
+    test_version()
+    test_read()
+    test_create_delete()
     test_collections()
-    # test_search()
+    test_search()
     test_match()
+    test_update()
