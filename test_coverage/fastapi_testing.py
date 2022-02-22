@@ -57,8 +57,20 @@ def test_create_delete():
     assert read.json()['result'] == [], 'ERROR'
 
 
+def test_search():
+    response = client.post('/Mentees/search?search=Python')
+    assert response.json()['result'][0]['subject'] == "Data Science: Python"
+
+
+# def test_update():
+#     response = client.post('/Mentees/update', query={''}, update_data=)
+
+
+# def test_match():
+#     response = client.post('/Mentees/create', data=)
 if __name__ == '__main__':
-    test_version()
-    test_read()
-    test_create_delete()
+    # test_version()
+    # test_read()
+    # test_create_delete()
     test_collections()
+    # test_search()
