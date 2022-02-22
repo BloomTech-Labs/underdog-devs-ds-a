@@ -29,7 +29,7 @@ async def version():
     """ Returns the current version of the API. """
     return {"result": API.version}
 
-
+# Data.py Starts
 @API.get("/collections")
 async def collections():
     """ Returns collection name and size of each collection. """
@@ -134,6 +134,16 @@ async def update(collection: str, query: Dict, update_data: Dict):
     """ Returns an array containing the query and updated data. """
     return {"result": API.db.update(collection, query, update_data)}
 
+@API.delete("/{collection}/delete/{profile_id}")
+async def delete(collection: str, profile_id: str):
+    """ Removes a user from the collection """
+    API.db.delete(collection, {"profile_id": profile_id})
+    return {"result": {"deleted": profile_id}}
+
+@API.post("/{collection}/count")
+async def count(collection: str, query: Optional[Dict] = None):
+    """ Returns the amount of times a query appears in a collection. """
+    return {"result":  API.db.count(collection, query)}
 
 @API.post("/{collection}/search")
 async def collection_search(collection: str, search: str):
@@ -141,6 +151,7 @@ async def collection_search(collection: str, search: str):
     automatically ordered by relevance. """
     return {"result": API.db.search(collection, search)}
 
+# Data.py ends
 
 @API.post("/match/{profile_id}")
 async def match(profile_id: str, n_matches: int):
@@ -149,8 +160,3 @@ async def match(profile_id: str, n_matches: int):
     return {"result": API.matcher(n_matches, profile_id)}
 
 
-@API.delete("/{collection}/delete/{profile_id}")
-async def delete(collection: str, profile_id: str):
-    """ Removes a user from the collection """
-    API.db.delete(collection, {"profile_id": profile_id})
-    return {"result": {"deleted": profile_id}}
