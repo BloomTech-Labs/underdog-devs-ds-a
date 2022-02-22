@@ -69,7 +69,7 @@ async def create(collection: str, data: Dict):
 
 @API.post("/{collection}/create_many")
 async def create(collection: str, data: Dict):
-    """ Creates a new record.
+    """ Creates multiple new record.
     Input Example:
     collection = "Mentees"
     data = { "profile_one" :
@@ -115,6 +115,12 @@ async def create(collection: str, data: Dict):
     """
     print(data)
     return {"result": API.db.create(collection, data)}
+
+
+@API.post("/{collection}/first")
+async def first(collection: str, query: Optional[Dict] = None):
+    """ Returns first match that occurs with query in a collection. """
+    return {"result": API.db.first(collection, query)}
 
 
 @API.post("/{collection}/read")
