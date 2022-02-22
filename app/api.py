@@ -1,4 +1,5 @@
-from typing import Dict, Optional
+from pickle import DICT
+from typing import Dict, List, Optional
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -68,52 +69,51 @@ async def create(collection: str, data: Dict):
 
 
 @API.post("/{collection}/create_many")
-async def create(collection: str, data: Dict):
+async def create(collection: str, data: List[Dict]):
     """ Creates multiple new record.
-    Input Example:
-    collection = "Mentees"
-    data = { "profile_one" :
-                { 
-                    "profile_id": "test001",
-                    "first_name": "Luca",
-                    "last_name": "Evans",
-                    "email": "fake@email.com",
-                    "city": "Ashland", 
-                    "state": "Oregon", 
-                    "country": "USA", 
-                    "formerly_incarcerated": true, 
-                    "underrepresented_group": true, 
-                    "low_income": true, 
-                    "list_convictions": [ "Infraction", "Felony" ],
-                    "subject": "Web: HTML, CSS, JavaScript", 
-                    "experience_level": "Beginner", 
-                    "job_help": false, 
-                    "industry_knowledge": false, 
-                    "pair_programming": true, 
-                    "other_info": "Notes"
-                },
-                "profile_two" :
-                { 
-                    "profile_id": "test002",
-                    "first_name": "Luca's Twin",
-                    "last_name": "Evans",
-                    "email": "fake@email.com",
-                    "city": "Ashland", 
-                    "state": "Oregon", 
-                    "country": "USA", 
-                    "formerly_incarcerated": true, 
-                    "underrepresented_group": true, 
-                    "low_income": true, 
-                    "list_convictions": [ "Infraction", "Felony" ],
-                    "subject": "Web: HTML, CSS, JavaScript", 
-                    "experience_level": "Beginner", 
-                    "job_help": false, 
-                    "industry_knowledge": false, 
-                    "pair_programming": true, 
-                    "other_info": "Notes"
-                }
+        Input Example:
+        collection = "Mentees"
+        [
+            { 
+                "profile_id": "test001",
+                "first_name": "Luca",
+                "last_name": "Evans",
+                "email": "fake@email.com",
+                "city": "Ashland", 
+                "state": "Oregon", 
+                "country": "USA", 
+                "formerly_incarcerated": true, 
+                "underrepresented_group": true, 
+                "low_income": true, 
+                "list_convictions": [ "Infraction", "Felony" ],
+                "subject": "Web: HTML, CSS, JavaScript", 
+                "experience_level": "Beginner", 
+                "job_help": false, 
+                "industry_knowledge": false, 
+                "pair_programming": true, 
+                "other_info": "Notes"
+            },
+            { 
+                "profile_id": "test002",
+                "first_name": "Luca's Twin",
+                "last_name": "Evans",
+                "email": "fake@email.com",
+                "city": "Ashland", 
+                "state": "Oregon", 
+                "country": "USA", 
+                "formerly_incarcerated": true, 
+                "underrepresented_group": true, 
+                "low_income": true, 
+                "list_convictions": [ "Infraction", "Felony" ],
+                "subject": "Web: HTML, CSS, JavaScript", 
+                "experience_level": "Beginner", 
+                "job_help": false, 
+                "industry_knowledge": false, 
+                "pair_programming": true, 
+                "other_info": "Notes"
+            }
+        ]
     """
-    print(data)
     return {"result": API.db.create(collection, data)}
 
 
