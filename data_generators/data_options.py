@@ -314,6 +314,10 @@ work_status = ( True, False)
 poverty_level =("Above", "Below")
 
 receiving_assistance = (True, False)
+feedbacks = (
+    "Not Recommended, Poor", "Conflicted, Fair", "Recommended, Good",
+    "Highly Recommended, Very Good", "Best, Excellent "
+)
 
 
 def random_first_name(percent_male: int = 50):
