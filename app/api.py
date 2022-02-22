@@ -1,7 +1,8 @@
 from typing import Dict, Optional
 
-from fastapi import FastAPI
+from fastapi import FastAPI, status, Response, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.data import MongoDB
 from app.model import MatcherSortSearch
@@ -11,6 +12,23 @@ API = FastAPI(
     version="0.0.3",
     docs_url='/',
 )
+
+
+@API.exception_handler(Exception)
+async def all_exception_handler(request: Request, exc: Exception):
+    """returns default 500 message for any server errors
+    All error objects have different attributes
+    This handler just prints the stringed exception"""
+
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        content={
+            "code": 500,
+            "data": {"error": str(exc)},
+            "message": "server error",
+        },
+    )
+
 
 API.db = MongoDB("UnderdogDevs")
 API.matcher = MatcherSortSearch()
@@ -37,8 +55,9 @@ async def collections():
 
 
 @API.post("/{collection}/create")
-async def create(collection: str, data: Dict):
+async def create(collection: str, data: Dict, response: Response):
     """ Creates a new record. """
+    response.status_code = status.HTTP_201_CREATED
     return {"result": API.db.create(collection, data)}
 
 
