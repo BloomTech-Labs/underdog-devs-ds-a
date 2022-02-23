@@ -72,17 +72,17 @@ if __name__ == "__main__":
     db = MongoDB("UnderdogDevs")
 
     db.reset_collection("Mentees")
-    db._connect("Mentees").create_index("profile_id", unique=True)
+    db.get_collection("Mentees").create_index("profile_id", unique=True)
     db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
 
     db.reset_collection("Mentors")
-    db._connect("Mentors").create_index("profile_id", unique=True)
+    db.get_collection("Mentors").create_index("profile_id", unique=True)
     db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
 
     db.reset_collection("Feedbacks")
     mentees = db.read("Mentees")
     mentors = db.read("Mentors")
-    db._connect("Feedbacks").create_index("ticket_id", unique=True)
+    db.get_collection("Feedbacks").create_index("ticket_id", unique=True)
     feedbacks = [
         vars(
             MenteeFeedback(
