@@ -312,6 +312,10 @@ convictions = (
     "Felony", "Misdemeanor", "Infraction",
 )
 
+feedbacks = (
+    "Not Recommended, Poor", "Conflicted, Fair", "Recommended, Good",
+    "Highly Recommended, Very Good", "Best, Excellent "
+)
 
 def random_first_name(percent_male: int = 50):
     if randint(1, 100) > percent_male:
