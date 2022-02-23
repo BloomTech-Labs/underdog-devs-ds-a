@@ -1,5 +1,15 @@
+#possible env files to ignore
 .env
-/venv/
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+#python generated files 
+*.py[cod]
+*$py.class
 **/__pycache__/
 
 # Elastic Beanstalk Files
