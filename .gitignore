@@ -6,10 +6,11 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+*.yml
 
 #python generated files 
-*.py[cod]
-*$py.class
+**/*.py[cod]
+**/*$py.class
 **/__pycache__/
 
 # Elastic Beanstalk Files
