@@ -313,7 +313,10 @@ disability = (True, False)
 work_status = (True, False)
 
 receiving_assistance = (True, False)
+<< << << < HEAD
 
+== == == =
+>>>>>> > a4720fdcfde5a2d95b68966045db2c7d6b79e77e
 feedbacks = (
     "Not Recommended, Poor", "Conflicted, Fair", "Recommended, Good",
     "Highly Recommended, Very Good", "Best, Excellent "
