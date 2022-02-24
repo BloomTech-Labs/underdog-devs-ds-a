@@ -8,7 +8,33 @@ import certifi
 
 
 class MongoDB:
-    """Class with pymongo CRUD operations as methods"""
+    """Class with pymongo CRUD operations as methods
+    
+    This class organizes all CRUD operations into a single nexus.
+    Detailed descriptions are given in individual method documentation,
+    but a brief overview is given below.
+    
+    Args:
+        database (str): Name of the database to be accessed
+        
+    Internal Methods:
+        _connect: Connects to a given collection within the database.
+    
+    External Methods:
+        create: Insert a document into a given collection.
+        create_many: Insert many documents into a given collection.
+        first: Return the first document in a given collection.
+        read: Query collections and return results as a list.
+        update: Updates queried document(s) in a given collection.
+        delete: Deletes queried document(s) in given collection.
+        count: Return count of queried documents.
+        backup: ##################################
+        create_index: Create given index in given collection.
+        drop_index: Remove given index from given collection.
+        search: Loosely search given collection with given parameters.
+        scan_collections: Return all collections with document counts.
+        reset_collection: Remove all documents from collection.
+        """
     load_dotenv()
 
     def __init__(self, database: str):
@@ -153,11 +179,30 @@ class MongoDB:
             json.dump(self.read(collection), file)
 
     def create_index(self, collection: str):
-        """Only run once - internal only!"""
+        """Only run once - internal only!
+        
+        Creates an index within the given collection. This should not be
+        user facing in any degree without extreme caution.
+        
+        Args:
+            collection (str): The collection to affect
+            
+        Returns:
+            None
+        """
         self._connect(collection).create_index([("$**", "text")])
 
     def drop_index(self, collection: str):
-        """Internal only"""
+        """Internal only!
+        
+        Removes existing index from the given collection. This should not
+        be user facing in any degree without extreme caution.
+        
+        Args:
+            collection (str): The collection to affect
+        Returns:
+            None
+        """
         self._connect(collection).drop_index([("$**", "text")])
 
     def search(self, collection: str, user_search: str) -> List[Dict]:
@@ -177,7 +222,17 @@ class MongoDB:
         return self.read(collection, {"$text": {"$search": user_search}})
 
     def scan_collections(self):
-        """Return dictionary of collection names and their doc counts."""
+        """Return dictionary of collection names and their doc counts.
+        
+        Uses previously established database and scans it for all
+        collections, iteratively retrieving counts of documents within
+        each respective collection.
+        
+        Args:
+            None
+        Returns:
+            output (dict): Keys are collections, values are doc counts.
+        """
         output = {}
         cli = MongoClient(getenv("MONGO_URL"))[self.database]
         for col in cli.list_collection_names():
@@ -185,7 +240,18 @@ class MongoDB:
         return output
 
     def reset_collection(self, collection: str):
-        """Delete given collection and recreates it without documents."""
+        """Delete given collection and recreates it without documents.
+        
+        Resets the given collection by entirely deleting it from the
+        database, and then recreating the collection without inserting
+        any documents. All documents removed from this process will be
+        lost entirely. Use with caution.
+        
+        Args:
+            collection (str): The collection to reset
+        Returns:
+            None
+        """
         self.delete(collection, {})
         self.drop_index(collection)
         self.create_index(collection)
