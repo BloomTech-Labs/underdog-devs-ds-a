@@ -70,5 +70,5 @@ async def match(mentee_id: int, n_matches: int):
 
 @API.post("/match_resource/{item_id}")
 async def match_resource(item_id: int, n_matches: int):
-    """ Returns array of mentor matches for any given mentee_id. """
+    """ Returns array of mentee matches for any given Resource item_id. """
     return {"result": API.resource_matcher(n_matches, item_id)}

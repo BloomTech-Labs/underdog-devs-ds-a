@@ -54,7 +54,6 @@ class MatcherSortSearchResource:
 
     def __call__(self, n_matches: int, item_id: int) -> List[int]:
         item = self.db.first("Resources", {"item_id": item_id})
-        print(item)
 
         def sort_mentees(mentee: Dict) -> Tuple:
             return (
@@ -62,9 +61,6 @@ class MatcherSortSearchResource:
                 mentee["disability"] != True,
                 mentee["assistance"] != False,
                 mentee["work_status"] != False,
-                mentee["poverty_level"] != "Below",
-
-
             )
 
         results = sorted(

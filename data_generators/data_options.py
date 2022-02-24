@@ -305,15 +305,19 @@ subjects = (
     "General Programming",
 )
 
-resources = ("Laptop", "Books", "Scholarships", "Mental Health Need", "Financial stipends")
+resource_items = ("Laptop", "Books", "Scholarships",
+                  "Mental Health Need", "Financial stipends")
 
-disability = (True , False)
+disability = (True, False)
 
-work_status = ( True, False)
-
-poverty_level =("Above", "Below")
+work_status = (True, False)
 
 receiving_assistance = (True, False)
+
+feedbacks = (
+    "Not Recommended, Poor", "Conflicted, Fair", "Recommended, Good",
+    "Highly Recommended, Very Good", "Best, Excellent "
+)
 
 
 def random_first_name(percent_male: int = 50):
