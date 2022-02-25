@@ -46,6 +46,31 @@ async def create(collection: str, data: Dict):
     Args:
         collection (str): Name of collection retrieved from URL
         data (dict): Key value pairs to be mapped to document fields
+        
+        Input Example:
+            collection = "Mentees"
+            data = {
+                "profile_id": "test001",
+                "first_name": "Luca",
+                "last_name": "Evans",
+                "email": "fake@email.com",
+                "city": "Ashland",
+                "state": "Oregon",
+                "country": "USA",
+                "formerly_incarcerated": true,
+                "underrepresented_group": true,
+                "low_income": true,
+                "list_convictions": [
+                "Infraction",
+                "Felony"
+                ],
+                "subject": "Web: HTML, CSS, JavaScript",
+                "experience_level": "Beginner",
+                "job_help": false,
+                "industry_knowledge": false,
+                "pair_programming": true,
+                "other_info": "Notes"
+            }
     
     Returns:
         New collection's data as dictionary

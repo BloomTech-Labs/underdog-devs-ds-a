@@ -175,6 +175,7 @@ class MongoDB:
         return self._connect(collection).count_documents(query)
 
     def backup(self, collection: str):
+        """Create backup JSON for given collection."""
         with open("data.json", "w") as file:
             json.dump(self.read(collection), file)
 
