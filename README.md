@@ -1,4 +1,6 @@
-# Underdog Devs DS
+![banner](./assets/banner.png)
+
+# Underdog Devs - Data Science Github
 A nonprofit that aims to help formerly incarcerated or disadvantaged people find careers in tech.
 
 You can find the deployed project at [Underdog Devs](https://www.underdogdevs.org/).
@@ -20,7 +22,10 @@ You can find the deployed project at [Underdog Devs](https://www.underdogdevs.or
 | | [Kevin Lynner](https://github.com/LynnerKevin)  | |
 | | [Olatomi Adigun](https://github.com/OlatomiAdigun)  | |
 | | [Mohamed Mosaed](https://github.com/mohamedmosaed)  | |
+| | [Zachary Rock](https://github.com/ZacharyRock)  | |
 
+# Architecture
+![model_diagram](./assets/model_diagram.png)
 
 # Key Features
 - Implement a model for connecting  viable mentor - mentees pairings based on skills and experience
