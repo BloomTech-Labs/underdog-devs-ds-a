@@ -8,7 +8,7 @@ from app.model import MatcherSortSearch
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.43.5",
+    version="0.43.8",
     docs_url='/',
 )
 
@@ -26,19 +26,19 @@ API.add_middleware(
 
 @API.get("/version")
 async def version():
-    """Returns the current version of the API."""
+    """Return the current version of the API."""
     return {"result": API.version}
 
 
 @API.get("/collections")
 async def collections():
-    """Returns collection names and a count of their child nodes."""
-    return {"result": API.db.scan_collections()}
+    """Return collection names and a count of their child nodes."""
+    return {"result": API.db.get_database_info()()}
 
 
 @API.post("/{collection}/create")
 async def create(collection: str, data: Dict):
-    """Creates a new record in collection given within URL.
+    """Create a new record in the given collection.
     
     Creates new document within given collection using the data
     parameter to populate its fields.
@@ -48,29 +48,29 @@ async def create(collection: str, data: Dict):
         data (dict): Key value pairs to be mapped to document fields
         
         Input Example:
-            collection = "Mentees"
-            data = {
-                "profile_id": "test001",
-                "first_name": "Luca",
-                "last_name": "Evans",
-                "email": "fake@email.com",
-                "city": "Ashland",
-                "state": "Oregon",
-                "country": "USA",
-                "formerly_incarcerated": true,
-                "underrepresented_group": true,
-                "low_income": true,
-                "list_convictions": [
-                "Infraction",
-                "Felony"
-                ],
-                "subject": "Web: HTML, CSS, JavaScript",
-                "experience_level": "Beginner",
-                "job_help": false,
-                "industry_knowledge": false,
-                "pair_programming": true,
-                "other_info": "Notes"
-            }
+        collection = "Mentees"
+        data = {
+            "profile_id": "test001",
+            "first_name": "Luca",
+            "last_name": "Evans",
+            "email": "fake@email.com",
+            "city": "Ashland",
+            "state": "Oregon",
+            "country": "USA",
+            "formerly_incarcerated": true,
+            "underrepresented_group": true,
+            "low_income": true,
+            "list_convictions": [
+            "Infraction",
+            "Felony"
+            ],
+            "subject": "Web: HTML, CSS, JavaScript",
+            "experience_level": "Beginner",
+            "job_help": false,
+            "industry_knowledge": false,
+            "pair_programming": true,
+            "other_info": "Notes"
+        }
     
     Returns:
         New collection's data as dictionary
@@ -80,7 +80,7 @@ async def create(collection: str, data: Dict):
 
 @API.post("/{collection}/read")
 async def read(collection: str, data: Optional[Dict] = None):
-    """Returns array of records that exactly match the query.
+    """Return array of records that exactly match the given query.
     
     Defines collection from URL and queries it with optional filters
     given (data). If no filtering data is given, will return all
@@ -98,7 +98,7 @@ async def read(collection: str, data: Optional[Dict] = None):
 
 @API.post("/{collection}/update")
 async def update(collection: str, query: Dict, update_data: Dict):
-    """Updates collection and returns number of updated documents.
+    """Update collection and return the number of updated documents.
     
     Defines collection from URL and queries it with filters
     given (query). Then updates fields using update_data, either adding
@@ -116,35 +116,54 @@ async def update(collection: str, query: Dict, update_data: Dict):
 
 
 @API.post("/{collection}/search")
-async def search(collection: str, user_search: str):
-    """Returns list of docs loosely matching string, sorted by relevance.
+async def collection_search(collection: str, search: str):
+    """Return list of docs loosely matching string, sorted by relevance.
     
     Searches collection given in URL for documents that approximate the
-    given string (user_search), and then presents them, automatically
+    given string (search), and then presents them, automatically
     ordering results by relevance to the search.
     
     Args:
         collection (str): Name of collection to query
-        user_search (str): Querying parameter
+        search (str): Querying parameter
     
     Returns:
+        List of queried documents
         """
-    return {"result": API.db.search(collection, user_search)}
+    return {"result": API.db.search(collection, search)}
 
 
-@API.post("/match/{mentee_id}")
-async def match(mentee_id: int, n_matches: int):
-    """Returns array of mentor matches for any given mentee_id.
+@API.post("/match/{profile_id}")
+async def match(profile_id: str, n_matches: int):
+    """Return an array of mentor matches for any given mentee profile_id.
     
     Utilizes imported MatcherSortSearch() to query database for the
     given number of mentors that may be a good match for the given
     mentee. See documentation for MatcherSortSearch() for details.
     
     Args:
-        mentee_id (int): ID number for mentee needing a mentor
+        profile_id (str): ID number for mentee needing a mentor
         n_matches (int): Maximum desired matching candidates
         
     Returns:
         List of mentor IDs
     """
-    return {"result": API.matcher(n_matches, mentee_id)}
+    return {"result": API.matcher(n_matches, profile_id)}
+
+
+@API.delete("/{collection}/delete/{profile_id}")
+async def delete(collection: str, profile_id: str):
+    """Removes a user from the given collection.
+
+    Deletes all documents containing the given profile_id permanently,
+    and returns the deleted profile_id for confirmation.
+
+    Args:
+        collection (str): Name of collection to query for deletion
+        profile_id (str): ID number of user to be deleted
+    
+    Returns:
+        Dictionary with key of "deleted" and value of the profile_id
+    """
+    API.db.delete(collection, {"profile_id": profile_id})
+    return {"result": {"deleted": profile_id}}

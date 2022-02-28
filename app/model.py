@@ -22,19 +22,19 @@ class MatcherSort:
     """
     db = MongoDB("UnderdogDevs")
 
-    def __call__(self, n_matches: int, mentee_id: int) -> List[int]:
+    def __call__(self, n_matches: int, profile_id: int) -> List[int]:
         """Return a list of matched mentor id numbers."""
-        mentee = self.db.first("Mentees", {"user_id": mentee_id})
+        mentee = self.db.first("Mentees", {"profile_id": profile_id})
 
         def sort_mentors(mentor: Dict) -> Tuple:
             """Sorts mentors """
             return (
                 mentee["subject"] != mentor["subject"],
-                mentee["skill_level"] != mentor["skill_level"],
+                mentee["experience_level"] != mentor["experience_level"],
             )
 
         results = sorted(self.db.read("Mentors"), key=sort_mentors)[:n_matches]
-        return [mentor["user_id"] for mentor in results]
+        return [mentor["profile_id"] for mentor in results]
 
 
 class MatcherSearch:
@@ -53,11 +53,11 @@ class MatcherSearch:
     """
     db = MongoDB("UnderdogDevs")
 
-    def __call__(self, n_matches: int, mentee_id: int) -> List[int]:
+    def __call__(self, n_matches: int, profile_id: int) -> List[int]:
         """Return a list of matched mentor id numbers."""
-        mentee = self.db.first("Mentees", {"user_id": mentee_id})
+        mentee = self.db.first("Mentees", {"profile_id": profile_id})
         results = self.db.search("Mentors", mentee["subject"])[:n_matches]
-        return [mentor["user_id"] for mentor in results]
+        return [mentor["profile_id"] for mentor in results]
 
 
 class MatcherSortSearch:
@@ -78,21 +78,24 @@ class MatcherSortSearch:
     """
     db = MongoDB("UnderdogDevs")
 
-    def __call__(self, n_matches: int, mentee_id: int) -> List[int]:
+    def __call__(self, n_matches: int, profile_id: int) -> List[int]:
         """Return a list of matched mentor id numbers."""
-        mentee = self.db.first("Mentees", {"user_id": mentee_id})
+        mentee = self.db.first("Mentees", {"profile_id": profile_id})
 
         def sort_mentors(mentor: Dict) -> Tuple:
+            # Todo: Double Check Logic!!!
             return (
                 mentee["subject"] != mentor["subject"],
-                mentee["skill_level"] != mentor["skill_level"],
+                mentee["experience_level"] != mentor["experience_level"],
+                mentee["pair_programming"] != mentor["pair_programming"],
+                mentor["industry_knowledge"],
             )
 
         results = sorted(
             self.db.search("Mentors", mentee["subject"]),
             key=sort_mentors,
         )[:n_matches]
-        return [mentor["user_id"] for mentor in results]
+        return [mentor["profile_id"] for mentor in results]
 
 
 class MatcherRandom:
@@ -111,10 +114,10 @@ class MatcherRandom:
     """
     db = MongoDB("UnderdogDevs")
 
-    def __call__(self, n_matches: int, mentee_id: int) -> List[int]:
+    def __call__(self, n_matches: int, profile_id: int) -> List[int]:
         """Return a list of matched mentor id numbers."""
         results = sample(self.db.read("Mentors"), k=n_matches)
-        return [mentor["user_id"] for mentor in results]
+        return [mentor["profile_id"] for mentor in results]
 
 
 if __name__ == '__main__':
@@ -122,12 +125,12 @@ if __name__ == '__main__':
 
     db = matcher.db
     mentees = db.read("Mentees")
-    test_user_id = choice(mentees)["user_id"]
+    test_user_id = choice(mentees)["profile_id"]
     matches = matcher(3, test_user_id)
 
     print(f"Mentee: {test_user_id}")
     print(f"Matches: {matches}")
 
-    print(dict_to_str(db.first("Mentees", {"user_id": test_user_id})))
+    print(dict_to_str(db.first("Mentees", {"profile_id": test_user_id})))
     for mentor_id in matches:
-        print(dict_to_str(db.first("Mentors", {"user_id": mentor_id})))
+        print(dict_to_str(db.first("Mentors", {"profile_id": mentor_id})))
