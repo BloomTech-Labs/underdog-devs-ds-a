@@ -50,10 +50,10 @@ class MongoDB:
     
     def get_database(self):
         """Connect to the database passed to the class."""
-            return MongoClient(
-                getenv("MONGO_URL"),
-                tlsCAFile=certifi.where(),
-            )[self.database]
+        return MongoClient(
+            getenv("MONGO_URL"),
+            tlsCAFile=certifi.where(),
+        )[self.database]
 
     def get_collection(self, collection):
         """Access a collection within the predefined database."""
@@ -122,7 +122,7 @@ class MongoDB:
         Returns:
             List of all documents matching query parameters
         """
-       return list(self.get_collection(collection).find(query, {"_id": False}))
+        return list(self.get_collection(collection).find(query, {"_id": False}))
 
     def update(self, collection: str, query: Dict, update_data: Dict) -> Tuple:
         """Update existing documents in collection matching given data.
