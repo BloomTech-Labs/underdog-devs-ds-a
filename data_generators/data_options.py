@@ -1,4 +1,7 @@
-from random import randint, choice
+import string
+from itertools import chain
+from math import ceil, floor
+from random import randint, choice, random, choices, shuffle
 
 male_first_names = (
     "Liam", "Noah", "Oliver", "Elijah", "William", "James", "Benjamin", "Lucas",
@@ -296,18 +299,47 @@ last_names = (
 )
 
 skill_levels = (
-    "Beginner", "Intermediate", "Advanced",
+    "Beginner", "Intermediate", "Advanced", "Expert",
 )
 
 subjects = (
     "Web: HTML, CSS, JavaScript", "Data Science: Python",
-    "Android: Java", "iOS: Swift", "Career Readiness",
+    "Android: Java", "iOS: Swift", "Career Development",
     "General Programming",
 )
 
+convictions = (
+    "Felony", "Misdemeanor", "Infraction",
+)
+
+feedbacks = (
+    "Not Recommended, Poor", "Conflicted, Fair", "Recommended, Good",
+    "Highly Recommended, Very Good", "Best, Excellent "
+)
 
 def random_first_name(percent_male: int = 50):
     if randint(1, 100) > percent_male:
         return choice(female_first_names)
     else:
         return choice(male_first_names)
+
+
+def percent_true(percent):
+    return 100 * random() < percent
+
+
+def generate_uuid(n_len: int):
+    n1 = ceil(n_len / 2)
+    n2 = floor(n_len / 2)
+    prefix = choices(string.ascii_letters, k=n1)
+    suffix = map(str, choices(range(0, 9), k=n2))
+    uuid_list = list(chain(prefix, suffix))
+    shuffle(uuid_list)
+    uuid = "".join(uuid_list)
+    return uuid
+
+
+if __name__ == '__main__':
+    var = generate_uuid(64)
+    print(var)
+    print(len(var))

@@ -1,11 +1,19 @@
-/.env
-/venv/
-/__pycache__/
+#possible env files to ignore
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.yml
+
+#python generated files 
+**/*.py[cod]
+**/*$py.class
+**/__pycache__/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-notebooks/hour.ipynb
-generated_data/
-local_utilities/
