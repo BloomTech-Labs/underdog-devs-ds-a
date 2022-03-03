@@ -10,11 +10,11 @@ data: List[Dict] = MongoDB("UnderdogDevs").read("Mentors")
 
 
 def rand_lib(n_matches: int) -> List[str]:
-    return [match["user_id"] for match in sample(data, k=n_matches)]
+    return [match["profile_id"] for match in sample(data, k=n_matches)]
 
 
 def pandas_lib(n_matches: int) -> List[str]:
-    return DataFrame(data).sample(n_matches)["user_id"].to_list()
+    return DataFrame(data).sample(n_matches)["profile_id"].to_list()
 
 
 if __name__ == '__main__':
