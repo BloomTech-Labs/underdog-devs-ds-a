@@ -23,8 +23,8 @@ class TestingPlatform():
             pprint("test_version: Expected Code 200. Got " +
                    str(response.status_code))
 
-        assert response.json() == {'result': '0.43.7'}, \
-            pprint("test_version: Expected 0.43.7. Got " + str(response.json()))
+        assert response.json() == {'result': '0.43.8'}, \
+            pprint("test_version: Expected 0.43.8 Got " + str(response.json()))
 
         pprint("Version test cases passed")
 
