@@ -14,22 +14,6 @@ API = FastAPI(
 )
 
 
-@API.exception_handler(Exception)
-async def all_exception_handler(request: Request, exc: Exception):
-    """returns default 500 message for any server errors
-    All error objects have different attributes
-    This handler just prints the stringed exception"""
-
-    return JSONResponse(
-        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        content={
-            "code": 500,
-            "data": {"error": str(exc)},
-            "message": "server error",
-        },
-    )
-
-
 API.db = MongoDB("UnderdogDevs")
 API.matcher = MatcherSortSearch()
 
@@ -83,3 +67,19 @@ async def search(collection: str, user_search: str):
 async def match(mentee_id: int, n_matches: int):
     """ Returns array of mentor matches for any given mentee_id. """
     return {"result": API.matcher(n_matches, mentee_id)}
+
+
+@API.exception_handler(Exception)
+async def all_exception_handler(request: Request, exc: Exception):
+    """ Returns default 500 message for many server errors.
+    Mostly handles where collection is not found
+    Prints the stringed exception. """
+
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        content={
+            "code": 500,
+            "data": {"error": str(exc)},
+            "message": "server error",
+        },
+    )
