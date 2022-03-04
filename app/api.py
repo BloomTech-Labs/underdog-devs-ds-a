@@ -55,9 +55,8 @@ async def collections():
 
 
 @API.post("/{collection}/create")
-async def create(collection: str, data: Dict, response: Response):
+async def create(collection: str, data: Dict):
     """ Creates a new record. """
-    response.status_code = status.HTTP_201_CREATED
     return {"result": API.db.create(collection, data)}
 
 
