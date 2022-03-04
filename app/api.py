@@ -1,6 +1,6 @@
 from typing import Dict, Optional
 
-from fastapi import FastAPI, status, Response, Request
+from fastapi import FastAPI, status, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
