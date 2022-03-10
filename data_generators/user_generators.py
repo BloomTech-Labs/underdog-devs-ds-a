@@ -1,4 +1,7 @@
 from random import sample
+from typing import Dict, List
+
+import pandas as pd
 
 from app.data import MongoDB
 from data_generators.data_options import *
@@ -60,35 +63,35 @@ class MenteeFeedback:
     """Create feedback record from mentee (randomly selected from Mentees Collection) to
     mentor (randomly selected from Mentors Collection), which is stored in Feedbacks Collection.
     1 mentee can give multiple feedbacks to 1 mentor."""
+    feedback = pd.read_csv("review.csv", index_col="Id")
 
-    def __init__(self, mentee_ids, mentor_ids):
-        self.mentee_id = choice(mentee_ids)
-        self.mentor_id = choice(mentor_ids)
-        self.ticket_id = randint(1000000, 9000000)
-        self.feedback = choice(feedbacks)
+    def __init__(self, mentee_id, mentor_id):
+        self.ticket_id = generate_uuid(16)
+        self.mentee_id = mentee_id
+        self.mentor_id = mentor_id
+        self.feedback = choice(self.feedback["Review"])
+
+    def __str__(self):
+        return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
 
 
 if __name__ == "__main__":
     db = MongoDB("UnderdogDevs")
 
-    db.reset_collection("Mentees")
-    db.get_collection("Mentees").create_index("profile_id", unique=True)
-    db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
+    # db.reset_collection("Mentees")
+    # db.get_collection("Mentees").create_index("profile_id", unique=True)
+    # db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
 
-    db.reset_collection("Mentors")
-    db.get_collection("Mentors").create_index("profile_id", unique=True)
-    db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
+    # db.reset_collection("Mentors")
+    # db.get_collection("Mentors").create_index("profile_id", unique=True)
+    # db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
 
-    db.reset_collection("Feedbacks")
     mentees = db.read("Mentees")
     mentors = db.read("Mentors")
-    db.get_collection("Feedbacks").create_index("ticket_id", unique=True)
-    feedbacks = [
-        vars(
-            MenteeFeedback(
-                [m["profile_id"] for m in mentees], [m["profile_id"] for m in mentors]
-            )
-        )
-        for _ in range(200)
-    ]
-    db.create_many("Feedbacks", feedbacks)
+
+    feedback: List[Dict] = [vars(MenteeFeedback(
+        choice(mentees)["profile_id"],
+        choice(mentors)["profile_id"],
+    )) for _ in range(100)]
+
+    db.create_many("Feedback", feedback)
