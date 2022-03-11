@@ -1,4 +1,5 @@
 from random import sample
+from typing import List, Dict
 
 from app.data import MongoDB
 from data_generators.data_options import *
@@ -72,10 +73,10 @@ class Meeting:
     '''Create dummy meeting record which is stored in
     meeting collection.'''
     
-    def __init__(self):
+    def __init__(self, mentee_id, mentor_id ):
         self.meeting_id = randint(1, 10000)
-        self.host_id = generate_uuid(16)
-        self.attendee_id = generate_uuid(16)
+        self.host_id = mentor_id
+        self.attendee_id = mentee_id
         '''The following date data may need conversion
         depending how the backend sends their data to us
         They are currently set as a static datetime object'''
@@ -86,6 +87,9 @@ class Meeting:
         self.meeting_topic = choice(topics)
         self.attended = choice([0,1]) 
         self.meeting_notes = "Meeting notes here!"
+
+    def __str__(self):
+        return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
         
 
 if __name__ == "__main__":
@@ -112,3 +116,12 @@ if __name__ == "__main__":
         for _ in range(200)
     ]
     db.create_many("Feedbacks", feedbacks)
+
+
+    db.reset_collection("Meetings")
+    db.get_collection("Meetings").create_index("meeting_id", unique=True)
+    meetings: List[Dict] = [vars(Meeting(
+        choice(mentees)["profile_id"],
+        choice(mentors)["profile_id"],
+    )) for _ in range(50)]
+    db.create_many("Meetings", meetings)
