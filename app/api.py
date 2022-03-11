@@ -36,7 +36,7 @@ async def version():
 @API.get("/collections")
 async def collections():
     """Return collection names and a count of their child nodes."""
-    return {"result": API.db.get_database_info()()}
+    return {"result": API.db.get_database_info()}
 
 
 @API.post("/{collection}/create")
