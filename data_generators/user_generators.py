@@ -30,7 +30,6 @@ class Mentor:
 
 
 class Mentee:
-
     def __init__(self):
         self.profile_id = generate_uuid(16)
         self.first_name = random_first_name()
@@ -57,15 +56,39 @@ class Mentee:
         self.other_info = "Notes"
 
 
-if __name__ == '__main__':
+class MenteeFeedback:
+    """Create feedback record from mentee (randomly selected from Mentees Collection) to
+    mentor (randomly selected from Mentors Collection), which is stored in Feedbacks Collection.
+    1 mentee can give multiple feedbacks to 1 mentor."""
+
+    def __init__(self, mentee_ids, mentor_ids):
+        self.mentee_id = choice(mentee_ids)
+        self.mentor_id = choice(mentor_ids)
+        self.ticket_id = randint(1000000, 9000000)
+        self.feedback = choice(feedbacks)
+
+
+if __name__ == "__main__":
     db = MongoDB("UnderdogDevs")
 
-    # db.reset_collection("Mentees")
-    # db.make_field_unique("Mentees", "profile_id")
-    # db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
+    db.reset_collection("Mentees")
+    db.get_collection("Mentees").create_index("profile_id", unique=True)
+    db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
 
-    # db.reset_collection("Mentors")
-    # db.make_field_unique("Mentors", "profile_id")
-    # db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
+    db.reset_collection("Mentors")
+    db.get_collection("Mentors").create_index("profile_id", unique=True)
+    db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
 
-    # print(db.read("Mentees")[0])
+    db.reset_collection("Feedbacks")
+    mentees = db.read("Mentees")
+    mentors = db.read("Mentors")
+    db.get_collection("Feedbacks").create_index("ticket_id", unique=True)
+    feedbacks = [
+        vars(
+            MenteeFeedback(
+                [m["profile_id"] for m in mentees], [m["profile_id"] for m in mentors]
+            )
+        )
+        for _ in range(200)
+    ]
+    db.create_many("Feedbacks", feedbacks)
