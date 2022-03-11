@@ -94,25 +94,22 @@ class MenteeFeedback:
 class Meeting:
     '''Create dummy meeting record which is stored in
     meeting collection.'''
-    
-    def __init__(self, mentee_id, mentor_id ):
-        self.meeting_id = randint(1, 10000)
-        self.host_id = mentor_id
-        self.attendee_id = mentee_id
-        '''The following date data may need conversion
-        depending how the backend sends their data to us
-        They are currently set as a static datetime object'''
+
+    def __init__(self, mentee_id, mentor_id):
+        self.meeting_id = generate_uuid(16)
         self.created_at = "2018-06-12T09:55:22"
         self.updated_at = "2018-06-12T09:55:22"
-        self.meeting_date = "2018-06-12T09:55:22"
-        self.meeting_time = "2018-06-12T09:55:22"
         self.meeting_topic = choice(topics)
-        self.attended = choice([0,1]) 
+        self.meeting_start_date = "2018-06-12T09:55:22"
+        self.meeting_end_date = "2018-06-12T09:55:22"
+        self.host_id = mentor_id
+        self.attendee_id = mentee_id
         self.meeting_notes = "Meeting notes here!"
+        self.meeting_missed = choice(['Missed', 'Attended'])
 
     def __str__(self):
         return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
-        
+
 
 if __name__ == "__main__":
     db = MongoDB("UnderdogDevs")
@@ -134,7 +131,7 @@ if __name__ == "__main__":
     )) for _ in range(100)]
 
     db.create_many("Feedback", feedback)
-    
+
     db.reset_collection("Meetings")
     db.get_collection("Meetings").create_index("meeting_id", unique=True)
     meetings: List[Dict] = [vars(Meeting(
