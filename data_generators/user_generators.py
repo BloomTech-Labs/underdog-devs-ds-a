@@ -62,7 +62,7 @@ class Mentee:
             self.pair_programming = percent_true(60)
         self.your_hope = 'String'
         self.need = choice(resource_items)
-        self.parole_restriction = ''
+        self.parole_restriction = percent_true(50)
         self.disability = choice(disability)
         self.work_status = choice(work_status)
         self.assistance = choice(receiving_assistance)
