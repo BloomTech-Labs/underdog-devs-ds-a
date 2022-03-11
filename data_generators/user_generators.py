@@ -1,4 +1,7 @@
 from random import sample
+from typing import Dict, List
+
+import pandas as pd
 
 from app.data import MongoDB
 from data_generators.data_options import *
@@ -73,12 +76,16 @@ class MenteeFeedback:
     """Create feedback record from mentee (randomly selected from Mentees Collection) to
     mentor (randomly selected from Mentors Collection), which is stored in Feedbacks Collection.
     1 mentee can give multiple feedbacks to 1 mentor."""
+    feedback = pd.read_csv("review.csv", index_col="Id")
 
     def __init__(self, mentee_id, mentor_id):
         self.ticket_id = generate_uuid(16)
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
-        self.feedback = choice(feedbacks)
+        self.feedback = choice(self.feedback["Review"])
+
+    def __str__(self):
+        return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
 
     def __str__(self):
         return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
@@ -95,14 +102,12 @@ if __name__ == "__main__":
     # db.get_collection("Mentors").create_index("profile_id", unique=True)
     # db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
 
-    # mentees = db.read("Mentees")
-    # mentors = db.read("Mentors")
+    mentees = db.read("Mentees")
+    mentors = db.read("Mentors")
 
-    # db.delete("Feedback", {})
-    # db.get_collection("Feedback").create_index("ticket_id", unique=True)
+    feedback: List[Dict] = [vars(MenteeFeedback(
+        choice(mentees)["profile_id"],
+        choice(mentors)["profile_id"],
+    )) for _ in range(100)]
 
-    # feedback = [vars(MenteeFeedback(
-    #     choice(mentees)["profile_id"],
-    #     choice(mentors)["profile_id"],
-    # )) for _ in range(100)]
-    # db.create_many("Feedback", feedback)
+    db.create_many("Feedback", feedback)

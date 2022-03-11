@@ -8,9 +8,9 @@ from app.data import MongoDB
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 
 API = FastAPI(
-    title="Underdog Devs DS API",
-    version="0.43.8",
-    docs_url="/",
+    title='Underdog Devs DS API',
+    version="0.44.1",
+    docs_url='/',
 )
 
 
