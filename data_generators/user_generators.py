@@ -125,3 +125,4 @@ if __name__ == "__main__":
         choice(mentors)["profile_id"],
     )) for _ in range(50)]
     db.create_many("Meetings", meetings)
+
