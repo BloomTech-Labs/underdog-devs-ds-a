@@ -23,6 +23,7 @@ You can find the deployed project at [Underdog Devs](https://www.underdogdevs.or
 | | [Olatomi Adigun](https://github.com/OlatomiAdigun)  | |
 | | [Mohamed Mosaed](https://github.com/mohamedmosaed)  | |
 | | [Zachary Rock](https://github.com/ZacharyRock)  | |
+| | [John Baker](https://github.com/BakerJr1904)  | |
 
 # Architecture
 ![model_diagram](./assets/model_diagram.png)
