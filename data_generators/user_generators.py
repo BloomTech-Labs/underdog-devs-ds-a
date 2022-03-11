@@ -68,6 +68,26 @@ class MenteeFeedback:
         self.feedback = choice(feedbacks)
 
 
+class Meeting:
+    '''Create dummy meeting record which is stored in
+    meeting collection.'''
+    
+    def __init__(self):
+        self.meeting_id = randint(1, 10000)
+        self.host_id = generate_uuid(16)
+        self.attendee_id = generate_uuid(16)
+        '''The following date data may need conversion
+        depending how the backend sends their data to us
+        They are currently set as a static datetime object'''
+        self.created_at = "2018-06-12T09:55:22"
+        self.updated_at = "2018-06-12T09:55:22"
+        self.meeting_date = "2018-06-12T09:55:22"
+        self.meeting_time = "2018-06-12T09:55:22"
+        self.meeting_topic = choice(topics)
+        self.attended = choice([0,1]) 
+        self.meeting_notes = "Meeting notes here!"
+        
+
 if __name__ == "__main__":
     db = MongoDB("UnderdogDevs")
 

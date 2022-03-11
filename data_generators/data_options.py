@@ -317,6 +317,12 @@ feedbacks = (
     "Highly Recommended, Very Good", "Best, Excellent "
 )
 
+
+topics = (
+    "GCA Help", "Resume Help", "Job Search", "Progress Check"
+)
+
+
 def random_first_name(percent_male: int = 50):
     if randint(1, 100) > percent_male:
         return choice(female_first_names)
