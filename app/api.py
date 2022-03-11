@@ -1,16 +1,18 @@
 from typing import Dict, Optional
 
-from fastapi import FastAPI
+from fastapi import FastAPI, status, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.data import MongoDB
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 
 API = FastAPI(
-    title='Underdog Devs DS API',
+    title="Underdog Devs DS API",
     version="0.43.8",
-    docs_url='/',
+    docs_url="/",
 )
+
 
 API.db = MongoDB("UnderdogDevs")
 API.matcher = MatcherSortSearch()
@@ -18,10 +20,10 @@ API.resource_matcher = MatcherSortSearchResource()
 
 API.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=['*'],
-    allow_headers=['*'],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -130,7 +132,7 @@ async def collection_search(collection: str, search: str):
 
     Returns:
         List of queried documents
-        """
+    """
     return {"result": API.db.search(collection, search)}
 
 
@@ -185,3 +187,19 @@ async def delete(collection: str, profile_id: str):
     """
     API.db.delete(collection, {"profile_id": profile_id})
     return {"result": {"deleted": profile_id}}
+
+
+@API.exception_handler(Exception)
+async def all_exception_handler(request: Request, exc: Exception):
+    """Returns default 500 message for many server errors.
+    Mostly handles where collection is not found
+    Prints the stringed exception."""
+
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        content={
+            "code": 500,
+            "data": {"error": str(exc)},
+            "message": "server error",
+        },
+    )
