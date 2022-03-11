@@ -97,6 +97,28 @@ class MatcherSortSearch:
         return [mentor["profile_id"] for mentor in results]
 
 
+class MatcherSortSearchResource:
+    db = MongoDB("UnderdogDevs")
+
+    def __call__(self, n_matches: int, item_id: int) -> List[int]:
+        item = self.db.first("Resources", {"item_id": item_id})
+
+        def sort_mentees(mentee: Dict) -> Tuple:
+            return (
+                mentee["need"] != item["need"],
+                mentee["parole_restriction"] != True,
+                mentee["disability"] != True,
+                mentee["assistance"] != False,
+                mentee["work_status"] != False,
+            )
+
+        results = sorted(
+            self.db.search("Mentees", item["need"]),
+            key=sort_mentees
+        )[:n_matches]
+        return [mentee["profile_id"] for mentee in results]
+
+
 class MatcherRandom:
     """Callable matching class returning random matches.
 

@@ -54,6 +54,19 @@ class Mentee:
         else:
             self.pair_programming = percent_true(60)
         self.other_info = "Notes"
+        self.need = choice(resource_items)
+        self.parole_restriction = choice(parole_restriction)
+        self.disability = choice(disability)
+        self.work_status = choice(work_status)
+        self.assistance = choice(receiving_assistance)
+
+
+class Resource:
+    """ Creates Resource record """
+
+    def __init__(self):
+        self.need = choice(resource_items)
+        self.item_id = randint(1000000, 9000000)
 
 
 class MenteeFeedback:
@@ -79,6 +92,8 @@ if __name__ == "__main__":
     db.get_collection("Mentors").create_index("profile_id", unique=True)
     db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
 
+    db.reset_collection("Resources")
+    db.create_many("Resources", (vars(Resource()) for _ in range(20)))
     db.reset_collection("Feedbacks")
     mentees = db.read("Mentees")
     mentors = db.read("Mentors")
@@ -86,7 +101,8 @@ if __name__ == "__main__":
     feedbacks = [
         vars(
             MenteeFeedback(
-                [m["profile_id"] for m in mentees], [m["profile_id"] for m in mentors]
+                [m["profile_id"] for m in mentees], [
+                    m["profile_id"] for m in mentors]
             )
         )
         for _ in range(200)

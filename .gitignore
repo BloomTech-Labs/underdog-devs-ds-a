@@ -1,5 +1,5 @@
-#possible env files to ignore
 .env
+/venv/
 .venv
 env/
 venv/
