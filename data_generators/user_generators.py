@@ -57,6 +57,19 @@ class Mentee:
         else:
             self.pair_programming = percent_true(60)
         self.other_info = "Notes"
+        self.need = choice(resource_items)
+        self.parole_restriction = choice(parole_restriction)
+        self.disability = choice(disability)
+        self.work_status = choice(work_status)
+        self.assistance = choice(receiving_assistance)
+
+
+class Resource:
+    """ Creates Resource record """
+
+    def __init__(self):
+        self.need = choice(resource_items)
+        self.item_id = randint(1000000, 9000000)
 
 
 class MenteeFeedback:
@@ -70,6 +83,9 @@ class MenteeFeedback:
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
         self.feedback = choice(self.feedback["Review"])
+
+    def __str__(self):
+        return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
 
     def __str__(self):
         return "\n".join(f"{k}: {v}" for k, v in vars(self).items())

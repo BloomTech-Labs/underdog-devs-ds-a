@@ -308,13 +308,22 @@ subjects = (
     "General Programming",
 )
 
+resource_items = ("Laptop", "Books", "Scholarships",
+                  "Mental Health Need", "Financial stipends")
+
+disability = (True, False)
+
+work_status = (True, False)
+
+receiving_assistance = (True, False)
+
 convictions = (
     "Felony", "Misdemeanor", "Infraction",
 )
 
 feedbacks = (
     "Not Recommended, Poor", "Conflicted, Fair", "Recommended, Good",
-    "Highly Recommended, Very Good", "Best, Excellent "
+    "Highly Recommended, Very Good", "Best, Excellent",
 )
 
 def random_first_name(percent_male: int = 50):
@@ -337,9 +346,3 @@ def generate_uuid(n_len: int):
     shuffle(uuid_list)
     uuid = "".join(uuid_list)
     return uuid
-
-
-if __name__ == '__main__':
-    var = generate_uuid(64)
-    print(var)
-    print(len(var))
