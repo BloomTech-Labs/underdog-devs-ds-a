@@ -308,6 +308,15 @@ subjects = (
     "General Programming",
 )
 
+resource_items = ("Laptop", "Books", "Scholarships",
+                  "Mental Health Need", "Financial stipends")
+
+disability = (True, False)
+
+work_status = (True, False)
+
+receiving_assistance = (True, False)
+
 convictions = (
     "Felony", "Misdemeanor", "Infraction",
 )
@@ -316,6 +325,10 @@ feedbacks = (
     "Not Recommended, Poor", "Conflicted, Fair", "Recommended, Good",
     "Highly Recommended, Very Good", "Best, Excellent "
 )
+
+
+parole_restriction = (True, False)
+
 
 def random_first_name(percent_male: int = 50):
     if randint(1, 100) > percent_male:

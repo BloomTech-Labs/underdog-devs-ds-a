@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.data import MongoDB
-from app.model import MatcherSortSearch
+from app.model import MatcherSortSearch, MatcherSortSearchResource
 
 API = FastAPI(
     title="Underdog Devs DS API",
@@ -16,6 +16,7 @@ API = FastAPI(
 
 API.db = MongoDB("UnderdogDevs")
 API.matcher = MatcherSortSearch()
+API.resource_matcher = MatcherSortSearchResource()
 
 API.add_middleware(
     CORSMiddleware,
@@ -151,6 +152,23 @@ async def match(profile_id: str, n_matches: int):
         List of mentor IDs
     """
     return {"result": API.matcher(n_matches, profile_id)}
+
+
+@API.post("/match_resource/{item_id}")
+async def match_resource(item_id: int, n_matches: int):
+    """ Returns array of mentee matches for any given Resource item_id.
+
+    Utilizes imported MatcherSortSearchResource() to query database for the
+    given number of mentees that may be a good match for the given
+    Resource(s). See documentation for MatcherSortSearchResource() for details.
+
+    Args:
+        item_id (int): ID number for resource item to be allocated to a mentee
+        n_matches (int): Maximum desired matching candidates. Ideally should be 1.
+
+    Returns:
+        List of mentee ID(s) """
+    return {"result": API.resource_matcher(n_matches, item_id)}
 
 
 @API.delete("/{collection}/delete/{profile_id}")
