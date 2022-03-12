@@ -219,5 +219,5 @@ async def financial_aid(profile_id: str):
    Returns:
         the the probability that financial aid will be required
     """
-    return {"result": await financial_aid(profile_id)}
+    return {"result": financial_aid_gen(profile_id)}
 
