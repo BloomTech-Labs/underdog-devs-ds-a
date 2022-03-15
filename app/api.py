@@ -218,7 +218,7 @@ async def financial_aid(profile_id: str):
         profile_id (str): the profile id of the mentee
    
    Returns:
-        the the probability that financial aid will be required
+        the probability that financial aid will be required
     """
     return {"result": await financial_aid(profile_id)}
 
