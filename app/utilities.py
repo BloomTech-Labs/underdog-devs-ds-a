@@ -7,6 +7,7 @@ def dict_to_str(data: Dict) -> str:
     """Convert dictionaries into easy to read strings."""
     return "\n" + "\n".join(f"{k}: {v}" for k, v in data.items())
 
+
 def financial_aid_gen(profile_id):
     '''This is a function that queries the database
     for variables attached to a mentees profile id and applies
