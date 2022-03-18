@@ -8,6 +8,7 @@ env.bak/
 venv.bak/
 *.yml
 .idea/
+.vscode/
 
 #python generated files 
 **/*.py[cod]
