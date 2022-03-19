@@ -12,11 +12,11 @@ def financial_aid_gen(profile):
     that information into a forumla that returns financial aid
     probability"""
 
-    E_l_dict = {"Beginner": 1, "Intermediate": 2, "Advanced": 3, "Expert": 4}
+    e_l_dict = {"Beginner": 1, "Intermediate": 2, "Advanced": 3, "Expert": 4}
     formerly_incarcerated = (1 if profile['formerly_incarcerated'] == 'true'
                              else 0)
     low_income = 1 if profile['low_income'] == 'true' else 0
-    experience_level = E_l_dict[profile['experience_level']]
+    experience_level = e_l_dict[profile['experience_level']]
 
     return (((formerly_incarcerated/2 + low_income +
-              pow(9.9*(experience_level), -1) - 0.025) / 1.577))
+              pow(9.9*experience_level, -1) - 0.025) / 1.577))

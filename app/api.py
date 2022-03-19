@@ -221,7 +221,9 @@ async def financial_aid(profile_id: str):
         the probability that financial aid will be required
     """
 
-    if profile_id not in API.db.read('Mentees', {"profile_id": profile_id}):
-        raise HTTPException(status_code=404, detail="Mentee not found")
     profile = API.db.read('Mentees', {"profile_id": profile_id})
-    return {"result": financial_aid_gen(profile['result'][0])}
+
+    if profile == []:
+        raise HTTPException(status_code=404, detail="Mentee not found")
+
+    return {"result": financial_aid_gen(profile[0])}
