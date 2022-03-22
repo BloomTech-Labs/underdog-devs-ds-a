@@ -56,11 +56,11 @@ class JobScraper:
 
         # List the default "job search terms" in HTML format
         self.search_terms = [
-            # "data%20scientist",
-            # "machine%20learning%20engineer",
-            # "data%20engineer",
-            # "web%20developer",
-            # "frontend%20developer",
+            "data%20scientist",
+            "machine%20learning%20engineer",
+            "data%20engineer",
+            "web%20developer",
+            "frontend%20developer",
             "backend%20developer",
             "devops",
             "software%20engineer"
