@@ -1,10 +1,11 @@
 from typing import Dict, Optional
 
-from fastapi import FastAPI, status, Request
+from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.data import MongoDB
+from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 
 API = FastAPI(
@@ -203,3 +204,26 @@ async def all_exception_handler(request: Request, exc: Exception):
             "message": "server error",
         },
     )
+
+
+@API.post("/financial_aid/{profile_id}")
+async def financial_aid(profile_id: str):
+    """Returns the the probability that financial aid will be required.
+
+    Calls the financial aid function from functions.py inputing the
+    profile_id for calculation involving formally incarcerated, low income,
+    and experience level as variables to formulate probability of financial aid
+
+    Args:
+        profile_id (str): the profile id of the mentee
+
+   Returns:
+        the probability that financial aid will be required
+    """
+
+    profile = API.db.read('Mentees', {"profile_id": profile_id})
+
+    if profile == []:
+        raise HTTPException(status_code=404, detail="Mentee not found")
+
+    return {"result": financial_aid_gen(profile[0])}
