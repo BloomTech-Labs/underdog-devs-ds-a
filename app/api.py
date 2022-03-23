@@ -4,13 +4,15 @@ from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
 from app.data import MongoDB
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.44.1",
+    version="0.44.3",
     docs_url='/',
 )
 
@@ -227,3 +229,23 @@ async def financial_aid(profile_id: str):
         raise HTTPException(status_code=404, detail="Mentee not found")
 
     return {"result": financial_aid_gen(profile[0])}
+
+@API.post("/sentiment_analysis/{sentiment}")
+async def sentiment_analysis(sentiment: str):
+    """Returns whether or not the supplied text is positive or negative.
+
+    Calls vaderSentiment's SentimentIntensityAnalyzer on a given text
+    and returns the compound sentiment score.  All scores above 0 categorized
+    as 'positive' and all other scores categorized as negative 
+
+    Args:
+        sentiment (str): the text to be analyzed
+
+    Returns:
+        positive/negative prediction based on analysis
+    """
+
+    t = SentimentIntensityAnalyzer()
+    return {"result": ('positive'
+                       if t.polarity_scores(sentiment)['compound'] > 0
+                       else 'negative')}
