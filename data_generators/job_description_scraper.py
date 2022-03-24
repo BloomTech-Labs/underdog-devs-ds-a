@@ -564,6 +564,89 @@ class JobScraper:
 
         print('Successfully saved combined dataset!')
 
+        return
+
+    def add_job_titles(self, job_list):
+        """
+        Add more job titles to search through.
+
+        Args:
+            job_list (list): A list of job titles in HTML
+            format for the scraper to search through.
+            Remember that empty spaces in words need to
+            be replaced with "%20" to stay HTML compliant.
+                ex: ["web%20developer","backend%20engineer"]
+                ex: ["devops"]
+
+        Returns:
+            None.
+        """
+        # Check if a list was passed
+        if type(job_list) == list:
+            # Add job_list to existing search terms
+            self.search_terms += job_list
+            print("Success.")
+        else:
+            print("Unsuccessful. Please pass a list.")
+
+        return
+
+    def redefine_job_titles(self, job_list):
+        """
+        This will wipe the old search term list
+        and replace it with the list you provide.
+
+        Args:
+            job_list (list): A list of job titles in HTML
+            format for the scraper to search through.
+            Remember that empty spaces in words need to
+            be replaced with "%20" to stay HTML compliant.
+                ex: ["web%20developer","backend%20engineer"]
+                ex: ["devops"]
+
+        Returns:
+            None.
+        """
+        # Check if a list was passed
+        if type(job_list) == list:
+            # Redefine search_term list
+            self.search_terms = job_list
+            print("Success.")
+        else:
+            print("Unsuccessful. Please pass a list.")
+
+        return
+
+    def remove_job_titles(self, job_list):
+        """
+        Remove job titles from the search list. This may
+        produce an error if you provide a search term
+        that does not already exist in the list.
+
+        Args:
+            job_list (list): A list of job titles in HTML
+            format for the scraper to remove.
+            Remember that empty spaces in words need to
+            be replaced with "%20" to stay HTML compliant.
+                ex: ["web%20developer","backend%20engineer"]
+                ex: ["devops"]
+
+        Returns:
+            None.
+        """
+        # Check if a list was passed
+        if type(job_list) == list:
+            # Create new list without the search terms you
+            # want to remove using list comprehension
+            self.search_terms = [
+                x for x in self.search_terms if x not in job_list
+            ]
+            print("Success.")
+        else:
+            print("Unsuccessful. Please pass a list.")
+
+        return
+
 
 if __name__ == '__main__':
     # Instantiate object
