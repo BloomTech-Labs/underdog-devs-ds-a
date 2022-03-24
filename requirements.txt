@@ -8,3 +8,4 @@ python-dotenv~=0.19.2
 python-multipart~=0.0.5
 requests~=2.27.1
 uvicorn[standard]~=0.17.4
+selenium~=4.1.3
