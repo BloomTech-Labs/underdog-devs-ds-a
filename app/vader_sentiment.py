@@ -1,16 +1,19 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from app.api import read
 
 
 vader = SentimentIntensityAnalyzer()
 
-reviews = read('reviews')
 
-
-# compound score of the sentiment
-def vader_score(text: list) -> list:
+def vader_score(text: str) -> str:
     """Return compound scores of text in list using vader analysis."""
-    return [vader.polarity_scores(t)["compound"] for t in text]
+    score = vader.polarity_scores(text)["compound"]
+    if score > 0.45:
+        return "Positive"
+    elif score < -0.45:
+        return "Negative"
+    else:
+        return "Neutral"
 
 
-vader_score(reviews)
+if __name__ == '__main__':
+    print(vader_score("This is really good but not perfect"))
