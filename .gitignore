@@ -9,6 +9,8 @@ venv.bak/
 *.yml
 .idea/
 .vscode/
+Pipfile
+Pipfile.lock
 
 #python generated files 
 **/*.py[cod]
