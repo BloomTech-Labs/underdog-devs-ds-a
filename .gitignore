@@ -8,6 +8,8 @@ env.bak/
 venv.bak/
 *.yml
 .idea/
+Pipfile
+Pipfile.lock
 
 #python generated files 
 **/*.py[cod]
