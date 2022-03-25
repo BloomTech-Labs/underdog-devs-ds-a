@@ -1,15 +1,20 @@
 from typing import Dict, Optional
 
-from fastapi import FastAPI, status, Request
+from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
 from app.data import MongoDB
+from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.44.1",
+
+    version="0.44.3",
+
     docs_url='/',
 )
 
@@ -203,3 +208,46 @@ async def all_exception_handler(request: Request, exc: Exception):
             "message": "server error",
         },
     )
+
+
+@API.post("/financial_aid/{profile_id}")
+async def financial_aid(profile_id: str):
+    """Returns the probability that financial aid will be required.
+
+    Calls the financial aid function from functions.py inputing the
+    profile_id for calculation involving formally incarcerated, low income,
+    and experience level as variables to formulate probability of financial aid
+
+    Args:
+        profile_id (str): the profile id of the mentee
+
+   Returns:
+        the probability that financial aid will be required
+    """
+
+    profile = API.db.read('Mentees', {"profile_id": profile_id})
+
+    if profile == []:
+        raise HTTPException(status_code=404, detail="Mentee not found")
+
+    return {"result": financial_aid_gen(profile[0])}
+
+@API.post("/sentiment_analysis/{sentiment}")
+async def sentiment_analysis(sentiment: str):
+    """Returns whether or not the supplied text is positive or negative.
+
+    Calls vaderSentiment's SentimentIntensityAnalyzer on a given text
+    and returns the compound sentiment score.  All scores above 0 categorized
+    as 'positive' and all other scores categorized as negative 
+
+    Args:
+        sentiment (str): the text to be analyzed
+
+    Returns:
+        positive/negative prediction based on analysis
+    """
+
+    t = SentimentIntensityAnalyzer()
+    return {"result": ('positive'
+                       if t.polarity_scores(sentiment)['compound'] > 0
+                       else 'negative')}

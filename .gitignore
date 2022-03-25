@@ -1,8 +1,7 @@
 .env
-/venv/
+venv/
 .venv
 env/
-venv/
 ENV/
 env.bak/
 venv.bak/
@@ -10,6 +9,7 @@ venv.bak/
 .idea/
 Pipfile
 Pipfile.lock
+.vscode/
 
 #python generated files 
 **/*.py[cod]
@@ -20,4 +20,4 @@ Pipfile.lock
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-*.DS_Store
+*/.DS_Store
