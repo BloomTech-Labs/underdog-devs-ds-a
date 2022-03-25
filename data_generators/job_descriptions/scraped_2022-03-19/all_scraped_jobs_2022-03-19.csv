@@ -1,0 +1,2947 @@
+company,job_title,location,description
+National Association of Boards of Pharmacy,Cloud Service Devops Lead,"United States
+Remote","Posted by
+
+Farrah Chapman, PHR 2nd
+
+Human Resources Senior Manager at National Association of Boards of Pharmacy
+
+Send InMail
+
+Application/API Development
+
+Implement common APIs based on architecture guidelines and framework related to logging, authentication, security, error recovery etc.
+Capable of API delivery end to end which includes Planning, Design, Development, Testing, and Delivery of API(s).
+Become an expert resource for how various parts of the cloud ecosystem work together
+Work with the infrastructure and shared service organizations to procure and manage stable application platforms.
+Conduct system audit, circulate reports, and Perform risk analysis & create mitigation strategies for continuous evaluation and validation or system design and architecture
+Implement highly scalable ELK (Elasticsearch, Logstash, and Kibana) stack and Elastic cache solutions
+Maintain AWS services SQS, API gateway, Topic, Cloud watch,S3, Cognito, Lambda, Event Manager, EC2, Elastic Cache and IAM policies
+Embed Deployment diagrams, define infra and application component relations diagrams into release management
+
+Program Management
+
+Establish and lead a team of highly qualified resources dedicated to development and support of cloud-based business technology products and services
+Manage a system development pipeline, including release management, automate build and deployment
+Develop, deploy, and provide continuous improvements for Microservices, containers and container orchestration systems
+Support Engineering project teams with day-to-day deployments and system utilization issues
+Embed Continuous Improvement and automation into daily work and develop a DevOps culture in the team
+Manage Elasticsearch index configurations.
+
+Reporting and Documentation
+
+You will also be in charge of implementation, documentation, and integration of a variety of software platforms through the REST API framework.
+Maintain security best practices in DevOps processes, code, and products
+Establish metrics to measure the health of the DevOps team and supported services
+Create Kibana dashboards and Alerts
+
+
+
+
+Requirements
+
+Developing cutting edge software using Microsoft .NET (ASP .NET MVC), .NET Core and K2 and C#.
+Database queries, stored procedures, and Entity Framework.
+Working knowledge of systems integration design patterns and best practices.
+Good understanding of Object-oriented models.
+Exposure to Cloud Architectures like AWS or Azure preferable.
+The desire to continue to broaden and deepen technical, business skills.
+Ability to work both independently and within a team environment.
+Ability to lead a team and exercise project leadership is desirable. Agile development experience preferred.
+Web services (SOAP / XML / REST / JSON, etc.) and WCF
+Web development mark-up and scripting languages such as HTML, JQUERY, XML, XSLT, and JavaScript
+
+
+
+Education
+
+A Bachelor of Science or Master of Science degree in Computer Science or a related discipline
+required. Bachelor of Science or Masters of Science degree
+2-3 years of team leadership experience required.
+Over 8 years of directly related experience required.
+
+
+"
+Redflag AI,DevOps Engineer,"United States
+Remote","Redflag AI is a company focused on developing the potential of Machine Learning. Our products connect campaigns, businesses, and individuals with the audiences that matter most to them, without the noise.
+
+ 
+
+Redflag's software is capable of covering the full scope of video, audio, image, and text-based conversations across the internet and mass media in order to reveal the full context of public reaction and site content. Utilizing proprietary state-of-the-art Sentiment Analysis, Topic Analysis, Intention Modeling, Image/Video Detection, and unique bot filtering techniques, we provide a suite of solutions that serve diverse and critical needs in an unprecedented fashion.
+
+ 
+
+The essential duties and responsibilities include:
+
+Maintain AWS architecture that supports Redflag’s products and development
+Contribute to development and implementation of new cloud services and approaches
+Refactor code base time to time
+Performance optimizations and cost reducing practices
+
+ 
+
+Education and work experience requirements are:
+
+Minimum 5+ years of full-time, hands-on experience
+Bachelor's degree in Electrical/Computer Engineering, Machine Learning, or Computer Science
+Experience as a DevOps Engineer or senior software engineering role
+Experience with CI/CD
+A background in building and deploying large-scale systems
+Strong CS background
+
+ 
+
+To be considered for this position, you would need to meet, at a minimum, the knowledge, skills, and abilities listed here:
+
+Strong knowledge of AWS services such as Elastic Beanstalk, Redshift, ECS, Lambda, ELB, and others
+Knowledge of Amazon Linux 2 and other Linux-based operating systems
+Knowledge of Python and SQL
+Knowledge of security practices
+Problem-solving attitude
+Strong communication skills both written and verbal
+
+ 
+
+The physical demands described here represent those that must be met in order to successfully perform the essential functions of this job. Reasonable accommodations may be made to enable those with qualified disabilities.
+
+Able to frequently sit, stand, walk, use hands to fingers, handle or feel, reach within hands and arm's length, stoop, kneel, and crouch, talk and hear
+Regularly required to sit for extended periods of time; frequently required to use office equipment such as PC, printer, telephone, etc.
+Able to regularly lift and/or move up to 10 pounds
+Specific vision abilities required by this job include close vision, distance vision, color vision, peripheral vision, depth perception, and ability to adjust focus
+
+ 
+
+Disclaimer - The above statements are not intended to be an exhaustive list of all responsibilities, duties, and skills required of personnel so classified. Nothing in the job description restricts the company's right to change, assign, or reassign duties and responsibilities at any time for any reason.
+
+
+
+
+
+
+
+*Redflag AI, Inc. is an EEO/AA/Disability/Vets Employer*"
+Habu,DevOps Engineer,"United States
+Remote","We are looking for a highly skilled DevOps Engineer who can build and operate big data infrastructures, fast-changing web apps, real-time APIs, and a lot of traffic.
+
+
+
+
+What you’ll be doing:
+
+- Provide expertise in the design, implementation, and operation of scalable distributed systems to assist development teams in making the right decisions early
+
+- Develop new methods and tools to automate and self-heal production environments
+
+- Apply software development workflows to operational environments
+
+- Test and tune newly developed systems to prepare them for production deployment and ensure maximum performance at minimum cost
+
+- Automate packaging, deployment, and configuration of internally developed applications
+
+- Be the expert in our internal applications, from the high-level architecture down to the code
+
+
+
+
+Requirements and Qualifications:
+
+Six (6)+ years of professional experience with:
+
+- Javascript, React.js, Redux experience
+
+- Automated unit and integration tests
+
+- Continuous Integration/Continuous Deployment (CI/CD)
+
+
+
+
+Total Rewards:
+
+- Equity in the company
+
+- 401K
+
+- Excellent Medical, Dental, & Vision benefits for you and your family
+
+- Life & Long-Term disability insurance
+
+- Flexible Spending Accounts
+
+- Remote First
+
+
+
+
+Time Off:
+
+- Open PTO
+
+- Company-wide day off quarterly
+
+- Five (5) Volunteer Days
+
+- Standard Annual Holidays
+
+- End of year company-wide shutdown 5 days"
+Flex Rental Solutions,Junior DevOps Engineer,"United States
+Remote","We are looking for a Junior DevOps Engineer to join our engineering team. We are looking for someone with 1-2 years of experience in a DevOps or IT related role with exposure to AWS or other other cloud providers. This is a fully remote role for anywhere in the United States. Travel to Carlisle, PA may be expected once a year.
+
+You will work as part of an established, yet growing development team that writes and manages our Flex Rental SaaS product. Individual contributions have a great deal of impact for our customers and for the rest of the team. If you enjoy working with smaller team sizes, thrive with a large amount of autonomy, and don’t mind some ambiguity, then Flex may be the right place for you.
+
+The core responsibilities are working with multiple technologies to support and maintain Flex Rental Solutions applications. The candidate is expected to become familiar with our current cloud architecture, and to be a large part of our eventual migration from servers to containers. The day to day work will involve debugging & solving real time server & application issues, interacting with MySQL databases, provisioning new servers, bash/python scripting, building & running Ansible playbooks, and helping to build & maintain our internal DevOps applications.
+
+Salary Range: 50-60K annually
+
+
+
+
+JOB REQUIREMENTS
+
+
+
+
+You are a proponent of infrastructure as code and just code in general. You have experience with Ansible or similar tools. Whether it’s writing bash scripts, Python, Java, or JavaScript you really like to code and you don’t mind bouncing between different languages.
+
+You are a proponent of containers. You understand the benefits of the container as the deployment artifact. You have interest or experience working with Docker or other container technology. You have interest or experience with Kubernetes, but you are also willing to consider other container orchestrator options and weigh out what is the best fit for our applications.
+
+You are comfortable learning to support our current Ubuntu 18 environment. Our current application stack runs on Ubuntu 18. You will need to be able to help us keep the lights while also helping to propel us to a cloud native future.
+
+You have an understanding of general security best practices. We are continuously working towards making improvements to the security of our application runtime environment and any other data or systems we have. In our new cloud native environment, we will have the opportunity to build in security as a first class citizen.
+
+You have a basic knowledge of MySQL. You should be able to write basic select, update, and delete statements. You know how to perform database backups and restore databases.
+
+You are a good communicator. Excellent communication skills are paramount. Being able to professionally assist our support folks with escalations from production will be a key skill.
+
+You are self-motivated, independent, and have great problem solving skills. At Flex, we’ll give you general direction and then set you loose to go figure out the details. We assume that you’ll be biased towards action and always have your eye on keeping your tasks moving forward. You know how to find your way to solutions (aka often great Google skills!) and know when to pull in your peers for help or to get another perspective.
+
+You value an agile & iterative culture. At Flex, we aren’t agile by the book. We simply value quick feedback, collaboration, quick iterations, continuous integration, and shipping software often.
+
+
+
+
+The key technical skills required for this role:
+
+AWS/Cloud Providers - Experience with one or more cloud compute providers is necessary.
+Linux/Ubuntu - Currently, the majority of our applications run on Ubuntu.
+Bash, Python - Building & maintaining scripts and internal DevOps applications.
+
+Nice to have technical skills for this role:
+
+Ansible (or similar tool) - Experience using provisioning tools to support applications.
+Docker and container exposure
+Kubernetes exposure
+Vagrant or other local virtualization software
+macOS Development Environment experience"
+Autograph,DevOps Engineer,"Los Angeles Metropolitan Area
+On-site","DevOps Engineer
+
+
+
+
+What is Autograph?
+
+Autograph is an NFT platform that brings together the most iconic brands and legendary names in sports, entertainment and culture to create unique digital collections and experiences for our users. Co-founded by Tom Brady and headquartered in Los Angeles, Autograph is ushering in a new era of collecting through a streamlined and inclusive process, authentic and creative products and exclusive partnerships.
+
+The Role:
+
+We’re looking for a DevOps engineer who will be responsible for creating, maintaining, and scaling our developer infrastructure. This individual will develop the systems and infrastructure that will support and scale our engineering team. They will also be responsible for helping setup, scale, and maintain our customer-facing deployments and infrastructure. This is foundational work that will help drive us towards building a world-class NFT experience.
+
+Responsibilities:
+
+Continue to improve on existing IaC with AWS CDK
+Maintain on-call, monitoring, and alerting systems for our growing engineering team
+Bolster our uptime and reliability efforts
+Collaborate with engineering, enabling them to design, develop and deploy software quickly, reliably and securely
+Proactively communicate progress plans and blockers to DevOps team
+Gain consensus with fellow teammates and stakeholders
+Wear multiple hats while touching multiple parts of our tech stack
+Participate in future on-call rotation
+Contribute to the DevOps team vision
+
+Minimum qualifications:
+
+3+ years as a Software, DevOps, or Infrastructure Engineer
+Knowledge of 12 factor apps
+Experience building systems on public cloud providers with Terraform, CDK, or Pulami
+Experience working with containers
+Ability to write simple, elegant, composable, well tested code
+Experience working embedded in a product, platform, or feature team
+Experience with the SDLC and working in sprints
+A track record of working with other engineers to understand requirements
+A beginner's mind and open interest in learning new technologies
+Open communication and collaboration skills
+Adaptable and accountable in a dynamic environment
+Commitment to long term impact
+
+Preferred qualifications:
+
+Advanced knowledge of software engineering processes, what they look like, and how to foster an environment that creates and scales them
+Experience writing developer experience tooling
+Experience with branch based deployments and trunk based development
+Experience with Algolia, Elasticsearch, and/or data platforms is a plus
+Experience interacting with Ethereum nodes / web3 technologies / IPFS is also a plus
+Entrepreneurial spirit and team oriented
+Previous startup experience
+
+What we offer:
+
+We are building a culture centered around hard-work and mutual respect. We offer top-of-the-line benefits including, but not limited to, medical, dental and vision. 
+
+To best reflect our partners, collectors, and the culture around us internally, we are striving to create a workforce that brings to bear different viewpoints and experiences. We are actively working to create a culture here at Autograph which promotes equity and inclusion for all voices and allows our employees to bring their full and authentic selves to work everyday."
+Deloitte,AI Engineer,"Costa Mesa, CA","Posted by
+
+Kathleen Tampoya 2nd
+
+Lead Recruiter at Autograph (NFT's) - We're Hiring
+
+Send InMail
+
+DevOps Engineer
+
+
+
+
+What is Autograph?
+
+Autograph is an NFT platform that brings together the most iconic brands and legendary names in sports, entertainment and culture to create unique digital collections and experiences for our users. Co-founded by Tom Brady and headquartered in Los Angeles, Autograph is ushering in a new era of collecting through a streamlined and inclusive process, authentic and creative products and exclusive partnerships.
+
+The Role:
+
+We’re looking for a DevOps engineer who will be responsible for creating, maintaining, and scaling our developer infrastructure. This individual will develop the systems and infrastructure that will support and scale our engineering team. They will also be responsible for helping setup, scale, and maintain our customer-facing deployments and infrastructure. This is foundational work that will help drive us towards building a world-class NFT experience.
+
+Responsibilities:
+
+Continue to improve on existing IaC with AWS CDK
+Maintain on-call, monitoring, and alerting systems for our growing engineering team
+Bolster our uptime and reliability efforts
+Collaborate with engineering, enabling them to design, develop and deploy software quickly, reliably and securely
+Proactively communicate progress plans and blockers to DevOps team
+Gain consensus with fellow teammates and stakeholders
+Wear multiple hats while touching multiple parts of our tech stack
+Participate in future on-call rotation
+Contribute to the DevOps team vision
+
+Minimum qualifications:
+
+3+ years as a Software, DevOps, or Infrastructure Engineer
+Knowledge of 12 factor apps
+Experience building systems on public cloud providers with Terraform, CDK, or Pulami
+Experience working with containers
+Ability to write simple, elegant, composable, well tested code
+Experience working embedded in a product, platform, or feature team
+Experience with the SDLC and working in sprints
+A track record of working with other engineers to understand requirements
+A beginner's mind and open interest in learning new technologies
+Open communication and collaboration skills
+Adaptable and accountable in a dynamic environment
+Commitment to long term impact
+
+Preferred qualifications:
+
+Advanced knowledge of software engineering processes, what they look like, and how to foster an environment that creates and scales them
+Experience writing developer experience tooling
+Experience with branch based deployments and trunk based development
+Experience with Algolia, Elasticsearch, and/or data platforms is a plus
+Experience interacting with Ethereum nodes / web3 technologies / IPFS is also a plus
+Entrepreneurial spirit and team oriented
+Previous startup experience
+
+What we offer:
+
+We are building a culture centered around hard-work and mutual respect. We offer top-of-the-line benefits including, but not limited to, medical, dental and vision.
+
+To best reflect our partners, collectors, and the culture around us internally, we are striving to create a workforce that brings to bear different viewpoints and experiences. We are actively working to create a culture here at Autograph which promotes equity and inclusion for all voices and allows our employees to bring their full and authentic selves to work everyday."
+Moment House,DevOps Engineer,"Los Angeles, CA
+Remote","ARE YOU LOOKING TO BRING YOUR KNOWLEDGE AND EXPERIENCE TO A HIGH-GROWTH COMPANY, PAVING THE WAY FOR CREATORS AND FANS TO CONNECT IN THE DIGITAL LANDSCAPE?
+
+
+
+
+Moment House empowers creators to deliver special live experiences to their worldwide communities digitally. These events, which we call Moments, are ticketed and social.
+
+
+
+
+We’ve powered Moments by top creators such as Justin Bieber, Tame Impala, Halsey, Kygo, Brockhampton, KSI, Kaytranada, Tiny Meat Gang, Small Town Murder, Tinashe,
+
+St. Vincent, and more. Next, we are expanding the platform so that anyone can create a Moment.
+
+
+
+
+
+
+
+OUR IDEAL CANDIDATE
+
+
+
+
+At Moment House, you must:
+
+ 
+
+Be a true team player who loves to learn from others and push your team to grow.
+Be authentically excited about the future of digital entertainment and the Creator economy.
+Have a growth mentality, and be unafraid to jump into new, unknown domains to improve your skills.
+Be able to deliver quality work without supervision all while keeping your team in the loop. You love to take ownership.
+Work with passion, drive and purpose - All we require is that you are passionate about what you do, you have significant relevant experience, and you strive to be the best in the world at your craft. –
+
+
+
+
+CORE DUTIES & RESPONSIBILITIES
+
+We are looking for a multi-faceted, experienced DevOps / Cloud Engineer professional to join the team at Moment House.
+
+
+
+
+What you’ll do:
+
+
+
+
+● Build and maintain application infrastructure.
+
+● Create ways to improve current development and release processes.
+
+● Build and maintain development tools and automation.
+
+● Create CI/CD pipelines.
+
+● Ensure Health of all cloud infrastructure and resources.
+
+What We’re Looking For
+
+● A passion for creating reliable applications and a systematic problem-solving approach, coupled
+
+with a strong sense of ownership and drive
+
+● Strong foundation in working in Linux environments.
+
+● 3+ years of experience with AWS, AZURE or GCP
+
+● Experience with Kubernetes or ECS
+
+● Experience with IaC tools. Terraform, Pulumi, Cloud Formation
+
+● Familiarity with Scripting Languages - Go, Bash, Python, etc
+
+● High level understanding of all things networking related.
+
+● Experience with Monitoring and log management tools
+
+● Can demonstrate infrastructure security and security best practices.
+
+● 3+ years of experience in Build and deployment pipelines.
+
+
+
+
+
+
+
+MUSTS / Experience:
+
+
+
+
+● Ability to Build out HA/DR infrastructure.
+
+● Knowledge or experience in deploying large scale gameserver infrastructure.
+
+● Passion for monitoring and metrics.
+
+● Good problem solving capabilities.
+
+● Experience with Git/Vercel/Cloudflare/NewRelic
+
+● Understanding of Cloud Cost and strategies to mitigate overspending.
+
+Cultural Values
+
+
+
+
+Culture/Mindset
+
+● You are a team player and love to learn from and push your team to grow past their comfort zone
+
+● You're curious about new technologies and you're excited to find ways to implement them in your
+
+work.
+
+● You have a growth mentality and are not afraid to jump into new, unknown domains to improve
+
+your skills and become a better engineer.
+
+● You are able to deliver quality features without much supervision all while keeping your team in
+
+the loop. You love to take ownership.
+
+● Formal Schooling is not a requirement. All we require is that you are passionate about what you
+
+do, you have significant relevant experience, and you strive to be the best in the world at your
+
+craft.
+
+● You are excited to build tech and products that will change how we interface with other people
+
+over the Internet
+
+
+
+
+COMPANY PROFILE
+
+ 
+
+The creator economy is exploding, and fandom is increasingly globalizing. For the creators we love the most, we don’t want to only receive their content, we also want to participate in their experiences. The problem is that fans are everywhere, and creators can’t regularly go everywhere.
+
+
+
+
+Moment House is backed by top leaders in technology and entertainment: Forerunner Ventures, Scooter Braun, Jimmy Iovine, Troy Carter, United Talent Agency, Google Ventures CEO David Krane, Patreon CEO Jack Conte, former TikTok CEO Kevin Mayer, Box CEO Aaron Levie, Post Malone co-manager Austin Rosen, Matthew Ball, Jared Leto, and more."
+Insight Global,DevOps Engineer,"Oklahoma City, OK
+On-site",
+Amazon Web Services (AWS),DevOps Engineer,"Los Angeles, CA","Do you enjoy leading, guiding, and influencing customers and team members throughout the DevOps journey? As an AWS DevOps Engineer, you will have the opportunity to work on some of the world’s most complex challenges. You will apply your deep technical expertise to solve cloud-based solutions at scale. You will guide customers through transforming their business with the combination of cultural philosophies, practices, and tools that deliver end-to-end applications and infrastructure solutions.
+
+The DevOps Engineer is an emerging leader with previous experience in a lead DevOps role. The DevOps Engineer will assist on larger projects or run smaller opportunities independently. A successful candidate has technical depth and hands-on implementation experience of various practices and tools in the DevOps toolchain. The DevOps Engineer is comfortable rolling up their sleeves to design and code modules for infrastructure, application, and processes.
+
+Inclusive Team Culture
+
+Here at AWS, we embrace our differences. We are committed to furthering our culture of inclusion. We have thirteen employee-led affinity groups, reaching 85,000 employees in over 190 chapters globally. We have innovative benefit offerings, and host annual and ongoing learning experiences, including our Conversations on Race and Ethnicity (CORE) and AmazeCon (gender diversity) conferences. Amazon’s culture of inclusion is reinforced within our 16 Leadership Principles, which remind team members to seek diverse perspectives, learn and be curious, and earn trust.
+
+Work/Life Balance
+
+Our team puts a high value on work-life harmony. Striking a healthy balance between your personal and professional life is crucial to your happiness and success here. We are a customer-obsessed organization—leaders start with the customer and work backwards. They work vigorously to earn and keep customer trust. As such, this is a customer facing role in a hybrid delivery model. Project engagements include remote delivery methods and onsite engagement that will include travel to customer locations as needed.
+
+Mentorship & Career Growth
+
+Our team is dedicated to supporting new members. We have a broad mix of experience levels and tenures, and we’re building an environment that celebrates knowledge sharing and mentorship. We care about your career growth and strive to assign projects based on what will help each team member develop into a better-rounded professional and enable them to take on more complex tasks in the future.
+
+Our team members work with enterprise customers locally, regionally and domestically. As such, team members will be required to travel to client locations to sell and deliver professional services as needed.
+
+
+
+ Bachelor Degree or 5+ years of professional or military experience.
+ 5+ years of experience as a technical specialist.
+ 2+ years of hands-on experience of programming in languages such as Python, Ruby, Go, Swift, Java, .Net, C++ or similar object-oriented language.
+ Experience with automating cloud native technologies, deploying applications, and provisioning infrastructure.
+ Hands-on experience with Infrastructure as Code, using CloudFormation, Terraform, or other tools.
+ Experience developing cloud native CI/CD workflows and tools, such as Jenkins, Bamboo, TeamCity, Code Deploy (AWS) and/or GitLab.
+ Hands-on experience with microservices and distributed application architecture, such as containers, Kubernetes, and/or serverless technology.
+ Experience with the full software development lifecycle and delivery using Agile practices.
+
+ Experience with Chef, Puppet, Salt, or Ansible in production environments.
+ Knowledge of IP networking, VPN's, DNS, load balancing and firewall.
+ Experience with monitoring and log aggregating frameworks such as Kafka, Logstash, Splunk, ElastiSearch, and Kibana.
+ Experience implementing and designing cloud native security concepts, DevSecOps, or MLOps.
+ AWS Certification(s) such as Solutions Architect Pro, DevOps Engineer Pro, SysOps Admin, Developer Associate.
+ Strong presentation, verbal communication and written communications skills.
+ Ability to lead effectively across organizations and engagements, preferably from a professional services organization or similar.
+
+Pursuant to the Los Angeles Fair Chance Ordinance, we will consider for employment qualified applicants with arrest and conviction records.
+
+Amazon is committed to a diverse and inclusive workplace. Amazon is an equal opportunity employer and does not discriminate on the basis of race, national origin, gender, gender identity, sexual orientation, protected veteran status, disability, age, or other legally protected status. For individuals with disabilities who would like to request an accommodation, please visit https://www.amazon.jobs/en/disability/us.
+
+
+Company - Amazon Web Services, Inc.
+
+Job ID: A1422450"
+Endpoint,Senior DevOps Engineer,"Los Angeles Metropolitan Area
+Hybrid","Real estate is the largest asset class in the world—and yet it has also been one of the slowest to adopt innovative, new technologies. It has become increasingly important for the industry to evolve alongside a consumer base who are accustomed to mobile-first, on-demand, and personalized experiences in every area of their lives. Founded in 2018, Endpoint emerged from a collaboration between First American and BCG Digital Ventures, the venture capital arm of the Boston Consulting Group. The new company combines First American’s title and settlement expertise, with the innovative approach of an agile technology company, to provide a seamless real estate closing from start to finish. At Endpoint, we believe the combination of modern technology, a standardized and simplified closing process, and a highly dedicated team of people will completely change the industry – and deliver an experience that instills the joy of an effortless close for all.
+
+
+
+
+Endpoint is looking for a Senior DevOps Engineer to join a multi-disciplinary squad responsible for the cloud infrastructure hosting of our web, iOS, and Android apps that our buyer, seller, and real estate agent customers use on a daily basis.
+
+
+
+
+*We are open to remote candidates for this role
+
+
+
+
+As Senior DevOps Engineer, you will use your skills to:
+
+
+
+
+Use a wide variety of AWS cloud services to implement and support our platform architecture
+Automate tasks using Bash, NodeJS, ArgoCD, and other tools
+Model and create resources in Kubernetes
+Maintain an AWS WorkSpaces infrastructure supporting our back office
+Model, build, and maintain infrastructure using Terraform on AWS
+Build, maintain, and deploy software artifacts as Docker images and containers
+Support our CI/CD pipelines used by Product and Release Engineering
+Support various teams with a high level of dedication and professionalism
+Build, maintain, and support InfoSec solutions based upon industry best practices
+Analyze stack traces and application events to improve Site Reliability
+
+
+
+
+You’ll come to Endpoint with:
+
+
+
+
+5+ years experience as a DevOps Engineer (required)
+A willingness to use automation and vendor integrations to improve engineering efficiency
+Strong understanding of mobile and web backend infrastructure technologies
+Expert understanding of distributed systems design and implementation
+Experience with enterprise integration patterns
+Experience with CI/CD Pipeline Development and maintenance
+A strong preference for test-driven development
+The ability to manage time and schedules to meet aggressive deadlines and influence through persuasive written and verbal communication
+Strong experience with Ansible or some other configuration management tool
+Excellent communication and priority management skills in an agile environment
+
+
+
+
+Why work at Endpoint:
+
+
+
+
+You will have a lot of responsibility and many opportunities to advance your career
+You will get first-hand experience of working for a well funded early stage startup
+Your hard work, ownership, and self-sustainability will be greatly valued
+We offer great benefits - Health, Dental and Vision, 401K match
+Dog-friendly office, fully stocked snack bar and weekly catered lunches
+Ability to mold your career and make an immediate direct impact
+Competitive compensation, including a Long Term Incentive Plan
+
+
+
+
+
+
+
+Endpoint is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, age, religion, sex, national origin, disability, protected veteran status, or any other characteristic protected under federal, state or local law."
+Deloitte,AI Engineer,"Los Angeles, CA","As an AI Engineer, you'll support the development and deployment of transformational AI capabilities for large clients. You'll combine leading open-source tooling and techniques with a suite of customer experience libraries and solutions, which automate the management of cross-channel communications with consumers for large clients. We make heavy use of the Python machine learning ecosystem, and build systems to deliver massive decisioning throughput, with tight latency constraints on our real-time systems. If you have deep experience in designing, implementing, automating, and deploying machine learning pipelines and workflows, we want to hear from you!
+
+Your responsibilities will include:
+
+Participate in all phases of the model development lifecycle
+Solution productionalized machine learning to drastically reduce total cost per decision, moving expensive human-driven decisions to drastically cheaper and more effective machine-driven ones
+Help design and implement functional requirements for client engagements
+Collaborate with our services data scientists to deploy and use libraries and APIs which make machine learning for customer use cases both easy and powerful, and help brands gain deep understandings of their consumers
+Prepare technical documentation
+Integrate with surrounding technology components and services
+Coach junior team members
+
+Successful skillsets for this role are:
+
+Deep interest in data science and software development
+Eager to work with data scientists, fellow engineers, and product owners
+Experienced with collaborative techniques like pair-programming and white board design sessions
+Continuously learning and improving, and constantly exploring new languages, tools, and techniques
+
+Our team
+
+You'll join a team of passionate, talented ""pure"" data scientists and hybrid AI engineers who collaborate to design, build, and maintain cutting-edge AI solutions that arm our clients with real-time customer insights that deliver significant value. If you are intellectually curious, hardworking, and solution-oriented, you will fit right into our fast-paced, collaborative environment.
+
+Required:
+
+Bachelor's Degree in computer science, engineering, or a related field
+3+ years of experience authoring, supporting, or providing a data science platform to data scientists:
+Deep knowledge in the machine learning lifecycle, and in ways to facilitate collaboration and productivity in each of its phases
+Exposure to working with data scientists and expertise in finding solutions to workflow problems
+Knowledge of common machine learning frameworks and libraries and in ways to productionalize their inputs and outputs
+Comfort with various machine learning techniques and their practical implementation, particularly reinforcement learning
+Experience with one or more common workflow / pipelining frameworks (Kubeflow, MLFlow, Argo or equivalents)
+Strong knowledge of the Python ecosystem, the Jupyter ecosystem (Lab, Notebook, Binder) and their libraries, norms, and tooling
+Exposure to AutoML tooling (H2O, DataRobot or equivalents)
+Experience in deploying and maintaining enterprise-scale machine learning applications in production
+2+ years of experience writing well-tested production software
+1+ years of experience on distributed, high throughput and low latency architecture
+1+ years of experience building software on top of major container technology (Kubernetes, Docker, or similar)
+Strong testing mindset with experience writing tests at various levels of granularity
+Familiarity with Continuous Integration tools (GitHub actions, Travis-CI, etc.)
+A history of good collaboration with DevOps and Project Managers on meeting project goals
+Proven track record working with products from major cloud providers (AWS, GCP, Azure, etc.)
+Limited immigration sponsorship may be available
+
+Helpful, but not required:
+
+Experience with large consumer data sets used in performance marketing is a major advantage
+Exposure and/or expertise writing and/or running Terraform or other infrastructure-as-code automation
+Well-versed in (or contributes to) data-centric open-source projects
+Experience in performance analysis and optimization of machine learning applications, e.g., in optimizing code written by others
+Presence or contributions to projects within the wider open-source ecosystem
+Proven ability to communicate both verbally and in writing within a high performance, collaborative environment
+Exposure to commonly used relational and non-relational databases
+
+#Product22
+
+AHBV"
+Motional,"DevOps Engineer - Machine Learning, Autonomous Vehicles","Santa Monica, CA
+Hybrid","The team:
+
+The DevOps Engineer will be a member of and supporting our ML Motion Planning software development and research team. This team introduces and advances new Deep Learning techniques for our Motion Planner. We are looking for an experienced DevOps engineer to help build and scale machine learning infrastructure, with the eventual goal of partnering with our research scientists to train models and write production level software.
+
+
+
+
+Role responsibilities:
+
+Create and deploy docker images dedicated for machine learning training
+Support binaries deployment to the customers
+Establish and maintain a continuous integration infrastructure that supports ~2K builds/day
+Develop tools for deployment and monitoring of highly available, mission critical services
+Troubleshoot and resolve critical build and development issues
+Work with security experts in developing and implementing state of the art security controls
+Manage/Upgrade the applications as necessary.
+
+
+
+
+The impact:
+
+Work closely with production Machine Learning, Data, Motion Planning and Motion Controls teams to identify places where data-driven deep learning approach is beneficial.
+
+
+
+
+Experience to bring:
+
+DevOps
+Python
+Bash
+Cloud
+Linux, version control, CI/CD and cross-platform scripting languages
+Terraform, Docker, Kubernetes
+
+
+
+
+We'd be pleasantly surprised to see:
+
+Experience managing AWS and in-house server infrastructure using IaC
+Large-scale compute and build infrastructure.
+C++
+
+
+
+
+Machine Learning at Motional
+
+We have produced groundbreaking advancements in the autonomous vehicle industry including nuScenes (https://www.nuscenes.org), PointPillars (https://arxiv.org/abs/1812.05784), and PointPainting (http://arxiv.org/abs/1911.10150)
+
+
+
+
+Locations:
+
+Motional has offices in Boston, Pittsburgh, Santa Monica, Bay area, and Las Vegas. You can join any of these offices.
+
+
+
+
+Company:
+
+Motional is a driverless technology company making self-driving vehicles a safe, reliable, and accessible reality.
+
+
+
+
+The Motional team is made up of engineers, researchers, innovators, dreamers and doers, who together are creating a first-of-its-kind technology with the potential to transform the way we move. We’re behind some of the industry's largest leaps forward, including the first fully-autonomous cross-country drive in the U.S, the launch of the world's first robotaxi pilot, and operation of the world's most-established public robotaxi fleet.
+
+
+
+
+As a leader in an emerging industry that has the promise of creating safer, more reliable and accessible transportation for all, it’s imperative we have a diverse workforce, create an inclusive culture, and understand the communities we operate in around the world.
+
+
+
+
+Diversity, Equity and Inclusion is fundamental to Motional’s success. That’s why we’ve established a team to ensure DEI is at the forefront of the candidate and employee experience, beginning with the hiring process and continuing throughout your career. We also partner with organizations like the National Society of Black Engineers, the Society of Hispanic Professional Engineers, and the Society of Women Engineers to ensure our DEI work is informed by the latest thinking and approaches.
+
+
+
+
+Strategically formed by Hyundai Motor Group and Aptiv, Motional is fundamentally changing how people move through their lives. Headquartered in Boston, Motional has operations in the U.S and Asia. For more information, visit www.Motional.com and follow us on Twitter, LinkedIn, Facebook, Instagram and YouTube.
+
+Motional AD Inc. is an EOE. We celebrate diversity and are committed to creating an inclusive environment for all employees. To comply with Federal Law, we participate in E-Verify. All newly-hired employees are queried through this electronic system established by the DHS and the SSA to verify their identity and employment eligibility."
+"NetAbstraction, Inc.",Principal DevOps Engineer,"United States
+Remote","Posted by
+
+Melissa Cassady, SHRM-SCP
+
+Senior HR & Recruiting Professional
+
+Want to be a part of a fast-growing cybersecurity company with innovative solutions? Are you passionate about technology, and eager to explore the latest trends within the cybersecurity space? Are you a motivated, self-starter, that enjoys learning and seeking opportunities to develop your skill set? If you have these qualities and enjoy working in a collaborative, fast paced, environment, please send us your resume.
+
+
+
+
+Responsibilities:
+
+Be a champion of DevOps Culture across NetAbstraction
+Lead continuous improvements to
+Monitoring and Observability capabilities
+Security, reliability, efficiency, and performance of services and infrastructure
+Continuous delivery
+
+
+
+
+Qualifications
+
+Extensive understanding of
+Cloud platforms such as AWS, GCP, and Azure
+Container orchestration software such as Kubernetes
+Scalable, distributed architecture
+RESTful APIs and API-first design
+Automated tests
+Metrics and logging to monitor quality, performance, and usage
+Secure design, understanding common security vulnerabilities
+SQL and NoSQL databases
+Performance and load testing
+10+ years of related experience
+Able to negotiate difficult tradeoffs such as quality vs speed.
+Help to foster a learning organization through systems thinking, personal mastery, mental models, shared vision, and team learning.
+Favor experimentation and data-informed decisions.
+Welcome feedback and provide it constructively to others.
+Communicate effectively – we want to know your thoughts and input!
+Bachelor's degree in Computer Science or related technical field desirable.
+Must be a US citizen.
+
+Technologies we use:
+
+Terraform and Ansible
+Kubernetes and Docker containers
+Amazon Web Services and other cloud providers
+Python, Go, Lua, Unix shell
+JavaScript, Node, React
+Postgres, MongoDB, Redis
+Serverless
+
+NetAbstraction, Inc. is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity or national origin."
+The Guitar Center Company,"Engineer Sr, DevOps","Westlake Village, CA","Description
+
+Position Summary: Senior DevOps Engineer
+
+The Senior DevOps Engineer is responsible for the design, implementation, and maintenance of highly available infrastructure. This role will collaborate with team members to further build upon Guitar Center's existing DevOps capabilities.
+
+Responsibilities will include, but will not be limited to the following:
+
+Automate configuration and management of dev, staging, and production environments
+Create automated software build/deploy processes
+Architect next generation CI/CD processes and pipelines that guarantee faster time to market for the product and positive end user experience
+Continually evaluate tools and technologies to improve the overall release process
+Work in close coordination with development and IT teams to automate the delivery of our products
+Building ad-hoc automation upon request
+Additional duties as assigned
+About Guitar Center
+
+The Guitar Center Company embodies the world of creativity and music by encouraging our teammates to find their own individual sound. Our mission is to develop and nurture lifelong musicians and make a difference in the world by enabling musicians and non-musicians alike to experience the joy that comes from creating music. We believe in putting our customers first, engaging with respect and integrity and fulfilling our mission with passion.
+
+The Guitar Center Company operates through several business divisions. Guitar Center is the world's largest retailer of guitars, amplifiers, drums, keyboards, recording, live sound, DJ, and lighting equipment, with more than 290 stores across the United States.  2014 marked the milestone 50th anniversary of the Guitar Center Company as the organization continues to help people make music from coast to coast.   
+
+E-Commerce brands Guitar Center, Musician's Friend and WWBW offer online sales of a broad selection of music products. The Music & Arts division operates more than 220 stores specializing in band & orchestral instruments for sale and rental, serving teachers, band directors, college professors, and students since 1952. AVDG and GCPro headline the enterprise audio-visual integration business, delivering a best-in-class commercial and residential customer experience.
+
+
+
+To join our band, you'll need the following experience:
+
+Bachelor's Degree, preferably in Computer Science, Information Technology or related degree field or 4 years of relevant work experience.
+8 years of relevant work experience (in addition to degree or years of previous experience).
+3 years of experience performing in a lead tech role.
+Experience working in Configuration Management tools, Ansible, Chef, Puppet
+Experience working with orchestration tools such as RunDeck
+Experience working with networking protocols and components such as HTTP, DNS, TCP/IP, Networking and load balancing
+Intermediate proficiency with monitoring and logging software, e.g. ELK, Prometheus, Grafana, AppDynamics, NewRelic
+Experience with configuration-as-code tools such as Ansible and Terraform
+Intermediate expertise with source control management and tools
+Intermediate proficiency with scripting languages, e.g. bash, perl, python
+Advanced proficiency with the DevOps toolchain (e.g Git/Gitlab, Jenkins, Sonar, Canary testing tools) and powershell
+Advanced experience building, deploying, and maintaining Highly Available scalable solutions.
+Intermediate proficiency with various Linux Distros (e.g. RHEL, Ubuntu, Debian, Mint, CentOS).
+Experience with Container technology (e.g. Docker, Kubernetes, Mesos)
+Intermediate experience with public cloud technology (e.g. AWS, Azure, Google Cloud)
+
+Why join us?
+
+With a career at Guitar Center, you become part of the world's largest multichannel musical instrument retailer. Whether at our Stores, Contact Centers, Distribution Centers, or Support Center, Guitar Center employees have a common goal: to help people find their sound and fill the world with more music.
+
+Love this gig and want to apply?
+
+Send your resume and cover letter today along with salary expectations!
+
+Guitar Center is an Equal Opportunity Employer and provides fair and equal employment opportunity to all employees and applicants regardless of race, color, religion, gender, sexual orientation, gender identity, national origin, age, disability, veteran status or any other protected status prohibited under Federal, State, or local laws. All employment decisions are based on valid job‐related requirements.
+
+If you are a qualified individual with a disability or a disabled veteran and are unable or limited in your ability to use or access our website, you may request a reasonable accommodation to express interest in a specific opening. You can request a reasonable accommodation by sending an email to recruiting@guitarcenter.com."
+Toptal,Senior DevOps Engineer,"El Cajon, CA
+Remote","Toptal developers work with speed and efficiency to deliver the highest quality of work. We are looking for someone who is passionate about their client’s business, and ready to work on exciting projects with Fortune 500 companies and Silicon Valley startups, with great rates and zero hassles. If you are looking for a place to advance your career, enhance your skill set, and build connections around the globe, Toptal is right for you.
+
+Toptal is an exclusive network of top freelancers from around the world. Fortune 500 companies and Silicon Valley startups hire Toptal for their most important projects. Toptal is one of the fastest-growing fully remote networks and empowers freelance software developers, designers, finance experts, product managers, and project managers worldwide to grow and excel in their freelance careers.
+
+Toptal clients vary in sizes and industries, from enterprise organizations and big tech companies to Silicon Valley startups and renowned universities. Once you enter the network, our matchers will contact you with project opportunities that fit your expertise and preferences. We have experts in over 120 countries who get to work remotely on projects that meet their career ambitions.
+
+We’re looking for a DevOps Engineer with a strong Linux and AWS background, who will help us build scalable, efficient cloud infrastructure for our clients. Some of your main responsibilities will include: (1) implement and own the CI, (2) manage CD tooling, (3) implement and maintain monitoring and alerting, (4) build and maintain highly available production systems, and (5) lead and guide the team in identifying and implementing new technologies. Lastly, you’ll help train and guide the team in DevOps practices.
+
+
+ English language proficiency
+ 3+ years of professional experience in software development
+ Solid experience with AWS is a strong advantage
+ Project management skills
+ A keen attention to detail
+ Experience with system architecture or leading a software team is a strong advantage
+ Full-time availability is a strong advantage
+
+If you’re interested in pursuing an engaging career working on full-time freelance jobs for exclusive clients, take the next step by clicking apply and filling out the short form to get started.
+
+#RemoteJobDevOps
+
+"
+Dice,Data & Analytics Platform Engineer,"Irvine, CA
+On-site","Dice is the leading career destination for tech experts at every stage of their careers. Our client, QuantAI, is seeking the following. Apply via Dice today!
+
+We are looking for a Data Analytics Platform Engineer to lead the technical operations and decision making to separate our applications from the existing Consumer tech stack. Role initially focuses on the applications separation strategy but will remain to sustain our tech stack and solutions globally."
+Deloitte,VIRTUAL Machine Learning/AI Developer,"San Diego, CA","Are you an experienced, passionate pioneer in technology - a solutions builder, a roll-up-your-sleeves technologist who wants a daily collaborative environment, think-tank feel, and share new ideas with your colleagues - without the extensive demands of travel? If so, consider an opportunity with our US Delivery Center - we are breaking the mold of a typical Delivery Center.
+
+Our US Delivery Centers have been growing since 2014 with significant, continued growth on the horizon. Interested? Read more about our opportunity below.
+
+Will work with our clients to:
+
+ Implement large-scale data ecosystems including data management, governance, and the integration of structured and unstructured data to generate insights leveraging cloud-based platforms.
+ Leverage automation, cognitive and science-based techniques to manage data, predict scenarios and prescribe actions.
+ Drive operational efficiency by maintaining their data ecosystems, sourcing analytics expertise, and providing As-a-Service offerings for continuous insights and improvements.
+
+Work you'll do/Responsibilities
+
+ Unify Machine Learning (ML) systems development and ML systems deployment to standardize and streamline the continuous delivery of high-performing models in production
+ Use statistical and machine learning techniques to create scalable analytics solutions
+ Develop end-to-end (Data/Dev/ML) Ops pipelines based on in-depth understanding of cloud platforms, AI lifecycle, and business problems to ensure analytics solutions are delivered efficiently, predictably, and sustainably.
+ Facilitated the development of objectives by selecting and employing the appropriate SDLC methodologies, and gathering business requirements relevant to ML
+ Execute best practices in version control and continuous integration / continuous delivery
+ Operationalize and monitor ML models using high end tools and technologies
+ Assist in the development and execution of an AI/Data governance framework, with a focus on ensuring that AI technologies are well researched and developed
+ Help administer and work within an AI code of Ethics to tackle issues such as Privacy, Discrimination, Data Ethics, and promote Responsible Innovation
+ Prototype and demonstrate solutions for clients in customer environments
+ Explain model behavior/results to both Technical and Non-Technical Audiences
+ Collaborate with data scientists, data engineers and other key stakeholders in a fast-paced cross-functional and diverse environment
+ Stay current on new products and relevant industry trends in the field of ML
+
+Qualifications
+
+ 7+ years of IT experience. Minimum 2 years of relevant experience delivering AI/ML projects.
+ Solid understanding of the ML lifecycle and concepts
+ 6+ years experience with the design and implementation (building, containerizing, and deploying end to end automated data and ML pipelines) of automated cloud solutions
+ Experience with TensorFlow, Pytorch, and other deep learning frameworks
+ Experience with version control tools such as Git
+ Extensive experience working in an Agile development environment
+ Fluency in Python, R, and other common ML Languages
+ Fluency in both structured and unstructured data (SQL, NOSQL)
+ Production experience with Apache Spark
+ Hands-on experience with web APIs, CI/CD for ML, and Serverless Deployment
+ Familiarity with Linux OS and Windows servers
+ Knowledge of Docker, Jenkins, Kubernetes, and other DevOps tools.
+ Outstanding analytical and problem-solving skills
+ Travel up to 10%
+ Limited Immigration sponsorship may be available
+
+ Certification from any of the three major cloud platforms (AWS / Azure / GCP) in Cloud Architecture / Engineering / DevOps / ML.
+ Familiarity with Kubeflow or mlflow
+ Experience with machine learning pipelines (Azure ML)
+ Familiarity with the latest Natural Language Processing or Computer Vision related algorithms"
+Spectrum,2022 Summer Intern: DevOps,"Englewood, CO","Are you an experienced, passionate pioneer in technology - a solutions builder, a roll-up-your-sleeves technologist who wants a daily collaborative environment, think-tank feel, and share new ideas with your colleagues - without the extensive demands of travel? If so, consider an opportunity with our US Delivery Center - we are breaking the mold of a typical Delivery Center.
+
+Our US Delivery Centers have been growing since 2014 with significant, continued growth on the horizon. Interested? Read more about our opportunity below.
+
+Will work with our clients to:
+
+Implement large-scale data ecosystems including data management, governance, and the integration of structured and unstructured data to generate insights leveraging cloud-based platforms.
+Leverage automation, cognitive and science-based techniques to manage data, predict scenarios and prescribe actions.
+Drive operational efficiency by maintaining their data ecosystems, sourcing analytics expertise, and providing As-a-Service offerings for continuous insights and improvements.
+
+Work you'll do/Responsibilities
+
+Unify Machine Learning (ML) systems development and ML systems deployment to standardize and streamline the continuous delivery of high-performing models in production
+Use statistical and machine learning techniques to create scalable analytics solutions
+Develop end-to-end (Data/Dev/ML) Ops pipelines based on in-depth understanding of cloud platforms, AI lifecycle, and business problems to ensure analytics solutions are delivered efficiently, predictably, and sustainably.
+Facilitated the development of objectives by selecting and employing the appropriate SDLC methodologies, and gathering business requirements relevant to ML
+Execute best practices in version control and continuous integration / continuous delivery
+Operationalize and monitor ML models using high end tools and technologies
+Assist in the development and execution of an AI/Data governance framework, with a focus on ensuring that AI technologies are well researched and developed
+Help administer and work within an AI code of Ethics to tackle issues such as Privacy, Discrimination, Data Ethics, and promote Responsible Innovation
+Prototype and demonstrate solutions for clients in customer environments
+Explain model behavior/results to both Technical and Non-Technical Audiences
+Collaborate with data scientists, data engineers and other key stakeholders in a fast-paced cross-functional and diverse environment
+Stay current on new products and relevant industry trends in the field of ML
+
+Required
+
+Qualifications
+
+7+ years of IT experience. Minimum 2 years of relevant experience delivering AI/ML projects.
+Solid understanding of the ML lifecycle and concepts
+6+ years experience with the design and implementation (building, containerizing, and deploying end to end automated data and ML pipelines) of automated cloud solutions
+Experience with TensorFlow, Pytorch, and other deep learning frameworks
+Experience with version control tools such as Git
+Extensive experience working in an Agile development environment
+Fluency in Python, R, and other common ML Languages
+Fluency in both structured and unstructured data (SQL, NOSQL)
+Production experience with Apache Spark
+Hands-on experience with web APIs, CI/CD for ML, and Serverless Deployment
+Familiarity with Linux OS and Windows servers
+Knowledge of Docker, Jenkins, Kubernetes, and other DevOps tools.
+Outstanding analytical and problem-solving skills
+Travel up to 10%
+Limited Immigration sponsorship may be available
+
+Preferred
+
+Certification from any of the three major cloud platforms (AWS / Azure / GCP) in Cloud Architecture / Engineering / DevOps / ML.
+Familiarity with Kubeflow or mlflow
+Experience with machine learning pipelines (Azure ML)
+Familiarity with the latest Natural Language Processing or Computer Vision related algorithms"
+Blackstone,"BXTI - Enterprise Technology, DevOps Engineer, AVP","Miami, FL","Blackstone is the world’s largest alternative asset manager. We seek to create positive economic impact and long-term value for our investors, the companies we invest in, and the communities in which we work. We do this by using extraordinary people and flexible capital to help companies solve problems. Our $881 billion in assets under management include investment vehicles focused on private equity, real estate, public debt and equity, infrastructure, life sciences, growth equity, opportunistic, non-investment grade credit, real assets and secondary funds, all on a global basis. Further information is available at www.blackstone.com . Follow @blackstone on LinkedIn , Twitter , and Instagram .
+
+The duties and responsibilities described here are not exhaustive and additional assignments, duties, or responsibilities may be required of this position. Assignments, duties, and responsibilities may be changed at any time, with or without notice, by Blackstone in its sole discretion.
+
+Blackstone is committed to providing equal employment opportunities to all employees and applicants for employment without regard to race, color, creed, religion, sex, pregnancy, national origin, ancestry, citizenship status, age, marital or partnership status, sexual orientation, gender identity or expression, disability, genetic predisposition, veteran or military status, status as a victim of domestic violence, a sex offense or stalking, or any other class or status in accordance with applicable federal, state and local laws. This policy applies to all terms and conditions of employment, including but not limited to hiring, placement, promotion, termination, transfer, leave of absence, compensation, and training. All Blackstone employees, including but not limited to recruiting personnel and hiring managers, are required to abide by this policy.
+
+If you need a reasonable accommodation to complete your application, please contact Human Resources at 212-583-5000 (US), +44 (0)20 7451 4000 (EMEA) or +852 3656 8600 (APAC).
+
+To submit your application please complete the form below. Fields marked with a red asterisk * must be completed to be considered for employment (although some can be answered ""prefer not to say""). Failure to provide this information may compromise the follow-up of your application. When you have finished click Submit at the bottom of this form."
+Bank of America,DevOps Engineer - Cyber Security Defense - B5,"Charlotte, NC","Job Description:
+
+Are you passionate about working with the best information security team in the world? Bank of America is hiring top talent to join our team.
+
+The Cyber Security Defense (CSD) function within Global Information Security is responsible for all aspects of threat intelligence and monitoring, application and network security, and insider threat. In addition, the CSD team drives out the enterprise-wide cyber exercise program.
+
+As a DevOps engineer on the CHAI (Control enHancement, Automation, and Intelligence) team within GIS Information Defense, you will play a key role in managing our CI/CD pipelines and our server infrastructure. Key responsibilities include collaborating with our AIT manager, PM, and development teams to manage our CI/CD pipelines and our server infrastructure.
+
+Required Skills:
+
+Ability to communicate technical concepts clearly and collaborate well with a dev team of 20 people 
+Experience with setting up and managing CI/CD pipelines
+Comfortable running commands from the Linux terminal
+
+Nice-to-have skills:
+
+Experience setting up and managing containers
+
+Bank of America Global Information Security (GIS) is part of the Global Technology organization, a world-class diverse and inclusive workforce across more than 35 countries. GIS works to protect bank information systems, data, and customer information.
+
+Cybersecurity is a top priority at Bank of America, and we believe the best talent and the best technology equals the best protection.
+Bank of America’s GIS leaders look for individuals who are creative problem solvers, passionate about technology, and want to join a world-class organization.
+Our goal is to create an inclusive environment where all employees are valued and diversity of thought is celebrated. We partner with several global and national organizations, such as Anita Borg Institute/Grace Hopper, National Black MBA Association, Hispanic Information Technology Executive Council, Out and Equal, and local Veteran job fairs to find the best talent for our company and educate our existing workforce.
+
+As an industry leader, we partner with government agencies, industry organizations, other financial institutions and our internal lines of business to create and maintain multi-layered defenses needed to address increasingly sophisticated and persistent threats.
+
+"
+Comcast,DevOps Developer,"Philadelphia, PA
+On-site","R329632
+
+Comcast brings together the best in media and technology. We drive innovation to create the worlds best entertainment and online experiences. As a Fortune 50 leader, we set the pace in a variety of innovative and fascinating businesses and create career opportunities across a wide range of locations and disciplines. We are at the forefront of change and move at an amazing pace, thanks to our remarkable people, who bring cutting-edge products and services to life for millions of customers every day. If you share in our passion for teamwork, our vision to revolutionize industries and our goal to lead the future in media and technology, we want you to fast-forward your career at Comcast.
+
+Job Summary
+
+Comcast's Technology, Product, Xperience team designs, devlops, delivers and supports innovative products and services that bring internet, TV and voice to millions of residential and and business customers. We are looking to add a DevOps Developer to our team to ensure we stay ahead of the competition.
+
+Job Description
+
+If you have experience building scalable, secure, cloud-based applications, are passionate about impacting millions of users, look no further!
+
+The DevOps Developer will be responsible for delivering the complete life cycle of complex projects, including approval, planning, execution, and closeout to ensure planned results are achieved on time. Applies their programming knowledge to design and develop software. Duties include meeting with customers to determine software needs, coding, testing and securing software to ensure functionality. Ensures progress to plan, tracks critical project achievements and communicates progress to all project stakeholders. Works with cross-functional project team to establish and achieve goals.
+
+Developer responsibilities include but are not limited to:
+
+
+Working with fellow DevOps Engineers to build and maintain our production tools to ensure ongoing reliability while improving development team efficiency.
+Fixing and debugging infrastructure, network, and operating system issues related to our services portfolio
+Building and maintenance of operations software which automates the configuration, provisioning, deployment and monitoring of our core systems
+Assisting in the development of solution architecture (both tactical and strategic) to fully run/support enterprise needs, services, systems and technology management.
+Providing research and assistance to leadership in development and design of new projects.
+Performing unit, integration, and system testing on software before releasing to production.
+Developing cross-platform software that is designed to run on multiple platforms (ex. Windows, Linux, Mac, etc.)
+Using formal processes and tools to manage resources, risks, and changes.
+Delivering secure and encrypted code. Understanding how encryption algorithms work, how authentication works and how cryptography methods work is key.
+Leading project status and information in the form of formal briefings, project update meetings, and written, electronic, and graphic reports.
+Developing, maintaining, and leading detailed project plans, action item registers, and major milestone timelines for all projects. Provides overall prioritization and director of work assignments, team resources, etc.
+Coordinating with other work streams, projects, and initiatives which may impact successful completion of project.
+Managing all assigned projects to completion ensuring on-time delivery, meeting of budgetary demands, and maintaining overall project ownership.
+Acts as a single point of contact for project status. Maintains communication with team members.
+Facilitating project meetings.
+Addressing problems through risk management and contingency planning and presents solutions and/or options to executive management. Ensures effective implementation of solutions/changes.
+Regular, consistent and punctual attendance. Available to work nights and weekends, variable schedule(s) as necessary.
+Other duties and responsibilities as assigned.
+
+
+Preferred Technical Skills
+
+
+Programming languages: React, Angular, Go, Python, Ruby, or similar programming language.
+Data Structures and Algorithms: Experience understanding how data is organized and how it can be used to solve problems.
+Source Control: GitHub, Artifactory, SonarQube, or similar code management tools.
+Databases: Oracle, PostgreSQL, MongoDB, Cassandra, Redis, or similar databases.
+
+
+Employees at all levels are expected to:
+
+
+Understand our Operating Principles; make them the guidelines for how you do your job.
+Lead the customer experience - think and act in ways that put our customers first, give them seamless digital options at every touchpoint, and make them promoters of our products and services.
+Know your stuff - be hard-working learners, users and advocates of our groundbreaking technology, products and services, especially our digital tools and experiences.
+Win as a team - make big things happen by working together and being open to new ideas.
+Be an active part of the Net Promoter System - a way of working that brings more employee and customer feedback into the company - by joining huddles, making call backs and helping us elevate opportunities to do better for our customers.
+Get results and promote growth.
+Respect and promote inclusion & diversity.
+Do what's right for each other, our customers, investors and our communities.
+
+
+Disclaimer:
+
+
+This information has been designed to indicate the general nature and level of work performed by employees in this role. It is not designed to contain or be interpreted as a comprehensive inventory of all duties, responsibilities and qualifications.
+
+
+Comcast is an EOE/Veterans/Disabled/LGBT employer.
+
+Education
+
+Bachelor's Degree
+
+Relevant Work Experience
+
+7-10 Years
+
+Base pay is one part of the Total Rewards that Comcast provides to compensate and recognize employees for their work. Most sales positions are eligible for a Commission under the terms of an applicable plan, while most non-sales positions are eligible for a Bonus. Additionally, Comcast provides best-in-class Benefits. We believe that benefits should connect you to the support you need when it matters most, and should help you care for those who matter most. That’s why we provide an array of options, expert guidance and always-on tools, that are personalized to meet the needs of your reality – to help support you physically, financially and emotionally through the big milestones and in your everyday life. Please visit the compensation and benefits summary on our careers site for more details."
+Medtronic,Principal Analytics Engineer,"Northridge, California, United States","Careers that Change Lives
+
+The Diabetes Operating Unit focuses on improving the lives of those within the global diabetes community. As a business, we strive to empower people with diabetes to live life on their terms by delivering innovation that truly matters and providing support in the ways they need it. We’re committed to meeting people with diabetes where they are in their journey, always with an aim to make their lives easier. Our portfolio of innovative solutions are designed to provide customers greater freedom and better health, helping them achieve better glucose control, while spending less time managing their disease.
+
+We believe that when people from different cultures, genders, and points of view come together, innovation is the result — and everyone wins. Medtronic walks the walk, creating an inclusive culture where you can thrive.
+A Day in the Life
+
+In this role as a Principal Analytics Engineer you will be part of our Analytics team focused on transforming how chronic disease is managed through application of modern analytics, data science & engineering application solutions, catering to both your engineering mentality and desire to make a difference in world. With access to large amounts of related data, you will help create data solutions that support the development and advancement of best-in-class diabetes therapies.
+
+Medtronic Diabetes is focused on transforming diabetes care for better freedom and great health, serving patients across the continuum of diabetes. Our goal is to become a holistic diabetes management company focused on making a real difference in outcomes and cost. We want to transform healthcare toward value-based models by driving both product and business model innovation with the goal of elevating patient experience, improving clinical outcomes and lowering the total cost of care for our customers. Data driven applications and you would be central to making this happen
+
+Responsibilities may include the following and other duties may be assigned.
+Design and develop secure data processing pipelines for hosting internal business analytics & reporting tools
+Implement and maintain performance monitoring solutions for existing internal analytic tools
+Work alongside data scientists and analysts to establish and design reporting needs and capabilities of internal stakeholders
+Streamline and automate existing reporting data analytic workflows
+Initiate the development of internal tools or adoption of external tools to boost productivity
+Keep up with and implement cutting-edge data analytics & engineering technologies
+Establish and adhere to strong data engineering best practices
+Interface with regulatory stakeholders to guide development that conforms to requirements
+Own deliverables from ideation to operating in production, i.e., “If you build it, you run it.”
+
+
+Desired Skills and Experience
+Must Have: Minimum Requirements
+
+Bachelors degree required
+Minimum of 7 years of relevant experience, or advanced degree with a minimum of 5 years relevant experience
+
+
+Nice to Have
+Robust and in-depth knowledge of Python, SQL, and/or other language used for analytics
+Experience writing production-level code
+Experience with metadata management and data governance
+Experience with mentoring and managing other technical staff members, engineers, and scientists
+Proficiency with relational database technologies
+Experience in key AWS services like S3, EC2, Lambda, CloudWatch, Sagemaker
+Excellent communication skills - Verbal as well written
+Experience in medical device industry
+Understanding of FDA regulations including (ISO) 13485
+AWS Cloud certification
+Experience in CI/CD and DevOps practices
+Experience in NoSQL technologies including graph, document, and key-value data storage technologies
+Self-motivated and pro-active with demonstrated problem solving and critical thinkin g skills.
+Experience creating APIs
+
+
+About Medtronic
+
+Together, we can change healthcare worldwide. At Medtronic, we push the limits of what technology, therapies and services can do to help alleviate pain, restore health and extend life. We challenge ourselves and each other to make tomorrow better than yesterday. It is what makes this an exciting and rewarding place to be.
+
+We want to accelerate and advance our ability to create meaningful innovations - but we will only succeed with the right people on our team. Let’s work together to address universal healthcare needs and improve patients’ lives. Help us shape the future.
+
+Physical Job Requirements
+
+The physical demands described within the Responsibilities section of this job description are representative of those that must be met by an employee to successfully perform the essential functions of this job. Reasonable accommodations may be made to enable individuals with disabilities to perform the essential functions. For Office Roles: While performing the duties of this job, the employee is regularly required to be independently mobile. The employee is also required to interact with a computer, and communicate with peers and co-workers. Contact your manager or local HR to understand the Work Conditions and Physical requirements that may be specific to each role. (ADA-United States of America)"
+Yat Labs,Senior API / Backend Developer,"United States
+Remote","Posted by
+
+JaNaye Norman-Halligan, MBA 2nd
+
+Head of People | Future of People Operations | Culture Innovator
+
+Send InMail
+
+Today, from the moment you connect to the internet, most websites focus on learning everything they can about you. In Web 3, the moment you share an Ethereum, Bitcoin, Solana, or Tezos wallet address with anyone, you expose your entire on-chain transaction history to the world.
+
+
+
+
+To us, this is crazy. We should have complete agency and control over what stories we share and how we share them. We believe the same should be true on the internet. This is why we are stewarding the development of Tari, a default-private digital asset protocol. Tari is unique with a highly intentional design. Our mission is to make it easy for developers to create and deploy Web 3 interoperable applications that are highly scalable and secure without spending months on audits.
+
+
+
+
+In addition to stewarding the development of this new protocol, we are building the first application that will use it. This app is Yat, a new censorship-resistant internet identity system that enables everyone to use a personalized string of emojis as their universal username.
+
+
+
+
+Why emojis? Over 90% of online users on Earth use emojis every single day. They are genuinely our global language. We use them to tell stories and connect with others in a beautifully simple way. Yats create a system that allows people to own a single emoji or string of emojis that best represents them. Yats are owned by whoever creates them and are an internet freedom product. Imagine a world where we all own self-sovereign emoji identities that are self-directed, deeply censorship-resistant, and cannot be canceled.
+
+
+
+
+What if instead of johnsmith535, someone could be 🔥🐉 or 👑 🎳(kingpin) or 🦄🤖💃? They could use this unique emoji username to do the same things they could do with a standard username, like sending or receiving money, chatting with friends, or creating a website. This would change how we connect. Instead of one-dimensional email addresses, usernames, or phone numbers that say nothing about us, we could express ourselves in truly remarkable ways. The possibilities are endless.
+
+
+
+
+At Yat Labs, we are building an incredibly talented and dedicated team to make Yat the preferred form of self-sovereign identity for everyone on Earth.
+
+
+
+
+Yat and Tari are the brainchildren of Tari Labs; the fast-growing startup focused on building
+
+privacy and pervasive privacy technologies for everyone on Earth. They were both co-founded by Naveen Jain (who also founded Sparkart). They are backed by Blockchain Capital, Pantera Capital, Multicoin Capital, Trinity Ventures, Redpoint Ventures, Canaan Partners, Slow Ventures, and many more of the best investors in the world.
+
+
+
+
+
+
+
+And who are you? Well, we’re hoping you’re someone who takes the exceptional and exceeds it, who rolls up their sleeves and gets their hands dirty, and who wants to take a step outside the ordinary to create a world that’s more beautiful, fun, and privacy-oriented.
+
+
+
+
+
+
+
+As a Senior Rust Developer, you will build and maintain our API functionality, allowing it to scale to serve millions of users daily. You will contribute to and maintain our highly performant API stack, written in 100% Rust and supported by a PostgreSQL DB stack.
+
+
+
+
+If that sounds like you, join us.
+
+
+
+
+About You:
+
+You have a solid understanding of security protocol stacks and crypto libraries and functions. You know enough cryptography to understand the difference between key signing, hashing, and encryption.
+You thrive on learning new technologies, don’t believe in one-size-fits-all solutions, and adapt quickly to meet the needs of massive growth and a rapidly evolving environment.
+You have exceptional written and verbal communication skills.
+You are a quick learner and want to work in a demanding, fast-paced environment.
+You can spend significant periods working in EU daylight hours (7:00 - 17:00 GMT).
+
+
+
+
+What You'll Do:
+
+Develop and maintain the Yat Rust API and related backend tools..
+Perform code reviews.
+Identify, prioritize and execute tasks in the software development life cycle.
+Enjoy communicating and engaging with teammates, as well as with the broader community, in written form.
+Take advantage of, and actively use, both long-form communications tools (eg. GitHub issues) as well as instant messaging tools (eg. IRC, MatterMost, Wire), as a natural part of the project's development.
+Be responsible for designing and scoping development tasks.
+Develop elements of the overall protocol software solution.
+Automate tasks through appropriate tools and scripting.
+Document development phases and monitor systems.
+
+
+
+
+Requirements:
+
+8+ years experience as a software engineer.
+4+ years experience in building highly trafficked backends and APIs.
+4+ years experience with PostgresSQL.
+Solid programming experience in Rust, or a willingness to learn it quickly.
+Experience in CircleCI, Github Actions, and other CI/CD pipelines
+
+
+
+
+Bonus Points:
+
+Experience contributing to open-source projects
+Degree in Computer Science, Engineering, or Mathematics
+
+
+
+
+Benefits:
+
+100% Globally Remote
+Highly competitive compensation package
+Comprehensive benefits, including up to 100% paid medical, dental, & vision insurance coverage for you & your loved one for the US & Canada
+401k program for the US
+An Oculus Quest 2 - Our Employee Engagement events happen in VR
+Flexible work schedule and paid time to create your work/life harmony
+An international team of highly talented and engaged people from different cultural backgrounds and locations.
+The latest technology and equipment to do your best work from your home office
+Be an OG in a young project that is already making 🌊
+
+
+
+
+That's all to say: these job listings are approximations! If you're a curious and passionate person, we want to hear from you.
+
+
+
+
+We are all generalists who like to dip our toes into different fields and skillsets, so if a job isn't a 100% fit, don't worry!
+
+
+
+
+We’re proud to be an equal opportunity employer. In other words, we only care that you’re the best person for the job."
+Four Kitchens,Backend Drupal Developer,"United States
+Remote","Four Kitchens is looking for a Backend Developer with experience in PHP and Javascript who is proficient in or wants to learn Drupal development. Backend Drupal Developers with Four Kitchens are growing their skills, and passionate about learning best practices. They work collaboratively within close-knit project teams to develop new custom and community modules, troubleshoot and maintain existing code, and to migrate content from legacy CMS systems.
+
+
+
+
+As a Web Chef, you will first and foremost exemplify our Core Values. You will also exhibit a natural curiosity and a passion for making cool stuff for the web. We expect our whole team to self-lead and prioritize as distributed team members—your frequent communication and participation in company culture will be key indicators of your engagement at Four Kitchens. Being a constant self-educator is essential, so advanced degrees are not a requirement for this role as we believe that experience and passion are more important.
+
+
+
+
+We’re committed to providing an inclusive workplace and building a diverse team. At our core, we believe deeply in diversity and inclusiveness as being critical parts of a healthy team. We aim to create an environment where everyone, from any background, can do their best work. If you look at our team page and don’t see yourself, don’t shy away. Come work with us! 
+
+
+
+
+Responsibilities
+
+Write clean, scalable code that adheres to project requirements and client need
+Develop for multiple devices and interactions.
+Participate in peer code reviews.
+Help architect Drupal solutions for our clients.
+Write PHP and Javascript code to build custom modules and migrations. 
+Work closely with Clients on project engagements to deliver exceptional code, consulting, and advice.
+Proactively identify, own and solve hard technical challenges 
+Passionately keep pace with rapid innovation in web technologies.
+Engage with the open source community via code contributions, projects, presentations, blog posts, etc.
+
+
+
+
+Qualifications
+
+You have mid-level experience and a passion for developing with PHP and Javascript.
+Exposure to Drupal or a similar CMS like WordPress. If you are passionate about web development and interested in learning the specifics of working with Drupal or WordPress we will get you up to speed.
+You have a foundation in computer science fundamentals and an understanding of how web technologies work.
+You have strong verbal and written communication skills for presentations, demos, client consultations, and ongoing documentation. 
+You have industry experience in higher education, media, or publishing.
+You have worked with React or other modern Javascript frameworks. 
+You come from an agency environment or from a small to medium size business.
+You have a bachelor's degree. (Experience and passion are more important, and being a constant self-educator is essential. We feel higher education is not directly correlated to your success.)"
+TRADE X,Node.js Backend Developer,"San Francisco Bay Area
+Remote","TRADE X is a growing force in the Automotive Industry and is currently seeking for Senior Node Js. Backend Developers to join our growing Tech Team.
+
+
+
+
+: 
+
+
+
+
+We are searching for dynamic team players with ample Node.js Backend Development experience, ready to be part of our top-tier fast-paced organization. Some of our expectations include:
+
+
+
+
+Essential responsibilities/expectations include (not exhaustive)
+
+
+
+
+Design, develop and modify backend services to support automotive applications and automotive data with Node.js/Typescript using microservices/serverless (REST, GraphQL).
+Participate in sprint planning and backlog grooming for application development.
+Work with other engineering groups and other departments for cross-functional application development and requirements.
+Maintain quality and non-functional requirements for microservices/serverless (performance and otherwise).
+Understand and implement security and data protection proactively.
+Create back-end code that interfaces with new web platforms.
+Integrate external services with our internal system.
+Debugging and testing.
+Focus on software quality and put a high priority on maintaining high standards within a
+team
+Participate in code and document reviews
+
+
+
+
+:
+
+
+
+
+Expert in JavaScript and Node.js
+Expert in data structures and algorithms
+Solid understanding of how databases work
+Experience in building cloud infrastructure applications from scratch (microservices, serverless).
+You are comfortable writing test suites and specs
+You have experience with performance analysis and optimization on microservices/web services
+You are a self-motivator with strong communication skills
+
+
+
+
+Experience working at a startup
+Experience in the automotive industry
+Experience with GraphQL
+Experience using Typescript
+Computer science or equivalent degree
+Experience with AWS
+Experience with Lambda Functions
+
+
+
+
+Node.js
+React
+React Native
+Typescript
+CSS
+HTML
+Elastic Search
+Aurora/MySQL RDS
+Redis/Elasticache
+Firebase
+MongoDB
+Jest
+
+
+
+
+
+
+
+
+
+
+Competitive salary and benefits with a focus of a work/life balance.
+
+
+
+
+Challenging Work - We never stop innovating as our work is never done. That is because across our Teams and in all roles, every employee is empowered to bring their best ideas forward and to jump in and solve the problems they are passionate about.
+
+
+
+
+Great People - Every person is valued here and plays an important role in our shared success
+
+
+
+
+Global Impact - As a Global Team spanning continents, boundaries, and cultures, every day we are inspired by the impact our work has on our colleagues, our customers, our communities, and the world at large.
+
+
+
+
+Diversity, Equity, and Inclusion - Diversity, equity and inclusion are more than words to us. They are the guiding principles for building a culture where we celebrate each others’ differences, continuously strive for equality and recognize that inclusion makes us stronger as individuals, a company and a global citizen.
+
+
+
+
+Rewarding work in a fast-paced, creative environment with colleagues who are passionate about the Automotive Industry.
+
+
+
+
+Chance to grow within the Organization.
+
+
+
+
+TRADE X is proud to be an Equal Employment Opportunity and Affirmative Action Employer. We do not discriminate based upon race, religion, colour, national origin, gender (including pregnancy, childbirth, or related medical conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, or other applicable legally protected characteristics.
+
+
+
+
+Candidates whose backgrounds most closely match the requested skills and desired attributes as outlined in this announcement will be invited to interview. We thank you for considering TRADE X.
+
+
+
+
+
+
+
+Employment
+
+Full-time
+
+
+
+
+Job Function
+
+Node.js Backend Developer
+
+
+
+
+Industry
+
+Automotive Export Trade
+
+
+
+
+Job ID
+
+20220317
+
+
+
+
+#TRADEX #TradeWithoutBorders #WorkingTogether"
+"SecureX.AI, Inc,",Sr. Backend Developer (Golang) - w/ strong security background,"United States
+Remote","Backend Developer (Golang) - w/ strong security background
+
+ (5-7 years of experience )
+
+Design, test and integrate microservices in Python/Golang
+Experience in AI/ML technologies
+Experience with various SQL/No-SQL/graph/in-memory databases
+Experience with Docker/Kubernetes/Terraform
+Experience with messaging systems like Kafka
+Security domain expertise such as IDS/IPS, Firewalls, Metasploit, Black Duck, Static Analysis tools is a plus
+Strong security background "
+Comcast,Backend Software Engineer 3(Python and Django) - REMOTE,"New York, NY
+Remote","Posted by
+
+Harry (Harjinder) Singh 2nd
+
+Founder at SecureX.AI
+
+Send InMail
+
+Backend Developer (Golang) - w/ strong security background
+
+(5-7 years of experience )
+
+Design, test and integrate microservices in Python/Golang
+Experience in AI/ML technologies
+Experience with various SQL/No-SQL/graph/in-memory databases
+Experience with Docker/Kubernetes/Terraform
+Experience with messaging systems like Kafka
+Security domain expertise such as IDS/IPS, Firewalls, Metasploit, Black Duck, Static Analysis tools is a plus
+Strong security background"
+Foodable Tech,Full Stack Engineer,"San Francisco Bay Area
+Remote","As the Senior Full Stack Engineer, you are empowered to build our services from backend databases all the way to mobile and web-clients. Since our team is small and growing, picking the right technology choices for our service oriented architecture that can scale to a variety of clients will be your primary goal. Fast, Scalable and Secure are the key."
+CEI,Backend Python Developer,"Cincinnati Metropolitan Area
+Remote","Job description
+
+Must Be Authorized to Work in U.S
+
+Responsibilities:
+
+Responsible for creating new and modifying existing application software that is moderately complex. Analyzing system requirements and existing business processes and information systems, as well as assisting in system planning, scheduling and implementation. Participates in full lifecycle development including creating prototypes, coding, testing, debugging, documenting and implementing moderately complex software.
+
+Key Activities:
+
+Work closely with all departments in a collaborative manner to plan, design, and develop websites and software applications.
+Develop, use and assess technical architectures, designs, and frameworks.
+Contribute to the overall software development life-cycle including requirements gathering/analysis, design, development, release/version control, testing, deployment and support.
+Develop technical specifications and documentation.
+Develop and implement training and documentation for applications.
+
+Skills:
+
+2+ years experience in full life-cycle software development.
+3+ years technical experience in interactive media or other relevant online business.
+Python experience is preferred
+Coding, web development and database experience
+Use of version control software for code, asset and configuration management.
+Experience performing in a Systems Assurance role to ensure the quality of systems either produced in-house or by another party.
+Use of trouble ticketing systems.
+Ability to manage multiple tasks."
+"Reddit, Inc.","Staff Backend Engineer, Developer Platform","United States
+Remote",
+Sketch,Elixir Backend Developer,"United States
+Remote","Sketch is a design platform with an award-winning native Mac app and browser-based collaboration tools. Over a million people use our product to create their best work. And right now, we’re looking for a Backend Developer to join us.
+
+
+
+
+We work with empowered product teams that truly own what they do — delivering new features and improving the technology foundations of our platform. As a backend developer at Sketch, your job will be mainly focused on designing, implementing, and maintaining APIs on large-scale systems that impact people's day-to-day work. You will work closely with frontend, Mac developers, and product managers to guarantee a product-focused, smooth engineering process.
+
+
+
+
+Most of the tasks that fall into the responsibilities of this team require close collaboration between the developers, the Product Manager, and the designers of the team. Our backend developers need to understand how the product works in detail, as well as feel comfortable tackling complex technical tasks that include performance optimizations, data integrity problems, code readability and maintainability issues, and so on.
+
+
+
+
+At Sketch most of our backend is built on Elixir with Phoenix, served over GraphQL and persisted on PostgreSQL. We build some supporting web services increasingly in Go. Sketch's backend services also utilize some additional AWS services such as SQS, Redis, etc..
+
+
+
+
+About you
+
+
+
+
+We are interested in finding developers with experience building web APIs with Elixir. You might not have experience with all the technologies in our stack, but you are motivated to learn deeply. You will get the opportunity to work with experienced teammates who can teach and pair with you to learn whatever you have less experience with.
+
+
+
+
+You care about security, code quality, scalability, performance, and simplicity. Above all, you seek operational excellence and apply the best engineering practices possible. Not everything that you or your team do can be perfect, but you make sure that you always know the trade-offs. You back your decisions with arguments. You don't care for hype and always try to find the best solution and technology for the job and its context.
+
+
+
+
+You are a pragmatist and understand technology as the medium to build products. You understand the right balance between code readability, simplicity, development speed, performance, and maintainability.
+
+
+
+
+You value team work, knowledge sharing, autonomy and ownership. You care are about your team, and contribute to an environment of psychological safety and healthy work culture.
+
+
+
+
+About Sketch
+
+
+
+
+We’re a company of diverse thinkers and doers who take pride in always improving our product. We share a vision and commitment to help each other — and our customers — create great work.
+
+
+
+
+We’ve been fully remote since day one. It’s meant we can bring together incredible people from around the world. You’ll join over 65 Mac, backend, frontend, QA and infrastructure engineers in the Technology team, based everywhere from Scotland to South Africa, and Lithuania to the US.
+
+
+
+
+We encourage our people to be themselves and embrace what makes us unique. We value different backgrounds, perspectives and experience, and we strongly believe this is key to achieving outstanding results.
+
+
+
+
+We work asynchronously as much as we can. Our team communicates mostly in writing, using Slack and GitHub. When we need it, we also have video calls. We have a culture of collaboration and knowledge-sharing, and we provide the environment and the tools you need to do your best work.
+
+
+
+
+Essentials for the job
+
+You enjoy working as part of a close-knit team. Together with your colleagues, you will code, review Pull Requests, deploy to production, etc. As part of a distributed team, you believe in maintaining detailed documentation.
+You can write and maintain high-quality and well-tested code. You can also prepare a fast proof of concept when you need to.
+Comfortable with Elixir since you will be coding in Elixir since the beginning.
+You have experience building web APIs, with SQL and with ORMs. You will debug queries, suggest database optimizations and work with data migrations in the most optimum way.
+You are familiar with GraphQL. You understand, at least, its pros and cons compared to REST services, depending on the context.
+You have excellent communication skills and written English, are self-motivated, and comfortable working in a remote position.
+Based in European / African timezones.
+
+
+
+
+We care about your wellbeing and your professional success, so we offer you:
+
+Full-time employment, with a flexible schedule
+International environment and working culture
+As many vacation days as you need
+Whatever training you need to develop in your job
+The hardware you need
+The option to work anywhere in GMT-5 to GMT+2 timezones
+Company equity
+Paid family leave
+An annual company meetup (when possible)"
+Temple University,Backend Developer,"Philadelphia, PA
+Remote","Reporting to the Director of Web Technology within Strategic Marketing and Communications (SMC), the Backend Developer supports Temple University's digital strategy requirements and the development of complex Drupal-based web initiatives. They serve as the technical advisor during the initiation stage of digital marketing projects, which include the provisioning of technical solutions that successfully execute against unique and diverse business requirements. Their duties often involve developing/maintaining APIs that communicate backend, intranet data to frontend marketing sites, requiring an advanced programming acumen. 
+
+
+
+This individual will inform creative concepts and content strategy and collaborate with internal/external partners to develop web applications that ensure a coherent user experience across Temple's digital landscape. The Backend Developer mentors junior staff members, manages concurrent projects on time and budget, helps set and meet business objectives, as well as works collaboratively and proactively with other team members to deliver highest-quality results. Overall, this position is committed to the department's goals to enhance the Temple brand and reputation nationally, increase alumni engagement, and build prospective student awareness and engagement.
+
+
+
+Education and Experience:
+
+
+
+Bachelor's degree and a minimum of four years of directly related experience with the following: Drupal or other open-source CMS; PHP, MySQL, Web Services, JavaScript/jQuery, AJAX, HTML5, CSS3/Sass/LESS; developing modules or plugins to extend the functionality of a CMS; experience in programming, database design and web security a plus. An equivalent combination of education and experience may be considered.
+
+
+
+Required Skills & Abilities:
+
+
+
+Expert-level proficiency with the latest version of Drupal, or another open source CMS, with a proven ability to develop custom modules/plugins that extend the CMS' core or contributed functionality.
+Proficiency in server-side languages (PHP, MySQL) and sound understanding of UX/UI concepts to ensure backend functionality integrates smoothly with frontend technologies.
+Experience in frontend Javascript frameworks (REACT, Angular) is a huge plus.
+Proficiency in front-end developer tools/frameworks and leveraging modern technologies for local development (Sass/LESS, Compass, Guard/Grunt/Gulp).
+Proficiency with versioning control and code management software.
+Proficiency in responsive design and developing for mobile platforms.
+Proficiency in cross-site data sharing technologies and languages (REST/SOAP, XML, JSON).
+Advanced understanding of ADA requirements for web accessibility.
+Good sense of high-quality user experience as it relates to web design. 
+Advanced ability to solve issues through good analytical and problem-solving skills.
+Familiarity with integrating social media and web sharing functionality.
+Ability to manage concurrent projects in a deadline-oriented environment and follow project schedules closely.
+Excellent communications and interpersonal skills, including the ability to maintain cooperative working relationships with supervisors and colleagues.
+Ability to work independently and as part of a team
+Demonstrated ability to manage multiple projects and make good independent decisions in a fast-paced environment while maintaining accuracy of work and delivering in a timely manner.
+Demonstrated proficiency with current software, hardware and equipment used in the position; willingness and ability to stay up to date with upgrades or changes.
+
+This position is assigned a hybrid work arrangement (on-campus and remote), the duration of this hybrid work arrangement is at the discretion of Temple University and the Department.
+ 
+ Temple University values diversity and is committed to equal opportunity for all persons regardless of age, color, disability, ethnicity, marital status, national origin, race, religion, sex, sexual orientation, veteran status or any other status protected by law.
+ 
+ In accordance with the City of Philadelphia's mandate, all Temple University students, faculty, staff and contractors must be fully vaccinated for COVID-19 by November 15, 2021, unless they have a medical or religious exemption approved by the university. An individual is considered fully vaccinated 2 weeks or more following the second dose of the Pfizer or Moderna vaccines, or 2 weeks or more following a single dose of the Johnson & Johnson vaccine. Individuals who do not meet the University's vaccination or exception requirement by October 15, 2021 will be prohibited from working until proof of vaccination or an exception is provided. For more information visit the university's Vaccines web page at https://www.temple.edu/coronavirus/vaccines.
+ 
+ Compliance Statement: In the performance of their functions as detailed in the position description employees have an obligation to avoid ethical, legal, financial and other conflicts of interest to ensure that their actions and outside activities do not conflict with their primary employment responsibilities at the institution. Employees are also expected to understand and be in compliance with applicable laws, University and employment policies and regulations, including NCAA regulations for areas and departments which their essential functions cause them to interact.
+ 
+ To obtain additional information about Temple University please visit our website at www.temple.edu. 
+ 
+ Temple University's Annual Security and Fire Safety Report contains statistics, policies, and procedures related to campus safety and can be found at: https://safety.temple.edu/reports-logs/annual-security-report
+ 
+ You may request a copy of the report by calling Temple University's Campus Safety Services at 215-204-7900.
+"
+Indigo,"Senior Back End Software Engineer, Market+ Insights","United States
+Remote","We’re an international agtech startup pioneering an ambitious mission in a budding industry where agriculture meets technology. Through the use of data-driven insights, natural microbiology, and innovative digital technologies, Indigo is partnering across the supply chain, ultimately cultivating a scalable climate solution and enhanced ecosystem that beneficially serves farmers, consumers, and the planet alike.
+
+Our mission is unique, and therefore our teams are too: from multigenerational farming experts, who understand the land as though it were an extension of themselves, to cutting-edge technologists and scientists on the frontier of innovation, our teams are a reflection of the range of the stakeholders we serve: the Earth, the Farmer, and the Consumer. Indigo is extraordinary, and we owe that to the individuals who make up our community and enable success through diversity of thought, experience, background, perspective, race, sexuality, gender, age, and everything else that makes a person uniquely themselves. Connected by a common vision and empowered by diversity, we aren’t ordinary, and neither are you. Embrace your extraordinary and join Indigo in cultivating a healthier planet fueled by unique game changers.
+
+Description:
+
+As a Senior Back End Software Engineer on the Market+ Insights team, you will collaborate with product managers, software engineers, and data scientists to craft novel data solutions that enable our Market+ buyers and growers to make better decisions. You will design and implement APIs and data pipelines, mentor and learn from peers, and ship services powering innovative features that delight our users.
+
+As a Senior Back End Software Engineer, you will:
+
+Collaborate with product managers, front and back end engineers, and data scientists to spec, build, test and deploy high quality data services.
+Promote thoughtful system design patterns, writing and refactoring code with reusability and organizational maintainability in mind.
+Expertly review code and receive code reviews.
+Mentor and learn from other engineers.
+
+About you:
+
+You’re an engineer with deep experience building high-throughput APIs and data pipelines.
+You have extensive experience with FastAPI or other similar Python REST API frameworks.
+You have extensive experience with PostgreSQL or other similar RDBMS.
+You’re familiar with API documentation frameworks (e.g. Swagger).
+You care deeply about performance, reliability, and usability.
+You strive to create testable, self-documenting code that others can understand and use.
+You're a team player, comfortable collaborating within and across teams around technical architecture and implementation decisions.
+You’re user-centric and mindful of the context of your work.
+You bring a positive attitude and take pride in your work.
+You care about Indigo’s mission to leverage nature and technology to unlock economic and environmental progress in agriculture.
+
+About Indigo:
+
+We’re building the technology to feed the world and fight climate change. We believe that through teamwork we can achieve more to benefit all of agriculture: from farmers to consumers to the planet.
+
+Game changers don't fit in a box. The requirements listed above are examples of what we think enables success in this role, but we recognize the impossibility of fully capturing a singularly perfect description, and we believe in the power of diversified and creative displays of skills and qualifications. We embrace unconventional. We embrace creativity. We embrace a challenge to the status quo. If the specifications in the list above aren’t an exact match… great! Apply, be you, and be proud that you aren’t ordinary (we certainly aren’t!).
+
+We are an equal opportunity employer and value diversity at our company. We do not discriminate on the basis of race, religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or disability status.
+
+Benefits
+
+Health, dental, and vision insurance for you and your family
+Generous time off
+Parental leave
+A remote-first organization with flexible work hours
+Commuter benefits
+401(k) plan
+
+Indigo is committed to living our values, specifically “creating a work environment where everyone feels respected, connected, and has opportunities to learn and grow.” As part of living our values, we strive to create a diverse and inclusive work environment where everyone feels they can be themselves and has an equal opportunity of succeeding."
+Xacent Global,Senior backend Engineer (erlang/elixir),"California, United States
+Hybrid","Posted by
+
+Dainton Haase
+
+Founder CEO Xacent Global, COO @ SOS Global Investment Deputy Executive Director at Nekotech Centre of Excellence Entrepreneur and speaker.
+
+This role directly contributes to the future of product development, scale up, and technical architecture. The role will have a direct impact on projects, and the Company overall, by making fundamental decisions on frameworks, solutions, and tooling. You will be working on distributed systems and infrastructure spanning Google Cloud Platform, Shopify, Heroku and mobile frontends both web and native. In the role, you will work as part of the engineering team and partner closely with the data science team in delivering the end consumer experience and company objectives. You will be working as part of an international team spanning multiple countries, languages, and time zones.
+
+
+
+
+YOU WILL:
+
+Translate consumer and business requirements into technical specifications and solutions
+Evaluate and identify the tools, frameworks and architectures most appropriate for meeting the business and consumer needs
+Architect, implement and maintain backend infrastructure bridging mobile and machine learning areas, embedded systems and supply chain, and data warehousing
+Proactively identify, plan and complete tasks in an agile development environment
+Actively knowledge share and work with frontend, design and ML teams to produce robust and reliable consumer experiences
+Implement, review, test and debug, and document high-quality code
+Provide constructive feedback across the design, frontend, backend and ML regarding feasibility, cost and resourcing requirements on product development plans
+Take ownership of backend systems from concept and implementation to final production deployment
+
+
+
+
+ABOUT YOU:
+
+You are an experienced developer ready to take responsibility for implementation, delivery, and maintenance in a production setting with the following components of our dev and ops stack:
+
+Phoenix / Elixir / Erlang
+PostgreSQL
+Elixir libraries: Flow / Broadway / Absinthe
+Docker
+Heroku / Google cloud
+Git / GitHub Actions
+GraphQL / json API
+
+
+
+
+You thrive in early stage startups and/or highly fluid and often ambiguous environments and are accustomed to the shifts in requirements that stem from iterative learning. You are ambitious and enjoy bringing amazing products into reality.
+
+Professional & personal requirements
+
+5+ years of experience in web development, of which 2+ is within the Erlang/Elixir language
+Previous experience as a team lead
+Ability to breakdown complex goals into concrete and manageable tasks
+Fluent English is a must both in speaking and written
+Ability to be candid and outspoken
+Strong individual responsibility to take decision and follow through with responsibilities
+Skilled at connecting your technical solutions with UX designs and ML pipelines to deliver amazing end consumer experience
+Experience with event based architectures
+Devops experience is a plus
+Highly effective in distributed teams and remote setup
+
+
+"
+Signify Health,Backend Developer (Remote),"Salt Lake City, UT
+Remote","At Signify Health, we provide care for those who need it most. We understand the benefits of a personalized approach to clinical encounters and the importance of conversation, understanding, and sitting knee-to-knee with the patient in the best setting for care delivery: the home.
+
+A Software Engineer - Backend develops systems throughout Signify Health’s infrastructure. This involves all elements of software engineering, from database schema design to API development.
+
+What will you do?
+
+Develop readable, well-tested applications, APIs, and libraries
+Work with internal and external APIs for applications and data sources
+Utilize cloud infrastructure and collaborate with SREs to build scalable systems
+Implement application observability in the form of metrics, logging, and monitoring
+Work with engineers across the organization
+Collaborate closely with team members and product stakeholders
+
+Bachelor's degree in Computer Science or a related field; or equivalent experience
+4+ years of relevant software engineering work experience
+Prior work with cloud-based systems
+Expansive knowledge of RESTful API design and use
+Familiarity with observability concepts and tooling
+Meaningful experience with relational databases and SQL
+
+Experience with Go, Python, or Java
+Experience with Amazon AWS services
+Experience with non-relational databases
+
+Signify Health is helping build the healthcare system we all want to experience by transforming the home into the healthcare hub. We coordinate care holistically across individuals’ clinical, social, and behavioral needs so they can enjoy more healthy days at home. By building strong connections to primary care providers and community resources, we’re able to close critical care and social gaps, as well as manage risk for individuals who need help the most. This leads to better outcomes and a better experience for everyone involved.
+
+Our high-performance networks are powered by more than 9,000 mobile doctors and nurses covering every county in the U.S., 3,500 healthcare providers and facilities in value-based arrangements, and hundreds of community-based organizations. Signify’s intelligent technology and decision-support services enable these resources to radically simplify care coordination for more than 1.5 million individuals each year while helping payers and providers more effectively implement value-based care programs.
+
+To learn more about how we’re driving outcomes and making healthcare work better, please visit us at www.signifyhealth.com."
+MANSCAPED,Senior Backend Developer,"United States
+Remote","Who We Are - MANSCAPED™ is a fast-growing consumer lifestyle brand specializing in men’s grooming and personal care products. On a mission to help men level up, MANSCAPED™ designs and distributes premium tools, formulations and accessories that introduce a whole new self-care routine for men. MANSCAPED™ operates as a truly global omni-channel company, currently available in 38 countries worldwide and counting. With growth like this, we are adding to almost every department at MANSCAPED™! We are a values-driven company with a keen interest in ensuring the success of every employee.
+
+
+
+
+Who We Are looking for - MANSCAPED™ is looking for a talented Senior Backend Developer to join our amazing development team. This is a high performance and highly collaborative environment, so if you thrive working on a team, are an excellent communicator, professional, responsible, highly skilled, and passionate about code, we are looking for you!
+
+
+
+
+ Keys to Success - As a member of the Technology team, success will be measured based on three key actions. 1) Doing your job; setting and meeting appropriate goals that ladder up to the long-term Company vision and the short-term Company targets. You are expected to align on these goals with your manager, and then deliver on them. 2) Doing Your Job, the Right Way; At MANSCAPED we strive to be ideal team players. That means striving to live up to the Humble, Hard Working & Smart framework. 3) Engaging (in both directions) with Radical Candor in a way that seeks to improve the performance of yourself and the team around you
+
+
+
+
+Responsibilities:
+
+Collaborating with management, departments, and developers to identify end-user requirements and specifications
+Architecting solutions for platform features
+Producing efficient and elegant code based on requirements
+Testing and deploying platform features
+Troubleshooting, debugging, maintaining and improving existing platform
+Developing technical documentation to guide future development projects
+Other duties as needed
+
+
+
+
+Qualifications:
+
+Bachelor’s degree in Computer Science or similar preferred
+Expertise in MongoDB, Javascript (ES6), NodeJS, Typescript
+Some cloud experience, GCP / AWS experience preferred
+Experience with microservices and/or scalable architecture
+NestJS experience is a plus
+Preferred 2+ years of experience in Marketing/E-Commerce industry
+Experience in DevOps / Deployments
+Experience with observability and monitoring is a plus
+Experience with Shopify Headless is a plus
+Excellent communication skills, interpersonal skills, ethics, and cultural awareness
+Strong detail-oriented and resourceful mindset
+
+
+
+
+MANSCAPED™ Benefits: 
+
+20 Vacation Days
+40 Hours Paid Sick Leave
+Paid Mental Health Days
+9 Paid Holidays
+Life AD&D + LTD Coverage
+Medical, Dental, Vision, HSA + FSA
+Employee 401(K) Plan
+Monthly Utility Allowance
+Employee Discounts"
+"Domo, Inc.",Senior Backend Developer,"American Fork, UT
+Hybrid","Posted by
+
+Kelsey Sorensen 2nd
+
+Senior Talent Acquisition Partner at MANSCAPED 🚀
+
+Send InMail
+
+Who We Are - MANSCAPED™ is a fast-growing consumer lifestyle brand specializing in men’s grooming and personal care products. On a mission to help men level up, MANSCAPED™ designs and distributes premium tools, formulations and accessories that introduce a whole new self-care routine for men. MANSCAPED™ operates as a truly global omni-channel company, currently available in 38 countries worldwide and counting. With growth like this, we are adding to almost every department at MANSCAPED™! We are a values-driven company with a keen interest in ensuring the success of every employee.
+
+
+
+
+Who We Are looking for - MANSCAPED™ is looking for a talented Senior Backend Developer to join our amazing development team. This is a high performance and highly collaborative environment, so if you thrive working on a team, are an excellent communicator, professional, responsible, highly skilled, and passionate about code, we are looking for you!
+
+
+
+
+Keys to Success - As a member of the Technology team, success will be measured based on three key actions. 1) Doing your job; setting and meeting appropriate goals that ladder up to the long-term Company vision and the short-term Company targets. You are expected to align on these goals with your manager, and then deliver on them. 2) Doing Your Job, the Right Way; At MANSCAPED we strive to be ideal team players. That means striving to live up to the Humble, Hard Working & Smart framework. 3) Engaging (in both directions) with Radical Candor in a way that seeks to improve the performance of yourself and the team around you
+
+
+
+
+Responsibilities:
+
+Collaborating with management, departments, and developers to identify end-user requirements and specifications
+Architecting solutions for platform features
+Producing efficient and elegant code based on requirements
+Testing and deploying platform features
+Troubleshooting, debugging, maintaining and improving existing platform
+Developing technical documentation to guide future development projects
+Other duties as needed
+
+
+
+
+Qualifications:
+
+Bachelor’s degree in Computer Science or similar preferred
+Expertise in MongoDB, Javascript (ES6), NodeJS, Typescript
+Some cloud experience, GCP / AWS experience preferred
+Experience with microservices and/or scalable architecture
+NestJS experience is a plus
+Preferred 2+ years of experience in Marketing/E-Commerce industry
+Experience in DevOps / Deployments
+Experience with observability and monitoring is a plus
+Experience with Shopify Headless is a plus
+Excellent communication skills, interpersonal skills, ethics, and cultural awareness
+Strong detail-oriented and resourceful mindset
+
+
+
+
+MANSCAPED™ Benefits:
+
+20 Vacation Days
+40 Hours Paid Sick Leave
+Paid Mental Health Days
+9 Paid Holidays
+Life AD&D + LTD Coverage
+Medical, Dental, Vision, HSA + FSA
+Employee 401(K) Plan
+Monthly Utility Allowance
+Employee Discounts"
+Zoom,GO Backend Developer,"Seattle, WA
+Remote","The Zoom Security Engineering Team is looking for Go backend developers. We are building out end-to-end encryption extensions for Zoom's products, as described in our white paper. [1] In this role, you will be contributing to the design, implementation and deployment of this truly novel architecture in enterprise communication. You will be working on the server-side, to support the cryptographic functions of Zoom clients. Day-to-day work will include management of public keys, signatures, and append-only tamperproof data structures. Most infrastructure is green-field, using modern and clean tools like the Go Programming Language.
+
+Security experience isn't necessary, but it helps if you're excited to learn more about cryptography and cryptographic protocols. We'd love to teach you as we build something great together.
+
+
+Computer Science Degree
+ 2 years of industry experience (internships or full-time jobs)
+ Good communication skills
+ Go language experience (3 years)
+ Database experience; either SQL or NoSQL, but we use SQL (2 years)
+ Backend experience (2 years)
+
+ [1] https://github.com/zoom/zoom-e2e-whitepaper
+
+Ensuring a diverse and inclusive workplace where we learn from each other is core to Zoom’s values. We welcome people of different backgrounds, experiences, abilities and perspectives including qualified applicants with arrest and conviction records as well as any qualified applicants requiring reasonable accommodations in accordance with the law.
+
+We believe that the unique contributions of all Zoomies is the driver of our success. To make sure that our products and culture continue to incorporate everyone's perspectives and experience we never discriminate on the basis of race, religion, national origin, gender identity or expression, sexual orientation, age, or marital, veteran, or disability status.
+
+All your information will be kept confidential according to EEO guidelines.
+
+Zoom requires all U.S. employees who will work in person at a Zoom office, attend in-person Zoom meetings or have in-person customer meetings to be fully vaccinated. Zoom will consider requests for reasonable accommodations for religious or medical reasons as required under applicable law.
+
+
+Hear from our leadership team
+Browse Awards and Employee Reviews on Comparably
+Visit our Blog
+Zoom with us!
+Find us on social at the links below and on Instagram"
+SAP,Backend Developer (Java / Python),"San Ramon, CA
+On-site","Our company culture is focused on helping our employees enable innovation by building breakthroughs together. How? We focus every day on building the foundation for tomorrow and creating a workplace that embraces differences, values flexibility, and is aligned to our purpose-driven and future-focused work. We offer a highly collaborative, caring team environment with a strong focus on learning and development, recognition for your individual contributions, and a variety of benefit options for you to choose from. Apply now!
+
+SAP Commerce CX-AI Team has the purpose to “Deliver and Run the ML based solutions for CX constituents such as Commerce, C4C, and others”, fully aligned with overall SAP’s purpose to “Help the world run better and improve people’s lives”. We are a small agile team of data scientists and engineers who build AI powered solutions that serve multiple LoBs (Line of Businesses). Our AI solutions are fully automated multi-tenant services that provide user friendly predictive analytics and optimization features to the business user.
+
+THE OPPORTUNITY
+
+You will be working on next generation data infrastructure, supporting new functionalities on existing platform, and mining data for analytics insights and product features.
+
+Developing on this infrastructure presents many technical challenges in the areas of efficient query processing, large-scale data processing, machine learning and modeling, as well as satisfying complex business rules. If you are someone who is passionate about data, enjoys working with new technologies, and implementing new solutions and metrics, we want to hear from you!
+
+
+Develop complex queries, pipelines and software programs to solve data engineering problems
+Interact with other data scientists, product managers, and engineers to understand business problems, technical requirements to deliver predictive and smart data solutions
+Prototype new applications or data systems
+Lead data investigations to troubleshoot data issues that arise along the data pipelines
+Collaborate with different product owners to incorporate data science solutions
+
+BS/MS/PhD in Computer Science, Electrical Engineering or related disciplines
+Strong fundamentals: data structures, algorithms, database
+5+ years of software industry experience with 2+ years in analytics, data mining, and/or data warehouse
+Experience of working in Java, Python, FastAPI, Springboot
+Experience developing web services using REST approaches
+Experience working with hyperscaler infrastructure (GCP, Azure, AWS)
+Scale our high query per second (QPS) real-time inference service to handle demanding workloads with low latency
+Proficiency with SQL/Unix/Shell
+Leverage open source technologies like Kubeflow, Kubernetes, Spark, Docker, Kafka, and Redis
+Tooling experience e.g., Spinnaker, Jenkins, Terraform, Dynatrace
+Self-driven, challenge-loving, detail oriented, teamwork spirit, excellent communication skills, ability to multi-task and manage expectations
+
+We are SAP
+
+SAP innovations help more than 400,000 customers worldwide work together more efficiently and use business insight more effectively. Originally known for leadership in enterprise resource planning (ERP) software, SAP has evolved to become a market leader in end-to-end business application software and related services for database, analytics, intelligent technologies, and experience management. As a cloud company with 200 million users and more than 100,000 employees worldwide, we are purpose-driven and future-focused, with a highly collaborative team ethic and commitment to personal development. Whether connecting global industries, people, or platforms, we help ensure every challenge gets the solution it deserves. At SAP, we build breakthroughs, together.
+
+Our inclusion promise 
+
+SAP’s culture of inclusion, focus on health and well-being, and flexible working models help ensure that everyone – regardless of background – feels included and can run at their best. At SAP, we believe we are made stronger by the unique capabilities and qualities that each person brings to our company, and we invest in our employees to inspire confidence and help everyone realize their full potential. We ultimately believe in unleashing all talent and creating a better and more equitable world.
+
+SAP is proud to be an equal opportunity workplace and is an affirmative action employer. We are committed to the values of Equal Employment Opportunity and provide accessibility accommodations to applicants with physical and/or mental disabilities. If you are interested in applying for employment with SAP and are in need of accommodation or special assistance to navigate our website or to complete your application, please send an e-mail with your request to Recruiting Operations Team: Americas: Careers.NorthAmerica@sap.com or Careers.LatinAmerica@sap.com, APJ: Careers.APJ@sap.com, EMEA: Careers@sap.com.
+
+Qualified applicants will receive consideration for employment without regard to their age, race, religion, national origin, ethnicity, age, gender (including pregnancy, childbirth, et al), sexual orientation, gender identity or expression, protected veteran status, or disability.
+
+Requisition ID:329560 | Work Area: Software-Development Operations | Expected Travel: 0 - 10% | Career Status: Professional | Employment Type: Regular Full Time | Additional Locations:"
+Houzz,Full-Stack Software Engineer,"Irvine, CA","Houzz is the world’s leading platform for home remodeling and design, helping more than 2.5 million home professionals in over 100 categories to grow and manage their business. Through Houzz, a community of more than 65 million homeowners and home design enthusiasts, find ideas, hire professionals, source products and access tools to update their homes from start to finish. Houzz is available in every country around the world with localized platforms in more than 10 countries across North America, Europe, Asia and Australia.
+
+As a Full-Stack Software Engineer, you will work on all parts of our web application, its libraries, widgets and custom features. You will work across the entire web stack, working with MySQL, Lucene/Solr, Redis, and React and leveraging a strong understanding of OOP as well as Javascript and CSS.
+
+__________________
+
+What You’ll Do
+
+ Build features for all parts of our web application that provides an outstanding user experience when shopping on houzz. 
+ Build APIs and services that support all life cycles in ecommerce, including inventory management, shipping, orders etc. 
+ Work cross-functionally across engineering, product, design and operational teams 
+
+At A Minimum, We’d Like You To Have
+
+ Independence, self-direction and experience owning complete products and features 
+ Proficiency in web stack programming, from schema design to building user-facing interfaces 
+ An ability to work on fast paced, data-driven projects 
+ A desire to build an engaging consumer experience 
+ A B.S., M.S., or Ph.D. in Computer Science or equivalent 
+
+Ideally, You’ll Also Have
+
+ Familiarity with Node.js or PHP development 
+ Proficiency in web stack programming, from schema design to building user-facing interfaces 
+ Experience developing consumer facing features for millions of consumers a plus 
+ Familiarity with NoSQL databases or Solr a plus 
+
+__________________
+
+Be Who You Are and Do What You Love at Houzz
+
+We’re a Family
+
+At Houzz, we strive to create and foster a strong family environment in our workplace. We collaborate to accomplish our goals, always working as a team. We aim to build a culture of inclusion — celebrating and leveraging our differences for the betterment of one another, our products and our community.
+
+Houzz team members come from many backgrounds and bring diverse experiences to the company. We take pride in making each person feel at home.
+
+We Build the Future
+
+Join Houzz in revolutionizing the home remodeling and design industry and have an impact on our community of more than 65 million homeowners and home design enthusiasts who use our platform and the 2.5 million-plus home professionals around the world who grow and manage their business with Houzz Pro. Houzz has been named one of the most innovative companies in the world by CNBC and others, and is backed by top venture capitalists. At Houzz, you can help drive the future of an industry worth over $1 trillion in the U.S. and Europe alone.
+
+We Make Things Happen
+
+Our team members play a key role in guiding the direction of our company and are able to work across multiple groups to implement fresh ideas that allow Houzz to be the industry leader. If you are interested in applying your passion to create products that will transform the lives of millions of people who are designing, remodeling and decorating their homes, welcome to Houzz.
+
+Benefits and Perks
+
+ Competitive salary
+ Flexible paid time off
+ Commuter benefits
+ Medical, dental, vision and pet insurance
+ Maternity/paternity leave program
+ Employee assistance program
+ 401k retirement savings plan
+ Flexible spending accounts
+ Healthy at Houzz program
+
+Houzz is proud to be an Equal Employment Opportunity employer. When applying for a role at Houzz, we guarantee your application will be considered regardless of your sex, race, religion, color, gender, national origin, height or weight, ancestry, physical or mental disability, medical condition, genetic information, marital status, registered domestic partner status, age, sexual orientation, military and veteran status or any other basis protected by federal, state or local law or ordinance or regulation.
+
+We embrace and celebrate the value that diversity brings to an organization and understand that diverse backgrounds and different points of view are essential components of helping Houzz in our mission to provide the best experience for home renovation and design. Houzz is committed to fostering an inclusive environment through projects and initiatives such as employee resource groups and diversity workshops.
+
+Houzz celebrates differences and strives to create a comfortable and authentic climate for Houzzers to feel supported, where they are welcomed to think creatively and contribute to innovative ideas, while having the freedom to be themselves and share their lives at work.
+
+If you are a California resident applying for a job, you consent to our "
+DRINKS,Full-Stack Software Engineer,"Los Angeles, CA
+Hybrid","DRINKS (www.drinks.com) connects retailers, brands, and marketplaces to the $250 billion alcohol market. The company's innovative Wine as a Service (WaaS) platform enables its partners to bring adult beverages safely and conveniently to their customers across the United States in 1-2 days. DRINKS optimizes alcohol e-commerce with its patented DRINKS IQ technology, which empowers retailers to leverage AI-based predictive merchandising and marketing to personalize customer experiences. DRINKS was named a top place to work by Built In LA for the last four years, one of America’s Best Startup Employers by Forbes for the past two years, and was recognized as the Most Innovative Retail Model by Modern Retail in 2020.
+
+
+
+
+At DRINKS, you’ll get the good parts of working for a large company (first-rate health plans and benefits, remote work, highly competitive compensation packages) with the advantages of working at a rapidly growing startup (influence and impact in your role, broad responsibilities, and a high degree of flexibility). Our culture encourages a healthy work-life balance and we empower employees to think like owners, because they are (when they participate in our generous stock option plan)! DRINKS rewards excellence, promotes career development, and celebrates diverse perspectives that inspire creativity and drive innovation.
+
+
+
+
+
+
+
+We are looking for a Full-Stack Software Engineer who will immerse themselves within our Engineering team and drive innovation and software design excellence. The role demands high attention to detail, professionalism, and a methodical and technical approach to the execution of software in a cloud-based environment. The position is a member of a high performing agile team which is focused on delivering features; the output from this team goes into production and makes a difference in moving the company forward. The ideal candidate is required to have ruby experience as a Full-Stack Software Engineer.
+
+
+
+
+Become a member of agile development team
+Develop software (both front end and back-end) in an open team environment
+Actively participate in daily code review sessions
+Share best practices and be open to alternative technology implementations
+Take on special projects as necessary
+
+
+
+
+Ability to collaborate with engineering team as well as work independently on projects
+Exceptional time management and ability to problem solve under pressure
+Excellent judgment skills and team working abilities
+Strong verbal/written communication skills & excellent attention to detail
+Flexibility in work schedule as needs arise
+Energetic, enthusiastic and self-motivated with a strong work ethic
+
+
+
+
+Ruby, Rails, React
+MySQL
+ElasticSearch
+GraphQL
+Vagrant & Docker
+Git
+
+
+
+
+Bachelor's Degree in Computer Science or equivalent
+Experience at a startup or similar fast-paced tech environment
+A passion for wine!"
+Syngenta,Backend Developer - Hybrid,"Chicago, IL
+On-site"," About Syngenta 
+
+Syngenta Digital is changing the agriculture industry and we want you to be part of that. Digital innovations, data, and new technologies will transform the way that crops are managed in the future and enable farmers and agronomists to enhance efficiency and sustainable food production. You will help to develop solutions that turns data into meaningful information and ultimately helps to grow more food with fewer resources.
+
+We value a culture that promotes work/life balance, celebrates diversity, and offers numerous family-oriented events throughout the year as well as a full Benefit Package that starts the same day you do.
+
+As a Backend Developer you will help contribute to the design, development, and delivery of both the front and backend services used across our entire technology portfolio as we work to help transform digital agriculture. You will work as part of our Digital Product team at our office inside the Loop while also getting the opportunity to connect and collaborate with the rest of our global teams. We are looking for a Backend Developer to help build and expand our Cropwise platform to support the global rollout of our products. When it’s safe to return to the office, we will be adopting a hybrid working policy.
+
+ Qualifications 
+
+ Bachelor’s degree preferred. 
+ Excellent communications skills. Collaborates well in a team environment. 
+ 1+ years of experience of backend development 
+ Experience building RESTful APIs 
+ Experience using MVC and SQL Databases 
+ Good understanding of Java 
+
+ Experience working with AWS technologies 
+ Experience working with NoSQL Databases 
+ Experience working with NodeJS or Python 
+
+ Full Benefit Package (Medical, Dental & Vision) that starts the same day you do 
+ 401k plan with company match, Profit Sharing & Retirement Savings Contribution 
+ Paid Open Vacation Policy, 12 Paid Holidays, Maternity and Paternity Leave, Education Assistance, Wellness Programs, Corporate Discounts among others 
+ A culture that promotes work/life balance, celebrates diversity, and offers numerous family-oriented events throughout the year 
+
+Syngenta is a global leader in agriculture; rooted in science and dedicated to bringing plant potential to life. Each of our 28,000 employees in more than 90 countries work together to solve one of humanity’s most pressing challenges: growing more food with fewer resources. A diverse workforce and an inclusive workplace environment are enablers of our ambition to be the most collaborative and trusted team in agriculture. Our employees reflect the diversity of our customers, the markets where we operate and the communities which we serve. No matter what your position, you will have a vital role in safely feeding the world and taking care of our planet. Join us and help shape the future of agriculture.
+
+Syngenta is an Equal Opportunity Employer and does not discriminate in recruitment, hiring, training, promotion or any other employment practices for reasons of race, color, religion, gender, national origin, age, sexual orientation, marital or veteran status, disability, or any other legally protected status.
+
+Family and Medical Leave Act (FMLA)
+
+( http://www.dol.gov/whd/regs/compliance/posters/fmla.htm )
+
+Equal Employment Opportunity Commission's (EEOC)
+
+( http://webapps.dol.gov/elaws/firststep/poster_direct.htm )
+
+Employee Polygraph Protection Act (EPPA)
+
+( http://www.dol.gov/whd/regs/compliance/posters/eppa.htm )
+
+Primary Location
+
+USA-Illinois-Chicago
+
+Job
+
+IS & Business Architecture - Software Engineering
+
+"
+Medical Solutions,Backend Developer,"United States
+Remote","Posted by
+
+Agnes Marin
+
+Talent Acquisition and Technology Lead
+
+Send InMail
+Description
+
+About Syngenta
+
+Syngenta Digital is changing the agriculture industry and we want you to be part of that. Digital innovations, data, and new technologies will transform the way that crops are managed in the future and enable farmers and agronomists to enhance efficiency and sustainable food production. You will help to develop solutions that turns data into meaningful information and ultimately helps to grow more food with fewer resources.
+
+We value a culture that promotes work/life balance, celebrates diversity, and offers numerous family-oriented events throughout the year as well as a full Benefit Package that starts the same day you do.
+
+About The Role
+
+As a Backend Developer you will help contribute to the design, development, and delivery of both the front and backend services used across our entire technology portfolio as we work to help transform digital agriculture. You will work as part of our Digital Product team at our office inside the Loop while also getting the opportunity to connect and collaborate with the rest of our global teams. We are looking for a Backend Developer to help build and expand our Cropwise platform to support the global rollout of our products. When it’s safe to return to the office, we will be adopting a hybrid working policy.
+
+Qualifications
+
+Qualifications
+
+Bachelor’s degree preferred.
+Excellent communications skills. Collaborates well in a team environment.
+1+ years of experience of backend development
+Experience building RESTful APIs
+Experience using MVC and SQL Databases
+Good understanding of Java
+
+Bonus Points But Not Required
+
+Experience working with AWS technologies
+Experience working with NoSQL Databases
+Experience working with NodeJS or Python
+
+What We Offer
+
+Full Benefit Package (Medical, Dental & Vision) that starts the same day you do
+401k plan with company match, Profit Sharing & Retirement Savings Contribution
+Paid Open Vacation Policy, 12 Paid Holidays, Maternity and Paternity Leave, Education Assistance, Wellness Programs, Corporate Discounts among others
+A culture that promotes work/life balance, celebrates diversity, and offers numerous family-oriented events throughout the year
+
+More About Syngenta
+
+Syngenta is a global leader in agriculture; rooted in science and dedicated to bringing plant potential to life. Each of our 28,000 employees in more than 90 countries work together to solve one of humanity’s most pressing challenges: growing more food with fewer resources. A diverse workforce and an inclusive workplace environment are enablers of our ambition to be the most collaborative and trusted team in agriculture. Our employees reflect the diversity of our customers, the markets where we operate and the communities which we serve. No matter what your position, you will have a vital role in safely feeding the world and taking care of our planet. Join us and help shape the future of agriculture.
+
+Syngenta is an Equal Opportunity Employer and does not discriminate in recruitment, hiring, training, promotion or any other employment practices for reasons of race, color, religion, gender, national origin, age, sexual orientation, marital or veteran status, disability, or any other legally protected status.
+
+Family and Medical Leave Act (FMLA)
+
+( http://www.dol.gov/whd/regs/compliance/posters/fmla.htm )
+
+Equal Employment Opportunity Commission's (EEOC)
+
+( http://webapps.dol.gov/elaws/firststep/poster_direct.htm )
+
+Employee Polygraph Protection Act (EPPA)
+
+( http://www.dol.gov/whd/regs/compliance/posters/eppa.htm )
+
+Primary Location
+
+USA-Illinois-Chicago
+
+Job
+
+IS & Business Architecture - Software Engineering
+
+"
+Octopus Energy,Backend Developer,"Houston, TX
+Hybrid","Posted by
+
+Kylea Pooler
+
+Leading recruitment efforts for Octopus Energy US 🐙
+
+Send InMail
+
+Welcome to the future of energy
+
+
+
+
+We’re a leading energy technology company providing a better experience for our customers through transparency, honesty and simplicity. Better for the planet, through real long-term investment in renewable generation and a low CO2 future and better for our customer’s wallets with fair and affordable plans. Through our proprietary platform and custom-built stack, cloud-based billing, and sophisticated use of data science, we’re revolutionizing what’s possible in energy. We’re transforming the way people interact with their energy company, by making it approachable, easy-to-understand, and most importantly, 100% renewable. We’ve distinguished ourselves by being named 2020’s Energy Provider of the Year, which highlights our commitment to exceptional customer service.
+
+
+
+
+We’ve just hopped across the pond in the US and are making big strides in Texas...but that’s only the beginning. Come join our rapidly growing team as we continue to break barriers in energy.
+
+
+
+
+Our team
+
+
+
+
+We follow a Kanban-like approach, using Google docs, BaseCamp, and Asana to specify and manage work; Github, CircleCI and Terraform Enterprise as part of an immutable-infrastructure, continuous delivery pipeline; and Loggly, Sentry and Cloudwatch to measure performance and monitor production.
+
+
+
+
+Engineering standards are high. We thoroughly review and test code before it deploys, and maintain fast, high-value test suites. We have weekly tech talks, monthly blitz-days (eg sharpening our internal tools, upgrading dependencies) and can often be found at tech meet-ups and conferences.
+
+
+
+
+Our coding conventions are open-source and we maintain a tech blog.
+
+
+
+
+Octopus is a great place to learn, work with some talented engineers and level-up your skills.
+
+
+
+
+Our technology
+
+
+
+
+On the server-side, we mainly use Python. Most of our websites are powered by Django and the Django-REST-framework. We also use Pandas, Numpy and Jupyter for analysis and forecasting, plus Celery, RabbitMQ, SQS and Airflow for background processing.
+
+
+
+
+We use AWS heavily, employing most of the ""Hashistack"" (eg Packer, Consul, Terraform) as part of a continuous deployment pipeline. See, for example, Django, ELB health checks and continuous delivery.
+
+
+
+
+Client-side, we use React, Redux and SASS; our mobile apps are built using React Native.
+
+
+
+
+What you'll do
+
+We have lots of difficult design challenges to solve. The US energy market is complicated, outdated and process-heavy - there's a lot of domain modelling that we need to get right. Strong attention to detail is essential.
+We have difficult technical problems to solve. With the advent of smart meters, we'll soon be processing millions of meter readings a day. We need the right technology in place to handle this smoothly as well as feeding data into a machine learning pipeline that models and predicts consumption.
+Often, we can only give you the question and not the answer, because if we knew the answer, we wouldn’t be hiring - are you someone who not only finds answers but creates value by coming back and asking better questions?
+There's a great opportunity for disruption in the US energy market. The big suppliers still dominate, but are not popular. The energy landscape is changing as we move to more dis-aggregated forms of generation, with less predictability, more dynamism and smarter technology. Octopus Energy were the first UK supplier to introduce a ""tracker"" tariff whose prices track the daily wholesale prices: http://www.cleanenergynews.co.uk/news/efficiency/octopus-offers-transparency-with-wholesale-price-tariff
+You'll be working for a company that’s fighting climate change. Our parent company is the largest investor in solar generation in the UK, and are funding wind and anaerobic digestion. As a supplier, we're helping people to use greener technology and renewable energy, all helping move the UK towards a lower carbon future.
+
+
+
+
+What you'll have
+
+General interest in technology and problem-solving; Diligent and thoughtful.
+Good communication skills
+Python
+Django
+Django REST Framework
+Domain modelling
+HTTP and REST APIs
+Writing robust and fault-tolerant software
+Celery and async processing
+Postgres
+Legally able to work within the USA
+Plus experience in the following would be a bonus:
+AWS
+Terraform, Packer, Consul
+React and Redux
+Professional understanding of the US energy domain
+
+
+
+
+What you'll love about us
+
+Great medical, dental, and vision insurance options including FSAs
+Unlimited paid time off — we know working hard means also being able to recharge as needed, we trust our employees to get the work done and take the time they need..
+401(k) plan with employer match:
+Parental leave. Biological, adoptive and foster parents are all eligible.
+Pre-tax commuter benefits .
+Flexible working environment: you need to shift around your schedule? You do you, we genuinely believe in work/life balance.
+Equity Options: every Octopus employee owns part of the business. We’re a team, working together towards huge goals. Every person is crucial to our success, you should be rewarded as such.
+Modern office or co-working spaces depending on location.
+
+
+
+
+We would prefer someone who can work post-pandemic in our Houston office. For those who want to work within the USA, we cannot sponsor H1 applications.
+
+
+
+
+Above all, we’re looking for someone who thrives on providing alternative opinions, challenging those around them and being challenged.
+
+
+
+
+If this all sounds like you then we'd love to hear from you!
+
+
+
+
+At Octopus, we're looking for genuinely decent people who are honest and empathetic. Our commitment is to provide equal opportunities, a diverse and inclusive work environment, and fairness for everyone. You are welcome to apply no matter your race, gender identity, sexuality, age, family or civil status, disability, religion, or ethnicity."
+Bethesda Softworks,Software Engineer - Backend Developer,"Baltimore, MD
+Hybrid","Overview
+
+The Bethesda.net team is seeking a talented software engineer to contribute to the Bethesda Softworks Digital Publishing Platform. This role focuses on backend feature development that supports online games, administrative tools, web, and mobile applications.
+
+
+
+
+Our services layer primarily uses Go and Python along with gRPC/Protobuf and RESTful interfaces. Our systems are cloud-based, using both AWS and Azure as our cloud platform. Our systems are running at scale 24x7, and all engineers participate in architecture discussions, live support, and our continuous improvement processes.
+
+
+
+
+We are always exploring ways to improve our scale, reliability, and efficiency. Engineers are expected to learn and support new technologies, as well as propose new solutions that solve observed problems.
+
+
+
+
+This position can be located in our Rockville or Austin offices. Open to alternate work locations. 
+
+Responsibilities
+
+Implement and maintain new and existing features under the direction of a Lead Engineer
+Write clean, maintainable code that is scalable, reliable, and observable
+Support systems in a 24x7 environment including troubleshooting, hot fixing, and root cause analysis
+Actively provide code review and feedback for other developers
+Learn new technologies and programming languages as needed
+Ensure consistency with security policy standards and security plan
+Understand and define infrastructure as code to support systems developed
+Collaborate with other engineers and engineering teams to delivery high quality, complex systems – this includes Ops Infra, Security, QA, NOC, and Game Developers
+Other duties as assigned
+
+Qualifications
+
+Bachelor’s degree in Computer Science (or equivalent experience)
+2+ years of experience as a software engineer
+Possess a strong technical background and deep knowledge of software engineering principles, exceptional problem solving, design, programming, and testing skills
+2+ years of Go and/or Python experience, preferably building web services
+Professional experience working with either AWS or Azure
+Working knowledge of containers (e.g., Docker) and container orchestration (e.g., Kubernetes)
+Working knowledge of databases (SQL and NoSQL) and caching technologies (e.g., Redis)
+Experience supporting live systems at scale
+Experience with version control systems (GitHub preferred)
+Desire to learn new languages and technology
+Pragmatic approach to providing engineering solutions that solve business needs
+Excellent written and verbal skills
+
+We embrace diversity, equity, and inclusion in everything we do – from recruiting for our studios, publishing and operations to fostering safe and respectful workplaces that encourage collaboration. Our culture is based on principles of respect, inclusion, and fair treatment and we welcome anyone into our family without regard to race, religion, gender identity, sexual orientation, or age.
+
+Our diversity fuels our innovation and inspires us to create game worlds that bring us closer to the global community of players we serve."
+The Dyrt,Lead Backend Developer (Remote),"Portland, OR
+Remote","The Dyrt is the largest digital camping platform in the world. Every second, a new user visits The Dyrt to access our community-driven campground information.
+
+
+
+
+If you love the outdoors and want to be part of a fast-growing consumer app, you’re in the right place.
+
+
+
+
+The Role
+
+We are seeking a talented backend developer with a Ruby background to lead our API team as we solve exciting new problems in the outdoor space. In this role, you’ll be working to evolve and maintain our API and other backend systems.
+
+
+
+
+This position will report to the VP of Engineering.
+
+
+
+
+We’re looking for people who:
+
+Are great communicators — Effective communication is key to how we work. We value patience and empathy in our product planning, support, and day-to-day relations.
+Work well both collaboratively and independently — We come together to pair on tricky problems and architecture, then dive deep on individual tasks.
+Are ready to learn and share knowledge — Everyone comes to our company with their own set of skills and experiences. Cross-training, code review, mentorship, and curiosity all help us build better products.
+
+
+
+
+Key Responsibilities:
+
+Lead a team of 2-5 other backend developers working to evolve and maintain our core API and data pipelines.
+Collaborate on API design and architecture decisions
+Work closely with our frontend teams on the implementation of new product features
+Diagnose and troubleshoot issues in production
+Implement and maintain integrations with external services, such as Stripe, Iterable, Mapbox, and our campground partners
+
+
+
+
+Experience and Requirements:
+
+8+ years of backend development experience on production apps in Ruby, Python, Java, or a similar language.
+Experience managing developers and a desire to help your team flourish.
+A working knowledge of Ruby and familiarity with Rails
+A solid understanding of object-oriented programming and design
+Relational database skills — we use PostgreSQL views, triggers, and functions
+
+
+
+
+Extra Credit:
+
+Experience with Elasticsearch
+Familiarity with JSON-API
+
+
+
+
+Working Here
+
+The Dyrt is built by campers, for campers—whether you’re new to camping or have been camping your whole life.
+
+
+
+
+We encourage everyone to spend more time outside, including employees. We offer competitive market-rate salaries, a generous vacation plan, and we even pay employee bonuses for using The Dyrt in the wild.
+
+
+
+
+This is a full-time remote position. Employees are expected to have high-speed internet and a professional working environment sufficient for clear video conferencing during regular working hours. Many of our employees work virtually from Portland, OR but we’re flexible on location and encourage all to explore. Our founders even work from their van.
+
+
+
+
+The Dyrt is an equal opportunity workplace. We are especially proud to have a female founder and a higher percentage of female employees than the national average for tech companies. We believe that the outdoors are for everyone, and are committed to building an inclusive platform and community that encourages, supports, and celebrates all people interested in camping.
+
+
+
+
+Interested candidates should submit a cover letter and resume.
+
+
+
+
+About The Dyrt
+
+The Dyrt was started in Portland, OR, is venture-backed, and has 40-50 employees working virtually around the U.S."
+Click Here Digital,Software Engineer,"Baton Rouge, LA
+On-site","Posted by
+
+Shelly Romine Spruell 2nd
+
+Director of Human Resources at Click Here Digital
+
+Send InMail
+
+Click Here Digital is looking for a senior software engineer to design and implement new systems and features, as well as modify and maintain existing systems for adaptation changes to the business and/or technology. The senior software engineer interfaces directly with IT management, engineering teams, internal stakeholders, and vendors to ensure the successful delivery of high-quality software.
+
+
+
+
+To be successful as a senior software engineer, you should have a proven ability to juggle multiple projects in a fast-paced environment and an extensive amount of experience building features with a strong focus on security, scalability, stability, and speed. Ultimately, a senior software engineer will ensure that software deliverables comply with the department and business quality standards and are completed on time and within budget.
+
+
+
+
+As a senior software engineer, you will report directly to the VP of Engineering, providing support and mentorship to junior and mid-level software engineers and working in close partnership with the middle and executive management teams.
+
+Responsibilities:
+
+Serve as a technical lead contributing to and directing the efforts of the engineering team(s), including collaborating with internal and external team members
+Designing, developing, testing, deploying, maintaining, and improving software components and services
+Participate in peer reviews by providing constructive feedback and suggestions for improvement of code quality and efficiency
+Create technical documentation and diagrams for application functionality
+Contribute to the planning and estimation of software projects
+Ability to work a flexible schedule during peak periods, typically during the client reporting period to assist with troubleshooting and/or issue resolution
+
+Required Skills and Experience:
+
+Bachelor’s degree Computer Science or related field
+Minimum of 8 years of professional programming experience
+High proficiency in designing, developing, and implementing scalable software solutions
+Excellent analytical and problem-solving skills
+Excellent written and verbal communication skills
+Demonstrated ability and willingness to lead others
+Demonstrated organization and project management skills
+Ability to work independently and as part of a team with limited supervision
+
+
+
+
+Technical Expertise:
+
+PEVN Stack (PostgreSQL, Node.js, Express.js, Vue.js) - 5 years
+PHP (Laravel framework) - 3 years
+Python - 3 years (preferred)
+Go - 2 years (preferred)
+Docker - 5 years
+Kubernetes - 3 years
+
+Preferred Skills and Experience:
+
+Proficiency with Terraform
+Strong knowledge of the AWS ecosystem, including EC2, ECS, RDS, SQS, CloudWatch, Lambda, ElastiCache, etc.
+
+
+"
+Ramper,"Founding Software Engineer, Frontend","San Francisco Bay Area
+Remote","Company
+
+Our mission is to onboard the next billion people onto crypto. We are starting off by building a seamless user onboarding experience for crypto-native applications.
+
+
+
+
+Raised $3m in seed
+Small team based in Seoul and Bay Area with remote option available (core work hours are 1-8p PST)
+Open roles are listed below, but we are looking for all types of hackers & builders
+
+
+
+
+💡 To apply — email resume to sisun@ramper.xyz
+
+
+
+
+Overview
+
+We are looking for a frontend engineer to join the founding team to make digital ownership and identity human-centric and accessible to everyone. You will develop the core web experiences that will onboard the next billion users onto web3.
+
+
+
+
+Responsibilities
+
+Develop consumer-facing applications to bridge everyday users to web3
+Be obsessed with the customer experience
+Make key decisions on frontend technology and architecture with the team
+Own and be responsible for face-paced, iterative development processes
+Work closely with the co-founders
+Accelerate the growth in all aspects of your career
+
+
+
+
+Requirements
+
+Experience with Typescript
+5+ years of progressive experience, showing growth in responsibilities and impact within a team environment
+Experience with React, React Hooks, and Redux
+Experience in all phases of testing (unit, integration, end-to-end)
+Experience in CSS preprocessors like LESS or SCSS
+Strong interpersonal skills that demonstrate empathy and the ability to distill technical concepts into digestible pieces
+Experience in Next.js, Firebase, GCP, and/or AWS is a plus
+Experience in building a Dapp or interacting with the Ethereum blockchain is a plus. For example, ethers.js, useDApps, and web3-react.
+
+
+"
+Roblox,Software Engineer- Compute Infrastructure,"San Mateo, CA
+On-site","Every day, tens of millions of people from around the world come to Roblox to play, learn, work, and socialize in immersive digital experiences created by the community. Our vision is to build a platform that enables shared experiences among billions of users. This is what’s known as the metaverse: a persistent space where anyone can do just about anything they can imagine, from anywhere in the world and on any device. Join us and you’ll usher in a new category of human interaction while solving exceptional challenges that you won’t find anywhere else.
+
+As a software engineer in the Infra Compute organization you are going to be creating, supporting, and evolving the compute infrastructure at Roblox as we build out Roblox’s Private Cloud.
+
+
+Container orchestration and cluster management; 
+Service-to-service communication and networking (including Service Mesh and the API Gateway); and 
+Scheduling, provisioning, and management of the growing Roblox machine fleet.
+
+Come help us create, support and evolve the infra that manages the millions of containers that serve hundreds of millions of requests per second.
+
+You Are
+
+1+ year of industry experience
+Care deeply about production health and reliable, sustainable production systems
+Love for building and supporting networks, systems and large scale distributed infrastructure
+Customer, team, and quality oriented
+Like getting things done
+
+You Will
+
+Create, build, and support the cluster management, and service infrastructure that powers Roblox
+
+Industry-leading compensation package
+Excellent medical, dental, and vision coverage
+A rewarding 401k program
+Flexible vacation policy
+Roflex - Flexible and supportive work policy 
+Roblox Admin badge for your avatar
+At Roblox HQ: 
+Free catered lunches
+Onsite fitness center and fitness program credit
+Annual CalTrain Go Pass"
+Houzz,Senior Software Engineer,"Irvine, CA","Houzz is the world’s leading platform for home remodeling and design, helping more than 2.5 million home professionals in over 100 categories to grow and manage their business. Through Houzz, a community of more than 65 million homeowners and home design enthusiasts, find ideas, hire professionals, source products and access tools to update their homes from start to finish. Houzz is available in every country around the world with localized platforms in more than 10 countries across North America, Europe, Asia and Australia.
+
+As a Senior Software Engineer, you will be a key contributor on our communication platform team that powers the product features that serve Houzz users. You will be responsible for designing and developing features to power homeowners and professionals to efficiently communicate on the platform.
+
+__________________
+
+What You’ll Do
+
+ Lead and evaluate technical tradeoffs 
+ Drive the design and implementation of projects full stack 
+ Following the software development lifecycle 
+
+At a Minimum, We’d Like You to Have
+
+ 3+ years of industry experience in ads quality, machine learning, recommendation, and/or information retrieval 
+ Strong communication skills 
+ Proven track record of delivering results 
+ B.S., M.S., or Ph.D. in Computer Science or equivalent 
+
+Ideally, You'll Also Have
+
+ Passion for working in a dynamic and collaborative environment 
+ Independence, self-direction and experience owning complete products and features 
+
+__________________
+
+Be Who You Are and Do What You Love at Houzz 
+
+We’re a Family
+
+At Houzz, we strive to create and foster a strong family environment in our workplace. We collaborate to accomplish our goals, always working as a team. We aim to build a culture of inclusion — celebrating and leveraging our differences for the betterment of one another, our products and our community.
+
+Houzz team members come from many backgrounds and bring diverse experiences to the company. We take pride in making each person feel at home.
+
+We Build the Future
+
+Join Houzz in revolutionizing the home remodeling and design industry and have an impact on our community of more than 65 million homeowners and home design enthusiasts who use our platform and the 2.5 million-plus home professionals around the world who grow and manage their business with Houzz Pro. Houzz has been named one of the most innovative companies in the world by CNBC and others, and is backed by top venture capitalists. At Houzz, you can help drive the future of an industry worth over $1 trillion in the U.S. and Europe alone.
+
+We Make Things Happen 
+
+Our team members play a key role in guiding the direction of our company and are able to work across multiple groups to implement fresh ideas that allow Houzz to be the industry leader. If you are interested in applying your passion to create products that will transform the lives of millions of people who are designing, remodeling and decorating their homes, welcome to Houzz.
+
+Benefits and Perks
+
+ Competitive salary 
+ Flexible paid time off 
+ Commuter benefits 
+ Medical, dental, vision and pet insurance 
+ Maternity/paternity leave program 
+ Employee assistance program 
+ 401k retirement savings plan 
+ Flexible spending accounts 
+ Healthy at Houzz program 
+
+Houzz is proud to be an Equal Employment Opportunity employer. When applying for a role at Houzz, we guarantee your application will be considered regardless of your sex, race, religion, color, gender, national origin, height or weight, ancestry, physical or mental disability, medical condition, genetic information, marital status, registered domestic partner status, age, sexual orientation, military and veteran status or any other basis protected by federal, state or local law or ordinance or regulation.
+
+We embrace and celebrate the value that diversity brings to an organization and understand that diverse backgrounds and different points of view are essential components of helping Houzz in our mission to provide the best experience for home renovation and design. Houzz is committed to fostering an inclusive environment through projects and initiatives such as employee resource groups and diversity workshops.
+
+Houzz celebrates differences and strives to create a comfortable and authentic climate for Houzzers to feel supported, where they are welcomed to think creatively and contribute to innovative ideas, while having the freedom to be themselves and share their lives at work.
+
+If you are a California resident applying for a job, you consent to our "
+Medtronic,Senior Software Engineer (Remote),"Northridge, California, United States
+Remote","About Houzz
+
+Houzz is the world’s leading platform for home remodeling and design, helping more than 2.5 million home professionals in over 100 categories to grow and manage their business. Through Houzz, a community of more than 65 million homeowners and home design enthusiasts, find ideas, hire professionals, source products and access tools to update their homes from start to finish. Houzz is available in every country around the world with localized platforms in more than 10 countries across North America, Europe, Asia and Australia.
+
+About The Role
+
+As a Senior Software Engineer, you will be a key contributor on our communication platform team that powers the product features that serve Houzz users. You will be responsible for designing and developing features to power homeowners and professionals to efficiently communicate on the platform.
+
+__________________
+
+What You’ll Do
+
+Lead and evaluate technical tradeoffs
+Drive the design and implementation of projects full stack
+Following the software development lifecycle
+
+At a Minimum, We’d Like You to Have
+
+3+ years of industry experience in ads quality, machine learning, recommendation, and/or information retrieval
+Strong communication skills
+Proven track record of delivering results
+B.S., M.S., or Ph.D. in Computer Science or equivalent
+
+Ideally, You'll Also Have
+
+Passion for working in a dynamic and collaborative environment
+Independence, self-direction and experience owning complete products and features
+
+__________________
+
+Be Who You Are and Do What You Love at Houzz
+
+We’re a Family
+
+At Houzz, we strive to create and foster a strong family environment in our workplace. We collaborate to accomplish our goals, always working as a team. We aim to build a culture of inclusion — celebrating and leveraging our differences for the betterment of one another, our products and our community.
+
+Houzz team members come from many backgrounds and bring diverse experiences to the company. We take pride in making each person feel at home.
+
+We Build the Future
+
+Join Houzz in revolutionizing the home remodeling and design industry and have an impact on our community of more than 65 million homeowners and home design enthusiasts who use our platform and the 2.5 million-plus home professionals around the world who grow and manage their business with Houzz Pro. Houzz has been named one of the most innovative companies in the world by CNBC and others, and is backed by top venture capitalists. At Houzz, you can help drive the future of an industry worth over $1 trillion in the U.S. and Europe alone.
+
+We Make Things Happen
+
+Our team members play a key role in guiding the direction of our company and are able to work across multiple groups to implement fresh ideas that allow Houzz to be the industry leader. If you are interested in applying your passion to create products that will transform the lives of millions of people who are designing, remodeling and decorating their homes, welcome to Houzz.
+
+Benefits and Perks
+
+Competitive salary
+Flexible paid time off
+Commuter benefits
+Medical, dental, vision and pet insurance
+Maternity/paternity leave program
+Employee assistance program
+401k retirement savings plan
+Flexible spending accounts
+Healthy at Houzz program
+
+Houzz is proud to be an Equal Employment Opportunity employer. When applying for a role at Houzz, we guarantee your application will be considered regardless of your sex, race, religion, color, gender, national origin, height or weight, ancestry, physical or mental disability, medical condition, genetic information, marital status, registered domestic partner status, age, sexual orientation, military and veteran status or any other basis protected by federal, state or local law or ordinance or regulation.
+
+We embrace and celebrate the value that diversity brings to an organization and understand that diverse backgrounds and different points of view are essential components of helping Houzz in our mission to provide the best experience for home renovation and design. Houzz is committed to fostering an inclusive environment through projects and initiatives such as employee resource groups and diversity workshops.
+
+Houzz celebrates differences and strives to create a comfortable and authentic climate for Houzzers to feel supported, where they are welcomed to think creatively and contribute to innovative ideas, while having the freedom to be themselves and share their lives at work.
+
+If you are a California resident applying for a job, you consent to our California Job Applicant Privacy Notice"
+Houzz,Software Engineer,"Irvine, CA","Houzz is the world’s leading platform for home remodeling and design, helping more than 2.5 million home professionals in over 100 categories to grow and manage their business. Through Houzz, a community of more than 65 million homeowners and home design enthusiasts, find ideas, hire professionals, source products and access tools to update their homes from start to finish. Houzz is available in every country around the world with localized platforms in more than 10 countries across North America, Europe, Asia and Australia.
+
+As a Full-Stack Software Engineer, you will work on all parts of our web application, its libraries, widgets and custom features. Our tech stack includes React, Node, GraphQL, Java, Python, AWS, GitHub, Jenkins, Kubernetes, MySQL, Lucene/Solr, Redis, Javascript, CSS and more.
+
+__________________
+
+What You’ll Do
+
+ Take high level ideas and transforming them into live products, used by millions of homeowners and professionals from around the world 
+ Build features for all parts of our web application, its libraries, widgets and custom features 
+ Work cross-functionally across engineering, product, and design teams 
+
+At a Minimum, We’d Like You to Have
+
+ Proficiency in web stack programming, from schema design to building user-facing interfaces 
+ A desire to build an engaging consumer experience 
+ B.S., M.S., or Ph.D. in Computer Science or equivalent 
+ 1+ years of experience 
+
+Ideally, You'll Also Have
+
+ Independence, self-direction and experience owning complete products and features 
+ Experience developing consumer facing features for millions of consumers 
+ Familiarity with NoSQL databases and Lucene/Solr 
+ Comfort working on fast paced, data-driven projects 
+ 3+ years experience 
+
+__________________
+
+Be Who You Are and Do What You Love at Houzz
+
+We’re a Family
+
+At Houzz, we strive to create and foster a strong family environment in our workplace. We collaborate to accomplish our goals, always working as a team. We aim to build a culture of inclusion — celebrating and leveraging our differences for the betterment of one another, our products and our community.
+
+Houzz team members come from many backgrounds and bring diverse experiences to the company. We take pride in making each person feel at home.
+
+We Build the Future
+
+Join Houzz in revolutionizing the home remodeling and design industry and have an impact on our community of more than 65 million homeowners and home design enthusiasts who use our platform and the 2.5 million-plus home professionals around the world who grow and manage their business with Houzz Pro. Houzz has been named one of the most innovative companies in the world by CNBC and others, and is backed by top venture capitalists. At Houzz, you can help drive the future of an industry worth over $1 trillion in the U.S. and Europe alone.
+
+We Make Things Happen
+
+Our team members play a key role in guiding the direction of our company and are able to work across multiple groups to implement fresh ideas that allow Houzz to be the industry leader. If you are interested in applying your passion to create products that will transform the lives of millions of people who are designing, remodeling and decorating their homes, welcome to Houzz.
+
+Benefits and Perks
+
+ Competitive salary 
+ Flexible paid time off 
+ Commuter benefits 
+ Medical, dental, vision and pet insurance 
+ Maternity/paternity leave program 
+ Employee assistance program 
+ 401k retirement savings plan 
+ Flexible spending accounts 
+ Healthy at Houzz program 
+
+Houzz is proud to be an Equal Employment Opportunity employer. When applying for a role at Houzz, we guarantee your application will be considered regardless of your sex, race, religion, color, gender, national origin, height or weight, ancestry, physical or mental disability, medical condition, genetic information, marital status, registered domestic partner status, age, sexual orientation, military and veteran status or any other basis protected by federal, state or local law or ordinance or regulation.
+
+We embrace and celebrate the value that diversity brings to an organization and understand that diverse backgrounds and different points of view are essential components of helping Houzz in our mission to provide the best experience for home renovation and design. Houzz is committed to fostering an inclusive environment through projects and initiatives such as employee resource groups and diversity workshops.
+
+Houzz celebrates differences and strives to create a comfortable and authentic climate for Houzzers to feel supported, where they are welcomed to think creatively and contribute to innovative ideas, while having the freedom to be themselves and share their lives at work.
+
+If you are a California resident applying for a job, you consent to our "
+Microsoft,Senior Software Engineer- Front End,"Portland, OR","MULTIPLE POSITIONS l OPEN TO REMOTE 
+
+Help unlock the true power of data today to create a better tomorrow. 
+
+ 
+
+The Intelligence Platform team at Microsoft, is creating a new generation of tools and infrastructure to transform data into insight and into action. The world produces exabytes of data every hour, yet people and organizations tap into only a fraction of its full value today because their tools take too much time and expertise to use. We’ve set out to make it easy for them to harness data to solve critical problems and create innovative new products, services, and experiences. So that it looks and feels like magic to our users, our team does the hard work to build world-class user experiences, platforms and services that remove the complexity and pain of working with big data. 
+
+ 
+
+We’re looking for great front-end engineers to develop amazing user experiences for our applications and platform tools so people can easily extract the full value of their data. You will solve challenging technical problems and apply the latest open-source web technologies to build modern user interfaces that are performant, reliable, secure, responsive, and accessible. They include web technologies, such as React, Angular, TypeScript, JavaScript, jQuery, HTML5, and D3. 
+
+We’re a rapidly growing global team. We foster a high-trust environment with great collaboration, open dialogue, and fun. We celebrate our different identities, cultures, experiences, and work styles. We seek out diverse perspectives and challenge our assumptions, so we build the best product together. We value excellence and support each other in learning and growing together. We try new ideas, learn, fail-fast, and try again. And ultimately, we love delighting our customers and helping them succeed. 
+
+ 
+
+We’d like your help in advancing the state-of-the-art in big data! 
+
+
+Deliver world-class user experiences to customers in collaboration with UX designers and product managers 
+Design, code, test, and operate applications that are performant, reliable, secure, responsive, and accessible 
+Contribute as a technical leader to the product vision, roadmap, architecture, and planning 
+Make engineering investments and build reusable components to ship faster with higher quality and consistency 
+Work with customers to make them successful and understand their unmet needs 
+Collaborate with partner teams to deliver new value in our product and across Microsoft’s products 
+Foster a culture of excellence, inclusion, collaboration, and customer focus 
+
+Required Qualifications 
+
+5+ years of industry software engineering experience with HTML5, CSS, JavaScript/TypeScript, or other Frontend language, and a modern web framework (e.g., React, Angular, Vue) 
+5+ years of demonstrated technical leadership in shipping high-quality cloud services and/or applications 
+
+Undergraduate degree in Computer Science OR related engineering experience 
+Systematic problem solving with clean, modular design thinking 
+Track record of excellence in software engineering, including design, coding, code reviews, testing, and devops 
+Excellent technical leadership, mentorship, collaboration, and communication 
+Experience with building, deploying, and operating applications and services on cloud platforms (e.g., Azure, AWS, GCP) 
+Experience with using big data, streaming, and analytics (e.g., Spark, SQL, Power BI) 
+Experience with using data visualization technologies (e.g., D3, Highcharts) 
+Growth mindset to learn, seek diverse viewpoints, and stay current with industry trends and techniques 
+Startup mentality to move and iterate rapidly, work across disciplines, and focus on customers "
+Meta,"Software Engineer, Machine Learning","United States
+Remote",
