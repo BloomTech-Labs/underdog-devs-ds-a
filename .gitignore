@@ -21,3 +21,4 @@ Pipfile.lock
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 */.DS_Store
+*-checkpoint.ipynb
