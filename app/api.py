@@ -4,25 +4,19 @@ from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
 from app.data import MongoDB
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
+from app.vader_sentiment import vader_score
 
 API = FastAPI(
     title='Underdog Devs DS API',
-
-    version="0.44.3",
-
+    version="0.44.4",
     docs_url='/',
 )
-
-
 API.db = MongoDB("UnderdogDevs")
 API.matcher = MatcherSortSearch()
 API.resource_matcher = MatcherSortSearchResource()
-
 API.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -30,6 +24,15 @@ API.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+async def is_collection(collection: str):
+    known_collections = (await collections()).get("result").keys()
+    if collection not in known_collections:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Collection: '{collection}', not found",
+        )
 
 
 @API.get("/version")
@@ -58,31 +61,35 @@ async def create(collection: str, data: Dict):
         Input Example:
         collection = "Mentees"
         data = {
-            "profile_id": "test001",
-            "first_name": "Luca",
-            "last_name": "Evans",
-            "email": "fake@email.com",
-            "city": "Ashland",
-            "state": "Oregon",
-            "country": "USA",
-            "formerly_incarcerated": true,
-            "underrepresented_group": true,
-            "low_income": true,
-            "list_convictions": [
-            "Infraction",
-            "Felony"
-            ],
-            "subject": "Web: HTML, CSS, JavaScript",
-            "experience_level": "Beginner",
-            "job_help": false,
-            "industry_knowledge": false,
-            "pair_programming": true,
-            "other_info": "Notes"
-        }
+          "profile_id": "74L22I58tn1QL4yk",
+          "mentee_intake_id": null,
+          "name": "Zayden Wilson",
+          "email": "fake@email.com",
+          "location": "New York, New York",
+          "in_US": true,
+          "formerly_incarcerated": false,
+          "underrepresented_group": false,
+          "low_income": true,
+          "convictions": "String of convictions",
+          "list_convictions": [],
+          "tech_stack": "Career Development",
+          "experience_level": "Advanced",
+          "job_help": true,
+          "industry_knowledge": false,
+          "pair_programming": false,
+          "your_hope": "String",
+          "need": "Laptop",
+          "parole_restriction": true,
+          "disability": true,
+          "work_status": true,
+          "assistance": false,
+          "other_info": "Notes"
+    }
 
     Returns:
         New collection's data as dictionary
     """
+    await is_collection(collection)
     return {"result": API.db.create(collection, data)}
 
 
@@ -101,6 +108,7 @@ async def read(collection: str, data: Optional[Dict] = None):
     Returns:
         List of all matching documents
     """
+    await is_collection(collection)
     return {"result": API.db.read(collection, data)}
 
 
@@ -120,6 +128,7 @@ async def update(collection: str, query: Dict, update_data: Dict):
     Returns:
         Integer count of updated documents
     """
+    await is_collection(collection)
     return {"result": API.db.update(collection, query, update_data)}
 
 
@@ -138,6 +147,7 @@ async def collection_search(collection: str, search: str):
     Returns:
         List of queried documents
     """
+    await is_collection(collection)
     return {"result": API.db.search(collection, search)}
 
 
@@ -190,6 +200,7 @@ async def delete(collection: str, profile_id: str):
     Returns:
         Dictionary with key of "deleted" and value of the profile_id
     """
+    await is_collection(collection)
     API.db.delete(collection, {"profile_id": profile_id})
     return {"result": {"deleted": profile_id}}
 
@@ -225,29 +236,22 @@ async def financial_aid(profile_id: str):
         the probability that financial aid will be required
     """
 
-    profile = API.db.read('Mentees', {"profile_id": profile_id})
+    profile = API.db.first('Mentees', {"profile_id": profile_id})
 
-    if profile == []:
+    if not profile:
         raise HTTPException(status_code=404, detail="Mentee not found")
 
-    return {"result": financial_aid_gen(profile[0])}
+    return {"result": financial_aid_gen(profile)}
 
-@API.post("/sentiment_analysis/{sentiment}")
-async def sentiment_analysis(sentiment: str):
-    """Returns whether or not the supplied text is positive or negative.
 
-    Calls vaderSentiment's SentimentIntensityAnalyzer on a given text
-    and returns the compound sentiment score.  All scores above 0 categorized
-    as 'positive' and all other scores categorized as negative 
+@API.post("/sentiment")
+async def sentiment(text: str):
+    """ Returns positive, negative or neutral sentiment of the supplied text.
 
     Args:
-        sentiment (str): the text to be analyzed
+        text (str): the text to be analyzed
 
     Returns:
-        positive/negative prediction based on analysis
+        positive/negative/neutral prediction based on sentiment analysis
     """
-
-    t = SentimentIntensityAnalyzer()
-    return {"result": ('positive'
-                       if t.polarity_scores(sentiment)['compound'] > 0
-                       else 'negative')}
+    return {"result": vader_score(text)}
