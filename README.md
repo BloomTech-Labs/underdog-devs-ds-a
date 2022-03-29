@@ -7,23 +7,24 @@ You can find the deployed project at [Underdog Devs](https://www.underdogdevs.or
 
 
 # Contributors
-| Senior Management Team  | Data Science Team FT43 | Data Science Team FT42 |
-| ------------- | ------------- | ------------ |
-| [Robert Sharp](https://github.com/BrokenShell)    | [Christine Wang](https://github.com/ChristineWangcy)  | [Cole Richards](https://github.com/Cole-Richards) |
-| [Ryan Hamblin](https://github.com/ryan-hamblin)  | [Sirivennela Vempati](https://github.com/sirivennelavempati)  | [Lance Turbes](https://github.com/lanceturbes) |
-| [Paul St.Germain](https://github.com/paulstgermain) | [Rodrico Sanchez](https://github.com/rodricobsanchez)  | [Matt Clibanoff](https://github.com/mattclibanoff) |
-| | [Samuel Ulloa](https://github.com/ulloa)  | [Nigel Clinton](https://github.com/NigelClinton) |
-| | [Ryland Gomez](https://github.com/RylandGomez)  | [Arthur Yang](https://github.com/sysgear) |
-| | [Michael Tran](https://github.com/mktran0417)  | [Dan Kositzke](https://github.com/dankositzke) |
-| | [Evgeny Khoroshukhin](https://github.com/ev-horrosh)  | [Royce Roberts](https://github.com/jinjahninjah) |
-| | [Archana Coimbatore Sivagurunathan](https://github.com/archana062031)  | [Viet Huynh](https://github.com/nhockcuncon77) |
-| | [Daniel Ho](https://github.com/djho57)  | |
-| | [BhavaniLakshmi Annapurna Jagarlamudi](https://github.com/Annapurnaj91)  | |
-| | [Kevin Lynner](https://github.com/LynnerKevin)  | |
-| | [Olatomi Adigun](https://github.com/OlatomiAdigun)  | |
-| | [Mohamed Mosaed](https://github.com/mohamedmosaed)  | |
-| | [Zachary Rock](https://github.com/ZacharyRock)  | |
-| | [John Baker](https://github.com/BakerJr1904)  | |
+| Senior Management Team  | Data Science Team FT43                                                  | Data Science Team FT42 |
+| ------------- |-------------------------------------------------------------------------| ------------ |
+| [Robert Sharp](https://github.com/BrokenShell)    | [Christine Wang](https://github.com/ChristineWangcy)                    | [Cole Richards](https://github.com/Cole-Richards) |
+| [Ryan Hamblin](https://github.com/ryan-hamblin)  | [Sirivennela Vempati](https://github.com/sirivennelavempati)            | [Lance Turbes](https://github.com/lanceturbes) |
+| [Paul St.Germain](https://github.com/paulstgermain) | [Rodrico Sanchez](https://github.com/rodricobsanchez)                   | [Matt Clibanoff](https://github.com/mattclibanoff) |
+| | [Samuel Ulloa](https://github.com/ulloa)                                | [Nigel Clinton](https://github.com/NigelClinton) |
+| | [Ryland Gomez](https://github.com/RylandGomez)                          | [Arthur Yang](https://github.com/sysgear) |
+| | [Michael Tran](https://github.com/mktran0417)                           | [Dan Kositzke](https://github.com/dankositzke) |
+| | [Evgeny Khoroshukhin](https://github.com/ev-horrosh)                    | [Royce Roberts](https://github.com/jinjahninjah) |
+| | [Archana Coimbatore Sivagurunathan](https://github.com/archana062031)   | [Viet Huynh](https://github.com/nhockcuncon77) |
+| | [Daniel Ho](https://github.com/djho57)                                  | |
+| | [BhavaniLakshmi Annapurna Jagarlamudi](https://github.com/Annapurnaj91) | |
+| | [Kevin Lynner](https://github.com/LynnerKevin)                          | |
+| | [Olatomi Adigun](https://github.com/OlatomiAdigun)                      | |
+| | [Mohamed Mosaed](https://github.com/mohamedmosaed)                      | |
+| | [Zachary Rock](https://github.com/ZacharyRock)                          | |
+| | [John Baker](https://github.com/BakerJr1904)                            | |
+| | [Mitch Hollberg](https://github.com/hollberg)                           | |
 
 # Architecture
 ![model_diagram](./assets/model_diagram.png)
@@ -41,7 +42,7 @@ Our research into this project stretches far and wide, covering a multitude of l
 
 # Tech Stack
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Python](https://img.shields.♠io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
