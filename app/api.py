@@ -265,6 +265,7 @@ async def sentiment_numeric(text: str) -> float:
 
     Returns:
         float (ranging from -1 to + 1) representing the overall sentiment of
-        the words within the text string.
+        the words within the text string. Allows more granular analysis of
+        sentiment.
     """
     return vader_numeric(text)

@@ -20,7 +20,7 @@ def vader_numeric(text: str) -> float:
     Return numeric 'compound' score of text using vader analysis.
     :param text: Input text (as string)
     :return: float representing the Vader sentiment analysis' "Compound" score,
-    representing the overall sentiment of the words in the text string. Note
+    representing overall sentiment of the words in the text string. Note
     that the compound score values range from -1 (100% negative) to +1 (100%
     positive).
     """
