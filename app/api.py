@@ -7,7 +7,7 @@ from fastapi.responses import JSONResponse
 from app.data import MongoDB
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
-from app.vader_sentiment import vader_score
+from app.vader_sentiment import vader_score, vader_numeric
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -255,3 +255,16 @@ async def sentiment(text: str):
         positive/negative/neutral prediction based on sentiment analysis
     """
     return {"result": vader_score(text)}
+
+@API.post("/sentiment_numeric")
+async def sentiment_numeric(text: str) -> float:
+    """ Returns .
+
+    Args:
+        text (str): the text to be analyzed
+
+    Returns:
+        float (ranging from -1 to + 1) representing the overall sentiment of
+        the words within the text string.
+    """
+    return vader_numeric(text)
