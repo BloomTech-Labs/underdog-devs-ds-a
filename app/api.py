@@ -5,13 +5,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.data import MongoDB
-from app.utilities import financial_aid_gen
+from app.utilities import financial_aid_gen, b_f_exec
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.44.4",
+    version="0.44.69",
     docs_url='/',
 )
 API.db = MongoDB("UnderdogDevs")
@@ -179,7 +179,8 @@ async def match_resource(item_id: int, n_matches: int):
 
     Args:
         item_id (int): ID number for resource item to be allocated to a mentee
-        n_matches (int): Maximum desired matching candidates. Ideally should be 1.
+        n_matches (int): Maximum desired matching candidates. Ideally should
+        be 1.
 
     Returns:
         List of mentee ID(s) """
@@ -255,3 +256,29 @@ async def sentiment(text: str):
         positive/negative/neutral prediction based on sentiment analysis
     """
     return {"result": vader_score(text)}
+
+
+@API.post("/brainfuck")
+async def brainfuck(text: str):
+    """Executes supplied code written in a simple, common, cross-api-compatible
+    programming language. Noted for its extreme minimalism (it ONLY consists of
+    8 characters), this language should be an absolute breeze to master and
+    yield increased productivity between teams and repos.
+
+    Args:
+        text (str): code to be executed
+
+    Returns:
+        the product of your imagination
+        
+    Examples:
+        
+        3+7 = -[----->+<]>.--------.++++++++++++.
+        
+        'Hello World!' = +[------->+++<]>++.---[-
+        >++<]>.-[->+++++<]>++.+++++++..+++.[--->+
+        <]>-----.---[->+++<]>.-[--->+<]>---.+++.-
+        -----.--------.-[--->+<]>.++++++.
+    """
+    command = b_f_exec(text)
+    return eval(command)
