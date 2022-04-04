@@ -8,8 +8,8 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
 # imports from Gemsin
-from gensim.models.ldamodel import Ldamodel
-from gensim.corpora.dictionary import Dictionary.
+from gensim.models.ldamodel import LdaModel
+from gensim.corpora.dictionary import Dictionary
 
 def dict_to_str(data: Dict) -> str:
     """Convert dictionaries into easy to read strings."""
