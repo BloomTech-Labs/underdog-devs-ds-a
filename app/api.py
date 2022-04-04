@@ -1,11 +1,10 @@
 from typing import Dict, Optional
-
 from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.data import MongoDB
-from app.utilities import financial_aid_gen
+from app.utilities import financial_aid_gen, topic_function
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 
@@ -255,3 +254,17 @@ async def sentiment(text: str):
         positive/negative/neutral prediction based on sentiment analysis
     """
     return {"result": vader_score(text)}
+
+
+@API.post("/topic-modeling/{num_topic}")
+async def topic_modeling(num_topic: int, text: str):
+    """ Returns the most probable topics contained in the text
+
+    Args:
+        text (str): the text to be analyzed
+        num_topic (int): the number of topics to return
+        
+    Returns:
+        Returns the most probable topics (defined by num_topics) contained in the text
+    """
+    return {"result": topic_function(text, num_topic)}

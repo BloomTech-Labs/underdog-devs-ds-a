@@ -6,7 +6,7 @@ from dataclasses import dataclass
 # import for nltk
 import nltk
 
-nltk.data.path.append("./nltk_files/")
+nltk.data.path.append("./app/nltk_files/")
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
