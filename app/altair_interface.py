@@ -55,11 +55,11 @@ def generate_schema(
     
     # Styling options
     if style_x:
-        graph.configure_axisX(**style_x)
+        graph = graph.configure_axisX(**style_x)
     if style_y:
-        graph.configure_axisY(**style_y)
+        graph = graph.configure_axisY(**style_y)
     if size:
-        graph.properties(
+        graph = graph.properties(
             height = size["height"],
             width = size["width"]
             )
