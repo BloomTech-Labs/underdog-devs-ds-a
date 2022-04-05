@@ -39,12 +39,13 @@ def computer_assignment_visualizer(mongodb_class_instance):
 
     collection = 'computer_assignment'
     search_query = {'already_matched': False}
-    test_data = mongodb_class_instance.read(collection, search_query)
-    test_df = pd.DataFrame(test_data)
-    test_df.drop(columns=['need_new_comp',
+    data = mongodb_class_instance.read(collection, search_query)
+    dataframe = pd.DataFrame(data)
+    dataframe.drop(columns=['need_new_comp',
                  'need_help_acquiring', 'already_matched'], inplace=True)
     # V Prevents false error popup for next step V
     pd.set_option('mode.chained_assignment', None)
-    for x in test_df.index:
-        test_df['rating'][x] = '⭐️' * test_df['rating'][x]
-    return test_df.sort_values('rating', ascending=False).to_html()
+    for x in dataframe.index:
+        dataframe['rating'][x] = '⭐️' * dataframe['rating'][x]
+    dataframe.set_index('profile_id', inplace=True)
+    return dataframe.sort_values('rating', ascending=False).to_html()
