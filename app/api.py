@@ -2,16 +2,17 @@ from typing import Dict, Optional
 
 from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 
 from app.data import MongoDB
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
+from app.computer_assignment import computer_assignment_visualizer
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.44.4",
+    version="0.45.1",
     docs_url='/',
 )
 API.db = MongoDB("UnderdogDevs")
@@ -45,6 +46,15 @@ async def version():
 async def collections():
     """Return collection names and a count of their child nodes."""
     return {"result": API.db.get_database_info()}
+
+
+@API.get("/cavisualizer", response_class=HTMLResponse)
+async def computer_assignment_rating_visualizer():
+    """Return an HTML table of the computer assignment
+    ratings in the computer assignment collection of the 
+    selected mongodb database.
+    """
+    return computer_assignment_visualizer(API.db)
 
 
 @API.post("/{collection}/create")

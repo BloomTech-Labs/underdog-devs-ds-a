@@ -6,20 +6,22 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import certifi
 
+from app.computer_assignment import add_computer_assignment_rating
+
 
 class MongoDB:
     """Class with pymongo CRUD operations as methods
-    
+
     This class organizes all CRUD operations into a single nexus.
     Detailed descriptions are given in individual method documentation,
     but a brief overview is given below.
-    
+
     Args:
         database (str): Name of the database to be accessed
-        
+
     Internal Methods:
         _connect: Connects to a given collection within the database.
-    
+
     External Methods:
         create: Insert a document into a given collection.
         create_many: Insert many documents into a given collection.
@@ -39,15 +41,15 @@ class MongoDB:
 
     def __init__(self, database: str):
         """Initializes the MongoDB class.
-        
+
         The database parameter is taken in to identify the specific
         database within the cluster to connect to.
-        
+
         Args:
             database (str): Name of database to connect to
         """
         self.database = database
-    
+
     def get_database(self):
         """Connect to the database passed to the class."""
         return MongoClient(
@@ -61,11 +63,11 @@ class MongoDB:
 
     def create(self, collection: str, data: Dict) -> Dict:
         """Insert a single document into a collection.
-        
+
         Connects to the collection given and inserts the data as
         a single document. Data given will be mapped to dictionary
         by default.
-        
+
         Args:
             collection (str): name of collection to add data to
             data (dict): document formatted as dictionary to be added
@@ -73,16 +75,18 @@ class MongoDB:
         Returns:
             data (dict): The data that was inserted into the collection
         """
+        if collection == 'computer_assignment':
+            add_computer_assignment_rating(data)
         self.get_collection(collection).insert_one(dict(data))
         return data
 
     def create_many(self, collection: str, data: Iterator[Dict]):
         """Insert multiple documents into a collection.
-        
+
         Connects to the collection given and inserts the data as
         a single document. Data given will be mapped to dictionary
         by default.
-        
+
         Args:
             collection (str): name of collection to add data to
             data (dict): document formatted as dictionary to be added
@@ -94,15 +98,15 @@ class MongoDB:
 
     def first(self, collection: str, query: Optional[Dict] = None) -> Dict:
         """Return first document in collection.
-        
+
         Returns the first document within a given collection. Optional
         filtering parameters for the query may be passed after the
         collection name.
-        
+
         Args:
             collection (str): Name of collection to query
             query (dict) (optional): Filtering parameters
-        
+
         Returns:
             First found document as dictionary
         """
@@ -110,15 +114,15 @@ class MongoDB:
 
     def read(self, collection: str, query: Optional[Dict] = None) -> List[Dict]:
         """Query collection with optional parameters.
-        
+
         Searches the given collection with the default parameter of
         _id: false and the option to include further parameters. Search
         parameters must be formatted as a dictionary.
-        
+
         Args:
             collection (str): name of collection to query
             query (dict) (optional): List of key value pairs to match
-        
+
         Returns:
             List of all documents matching query parameters
         """
@@ -126,10 +130,10 @@ class MongoDB:
 
     def update(self, collection: str, query: Dict, update_data: Dict) -> Tuple:
         """Update existing documents in collection matching given data.
-        
+
         Filters the given collection based on query parameters and adds
         or rewrites fields using update_data.
-        
+
         Args:
             collection (str): Name of collection to update
             query (dict): Filter query to define documents to update
@@ -138,15 +142,16 @@ class MongoDB:
         Returns:
             Tuple containing the filter (dict) and the update_data (dict)
         """
-        self.get_collection(collection).update_many(query, {"$set": update_data})
+        self.get_collection(collection).update_many(
+            query, {"$set": update_data})
         return query, update_data
 
     def delete(self, collection: str, query: Dict):
         """Delete existing documents in collection matching given data.
-        
+
         Filters the given collection based on query parameters and
         deletes all matching documents.
-        
+
         Args:
             collection (str): Name of collection to update
             query (dict): Filter query to define documents to delete
@@ -158,11 +163,11 @@ class MongoDB:
 
     def count(self, collection: str, query: Optional[Dict] = None) -> int:
         """Counts documents in collection that matches query.
-        
+
         Args:
             collection (str): Name of collection to query
             query (dict): Filter query to define documents to count
-        
+
         Returns:
             Integer count of matching documents
         """
@@ -175,13 +180,13 @@ class MongoDB:
 
     def create_index(self, collection: str):
         """Only run once - internal only!
-        
+
         Creates an index within the given collection. This should not be
         user facing in any degree without extreme caution.
-        
+
         Args:
             collection (str): The collection to affect
-            
+
         Returns:
             None
         """
@@ -189,10 +194,10 @@ class MongoDB:
 
     def drop_index(self, collection: str):
         """Internal only!
-        
+
         Removes existing index from the given collection. This should not
         be user facing in any degree without extreme caution.
-        
+
         Args:
             collection (str): The collection to affect
         Returns:
@@ -202,15 +207,15 @@ class MongoDB:
 
     def search(self, collection: str, user_search: str) -> List[Dict]:
         """Loosely search given collection using given string.
-        
+
         Performs the read method of MongoDB class, using user_search as
         a specific value parameter for query. Returns a list of matching
         documents.
-        
+
         Args:
             collection (str): collection to query
             user_search (str): searches collection for given value
-            
+
         Returns:
             List of matching documents
         """
@@ -218,11 +223,11 @@ class MongoDB:
 
     def get_database_info(self):
         """Return dictionary of collection names and their doc counts.
-        
+
         Uses previously established database and scans it for all
         collections, iteratively retrieving counts of documents within
         each respective collection.
-        
+
         Args:
             None
         Returns:
@@ -235,12 +240,12 @@ class MongoDB:
 
     def reset_collection(self, collection: str):
         """Delete given collection and recreates it without documents.
-        
+
         Resets the given collection by entirely deleting it from the
         database, and then recreating the collection without inserting
         any documents. All documents removed from this process will be
         lost entirely. Use with caution.
-        
+
         Args:
             collection (str): The collection to reset
         Returns:
