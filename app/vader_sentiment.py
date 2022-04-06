@@ -21,7 +21,6 @@ def vader_score(text: str, numerical: bool):
 
 if __name__ == '__main__':
     print(vader_score("good but not great",False))
-    # print(vader_score("A line of strings is only as good as a number"))
     """
     This is to test the expected result requested in api.py
     
