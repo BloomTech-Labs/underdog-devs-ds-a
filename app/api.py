@@ -259,7 +259,7 @@ async def sentiment(text: str, numerical=False):
             returns a numeric value from vader sentiment
     """
     if not numerical:
-        return {"result": vader_score(text)}
+        return {"result": vader_score(text)[0]}
     else:
-        pass
-        # return{"result": vader_score()}
+
+        return{"result": vader_score(text)[1]}
