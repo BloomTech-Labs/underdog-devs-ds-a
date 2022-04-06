@@ -245,7 +245,7 @@ async def financial_aid(profile_id: str):
 
 
 @API.post("/sentiment")
-async def sentiment(text: str, numerical = False):
+async def sentiment(text: str, numerical=False):
     """ Returns positive, negative or neutral sentiment of the supplied text.
 
     Args:
