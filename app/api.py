@@ -245,7 +245,7 @@ async def financial_aid(profile_id: str):
 
 
 @API.post("/sentiment")
-async def sentiment(text: str, numerical=False):
+async def sentiment(text: str, numerical: bool):
     """ Returns positive, negative or neutral sentiment of the supplied text.
 
     Args:
@@ -257,8 +257,9 @@ async def sentiment(text: str, numerical=False):
         positive/negative/neutral prediction based on sentiment analysis
         IF numerical == True:
             returns a numeric value from vader sentiment
+
     """
     if not numerical:
-        return {"result": vader_score(text)[0]}
+        return {"result": vader_score(text, False)}
     else:
-        return{"result": vader_score(text)[1]}
+        return{"result": vader_score(text, True)}

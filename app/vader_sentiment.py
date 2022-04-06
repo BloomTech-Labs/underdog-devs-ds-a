@@ -6,23 +6,27 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 vader = SentimentIntensityAnalyzer()
 
 
-def vader_score(text: str) -> list[Union[str, int]]:
+def vader_score(text: str, numerical: bool):
     """Return compound scores of text in list using vader analysis."""
     score = vader.polarity_scores(text)["compound"]
+    if numerical:
+        return score
     if score > 0.3:
-        return ["Positive", 1]
+        return "Positive"
     elif score < -0.3:
-        return ["Negative", -1]
+        return "Negative"
     else:
-        return ["Neutral", 0]
+        return "Neutral"
 
 
 if __name__ == '__main__':
-    print(vader_score("good but not great"))
+    print(vader_score("good but not great",False))
     # print(vader_score("A line of strings is only as good as a number"))
     """
     This is to test the expected result requested in api.py
     
     """
-    print({"Result": vader_score("Astring is so cool wow hot damn")[1]})
-    print({"Result": vader_score("Astring is so cool wow hot damn")[0]})
+    # Numeric
+    print({"Result": vader_score("Astring is so cool wow hot damn", True)})
+    # String text.
+    print({"Result": vader_score("Astring is so cool wow hot damn", False)})
