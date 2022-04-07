@@ -1,9 +1,7 @@
 from random import sample
-from typing import List, Dict
 
 import pandas as pd
 
-from app.data import MongoDB
 from data_generators.data_options import *
 
 
@@ -46,11 +44,11 @@ class Mentee:
         self.formerly_incarcerated = percent_true(80)
         self.underrepresented_group = percent_true(70)
         self.low_income = percent_true(70)
-        self.convictions = 'String of convictions'
         if self.formerly_incarcerated:
             self.list_convictions = sample(convictions, k=randint(1, 3))
         else:
             self.list_convictions = []
+        self.convictions = ", ".join(self.list_convictions)
         self.tech_stack = choice(subjects)
         self.experience_level = choice(skill_levels)
         self.job_help = self.tech_stack == "Career Development"
@@ -73,7 +71,7 @@ class Resource:
 
     def __init__(self):
         self.need = choice(resource_items)
-        self.item_id = randint(1000000, 9000000)
+        self.item_id = generate_uuid(16)
 
 
 class MenteeFeedback:
@@ -110,33 +108,3 @@ class Meeting:
 
     def __str__(self):
         return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
-
-
-if __name__ == "__main__":
-    db = MongoDB("UnderdogDevs")
-
-    db.reset_collection("Mentees")
-    db.get_collection("Mentees").create_index("profile_id", unique=True)
-    db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
-
-    db.reset_collection("Mentors")
-    db.get_collection("Mentors").create_index("profile_id", unique=True)
-    db.create_many("Mentors", (vars(Mentor()) for _ in range(20)))
-
-    mentees = db.read("Mentees")
-    mentors = db.read("Mentors")
-
-    feedback: List[Dict] = [vars(MenteeFeedback(
-        choice(mentees)["profile_id"],
-        choice(mentors)["profile_id"],
-    )) for _ in range(100)]
-
-    db.create_many("Feedback", feedback)
-
-    db.reset_collection("Meetings")
-    db.get_collection("Meetings").create_index("meeting_id", unique=True)
-    meetings: List[Dict] = [vars(Meeting(
-        choice(mentees)["profile_id"],
-        choice(mentors)["profile_id"],
-    )) for _ in range(50)]
-    db.create_many("Meetings", meetings)
