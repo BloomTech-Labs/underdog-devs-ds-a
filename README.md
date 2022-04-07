@@ -20,7 +20,7 @@ You can find the deployed project at [Underdog Devs](https://www.underdogdevs.or
 | | [Dagim Bantikassegn](https://github.com/DagimB)                         | [Daniel Ho](https://github.com/djho57) |
 | | [Eisenhower Lancheros](https://github.com/Ike888)                       | [BhavaniLakshmi Annapurna Jagarlamudi](https://github.com/Annapurnaj91) |
 | | [John Baker](https://github.com/BakerJr1904)                            | [Kevin Lynner](https://github.com/LynnerKevin) |
-| | | [Olatomi Adigun](https://github.com/OlatomiAdigun) |
+| | [Matt Grohnke](https://github.com/mgrohnke)                            | [Olatomi Adigun](https://github.com/OlatomiAdigun) |
 | | | [Mohamed Mosaed](https://github.com/mohamedmosaed) |
 | | | [Zachary Rock](https://github.com/ZacharyRock) |
 | | | [Mitch Hollberg](https://github.com/hollberg) |
