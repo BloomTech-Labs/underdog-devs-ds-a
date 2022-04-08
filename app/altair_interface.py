@@ -3,65 +3,46 @@ import altair as alt
 from typing import Dict, Optional, Tuple
 import pandas as pd
 import json
+from app.data import MongoDB
 
-def generate_schema(
-    data: Dict,
-    x: str,
-    y: str,
-    graph_type: str,
-    style_x: Optional[Dict] = None,
-    style_y: Optional[Dict] = None,
-    size: Optional[Dict] = None
+db = MongoDB("UnderdogDevs")
+
+def prop_graphs(
+    collection: str,
+    key: str,
+    graph_type: str = "bar"
     ):
-    """Use given data to return Vega Lite JSON schema for bar graph
+    """create graph schema to plot value counts of a given field
 
-    Following the given parameters, utilizes the given data alongside
-    Altair functionality to return a Vega Lite JSON schema to be used
-    by front end for bar graph embedding.
+    Utilizes Altair's count() aggregate function to generate and return
+    a Vega Lite JSON schema that will plot a count of all documents
+    containing each unique value in the given key of a given collection
 
-    Altair-compatible aggregate functions are viable for x or y string
-    values, i.e. y = "count()" will count records in each category of x
-    and populate the y axis accordingly. See Altair documentation for
-    all available aggregate functions.
-
-    Similarly, style_x and style_y offer granular styling options for
-    the axes. The options are expansive, therein Altair documentation
-    should be referenced for a comprehensive list. Some examples include
-    title*, tick*, and label* (the * denote subsequent options, i.e.
-    titleFont, titleFontSize, titleColor, etc.)
+    Currently only supports bar and pie charts, with bar as default.
 
     Args:
-        data (dict): Data to be received for graphing
-        x (str): Key to be used for the x axis
-        y (str): Key to be used for the y axis
-        graph_type (str): Type of graph to generate
-        style_x (dict) (optional): kwargs for styling x axis
-        style_y (dict) (optional): kwargs for styling y axis
-        size (dict) (optional): {"height": pixels (int), "width": pixels (int)}
+        x_coll: name of collection to pull x-axis data from
+        x_field: field to target in collection for x-axis data
+        graph_type: graph type to be generated
     
     Returns:
         JSON schema as a string
     """
 
+    coll = db.get_collection(collection)
+
+    # Data extraction from MongoDB database
+    x = coll.distinct(key)
+    y = [coll.count_documents({key: value}) for value in x]
+
     # Data converted to Pandas DF for variable type inferencing
-    table = pd.DataFrame(data)
+    table = pd.DataFrame({"x": x}, {"y": y})
     graph = alt.Chart(data = table)
 
     # Decide graph type
     if graph_type == "bar":
-        graph = graph.mark_bar().encode(x = x, y = y)
+        graph = graph.mark_bar().encode(x = "x", y = "y")
     elif graph_type == "pie":
-        graph = graph.mark_arc().encode(theta = x, color = y)
-    
-    # Styling options
-    if style_x:
-        graph = graph.configure_axisX(**style_x)
-    if style_y:
-        graph = graph.configure_axisY(**style_y)
-    if size:
-        graph = graph.properties(
-            height = size["height"],
-            width = size["width"]
-            )
+        graph = graph.mark_arc().encode(theta = "x", color = "y")
 
     return json.dumps(json.loads(graph.to_json()))
