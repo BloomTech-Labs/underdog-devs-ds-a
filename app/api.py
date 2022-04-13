@@ -11,7 +11,7 @@ from app.vader_sentiment import vader_score
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.44.4",
+    version="0.45.1",
     docs_url='/',
 )
 API.db = MongoDB("UnderdogDevs")
