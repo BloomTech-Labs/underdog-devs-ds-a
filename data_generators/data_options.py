@@ -302,7 +302,7 @@ skill_levels = (
     "Beginner", "Intermediate", "Advanced", "Expert",
 )
 
-subjects = (
+tech_stack = (
     "Web: HTML, CSS, JavaScript", "Data Science: Python",
     "Android: Java", "iOS: Swift", "Career Development",
     "General Programming",
@@ -310,12 +310,6 @@ subjects = (
 
 resource_items = ("Laptop", "Books", "Scholarships",
                   "Mental Health Need", "Financial stipends")
-
-disability = (True, False)
-
-work_status = (True, False)
-
-receiving_assistance = (True, False)
 
 convictions = (
     "Felony", "Misdemeanor", "Infraction",
@@ -325,7 +319,6 @@ feedbacks = (
     "Not Recommended, Poor", "Conflicted, Fair", "Recommended, Good",
     "Highly Recommended, Very Good", "Best, Excellent",
 )
-
 
 topics = (
     "GCA Help", "Resume Help", "Job Search", "Progress Check"
@@ -343,7 +336,7 @@ def percent_true(percent):
     return 100 * random() < percent
 
 
-def generate_uuid(n_len: int):
+def generate_uuid(n_len: int) -> str:
     n1 = ceil(n_len / 2)
     n2 = floor(n_len / 2)
     prefix = choices(string.ascii_letters, k=n1)

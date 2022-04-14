@@ -77,7 +77,7 @@ def test_match():
         "/Mentors/read", json={'profile_id': mentors_id})
     read_mentees = client.post(
         "/Mentees/read", json={'profile_id': profile_id})
-    '''check if their subjects indeed match'''
+    '''check if their tech_stack indeed match'''
     assert read_mentors.json()['result'][0]['subject'] == read_mentees.json()[
         'result'][0]['subject']
 
