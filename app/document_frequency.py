@@ -44,33 +44,16 @@ def topicizer(texts, num_topics = 5, len_topic_repr = 5):
 
 
     if len(texts) >= 2:
-
         texts = [cleaner(x) for x in texts]
-
-        # obtain inverse document frequency matrix
-
         idfm = tfidf_vect.fit_transform(texts)
-
         nmf = NMF(n_components=num_topics, random_state=42)
-
         nmf.fit(idfm)
-
         nmf_topics = []
-
         for topic in nmf.components_:
-
-          # sort all words in vocab according to topical importance
-
           s = topic.argsort()[-len_topic_repr:]
-
-          # collect the representation of the topic
-
           component_words = [tfidf_vect.get_feature_names_out()[i] for i in s]
-
-          # add the topic to nmf_topics
-
           nmf_topics += [component_words]
-
+        
         return '\n\n'.join(' '.join(c) for c in nmf_topics)
 
     return 'Not enough text to analyze'
