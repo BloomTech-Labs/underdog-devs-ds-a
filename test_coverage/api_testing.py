@@ -110,7 +110,7 @@ class TestingPlatform():
 
         assert read_mentors.json()['result'][0]['subject'] == read_mentees.json()[
             'result'][0]['subject'],\
-            'test_match: Expected subjects to match got ' + str(read_mentors.json()['result'][0]['subject'])\
+            'test_match: Expected tech_stack to match got ' + str(read_mentors.json()['result'][0]['subject'])\
             + ' : ' + str(read_mentees.json()['result'][0]['subject'])
 
         pprint("Match test cases passed")

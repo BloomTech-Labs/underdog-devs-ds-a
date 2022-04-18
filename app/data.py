@@ -13,28 +13,7 @@ class MongoDB:
     This class organizes all CRUD operations into a single nexus.
     Detailed descriptions are given in individual method documentation,
     but a brief overview is given below.
-    
-    Args:
-        database (str): Name of the database to be accessed
-        
-    Internal Methods:
-        _connect: Connects to a given collection within the database.
-    
-    External Methods:
-        create: Insert a document into a given collection.
-        create_many: Insert many documents into a given collection.
-        first: Return the first document in a given collection.
-        read: Query collections and return results as a list.
-        update: Updates queried document(s) in a given collection.
-        delete: Deletes queried document(s) in given collection.
-        count: Return count of queried documents.
-        backup: Create backup JSON for given collection.
-        create_index: Create given index in given collection.
-        drop_index: Remove given index from given collection.
-        search: Loosely search given collection with given parameters.
-        scan_collections: Return all collections with document counts.
-        reset_collection: Remove all documents from collection.
-        """
+    """
     load_dotenv()
 
     def __init__(self, database: str):
@@ -222,9 +201,7 @@ class MongoDB:
         Uses previously established database and scans it for all
         collections, iteratively retrieving counts of documents within
         each respective collection.
-        
-        Args:
-            None
+
         Returns:
             Dictionary: keys are collections, values are doc counts.
         """
@@ -243,8 +220,6 @@ class MongoDB:
         
         Args:
             collection (str): The collection to reset
-        Returns:
-            None
         """
         self.delete(collection, {})
         self.drop_index(collection)
