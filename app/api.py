@@ -11,7 +11,7 @@ from app.vader_sentiment import vader_score
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.44.4",
+    version="0.45.1",
     docs_url='/',
 )
 API.db = MongoDB("UnderdogDevs")
@@ -245,22 +245,12 @@ async def financial_aid(profile_id: str):
 
 
 @API.post("/sentiment")
-async def sentiment(text: str, numerical: bool):
+async def sentiment(text: str):
     """ Returns positive, negative or neutral sentiment of the supplied text.
-
     Args:
         text (str): the text to be analyzed
-        numerical(bool): if return value is a vader numeric value.(default = False)
-
-
     Returns:
         positive/negative/neutral prediction based on sentiment analysis
-        IF numerical == True:
-            returns a numeric value from vader sentiment
-
     """
-    if not numerical:
-        return {"result": vader_score(text, False)}
-    else:
-        return {"result": vader_score(text, True)}
+    return {"result": vader_score(text)}
 
