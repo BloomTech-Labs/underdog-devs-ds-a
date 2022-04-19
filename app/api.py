@@ -1,10 +1,13 @@
+import json
 from typing import Dict, Optional
 
+import pandas as pd
 from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.data import MongoDB
+from app.graphs import tech_stack_by_role
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
@@ -229,3 +232,13 @@ async def sentiment(text: str):
         positive/negative/neutral prediction based on sentiment analysis
     """
     return {"result": vader_score(text)}
+
+
+@API.get("/graphs/tech-stack-by-role")
+async def tech_stack_graph():
+    mentors_df = pd.DataFrame(API.db.read("Mentors"))[["tech_stack", "name"]]
+    mentees_df = pd.DataFrame(API.db.read("Mentees"))[["tech_stack", "name"]]
+    mentors_df["user_role"] = "Mentor"
+    mentees_df["user_role"] = "Mentee"
+    df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
+    return json.loads(tech_stack_by_role(df).to_json())
