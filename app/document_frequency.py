@@ -6,12 +6,12 @@ import re
 tfidf_vect = TfidfVectorizer(max_df=.8, stop_words='english')
 
 def cleaner(text):
-    '''
+    """
     Removes extra spaces, symbols, and punctuation from string.
     
     Parameters: text - string
     Returns: a lowercased version of the string
-    '''
+    """
 
 
     text = text.replace('\n', ' ')
@@ -22,7 +22,7 @@ def cleaner(text):
 
 
 def topicizer(texts, num_topics = 5, len_topic_repr = 5):
-    '''
+    """
     Accepts a list of documents, cleans and transforms each document into a
     dimensional vector, then uses non-negative matrix factorization along with
     inverse document frequency, and singular value decomposition dimensionality
@@ -40,7 +40,7 @@ def topicizer(texts, num_topics = 5, len_topic_repr = 5):
                        to represent each topic.
     Returns: A list of topic representations, each is a list
              of the most influential words for the topic.
-    '''
+    """
 
 
     if len(texts) >= 2:
