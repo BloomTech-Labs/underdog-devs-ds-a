@@ -50,9 +50,9 @@ def topicizer(texts, num_topics = 5, len_topic_repr = 5):
         nmf.fit(idfm)
         nmf_topics = []
         for topic in nmf.components_:
-          s = topic.argsort()[-len_topic_repr:]
-          component_words = [tfidf_vect.get_feature_names_out()[i] for i in s]
-          nmf_topics += [component_words]
+            s = topic.argsort()[-len_topic_repr:]
+            component_words = [tfidf_vect.get_feature_names_out()[i] for i in s]
+            nmf_topics += [component_words]
         
         return '\n\n'.join(' '.join(c) for c in nmf_topics)
 
