@@ -12,7 +12,7 @@ from app.computer_assignment import computer_assignment_visualizer
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.45.1",
+    version="0.45.2",
     docs_url='/',
 )
 API.db = MongoDB("UnderdogDevs")
@@ -70,31 +70,6 @@ async def create(collection: str, data: Dict):
 
         Input Example:
         collection = "Mentees"
-        data = {
-          "profile_id": "74L22I58tn1QL4yk",
-          "mentee_intake_id": null,
-          "name": "Zayden Wilson",
-          "email": "fake@email.com",
-          "location": "New York, New York",
-          "in_US": true,
-          "formerly_incarcerated": false,
-          "underrepresented_group": false,
-          "low_income": true,
-          "convictions": "String of convictions",
-          "list_convictions": [],
-          "tech_stack": "Career Development",
-          "experience_level": "Advanced",
-          "job_help": true,
-          "industry_knowledge": false,
-          "pair_programming": false,
-          "your_hope": "String",
-          "need": "Laptop",
-          "parole_restriction": true,
-          "disability": true,
-          "work_status": true,
-          "assistance": false,
-          "other_info": "Notes"
-    }
 
     Returns:
         New collection's data as dictionary
@@ -180,7 +155,7 @@ async def match(profile_id: str, n_matches: int):
 
 
 @API.post("/match_resource/{item_id}")
-async def match_resource(item_id: int, n_matches: int):
+async def match_resource(item_id: str, n_matches: int):
     """ Returns array of mentee matches for any given Resource item_id.
 
     Utilizes imported MatcherSortSearchResource() to query database for the
@@ -242,7 +217,7 @@ async def financial_aid(profile_id: str):
     Args:
         profile_id (str): the profile id of the mentee
 
-   Returns:
+    Returns:
         the probability that financial aid will be required
     """
 
@@ -257,7 +232,6 @@ async def financial_aid(profile_id: str):
 @API.post("/sentiment")
 async def sentiment(text: str):
     """ Returns positive, negative or neutral sentiment of the supplied text.
-
     Args:
         text (str): the text to be analyzed
 

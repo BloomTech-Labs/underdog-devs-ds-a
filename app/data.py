@@ -15,7 +15,7 @@ class MongoDB:
     This class organizes all CRUD operations into a single nexus.
     Detailed descriptions are given in individual method documentation,
     but a brief overview is given below.
-
+    
     Args:
         database (str): Name of the database to be accessed
 
@@ -230,6 +230,7 @@ class MongoDB:
 
         Args:
             None
+
         Returns:
             Dictionary: keys are collections, values are doc counts.
         """
@@ -248,8 +249,6 @@ class MongoDB:
 
         Args:
             collection (str): The collection to reset
-        Returns:
-            None
         """
         self.delete(collection, {})
         self.drop_index(collection)
