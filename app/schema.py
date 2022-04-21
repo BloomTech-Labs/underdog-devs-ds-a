@@ -1,26 +1,28 @@
-from typing import List, Literal, Optional
+from typing import List, Literal, Optional, Field
 from datetime import datetime
 from pydantic import BaseModel, constr
+from uuid import uuid4, UUID
 
+class Variants:
+    exp_levels = Literal[
+        "Beginner", "Intermediate", "Advanced", "Expert",
+    ]
 
-EXP_LEVELS = Literal[
-    "Beginner", "Intermediate", "Advanced", "Expert",
-]
-
-TECH_STACKS = Literal[
-    "Web: HTML, CSS, JavaScript", "Data Science: Python",
-    "Android: Java", "iOS: Swift", "Career Development",
-    "General Programming",
-]
+    teck_stacks = Literal[
+        "Web: HTML, CSS, JavaScript", "Data Science: Python",
+        "Android: Java", "iOS: Swift", "Career Development",
+        "General Programming",
+    ]
 
 class Mentor(BaseModel):
-    profile_id: str         
-    name: constr(max_length=255)             
-    tech_stack: TECH_STACKS
-    experience_level: EXP_LEVELS   
-    job_help: bool
-    industry_knowledge: bool
-    pair_programming: bool
+    profile_id: UUID = Field(default_factory=uuid4)         
+    first_name: constr(max_length=255)
+    last_name: constr(max_length=255)            
+    tech_stack: constr(max_length=255) 
+    experience_level: Variants.exp_levels   
+    job_help: Optional[bool] = False
+    industry_knowledge: Optional[bool] = False
+    pair_programming: Optional[bool] = False
 
 class Mentee(BaseModel):
     profile_id: str
@@ -29,8 +31,8 @@ class Mentee(BaseModel):
     underrepresented_group: bool = False
     low_income: bool = False
     list_convictions: List[str] = None
-    tech_stack: TECH_STACKS 
-    experience_level: EXP_LEVELS 
+    tech_stack: constr(max_length=255)
+    experience_level: Variants.exp_levels  
     job_help: bool = False
     pair_programming: bool = False
     need: constr(max_length=255) = None
