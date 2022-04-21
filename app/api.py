@@ -8,6 +8,7 @@ from fastapi.responses import JSONResponse
 
 from app.data import MongoDB
 from app.graphs import tech_stack_by_role
+from app.schema import MentorModel
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
@@ -48,6 +49,11 @@ async def version():
 async def collections():
     """Return collection names and a count of their child nodes."""
     return {"result": API.db.get_database_info()}
+
+
+@API.post("/create/mentor")
+async def create_mentor(data: MentorModel):
+    return {"result": API.db.create("Mentors", data.dict())}
 
 
 @API.post("/{collection}/create")
