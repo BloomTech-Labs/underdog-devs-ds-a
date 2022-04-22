@@ -124,7 +124,7 @@ async def read(collection: str, data: Optional[Dict] = None):
 
 
 @API.post("/read/mentor")
-async def read(collection: Mentor, data: Optional[Dict] = None):
+async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query
     from Mentors.
 
@@ -141,8 +141,9 @@ async def read(collection: Mentor, data: Optional[Dict] = None):
     """
     return {"result": API.db.read("Mentors", data)}
 
+
 @API.post("/read/mentee")
-async def read(collection: Mentee, data: Optional[Dict] = None):
+async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query
     from Mentors.
 
@@ -179,6 +180,7 @@ async def update(collection: str, query: Dict, update_data: Dict):
     await is_collection(collection)
     return {"result": API.db.update(collection, query, update_data)}
 
+
 @API.post("/update/mentee")
 async def update(query: Dict, update_data: Mentee):
     """Update Mentee Collection and return the number of updated documents.
@@ -188,7 +190,6 @@ async def update(query: Dict, update_data: Mentee):
     or overwriting data.
 
     Args:
-
         query (dict): Key value pairs to filter for
         update_data (dict): Key value pairs to update
 
@@ -196,6 +197,7 @@ async def update(query: Dict, update_data: Mentee):
         Integer count of updated documents
     """
     return {"result": API.db.update("Mentees", query, update_data.dict())}
+
 
 @API.post("/update/mentor")
 async def update(query: Dict, update_data: Mentor):
@@ -206,7 +208,6 @@ async def update(query: Dict, update_data: Mentor):
     or overwriting data.
 
     Args:
-
         query (dict): Key value pairs to filter for
         update_data (dict): Key value pairs to update
 
@@ -214,6 +215,25 @@ async def update(query: Dict, update_data: Mentor):
         Integer count of updated documents
     """
     return {"result": API.db.update("Mentors", query, update_data.dict())}
+
+
+@API.delete("/{collection}/delete/{profile_id}")
+async def delete(collection: str, profile_id: str):
+    """Removes a user from the given collection.
+
+    Deletes all documents containing the given profile_id permanently,
+    and returns the deleted profile_id for confirmation.
+
+    Args:
+        collection (str): Name of collection to query for deletion
+        profile_id (str): ID number of user to be deleted
+
+    Returns:
+        Dictionary with key of "deleted" and value of the profile_id
+    """
+    API.db.delete(collection, {"profile_id": profile_id})
+    return {"result": {"deleted": profile_id}}
+
 
 @API.post("/{collection}/search")
 async def collection_search(collection: str, search: str):
@@ -269,24 +289,6 @@ async def match_resource(item_id: str, n_matches: int):
     return {"result": API.resource_matcher(n_matches, item_id)}
 
 
-@API.delete("/{collection}/delete/{profile_id}")
-async def delete(collection: str, profile_id: str):
-    """Removes a user from the given collection.
-
-    Deletes all documents containing the given profile_id permanently,
-    and returns the deleted profile_id for confirmation.
-
-    Args:
-        collection (str): Name of collection to query for deletion
-        profile_id (str): ID number of user to be deleted
-
-    Returns:
-        Dictionary with key of "deleted" and value of the profile_id
-    """
-    API.db.delete(collection, {"profile_id": profile_id})
-    return {"result": {"deleted": profile_id}}
-
-
 @API.exception_handler(Exception)
 async def all_exception_handler(request: Request, exc: Exception):
     """Returns default 500 message for many server errors.
@@ -335,7 +337,6 @@ async def sentiment(text: str):
     Returns:
         positive/negative/neutral prediction based on sentiment analysis
     """
-<<<<<<< HEAD
     return {"result": vader_score(text)}
 
 
@@ -347,6 +348,3 @@ async def tech_stack_graph():
     mentees_df["user_role"] = "Mentee"
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
-=======
-    return {"result": vader_score(text)}
->>>>>>> ad8be7036f678ca33003677de8a7e6dfc07e134f
