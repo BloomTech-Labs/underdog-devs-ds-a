@@ -12,6 +12,7 @@ from app.schema import Mentee, Mentor
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
+from app.schema import Mentee, Mentor
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -179,6 +180,61 @@ async def update(collection: str, query: Dict, update_data: Dict):
     await is_collection(collection)
     return {"result": API.db.update(collection, query, update_data)}
 
+
+@API.post("/update/mentee")
+async def update(query: Dict, update_data: Mentee):
+    """Update Mentee Collection and return the number of updated documents.
+
+    Defines Mentee Collection  from URL and queries it with filters
+    given (query). Then updates fields using update_data, either adding
+    or overwriting data.
+
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+
+    Returns:
+        Integer count of updated documents
+    """
+    return {"result": API.db.update("Mentees", query, update_data.dict())}
+
+
+@API.post("/update/mentor")
+async def update(query: Dict, update_data: Mentor):
+    """Update Mentor Collection and return the number of updated documents.
+
+    Defines Mentor Collection  from URL and queries it with filters
+    given (query). Then updates fields using update_data, either adding
+    or overwriting data.
+
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+
+    Returns:
+        Integer count of updated documents
+    """
+    return {"result": API.db.update("Mentors", query, update_data.dict())}
+
+
+@API.delete("/{collection}/delete/{profile_id}")
+async def delete(collection: str, profile_id: str):
+    """Removes a user from the given collection.
+
+    Deletes all documents containing the given profile_id permanently,
+    and returns the deleted profile_id for confirmation.
+
+    Args:
+        collection (str): Name of collection to query for deletion
+        profile_id (str): ID number of user to be deleted
+
+    Returns:
+        Dictionary with key of "deleted" and value of the profile_id
+    """
+    API.db.delete(collection, {"profile_id": profile_id})
+    return {"result": {"deleted": profile_id}}
+
+
 @API.post("/{collection}/search")
 async def collection_search(collection: str, search: str):
     """Return list of docs loosely matching string, sorted by relevance.
@@ -231,24 +287,6 @@ async def match_resource(item_id: str, n_matches: int):
     Returns:
         List of mentee ID(s) """
     return {"result": API.resource_matcher(n_matches, item_id)}
-
-
-@API.delete("/{collection}/delete/{profile_id}")
-async def delete(collection: str, profile_id: str):
-    """Removes a user from the given collection.
-
-    Deletes all documents containing the given profile_id permanently,
-    and returns the deleted profile_id for confirmation.
-
-    Args:
-        collection (str): Name of collection to query for deletion
-        profile_id (str): ID number of user to be deleted
-
-    Returns:
-        Dictionary with key of "deleted" and value of the profile_id
-    """
-    API.db.delete(collection, {"profile_id": profile_id})
-    return {"result": {"deleted": profile_id}}
 
 
 @API.exception_handler(Exception)
