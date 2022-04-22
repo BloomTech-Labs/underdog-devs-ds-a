@@ -144,7 +144,7 @@ async def read(data: Optional[Dict] = None):
 
 
 @API.post("/read/mentee")
-async def read(data: Mentee):
+async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query
     from Mentees.
 
