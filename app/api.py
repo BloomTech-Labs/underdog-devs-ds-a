@@ -11,6 +11,7 @@ from app.graphs import tech_stack_by_role
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
+from app.schema import Mentee, Mentor
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -71,6 +72,38 @@ async def create(collection: str, data: Dict):
     return {"result": API.db.create(collection, data)}
 
 
+@API.post("/create/mentor")
+async def create_mentor(data: Mentor):
+    """Create a new record in the Mentors collection.
+
+    Creates new document within Mentors using the data
+    parameter to populate its fields.
+
+    Args:
+        data (dict): Key value pairs to be mapped to document fields
+
+    Returns:
+        New record data as dictionary
+    """
+    return {"result": API.db.create("Mentors", data.dict())}
+
+
+@API.post("/create/mentee")
+async def create_mentee(data: Mentee):
+    """Create a new record in the Mentees collection.
+
+    Creates new document within Mentees using the data
+    parameter to populate its fields.
+
+    Args:
+        data (dict): Key value pairs to be mapped to document fields
+
+    Returns:
+        New record data as dictionary
+    """
+    return {"result": API.db.create("Mentees", data.dict())}
+
+
 @API.post("/{collection}/read")
 async def read(collection: str, data: Optional[Dict] = None):
     """Return array of records that exactly match the given query.
@@ -88,6 +121,42 @@ async def read(collection: str, data: Optional[Dict] = None):
     """
     await is_collection(collection)
     return {"result": API.db.read(collection, data)}
+
+
+@API.post("/read/mentor")
+async def read(data: Mentor):
+    """Return array of records that exactly match the given query
+    from Mentors.
+
+    Queries from Mentors collection with optional filters
+    given (data). If no filtering data is given, will return all
+    documents within collection.
+
+    Args:
+        data (dict) (optional): Key value pairs to match
+
+    Returns:
+        List of all matching documents
+    """
+    return {"result": API.db.read("Mentors", data.dict())}
+
+
+@API.post("/read/mentee")
+async def read(data: Mentee):
+    """Return array of records that exactly match the given query
+    from Mentees.
+
+    Queries from Mentees collection with optional filters
+    given (data). If no filtering data is given, will return all
+    documents within collection.
+
+    Args:
+        data (dict) (optional): Key value pairs to match
+
+    Returns:
+        List of all matching documents
+    """
+    return {"result": API.db.read("Mentees", data.dict())}
 
 
 @API.post("/{collection}/update")
@@ -109,6 +178,41 @@ async def update(collection: str, query: Dict, update_data: Dict):
     await is_collection(collection)
     return {"result": API.db.update(collection, query, update_data)}
 
+@API.post("/update/mentee")
+async def update(query: Dict, update_data: Mentee):
+    """Update Mentee Collection and return the number of updated documents.
+
+    Defines Mentee Collection  from URL and queries it with filters
+    given (query). Then updates fields using update_data, either adding
+    or overwriting data.
+
+    Args:
+
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+
+    Returns:
+        Integer count of updated documents
+    """
+    return {"result": API.db.update("Mentees", query, update_data.dict())}
+
+@API.post("/update/mentor")
+async def update(query: Dict, update_data: Mentor):
+    """Update Mentor Collection and return the number of updated documents.
+
+    Defines Mentor Collection  from URL and queries it with filters
+    given (query). Then updates fields using update_data, either adding
+    or overwriting data.
+
+    Args:
+
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+
+    Returns:
+        Integer count of updated documents
+    """
+    return {"result": API.db.update("Mentors", query, update_data.dict())}
 
 @API.post("/{collection}/search")
 async def collection_search(collection: str, search: str):
@@ -129,7 +233,7 @@ async def collection_search(collection: str, search: str):
     return {"result": API.db.search(collection, search)}
 
 
-@API.post("/match/{profile_id}")
+@API.post("/match/{profile_id}") #"/match/{profile_id}/{n_matches}"
 async def match(profile_id: str, n_matches: int):
     """Return an array of mentor matches for any given mentee profile_id.
 
@@ -178,7 +282,6 @@ async def delete(collection: str, profile_id: str):
     Returns:
         Dictionary with key of "deleted" and value of the profile_id
     """
-    await is_collection(collection)
     API.db.delete(collection, {"profile_id": profile_id})
     return {"result": {"deleted": profile_id}}
 
@@ -231,6 +334,7 @@ async def sentiment(text: str):
     Returns:
         positive/negative/neutral prediction based on sentiment analysis
     """
+<<<<<<< HEAD
     return {"result": vader_score(text)}
 
 
@@ -242,3 +346,6 @@ async def tech_stack_graph():
     mentees_df["user_role"] = "Mentee"
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
+=======
+    return {"result": vader_score(text)}
+>>>>>>> ad8be7036f678ca33003677de8a7e6dfc07e134f
