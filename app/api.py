@@ -158,7 +158,8 @@ async def read(data: Optional[Dict] = None):
     Returns:
         List of all matching documents
     """
-    return {"result": API.db.read("Mentees", data)}
+    profiles = [Mentee(**doc) for doc in API.db.read("Mentees", data)]
+    return {"result": profiles}
 
 
 @API.post("/{collection}/update")
