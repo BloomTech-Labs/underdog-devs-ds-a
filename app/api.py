@@ -8,6 +8,7 @@ from fastapi.responses import JSONResponse
 
 from app.data import MongoDB
 from app.graphs import tech_stack_by_role
+from app.schema import Mentee, Mentor
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
@@ -123,7 +124,7 @@ async def read(collection: str, data: Optional[Dict] = None):
 
 
 @API.post("/read/mentor")
-async def read(data: Mentor):
+async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query
     from Mentors.
 
@@ -137,7 +138,7 @@ async def read(data: Mentor):
     Returns:
         List of all matching documents
     """
-    return {"result": API.db.read("Mentors", data)}
+    return {"result": Mentor.parse_raw(API.db.read("Mentors", data).to_json())}
 
 
 @API.post("/read/mentee")
@@ -308,3 +309,7 @@ async def tech_stack_graph():
     mentees_df["user_role"] = "Mentee"
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
+
+    
+if __name__=='__main__':
+    print(API.db.read("Mentors"))
