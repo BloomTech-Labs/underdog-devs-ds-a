@@ -124,7 +124,7 @@ async def read(collection: str, data: Optional[Dict] = None):
 
 
 @API.post("/read/mentor")
-async def read(data: Mentor):
+async def read(collection: Mentor, data: Optional[Dict] = None):
     """Return array of records that exactly match the given query
     from Mentors.
 
@@ -133,30 +133,31 @@ async def read(data: Mentor):
     documents within collection.
 
     Args:
+        collection (str): Name of collection retrieved from URL
         data (dict) (optional): Key value pairs to match
 
     Returns:
         List of all matching documents
     """
-    return {"result": API.db.read("Mentors", data.dict())}
-
+    return {"result": API.db.read("Mentors", data)}
 
 @API.post("/read/mentee")
-async def read(data: Mentee):
+async def read(collection: Mentee, data: Optional[Dict] = None):
     """Return array of records that exactly match the given query
-    from Mentees.
+    from Mentors.
 
     Queries from Mentees collection with optional filters
     given (data). If no filtering data is given, will return all
     documents within collection.
 
     Args:
+        collection (str): Name of collection retrieved from URL
         data (dict) (optional): Key value pairs to match
 
     Returns:
         List of all matching documents
     """
-    return {"result": API.db.read("Mentees", data.dict())}
+    return {"result": API.db.read("Mentees", data)}
 
 
 @API.post("/{collection}/update")
