@@ -73,38 +73,6 @@ async def create(collection: str, data: Dict):
     return {"result": API.db.create(collection, data)}
 
 
-@API.post("/create/mentor")
-async def create_mentor(data: Mentor):
-    """Create a new record in the Mentors collection.
-
-    Creates new document within Mentors using the data
-    parameter to populate its fields.
-
-    Args:
-        data (dict): Key value pairs to be mapped to document fields
-
-    Returns:
-        New record data as dictionary
-    """
-    return {"result": API.db.create("Mentors", data.dict())}
-
-
-@API.post("/create/mentee")
-async def create_mentee(data: Mentee):
-    """Create a new record in the Mentees collection.
-
-    Creates new document within Mentees using the data
-    parameter to populate its fields.
-
-    Args:
-        data (dict): Key value pairs to be mapped to document fields
-
-    Returns:
-        New record data as dictionary
-    """
-    return {"result": API.db.create("Mentees", data.dict())}
-
-
 @API.post("/{collection}/read")
 async def read(collection: str, data: Optional[Dict] = None):
     """Return array of records that exactly match the given query.
@@ -122,44 +90,6 @@ async def read(collection: str, data: Optional[Dict] = None):
     """
     await is_collection(collection)
     return {"result": API.db.read(collection, data)}
-
-
-@API.post("/read/mentor")
-async def read(data: Optional[Dict] = None):
-    """Return array of records that exactly match the given query
-    from Mentors.
-
-    Queries from Mentors collection with optional filters
-    given (data). If no filtering data is given, will return all
-    documents within collection.
-
-    Args:
-        data (dict) (optional): Key value pairs to match
-
-    Returns:
-        List of all matching documents
-    """
-    profiles = [Mentor(**doc) for doc in API.db.read("Mentors", data)]
-    return {"result": profiles}
-
-
-@API.post("/read/mentee")
-async def read(data: Optional[Dict] = None):
-    """Return array of records that exactly match the given query
-    from Mentees.
-
-    Queries from Mentees collection with optional filters
-    given (data). If no filtering data is given, will return all
-    documents within collection.
-
-    Args:
-        data (dict) (optional): Key value pairs to match
-
-    Returns:
-        List of all matching documents
-    """
-    profiles = [Mentee(**doc) for doc in API.db.read("Mentees", data)]
-    return {"result": profiles}
 
 
 @API.post("/{collection}/update")
@@ -182,7 +112,42 @@ async def update(collection: str, query: Dict, update_data: Dict):
     return {"result": API.db.update(collection, query, update_data)}
 
 
-@API.post("/update/mentor")
+@API.post("/mentor/create")
+async def create_mentor(data: Mentor):
+    """Create a new record in the Mentors collection.
+
+    Creates new document within Mentors using the data
+    parameter to populate its fields.
+
+    Args:
+        data (dict): Key value pairs to be mapped to document fields
+
+    Returns:
+        New record data as dictionary
+    """
+    return {"result": API.db.create("Mentors", data.dict())}
+
+
+@API.post("/mentor/read")
+async def read(data: Optional[Dict] = None):
+    """Return array of records that exactly match the given query
+    from Mentors.
+
+    Queries from Mentors collection with optional filters
+    given (data). If no filtering data is given, will return all
+    documents within collection.
+
+    Args:
+        data (dict) (optional): Key value pairs to match
+
+    Returns:
+        List of all matching documents
+    """
+    profiles = [Mentor(**doc) for doc in API.db.read("Mentors", data)]
+    return {"result": profiles}
+
+
+@API.post("/mentor/update")
 async def update(query: Dict, update_data: Mentor):
     """Update Mentor Collection and return the number of updated documents.
 
@@ -200,7 +165,42 @@ async def update(query: Dict, update_data: Mentor):
     return {"result": API.db.update("Mentors", query, update_data.dict())}
 
 
-@API.post("/update/mentee")
+@API.post("/mentee/create")
+async def create_mentee(data: Mentee):
+    """Create a new record in the Mentees collection.
+
+    Creates new document within Mentees using the data
+    parameter to populate its fields.
+
+    Args:
+        data (dict): Key value pairs to be mapped to document fields
+
+    Returns:
+        New record data as dictionary
+    """
+    return {"result": API.db.create("Mentees", data.dict())}
+
+
+@API.post("/mentee/read")
+async def read(data: Optional[Dict] = None):
+    """Return array of records that exactly match the given query
+    from Mentees.
+
+    Queries from Mentees collection with optional filters
+    given (data). If no filtering data is given, will return all
+    documents within collection.
+
+    Args:
+        data (dict) (optional): Key value pairs to match
+
+    Returns:
+        List of all matching documents
+    """
+    profiles = [Mentee(**doc) for doc in API.db.read("Mentees", data)]
+    return {"result": profiles}
+
+
+@API.post("/mentee/update")
 async def update(query: Dict, update_data: Mentee):
     """Update Mentee Collection and return the number of updated documents.
 
