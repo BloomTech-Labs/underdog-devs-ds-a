@@ -181,24 +181,6 @@ async def update(collection: str, query: Dict, update_data: Dict):
     return {"result": API.db.update(collection, query, update_data)}
 
 
-@API.post("/update/mentee")
-async def update(query: Dict, update_data: Mentee):
-    """Update Mentee Collection and return the number of updated documents.
-
-    Defines Mentee Collection  from URL and queries it with filters
-    given (query). Then updates fields using update_data, either adding
-    or overwriting data.
-
-    Args:
-        query (dict): Key value pairs to filter for
-        update_data (dict): Key value pairs to update
-
-    Returns:
-        Integer count of updated documents
-    """
-    return {"result": API.db.update("Mentees", query, update_data.dict())}
-
-
 @API.post("/update/mentor")
 async def update(query: Dict, update_data: Mentor):
     """Update Mentor Collection and return the number of updated documents.
@@ -215,6 +197,24 @@ async def update(query: Dict, update_data: Mentor):
         Integer count of updated documents
     """
     return {"result": API.db.update("Mentors", query, update_data.dict())}
+
+
+@API.post("/update/mentee")
+async def update(query: Dict, update_data: Mentee):
+    """Update Mentee Collection and return the number of updated documents.
+
+    Defines Mentee Collection  from URL and queries it with filters
+    given (query). Then updates fields using update_data, either adding
+    or overwriting data.
+
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+
+    Returns:
+        Integer count of updated documents
+    """
+    return {"result": API.db.update("Mentees", query, update_data.dict())}
 
 
 @API.delete("/{collection}/delete/{profile_id}")
