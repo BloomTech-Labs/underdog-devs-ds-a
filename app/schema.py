@@ -30,8 +30,8 @@ class Variants:
 
 
 class Mentor(BaseModel):
-    profile_id: constr(max_length=16) = Variants.generate_uuid(16)    
-    first_name: constr(max_length=255) = None
+    profile_id: constr(max_length=16) = Variants.generate_uuid(16) 
+    first_name: constr(max_length=255)
     last_name: constr(max_length=255) = None 
     tech_stack: constr(max_length=255) = None
     experience_level: Variants.exp_levels

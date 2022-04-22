@@ -138,7 +138,8 @@ async def read(data: Optional[Dict] = None):
     Returns:
         List of all matching documents
     """
-    return {"result": Mentor.parse_raw(API.db.read("Mentors", data).to_json())}
+    profiles = [Mentor(**doc) for doc in API.db.read("Mentors", data)]
+    return {"result": profiles}
 
 
 @API.post("/read/mentee")
@@ -310,6 +311,6 @@ async def tech_stack_graph():
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
 
-    
+
 if __name__=='__main__':
-    print(API.db.read("Mentors"))
+    print(type(json.loads(API.db.read("Mentors")[0].to_json())))
