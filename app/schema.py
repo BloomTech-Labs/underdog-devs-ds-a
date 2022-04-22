@@ -41,14 +41,14 @@ class Mentor(BaseModel):
 
 class Mentee(BaseModel):
     profile_id: constr(max_length=16) = Field(default_factory=IdGenerator())
-    first_name: constr(max_length=255) 
-    last_name: constr(max_length=255)
+    first_name: constr(max_length=255) = None
+    last_name: constr(max_length=255) = None
     formerly_incarcerated: Optional[bool] = False
     underrepresented_group: Optional[bool] = False
     low_income: Optional[bool] = False
     list_convictions: List[str] = None
-    tech_stack: constr(max_length=255)
-    experience_level: Variants.exp_levels  
+    tech_stack: constr(max_length=255) = None
+    experience_level: Variants.exp_levels = None
     job_help: Optional[bool] = False
     pair_programming: Optional[bool] = True
     need: constr(max_length=255) = None
