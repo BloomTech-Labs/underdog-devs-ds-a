@@ -112,7 +112,7 @@ async def update(collection: str, query: Dict, update_data: Dict):
     return {"result": API.db.update(collection, query, update_data)}
 
 
-@API.post("/mentor/create")
+@API.post("/create/mentor")
 async def create_mentor(data: Mentor):
     """Create a new record in the Mentors collection.
 
@@ -128,7 +128,7 @@ async def create_mentor(data: Mentor):
     return {"result": API.db.create("Mentors", data.dict())}
 
 
-@API.post("/mentor/read")
+@API.post("/read/mentor")
 async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query
     from Mentors.
@@ -141,17 +141,17 @@ async def read(data: Optional[Dict] = None):
         data (dict) (optional): Key value pairs to match
 
     Returns:
-        List of all matching documents
+        List of all matching documents in the Mentors collection
     """
     profiles = [Mentor(**doc) for doc in API.db.read("Mentors", data)]
     return {"result": profiles}
 
 
-@API.post("/mentor/update")
+@API.post("/update/mentor")
 async def update(query: Dict, update_data: Mentor):
     """Update Mentor Collection and return the number of updated documents.
 
-    Defines Mentor Collection  from URL and queries it with filters
+    Defines Mentor Collection from URL and queries it with filters
     given (query). Then updates fields using update_data, either adding
     or overwriting data.
 
@@ -165,7 +165,7 @@ async def update(query: Dict, update_data: Mentor):
     return {"result": API.db.update("Mentors", query, update_data.dict())}
 
 
-@API.post("/mentee/create")
+@API.post("/create/mentee")
 async def create_mentee(data: Mentee):
     """Create a new record in the Mentees collection.
 
@@ -181,7 +181,7 @@ async def create_mentee(data: Mentee):
     return {"result": API.db.create("Mentees", data.dict())}
 
 
-@API.post("/mentee/read")
+@API.post("/read/mentee")
 async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query
     from Mentees.
@@ -200,7 +200,7 @@ async def read(data: Optional[Dict] = None):
     return {"result": profiles}
 
 
-@API.post("/mentee/update")
+@API.post("/update/mentee")
 async def update(query: Dict, update_data: Mentee):
     """Update Mentee Collection and return the number of updated documents.
 

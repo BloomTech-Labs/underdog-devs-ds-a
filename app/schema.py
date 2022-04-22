@@ -34,7 +34,7 @@ class Mentor(BaseModel):
     first_name: constr(max_length=255) = None
     last_name: constr(max_length=255) = None 
     tech_stack: constr(max_length=255) = None
-    experience_level: Variants.exp_levels = "General Programming"
+    experience_level: Variants.exp_levels = "Beginner"
     job_help: Optional[bool] = False
     industry_knowledge: Optional[bool] = True
     pair_programming: Optional[bool] = True
@@ -46,9 +46,9 @@ class Mentee(BaseModel):
     formerly_incarcerated: Optional[bool] = False
     underrepresented_group: Optional[bool] = False
     low_income: Optional[bool] = False
-    list_convictions: List[str] = None
+    list_convictions: List[str] = []
     tech_stack: constr(max_length=255) = None
-    experience_level: Variants.exp_levels = None
+    experience_level: Variants.exp_levels = "Beginner"
     job_help: Optional[bool] = False
     pair_programming: Optional[bool] = True
     need: constr(max_length=255) = None
