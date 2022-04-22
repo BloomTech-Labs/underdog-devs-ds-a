@@ -1,3 +1,4 @@
+altair~=4.2.0
 certifi~=2021.10.8
 dnspython~=2.2.0
 fastapi~=0.73.0
