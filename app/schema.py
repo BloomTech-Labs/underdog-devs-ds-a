@@ -18,7 +18,8 @@ class Variants:
         "General Programming",
     ]
 
-    def generate_uuid(n_len: int) -> str:
+class IdGenerator:
+    def __call__(self, n_len = 16):  
         n1 = ceil(n_len / 2)
         n2 = floor(n_len / 2)
         prefix = choices(string.ascii_letters, k=n1)
@@ -28,19 +29,18 @@ class Variants:
         uuid = "".join(uuid_list)
         return uuid
 
-
 class Mentor(BaseModel):
-    profile_id: constr(max_length=16) = Variants.generate_uuid(16) 
-    first_name: constr(max_length=255)
+    profile_id: constr(max_length=16) = Field(default_factory=IdGenerator())
+    first_name: constr(max_length=255) = None
     last_name: constr(max_length=255) = None 
     tech_stack: constr(max_length=255) = None
-    experience_level: Variants.exp_levels
+    experience_level: Variants.exp_levels = "General Programming"
     job_help: Optional[bool] = False
     industry_knowledge: Optional[bool] = True
     pair_programming: Optional[bool] = True
 
 class Mentee(BaseModel):
-    profile_id: constr(max_length=16) = Variants.generate_uuid(16)
+    profile_id: constr(max_length=16) = Field(default_factory=IdGenerator())
     first_name: constr(max_length=255) 
     last_name: constr(max_length=255)
     formerly_incarcerated: Optional[bool] = False
@@ -58,7 +58,7 @@ class Mentee(BaseModel):
     assistance: Optional[bool] = False
 
 class Meeting(BaseModel):
-    meeting_id: constr(max_length=16) = Variants.generate_uuid(16)
+    meeting_id: constr(max_length=16) = Field(default_factory=IdGenerator())
     created_at: datetime = str(datetime.now())
     updated_at: datetime = str(datetime.now())
     meeting_topic: constr(max_length=255) 
@@ -70,17 +70,21 @@ class Meeting(BaseModel):
     meeting_missed: Literal['Missed', 'Attended'] 
 
 class Feedback(BaseModel):
-    ticket_id: constr(max_length=16) = Variants.generate_uuid(16)
+    ticket_id: constr(max_length=16) = Field(default_factory=IdGenerator())
     mentee_id: constr(max_length=16)
     mentor_id: constr(max_length=16)
     feedback: constr(max_length=2000)
 
 class Resource(BaseModel):
     name: constr(max_length=255)
-    item_id: constr(max_length=16) = Variants.generate_uuid(16)
+    item_id: constr(max_length=16) = Field(default_factory=IdGenerator())
 
 
 if __name__ == '__main__':
     M = Mentor()
+    M1 = Mentor()
+    M2 = Mentor()
 
     print(M)
+    print(M1)
+    print(M2)
