@@ -326,5 +326,5 @@ async def tech_stack_graph():
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
 
-if __name__=='__main__':
+#if __name__=='__main__':
 
