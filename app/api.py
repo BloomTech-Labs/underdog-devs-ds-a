@@ -70,8 +70,7 @@ async def create(collection: str, data: Dict):
         collection (str): Name of collection retrieved from URL
         data (dict): Key value pairs to be mapped to document fields
 
-        Input Example:
-        collection = "Mentees"
+        Input Example: collection = "Mentees"
 
     Returns: New collection's data as dictionary
     """
@@ -138,8 +137,7 @@ async def read(data: Optional[Dict] = None):
     Args:
         data (dict) (optional): Key value pairs to match
 
-    Returns:
-        List of all matching documents in the Mentors collection
+    Returns: List of all matching documents in the Mentors collection
     """
     profiles = [Mentor(**doc) for doc in API.db.read("Mentors", data)]
     return {"result": profiles}
@@ -155,8 +153,8 @@ async def update(query: Dict, update_data: Mentor):
         query (dict): Key value pairs to filter for
         update_data (dict): Key value pairs to update
         
-    Returns:
-        None"""
+    Returns: None 
+    """
     return {"result": API.db.update("Mentors", query, update_data.dict())}
 
 
@@ -168,8 +166,7 @@ async def create_mentee(data: Mentee):
     Args:
         data (dict): Key value pairs to be mapped to document fields
 
-    Returns:
-        New record data as dictionary
+    Returns: New record data as dictionary
     """
     return {"result": API.db.create("Mentees", data.dict())}
 
@@ -184,8 +181,7 @@ async def read(data: Optional[Dict] = None):
     Args:
         data (dict) (optional): Key value pairs to match
 
-    Returns:
-        List of all matching documents
+    Returns: List of all matching documents
     """
     profiles = [Mentee(**doc) for doc in API.db.read("Mentees", data)]
     return {"result": profiles}
@@ -201,8 +197,7 @@ async def update(query: Dict, update_data: Mentee):
         query (dict): Key value pairs to filter for
         update_data (dict): Key value pairs to update
 
-    Returns:
-        None
+    Returns: None
     """
     return {"result": API.db.update("Mentees", query, update_data.dict())}
 
