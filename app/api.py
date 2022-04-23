@@ -1,11 +1,9 @@
 import json
 from typing import Dict, Optional
-
 import pandas as pd
 from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-
 from app.data import MongoDB
 from app.graphs import tech_stack_by_role
 from app.schema import Mentee, Mentor
@@ -55,7 +53,6 @@ async def collections():
 @API.post("/{collection}/create")
 async def create(collection: str, data: Dict):
     """Create a new record in the given collection.
-
     Creates new document within given collection using the data
     parameter to populate its fields.
 
@@ -76,7 +73,6 @@ async def create(collection: str, data: Dict):
 @API.post("/{collection}/read")
 async def read(collection: str, data: Optional[Dict] = None):
     """Return array of records that exactly match the given query.
-
     Defines collection from URL and queries it with optional filters
     given (data). If no filtering data is given, will return all
     documents within collection.
@@ -95,7 +91,6 @@ async def read(collection: str, data: Optional[Dict] = None):
 @API.post("/{collection}/update")
 async def update(collection: str, query: Dict, update_data: Dict):
     """Update collection and return the number of updated documents.
-
     Defines collection from URL and queries it with filters
     given (query). Then updates fields using update_data, either adding
     or overwriting data.
@@ -115,7 +110,6 @@ async def update(collection: str, query: Dict, update_data: Dict):
 @API.post("/create/mentor")
 async def create_mentor(data: Mentor):
     """Create a new record in the Mentors collection.
-
     Creates new document within Mentors using the data
     parameter to populate its fields.
 
@@ -130,9 +124,8 @@ async def create_mentor(data: Mentor):
 
 @API.post("/read/mentor")
 async def read(data: Optional[Dict] = None):
-    """Return array of records that exactly match the given query
-    from Mentors.
-
+    """Return array of records that exactly match the given query from Mentors.
+    
     Queries from Mentors collection with optional filters
     given (data). If no filtering data is given, will return all
     documents within collection.
@@ -150,7 +143,6 @@ async def read(data: Optional[Dict] = None):
 @API.post("/update/mentor")
 async def update(query: Dict, update_data: Mentor):
     """Updates Mentor documents that statisfy the query with update_data.
-
     Queries from Mentor Collection with filters given (query).
     Then updates fields using update_data, by overwriting or adding data.
 
@@ -166,7 +158,6 @@ async def update(query: Dict, update_data: Mentor):
 @API.post("/create/mentee")
 async def create_mentee(data: Mentee):
     """Create a new record in the Mentees collection.
-
     Creates new document within Mentees using the data
     parameter to populate its fields.
 
@@ -181,8 +172,7 @@ async def create_mentee(data: Mentee):
 
 @API.post("/read/mentee")
 async def read(data: Optional[Dict] = None):
-    """Return array of records that exactly match the given query
-    from Mentees.
+    """Return array of records that exactly match the given query from Mentees.
 
     Queries from Mentees collection with optional filters
     given (data). If no filtering data is given, will return all
@@ -201,7 +191,6 @@ async def read(data: Optional[Dict] = None):
 @API.post("/update/mentee")
 async def update(query: Dict, update_data: Mentee):
     """Updates Mentee documents that statisfy the query with update_data.
-
     Queries from Mentee Collection with filters given (query).
     Then updates fields using update_data, by overwriting or adding data.
 
@@ -218,7 +207,6 @@ async def update(query: Dict, update_data: Mentee):
 @API.delete("/{collection}/delete/{profile_id}")
 async def delete(collection: str, profile_id: str):
     """Removes a user from the given collection.
-
     Deletes all documents containing the given profile_id permanently,
     and returns the deleted profile_id for confirmation.
 
@@ -306,7 +294,6 @@ async def all_exception_handler(request: Request, exc: Exception):
 @API.post("/financial_aid/{profile_id}")
 async def financial_aid(profile_id: str):
     """Returns the probability that financial aid will be required.
-
     Calls the financial aid function from functions.py inputing the
     profile_id for calculation involving formally incarcerated, low income,
     and experience level as variables to formulate probability of financial aid
@@ -347,6 +334,5 @@ async def tech_stack_graph():
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
 
-
 if __name__=='__main__':
-    print(type(json.loads(API.db.read("Mentors")[0].to_json())))
+
