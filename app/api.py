@@ -63,8 +63,7 @@ async def create(collection: str, data: Dict):
         Input Example:
         collection = "Mentees"
 
-    Returns:
-        New collection's data as dictionary
+    Returns: New collection's data as dictionary
     """
     await is_collection(collection)
     return {"result": API.db.create(collection, data)}
@@ -81,8 +80,7 @@ async def read(collection: str, data: Optional[Dict] = None):
         collection (str): Name of collection retrieved from URL
         data (dict) (optional): Key value pairs to match
 
-    Returns:
-        List of all matching documents
+    Returns: List of all matching documents
     """
     await is_collection(collection)
     return {"result": API.db.read(collection, data)}
@@ -100,8 +98,7 @@ async def update(collection: str, query: Dict, update_data: Dict):
         query (dict): Key value pairs to filter for
         update_data (dict): Key value pairs to update
 
-    Returns:
-        Integer count of updated documents
+    Returns: Integer count of updated documents
     """
     await is_collection(collection)
     return {"result": API.db.update(collection, query, update_data)}
@@ -113,11 +110,9 @@ async def create_mentor(data: Mentor):
     Creates new document within Mentors using the data
     parameter to populate its fields.
 
-    Args:
-        data (dict): Key value pairs to be mapped to document fields
+    Args: data (dict): Key value pairs to be mapped to document fields
 
-    Returns:
-        New record data as dictionary
+    Returns: New record data as dictionary
     """
     return {"result": API.db.create("Mentors", data.dict())}
 
@@ -157,9 +152,8 @@ async def update(query: Dict, update_data: Mentor):
 
 @API.post("/create/mentee")
 async def create_mentee(data: Mentee):
-    """Create a new record in the Mentees collection.
-    Creates new document within Mentees using the data
-    parameter to populate its fields.
+    """Create a new record in the Mentees collection. Creates new document 
+    within Mentees using the data parameter to populate its fields.
 
     Args:
         data (dict): Key value pairs to be mapped to document fields
@@ -174,9 +168,8 @@ async def create_mentee(data: Mentee):
 async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query from Mentees.
 
-    Queries from Mentees collection with optional filters
-    given (data). If no filtering data is given, will return all
-    documents within collection.
+    Queries from Mentees collection with optional filters given (data). 
+    If no filtering data is given, will return all documents within collection.
 
     Args:
         data (dict) (optional): Key value pairs to match
@@ -215,8 +208,8 @@ async def delete(collection: str, profile_id: str):
         profile_id (str): ID number of user to be deleted
 
     Returns:
-        Dictionary with key of "deleted" and value of the profile_id
-    """
+        Dictionary with key of "deleted" and value of the profile_id """
+    
     API.db.delete(collection, {"profile_id": profile_id})
     return {"result": {"deleted": profile_id}}
 
@@ -233,9 +226,9 @@ async def collection_search(collection: str, search: str):
         collection (str): Name of collection to query
         search (str): Querying parameter
 
-    Returns:
-        List of queried documents
+    Returns: List of queried documents
     """
+    
     await is_collection(collection)
     return {"result": API.db.search(collection, search)}
 
@@ -252,9 +245,9 @@ async def match(profile_id: str, n_matches: int):
         profile_id (str): ID number for mentee needing a mentor
         n_matches (int): Maximum desired matching candidates
 
-    Returns:
-        List of mentor IDs
+    Returns: List of mentor IDs 
     """
+    
     return {"result": API.matcher(n_matches, profile_id)}
 
 
@@ -270,8 +263,8 @@ async def match_resource(item_id: str, n_matches: int):
         item_id (int): ID number for resource item to be allocated to a mentee
         n_matches (int): Maximum desired matching candidates. Ideally should be 1.
 
-    Returns:
-        List of mentee ID(s) """
+    Returns: List of mentee ID(s) 
+    """
     return {"result": API.resource_matcher(n_matches, item_id)}
 
 
@@ -302,8 +295,7 @@ async def financial_aid(profile_id: str):
         profile_id (str): the profile id of the mentee
 
     Returns:
-        the probability that financial aid will be required
-    """
+        the probability that financial aid will be required """
 
     profile = API.db.first('Mentees', {"profile_id": profile_id})
 
@@ -320,7 +312,7 @@ async def sentiment(text: str):
         text (str): the text to be analyzed
 
     Returns:
-        positive/negative/neutral prediction based on sentiment analysis
+        positive/negative/neutral prediction based on sentiment analysis 
     """
     return {"result": vader_score(text)}
 
