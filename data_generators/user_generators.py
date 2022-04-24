@@ -16,7 +16,8 @@ class Mentor(Printable):
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
-        self.name = f'{random_first_name()} {choice(last_names)}'
+        self.first_name = random_first_name()
+        self.last_name = choice(last_names)
         self.tech_stack = choice(tech_stack)
         self.experience_level = choice(skill_levels)
         self.job_help = self.tech_stack == "Career Development"
@@ -29,7 +30,8 @@ class Mentee(Printable):
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
-        self.name = f'{random_first_name()} {choice(last_names)}'
+        self.first_name = random_first_name()
+        self.last_name = choice(last_names)
         self.formerly_incarcerated = percent_true(80)
         self.underrepresented_group = percent_true(70)
         self.low_income = percent_true(70)
