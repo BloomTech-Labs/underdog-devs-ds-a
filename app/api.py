@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse
 from app.data import MongoDB
 from app.graphs import tech_stack_by_role
-from app.schema import Mentee, Mentor
+from app.schema import Mentee, MenteeUpdate, Mentor, MentorUpdate
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
@@ -71,7 +71,6 @@ async def create(collection: str, data: Dict):
         data (dict): Key value pairs to be mapped to document fields
 
         Input Example: collection = "Mentees"
-
     Returns: New collection's data as dictionary
     """
     await is_collection(collection)
@@ -88,7 +87,6 @@ async def read(collection: str, data: Optional[Dict] = None):
     Args:
         collection (str): Name of collection retrieved from URL
         data (dict) (optional): Key value pairs to match
-
     Returns: List of all matching documents
     """
     await is_collection(collection)
@@ -106,7 +104,6 @@ async def update(collection: str, query: Dict, update_data: Dict):
         collection (str): Name of collection retrieved from URL
         query (dict): Key value pairs to filter for
         update_data (dict): Key value pairs to update
-
     Returns: Integer count of updated documents
     """
     await is_collection(collection)
@@ -120,7 +117,6 @@ async def create_mentor(data: Mentor):
     parameter to populate its fields.
 
     Args: data (dict): Key value pairs to be mapped to document fields
-
     Returns: New record data as dictionary
     """
     return {"result": API.db.create("Mentors", data.dict())}
@@ -136,26 +132,24 @@ async def read(data: Optional[Dict] = None):
 
     Args:
         data (dict) (optional): Key value pairs to match
-
     Returns: List of all matching documents in the Mentors collection
     """
-    profiles = [Mentor(**doc) for doc in API.db.read("Mentors", data)]
-    return {"result": profiles}
+    return {"result": API.db.read("Mentors", data)}
 
 
 @API.post("/update/mentor")
-async def update(query: Dict, update_data: Mentor):
+async def update(query: Dict, update_data: Dict):
     """Updates Mentor documents that statisfy the query with update_data.
     Queries from Mentor Collection with filters given (query).
     Then updates fields using update_data, by overwriting or adding data.
 
     Args:
         query (dict): Key value pairs to filter for
-        update_data (dict): Key value pairs to update
-        
+        update_data (dict): Key value pairs to update 
     Returns: None 
     """
-    return {"result": API.db.update("Mentors", query, update_data.dict())}
+    MentorUpdate(**update_data)
+    return {"result": API.db.update("Mentors", query, update_data)}
 
 
 @API.post("/create/mentee")
@@ -165,7 +159,6 @@ async def create_mentee(data: Mentee):
 
     Args:
         data (dict): Key value pairs to be mapped to document fields
-
     Returns: New record data as dictionary
     """
     return {"result": API.db.create("Mentees", data.dict())}
@@ -180,15 +173,13 @@ async def read(data: Optional[Dict] = None):
 
     Args:
         data (dict) (optional): Key value pairs to match
-
     Returns: List of all matching documents
     """
-    profiles = [Mentee(**doc) for doc in API.db.read("Mentees", data)]
-    return {"result": profiles}
+    return {"result": API.db.read("Mentees", data)}
 
 
 @API.post("/update/mentee")
-async def update(query: Dict, update_data: Mentee):
+async def update(query: Dict, update_data: Dict):
     """Updates Mentee documents that statisfy the query with update_data.
     Queries from Mentee Collection with filters given (query).
     Then updates fields using update_data, by overwriting or adding data.
@@ -196,10 +187,10 @@ async def update(query: Dict, update_data: Mentee):
     Args:
         query (dict): Key value pairs to filter for
         update_data (dict): Key value pairs to update
-
     Returns: None
     """
-    return {"result": API.db.update("Mentees", query, update_data.dict())}
+    MenteeUpdate(**update_data)
+    return {"result": API.db.update("Mentees", query, update_data)}
 
 
 @API.delete("/{collection}/delete/{profile_id}")
@@ -211,7 +202,6 @@ async def delete(collection: str, profile_id: str):
     Args:
         collection (str): Name of collection to query for deletion
         profile_id (str): ID number of user to be deleted
-
     Returns:
         Dictionary with key of "deleted" and value of the profile_id """
     
@@ -230,7 +220,6 @@ async def collection_search(collection: str, search: str):
     Args:
         collection (str): Name of collection to query
         search (str): Querying parameter
-
     Returns: List of queried documents
     """
     
@@ -249,7 +238,6 @@ async def match(profile_id: str, n_matches: int):
     Args:
         profile_id (str): ID number for mentee needing a mentor
         n_matches (int): Maximum desired matching candidates
-
     Returns: List of mentor IDs 
     """
     
@@ -259,7 +247,6 @@ async def match(profile_id: str, n_matches: int):
 @API.post("/match_resource/{item_id}")
 async def match_resource(item_id: str, n_matches: int):
     """ Returns array of mentee matches for any given Resource item_id.
-
     Utilizes imported MatcherSortSearchResource() to query database for the
     given number of mentees that may be a good match for the given
     Resource(s). See documentation for MatcherSortSearchResource() for details.
@@ -267,7 +254,6 @@ async def match_resource(item_id: str, n_matches: int):
     Args:
         item_id (int): ID number for resource item to be allocated to a mentee
         n_matches (int): Maximum desired matching candidates. Ideally should be 1.
-
     Returns: List of mentee ID(s) 
     """
     return {"result": API.resource_matcher(n_matches, item_id)}
@@ -298,7 +284,6 @@ async def financial_aid(profile_id: str):
 
     Args:
         profile_id (str): the profile id of the mentee
-
     Returns:
         the probability that financial aid will be required """
 
@@ -315,7 +300,6 @@ async def sentiment(text: str):
     """ Returns positive, negative or neutral sentiment of the supplied text.
     Args:
         text (str): the text to be analyzed
-
     Returns:
         positive/negative/neutral prediction based on sentiment analysis 
     """
@@ -330,6 +314,3 @@ async def tech_stack_graph():
     mentees_df["user_role"] = "Mentee"
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
-
-#if __name__=='__main__':
-
