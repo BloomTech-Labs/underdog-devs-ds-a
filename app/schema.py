@@ -5,7 +5,7 @@ from pydantic import BaseModel, constr
 
 class Variants:
     exp_levels = Literal[
-        "Beginner", "Intermediate", "Advanced", "Expert",
+        "Beginner", "Intermediate", "Advanced"
     ]
 
     teck_stacks = Literal[
@@ -19,19 +19,19 @@ class Mentor(BaseModel):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
-    tech_stack: Optional[constr(max_length=255)] = None
-    experience_level: Optional[Variants.exp_levels] = None
-    job_help: Optional[bool] = True
-    industry_knowledge: Optional[bool] = True
-    pair_programming: Optional[bool] = True
+    tech_stack: List[str]
+    preferred_mentee_exp_level: Variants.exp_levels
+    job_help: bool
+    industry_knowledge: bool
+    pair_programming: bool
 
 
 class MentorUpdate(BaseModel):
     profile_id: Optional[constr(max_length=255)]
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
-    tech_stack: Optional[constr(max_length=255)]
-    experience_level: Optional[Variants.exp_levels]
+    tech_stack: Optional[List[str]]
+    preferred_mentee_exp_level: Optional[Variants.exp_levels]
     job_help: Optional[bool]
     industry_knowledge: Optional[bool]
     pair_programming: Optional[bool]
@@ -41,14 +41,13 @@ class Mentee(BaseModel):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
-    formerly_incarcerated: Optional[bool] = False
-    underrepresented_group: Optional[bool] = False
-    low_income: Optional[bool] = False
-    list_convictions: List[str] = [None]
-    tech_stack: Optional[constr(max_length=255)] = None
-    experience_level: Optional[Variants.exp_levels] = None
-    job_help: Optional[bool] = True
-    pair_programming: Optional[bool] = True
+    formerly_incarcerated: bool
+    underrepresented_group: bool
+    low_income: bool
+    tech_stack: constr(max_length=255)
+    experience_level: Variants.exp_levels
+    job_help: bool
+    pair_programming: bool
     need: Optional[constr(max_length=255)] = None
     parole_restriction: Optional[bool] = False
     disability: Optional[bool] = False
@@ -63,7 +62,7 @@ class MenteeUpdate(BaseModel):
     formerly_incarcerated: Optional[bool]
     underrepresented_group: Optional[bool]
     low_income: Optional[bool]
-    list_convictions: List[str]
+    list_convictions: Optional[List[str]]
     tech_stack: Optional[constr(max_length=255)]
     experience_level: Optional[Variants.exp_levels]
     job_help: Optional[bool]
