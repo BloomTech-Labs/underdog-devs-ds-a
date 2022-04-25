@@ -10,7 +10,6 @@ from app.schema import Mentee, MenteeUpdate, Mentor, MentorUpdate
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
-from app.schema import Mentee, Mentor
 from app.computer_assignment import computer_assignment_visualizer
 
 API = FastAPI(
