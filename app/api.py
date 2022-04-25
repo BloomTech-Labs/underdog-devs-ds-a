@@ -53,7 +53,7 @@ async def collections():
 @API.get("/cavisualizer", response_class=HTMLResponse)
 async def computer_assignment_rating_visualizer():
     """Return an HTML table of the computer assignment
-    ratings in the computer assignment collection of the 
+    ratings in the computer assignment collection of the
     selected mongodb database.
     """
     return computer_assignment_visualizer(API.db)
@@ -124,7 +124,7 @@ async def create_mentor(data: Mentor):
 @API.post("/read/mentor")
 async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query from Mentors.
-    
+
     Queries from Mentors collection with optional filters
     given (data). If no filtering data is given, will return all
     documents within collection.
@@ -144,8 +144,8 @@ async def update(query: Dict, update_data: Dict):
 
     Args:
         query (dict): Key value pairs to filter for
-        update_data (dict): Key value pairs to update 
-    Returns: None 
+        update_data (dict): Key value pairs to update
+    Returns: None
     """
     MentorUpdate(**update_data)
     return {"result": API.db.update("Mentors", query, update_data)}
@@ -153,7 +153,7 @@ async def update(query: Dict, update_data: Dict):
 
 @API.post("/create/mentee")
 async def create_mentee(data: Mentee):
-    """Create a new record in the Mentees collection. Creates new document 
+    """Create a new record in the Mentees collection. Creates new document
     within Mentees using the data parameter to populate its fields.
 
     Args:
@@ -167,7 +167,7 @@ async def create_mentee(data: Mentee):
 async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query from Mentees.
 
-    Queries from Mentees collection with optional filters given (data). 
+    Queries from Mentees collection with optional filters given (data).
     If no filtering data is given, will return all documents within collection.
 
     Args:
@@ -203,7 +203,7 @@ async def delete(collection: str, profile_id: str):
         profile_id (str): ID number of user to be deleted
     Returns:
         Dictionary with key of "deleted" and value of the profile_id """
-    
+
     API.db.delete(collection, {"profile_id": profile_id})
     return {"result": {"deleted": profile_id}}
 
@@ -221,7 +221,7 @@ async def collection_search(collection: str, search: str):
         search (str): Querying parameter
     Returns: List of queried documents
     """
-    
+
     await is_collection(collection)
     return {"result": API.db.search(collection, search)}
 
@@ -237,9 +237,9 @@ async def match(profile_id: str, n_matches: int):
     Args:
         profile_id (str): ID number for mentee needing a mentor
         n_matches (int): Maximum desired matching candidates
-    Returns: List of mentor IDs 
+    Returns: List of mentor IDs
     """
-    
+
     return {"result": API.matcher(n_matches, profile_id)}
 
 
@@ -252,8 +252,8 @@ async def match_resource(item_id: str, n_matches: int):
 
     Args:
         item_id (int): ID number for resource item to be allocated to a mentee
-        n_matches (int): Maximum desired matching candidates. Ideally should be 1.
-    Returns: List of mentee ID(s) 
+        n_matches (int): Max desired matching candidates. Ideally should be 1.
+    Returns: List of mentee ID(s)
     """
     return {"result": API.resource_matcher(n_matches, item_id)}
 
@@ -300,7 +300,7 @@ async def sentiment(text: str):
     Args:
         text (str): the text to be analyzed
     Returns:
-        positive/negative/neutral prediction based on sentiment analysis 
+        positive/negative/neutral prediction based on sentiment analysis
     """
     return {"result": vader_score(text)}
 
