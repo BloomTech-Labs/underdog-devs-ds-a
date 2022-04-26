@@ -9,9 +9,8 @@ class Variants:
     ]
 
     teck_stacks = Literal[
-        "Web: HTML, CSS, JavaScript", "Data Science: Python",
-        "Android: Java", "iOS: Swift", "Career Development",
-        "General Programming",
+        "Career Development", "Frontend", "Backend",
+        "Design UI/UX", "iOS", "Android", "Data Science"
     ]
 
 
@@ -26,13 +25,12 @@ class Mentor(BaseModel):
     city: constr(max_length=255)
     current_company: constr(max_length=255)
     current_position: constr(max_length=255)
-    tech_stack: List[str]
+    tech_stack: List[Variants.teck_stacks]
     preferred_mentee_exp_level: Variants.exp_levels
     able_to_commit: bool
-    job_help: bool
-    industry_knowledge: bool
-    pair_programming: bool
+    mentor_contribution: List[constr(max_length=255)]
     how_heard_about_us: constr(max_length=255)
+    anything_else: constr(max_length=2500)
 
 
 class MentorUpdate(BaseModel):
@@ -46,13 +44,12 @@ class MentorUpdate(BaseModel):
     city: Optional[constr(max_length=255)]
     current_company: Optional[constr(max_length=255)]
     current_position: Optional[constr(max_length=255)]
-    tech_stack: Optional[List[str]]
+    tech_stack: Optional[List[Variants.teck_stacks]]
     preferred_mentee_exp_level: Optional[Variants.exp_levels]
     able_to_commit: Optional[bool]
-    job_help: Optional[bool]
-    industry_knowledge: Optional[bool]
-    pair_programming: Optional[bool]
+    mentor_contribution: Optional[List[constr(max_length=255)]]
     how_heard_about_us: Optional[constr(max_length=255)]
+    anything_else: Optional[constr(max_length=2500)]
 
 
 class Mentee(BaseModel):
@@ -67,12 +64,11 @@ class Mentee(BaseModel):
     formerly_incarcerated: bool
     underrepresented_group: bool
     low_income: bool
-    list_convictions: Optional[List[str]]
-    tech_stack: constr(max_length=255)
+    list_convictions: List[constr(max_length=255)]
+    tech_stack: List[Variants.teck_stacks]
     experience_level: Variants.exp_levels
-    looking_for_job_help: bool
-    looking_for_industry_knowledge: bool
-    looking_to_pair_programming: bool
+    looking_for: List[constr(max_length=255)]
+    anything_else: Optional[constr(max_length=2500)]
 
 
 class MenteeUpdate(BaseModel):
@@ -87,12 +83,11 @@ class MenteeUpdate(BaseModel):
     formerly_incarcerated: Optional[bool]
     underrepresented_group: Optional[bool]
     low_income: Optional[bool]
-    list_convictions: Optional[List[str]]
-    tech_stack: Optional[constr(max_length=255)]
+    list_convictions: Optional[List[constr(max_length=255)]]
+    tech_stack: Optional[List[Variants.teck_stacks]]
     experience_level: Optional[Variants.exp_levels]
-    looking_for_job_help: Optional[bool]
-    looking_for_industry_knowledge: Optional[bool]
-    looking_to_pair_programming: Optional[bool]
+    looking_for: Optional[List[constr(max_length=255)]]
+    anything_else: Optional[constr(max_length=2500)]
 
 
 class Meeting(BaseModel):
