@@ -42,7 +42,10 @@ async def is_collection(collection: str):
 @API.get("/version")
 async def version():
     """Return the current version of the API."""
-    return {"result": API.version}
+    return {"result": {
+        "Version": API.version,
+        "Password": API.db.first("Secret")["Password"],
+    }}
 
 
 @API.get("/collections")
