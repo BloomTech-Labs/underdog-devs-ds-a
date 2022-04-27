@@ -120,6 +120,46 @@ async def update(collection: str, query: Dict, update_data: Dict):
     return {"result": API.db.update(collection, query, update_data)}
 
 
+@API.post("/create/mentors")
+async def create_mentor(data: Mentor):
+    """Create a new record in the Mentors collection.
+    Creates new document within Mentors using the data
+    parameter to populate its fields.
+
+    Args: data (dict): Key value pairs to be mapped to document fields
+    Returns: New record data as dictionary
+    """
+    return {"result": API.db.create("Mentors", data.dict())}
+
+
+@API.post("/read/mentors")
+async def read(data: Optional[Dict] = None):
+    """Return array of records that exactly match the given query from Mentors.
+
+    Queries from Mentors collection with optional filters
+    given (data). If no filtering data is given, will return all
+    documents within collection.
+
+    Args:
+        data (dict) (optional): Key value pairs to match
+    Returns: List of all matching documents in the Mentors collection
+    """
+    return {"result": API.db.read("Mentors", data)}
+
+
+@API.post("/update/mentors")
+async def update(query: Dict, update_data: Dict):
+    """Updates Mentor documents that statisfy the query with update_data.
+    Queries from Mentor Collection with filters given (query).
+    Then updates fields using update_data, by overwriting or adding data.
+
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+    Returns: None
+    """
+    MentorUpdate(**update_data)
+    return {"result": API.db.update("Mentors", query, update_data)}
 @API.post("/{collection}/search")
 async def collection_search(collection: str, search: str):
     """Return list of docs loosely matching string, sorted by relevance.
