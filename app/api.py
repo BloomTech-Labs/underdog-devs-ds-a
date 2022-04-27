@@ -120,6 +120,21 @@ async def update(collection: str, query: Dict, update_data: Dict):
     return {"result": API.db.update(collection, query, update_data)}
 
 
+@API.delete("/{collection}/delete/{profile_id}")
+async def delete(collection: str, profile_id: str):
+    """Removes a user from the given collection.
+    Deletes all documents containing the given profile_id permanently,
+    and returns the deleted profile_id for confirmation.
+
+    Args:
+        collection (str): Name of collection to query for deletion
+        profile_id (str): ID number of user to be deleted
+        Dictionary with key of "deleted" and value of the profile_id """
+
+    API.db.delete(collection, {"profile_id": profile_id})
+    return {"result": {"deleted": profile_id}}
+
+
 @API.post("/create/mentors")
 async def create_mentor(data: Mentor):
     """Create a new record in the Mentors collection.
@@ -160,6 +175,8 @@ async def update(query: Dict, update_data: Dict):
     """
     MentorUpdate(**update_data)
     return {"result": API.db.update("Mentors", query, update_data)}
+
+
 @API.post("/{collection}/search")
 async def collection_search(collection: str, search: str):
     """Return list of docs loosely matching string, sorted by relevance.
