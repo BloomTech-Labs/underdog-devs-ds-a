@@ -16,7 +16,7 @@ from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.45.3",
+    version="0.45.4",
     docs_url='/',
 )
 API.db = MongoDB("UnderdogDevs")
