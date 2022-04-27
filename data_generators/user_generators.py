@@ -15,14 +15,6 @@ class Mentor(Printable):
     """Mentor Schema"""
 
     def __init__(self):
-        # self.profile_id = generate_uuid(16)
-        # self.name = f'{random_first_name()} {choice(last_names)}'
-        # self.tech_stack = choice(tech_stack)
-        # self.experience_level = choice(skill_levels)
-        # self.job_help = self.tech_stack == "Career Development"
-        # self.industry_knowledge = percent_true(90)
-        # self.pair_programming = percent_true(90)
-
         self.profile_id = generate_uuid(16)
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
@@ -46,28 +38,6 @@ class Mentee(Printable):
     """Mentee Schema"""
 
     def __init__(self):
-        # self.profile_id = generate_uuid(16)
-        # self.name = f'{random_first_name()} {choice(last_names)}'
-        # self.formerly_incarcerated = percent_true(80)
-        # self.underrepresented_group = percent_true(70)
-        # self.low_income = percent_true(70)
-        # if self.formerly_incarcerated:
-        #     self.list_convictions = sample(convictions, k=randint(1, 3))
-        # else:
-        #     self.list_convictions = []
-        # self.tech_stack = choice(tech_stack)
-        # self.experience_level = choice(skill_levels)
-        # self.job_help = self.tech_stack == "Career Development"
-        # if self.job_help:
-        #     self.pair_programming = False
-        # else:
-        #     self.pair_programming = percent_true(60)
-        # self.need = choice(resource_items)
-        # self.parole_restriction = percent_true(50)
-        # self.disability = percent_true(15)
-        # self.work_status = percent_true(50)
-        # self.assistance = percent_true(65)
-
         self.profile_id = generate_uuid(16)
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
@@ -84,7 +54,6 @@ class Mentee(Printable):
         self.experience_level = choice(skill_levels)
         self.looking_for = [choice(resource_items), choice(topics),
                             choice(tech_stack)]
-        # self.how_heard_about_us = choice(heard_about_us)  -- do we want this question?
         self.anything_else = "anything else may be written here"
 
 
