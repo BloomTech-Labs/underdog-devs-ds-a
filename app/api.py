@@ -146,12 +146,11 @@ async def read(data: Optional[Dict] = None):
     given (data). If no filtering data is given, will return all
     documents within Mentors collection.
     Args:
-        collection (str): Name of collection retrieved from URL
-        data (dict): Key value pairs to be mapped to document fields
         data (dict) (optional): Key value pairs to match
     Returns: List of all matching documents in the Mentors collection
     """
     return {"result": API.db.read("Mentors", data)}
+
 
 @API.post("/read/mentees")
 async def read(data: Optional[Dict] = None):
@@ -160,7 +159,7 @@ async def read(data: Optional[Dict] = None):
     If no filtering data is given, will return all documents within collection.
     Args:
         data (dict) (optional): Key value pairs to match
-    Returns: List of all matching documents
+    Returns: List of all matching documents in the Mentees collection
     """
     return {"result": API.db.read("Mentees", data)}
 
