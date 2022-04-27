@@ -12,6 +12,7 @@ from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -148,34 +149,16 @@ async def create_mentor(data: Mentor):
     return {"result": API.db.create("Mentors", data.dict())}
 
 
-@API.post("/read/mentors")
-async def read(data: Optional[Dict] = None):
-    """Return array of records that exactly match the given query from Mentors.
+@API.post("/create/mentees")
+async def create_mentor(data: Mentor):
+    """Create a new record in the Mentees collection.
+    Creates new document within Mentees using the data
+    parameter to populate its fields.
 
-    Queries from Mentors collection with optional filters
-    given (data). If no filtering data is given, will return all
-    documents within collection.
-
-    Args:
-        data (dict) (optional): Key value pairs to match
-    Returns: List of all matching documents in the Mentors collection
+    Args: data (dict): Key value pairs to be mapped to document fields
+    Returns: New record data as dictionary
     """
-    return {"result": API.db.read("Mentors", data)}
-
-
-@API.post("/update/mentors")
-async def update(query: Dict, update_data: Dict):
-    """Updates Mentor documents that statisfy the query with update_data.
-    Queries from Mentor Collection with filters given (query).
-    Then updates fields using update_data, by overwriting or adding data.
-
-    Args:
-        query (dict): Key value pairs to filter for
-        update_data (dict): Key value pairs to update
-    Returns: None
-    """
-    MentorUpdate(**update_data)
-    return {"result": API.db.update("Mentors", query, update_data)}
+    return {"result": API.db.create("Mentees", data.dict())}
 
 
 @API.post("/{collection}/search")
