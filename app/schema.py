@@ -8,7 +8,7 @@ class Variants:
         "Beginner", "Intermediate", "Advanced"
     ]
 
-    teck_stacks = Literal[
+    tech_stacks = Literal[
         "Career Development", "Frontend", "Backend",
         "Design UI/UX", "iOS", "Android", "Data Science"
     ]
