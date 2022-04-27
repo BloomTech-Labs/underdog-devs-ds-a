@@ -141,22 +141,21 @@ async def delete(collection: str, profile_id: str):
 async def create_mentor(data: Mentor):
     """Create a new record in the Mentors collection.
     Creates new document within Mentors using the data
-    parameter to populate its fields.
+    parameter to populate its fields. This also uses Pydantic schema to validate incoming data follows the rules.
 
-    Args: data (dict): Key value pairs to be mapped to document fields
-    Returns: New record data as dictionary
+    Args: data (Mentor): Mentor
+    Returns: New record data or schema discrepancy error as dictionary
     """
     return {"result": API.db.create("Mentors", data.dict())}
 
 
 @API.post("/create/mentees")
-async def create_mentor(data: Mentor):
+async def create_mentor(data: Mentee):
     """Create a new record in the Mentees collection.
-    Creates new document within Mentees using the data
-    parameter to populate its fields.
+    Creates new document within Menteess using the data parameter to populate its fields. This also uses Pydantic schema to validate incoming data follows the rules.
 
-    Args: data (dict): Key value pairs to be mapped to document fields
-    Returns: New record data as dictionary
+    Args: data (Mentee): Mentee
+    Returns: New record data or schema discrepancy error as dictionary
     """
     return {"result": API.db.create("Mentees", data.dict())}
 
