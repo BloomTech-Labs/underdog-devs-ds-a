@@ -129,6 +129,7 @@ async def delete(collection: str, profile_id: str):
     Args:
         collection (str): Name of collection to query for deletion
         profile_id (str): ID number of user to be deleted
+    Returns:
         Dictionary with key of "deleted" and value of the profile_id """
 
     API.db.delete(collection, {"profile_id": profile_id})
