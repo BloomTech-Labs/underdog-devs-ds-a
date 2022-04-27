@@ -59,18 +59,6 @@ async def computer_assignment_rating_visualizer():
     return computer_assignment_visualizer(API.db)
 
 
-@API.post("/create/mentor")
-async def create_mentor(data: Mentor):
-    """Create a new record in the Mentors collection,
-    validating input fields using Pydantic schema.
-    Args:
-        data (Mentor): Mentor class (Pydantic BaseModel) object
-    Returns:
-        New record data or schema discrepancy error as dictionary
-    """
-    return {"result": API.db.create("Mentors", data.dict())}
-
-
 @API.post("/read/mentor")
 async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query from Mentors.
@@ -82,35 +70,6 @@ async def read(data: Optional[Dict] = None):
     Returns: List of all matching documents in the Mentors collection
     """
     return {"result": API.db.read("Mentors", data)}
-
-
-@API.post("/update/mentor")
-async def update(query: Dict, update_data: Dict):
-    """Updates Mentor documents that statisfy the query with update_data.
-    Queries from Mentor Collection with filters given (query).
-    Validate changes in update_data using MentorUpdate class (Pydantic schema)
-    and updates the corresponding fields, by overwriting or adding data.
-    Args:
-        query (dict): Key value pairs to filter for
-        update_data (dict): Key value pairs to update
-    Returns:
-        List of all matching documents with updated fields or
-        schema discrepancy error as dictionary
-    """
-    MentorUpdate(**update_data)
-    API.db.update("Mentors", query, update_data)
-    return {"result": API.db.read("Mentors", query)}
-
-
-@API.post("/create/mentee")
-async def create_mentee(data: Mentee):
-    """Create a new record in the Mentees collection. Creates new document
-    within Mentees using the data parameter to populate its fields.
-    Args:
-        data (dict): Key value pairs to be mapped to document fields
-    Returns: New record data as dictionary
-    """
-    return {"result": API.db.create("Mentees", data.dict())}
 
 
 @API.post("/read/mentee")
@@ -125,18 +84,6 @@ async def read(data: Optional[Dict] = None):
     return {"result": API.db.read("Mentees", data)}
 
 
-@API.post("/update/mentee")
-async def update(query: Dict, update_data: Dict):
-    """Updates Mentee documents that statisfy the query with update_data.
-    Queries from Mentee Collection with filters given (query).
-    Then updates fields using update_data, by overwriting or adding data.
-    Args:
-        query (dict): Key value pairs to filter for
-        update_data (dict): Key value pairs to update
-    Returns: None
-    """
-    MenteeUpdate(**update_data)
-    return {"result": API.db.update("Mentees", query, update_data)}
 
 
 @API.post("/{collection}/create")
@@ -276,6 +223,26 @@ async def sentiment(text: str):
         positive/negative/neutral prediction based on sentiment analysis
     """
     return {"result": vader_score(text)}
+
+
+@API.post("/financial_aid/{profile_id}")
+async def financial_aid(profile_id: str):
+    """Returns the probability that financial aid will be required.
+    Calls the financial aid function from functions.py inputing the
+    profile_id for calculation involving formally incarcerated, low income,
+    and experience level as variables to formulate probability of financial aid
+    Args:
+        profile_id (str): the profile id of the mentee
+    Returns:
+        the probability that financial aid will be required
+    """
+
+    profile = API.db.first('Mentees', {"profile_id": profile_id})
+
+    if not profile:
+        raise HTTPException(status_code=404, detail="Mentee not found")
+
+    return {"result": financial_aid_gen(profile)}
 
 
 @API.get("/graphs/tech-stack-by-role")
