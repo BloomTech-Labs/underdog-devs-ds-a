@@ -324,6 +324,35 @@ topics = (
     "GCA Help", "Resume Help", "Job Search", "Progress Check"
 )
 
+states = (
+    "Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona",
+    "California", "Colorado", "Connecticut", "District ", "of Columbia",
+    "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho",
+    "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts",
+    "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi",
+    "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire",
+    "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma",
+    "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina",
+    "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands",
+    "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"
+)
+
+cities = (
+    "Springfield", "Rochester", "Washington", "Los Alamos", "New Town", "Arrowhead"
+)
+
+companies = (
+    "Alliance Industries", "Meta", "Apple", "Alphabet", "Netflix", "Amazon"
+)
+
+positions = (
+    "Analyst", "Associate", "Salesperson", "Software Engineer", "Director"
+)
+
+heard_about_us = (
+    "Twitter", "Online Ad", "Word of mouth", "State resources", "Peers", "Family"
+)
+
 
 def random_first_name(percent_male: int = 50):
     if randint(1, 100) > percent_male:
