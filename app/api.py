@@ -1,17 +1,16 @@
 import json
 from typing import Dict, Optional
-
 import pandas as pd
 from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse
-
 from app.data import MongoDB
 from app.graphs import tech_stack_by_role
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
+from app.schema import Mentee, MenteeUpdate, Mentor, MentorUpdate
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -54,10 +53,58 @@ async def collections():
 @API.get("/cavisualizer", response_class=HTMLResponse)
 async def computer_assignment_rating_visualizer():
     """Return an HTML table of the computer assignment
-    ratings in the computer assignment collection of the 
+    ratings in the computer assignment collection of the
     selected mongodb database.
     """
     return computer_assignment_visualizer(API.db)
+
+
+@API.post("/create/mentor")
+async def create_mentor(data: Mentor):
+    """Create a new record in the Mentors collection,
+    validating input fields using Pydantic schema.
+
+    Args:
+        data (Mentor): Mentor class (Pydantic BaseModel) object
+    Returns:
+        New record data or schema discrepancy error as dictionary
+    """
+    return {"result": API.db.create("Mentors", data.dict())}
+
+
+@API.post("/read/mentor")
+async def read(data: Optional[Dict] = None):
+    """Return array of records that exactly match the given query from Mentors.
+
+    Queries from Mentors collection with optional filters
+    given (data). If no filtering data is given, will return all
+    documents within Mentors collection.
+
+    Args:
+        data (dict) (optional): Key value pairs to match
+    Returns: List of all matching documents in the Mentors collection
+    """
+    return {"result": API.db.read("Mentors", data)}
+
+
+@API.post("/update/mentor")
+async def update(query: Dict, update_data: Dict):
+    """Updates Mentor documents that statisfy the query with update_data.
+
+    Queries from Mentor Collection with filters given (query).
+    Validate changes in update_data using MentorUpdate class (Pydantic schema)
+    and updates the corresponding fields, by overwriting or adding data.
+
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+    Returns:
+        List of all matching documents with updated fields or
+        schema discrepancy error as dictionary
+    """
+    MentorUpdate(**update_data)
+    API.db.update("Mentors", query, update_data)
+    return {"result": API.db.read("Mentors", query)}
 
 
 @API.post("/{collection}/create")
@@ -166,8 +213,10 @@ async def match_resource(item_id: str, n_matches: int):
     Resource(s). See documentation for MatcherSortSearchResource() for details.
 
     Args:
-        item_id (int): ID number for resource item to be allocated to a mentee
-        n_matches (int): Maximum desired matching candidates. Ideally should be 1.
+        item_id (int):
+            ID number for resource item to be allocated to a mentee
+        n_matches (int):
+            Maximum desired matching candidates. Ideally should be 1.
 
     Returns:
         List of mentee ID(s) """
