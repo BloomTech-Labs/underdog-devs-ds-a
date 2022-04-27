@@ -267,27 +267,6 @@ async def all_exception_handler(request: Request, exc: Exception):
         },
     )
 
-
-@API.post("/financial_aid/{profile_id}")
-async def financial_aid(profile_id: str):
-    """Returns the probability that financial aid will be required.
-    Calls the financial aid function from functions.py inputing the
-    profile_id for calculation involving formally incarcerated, low income,
-    and experience level as variables to formulate probability of financial aid
-    Args:
-        profile_id (str): the profile id of the mentee
-    Returns:
-        the probability that financial aid will be required
-    """
-
-    profile = API.db.first('Mentees', {"profile_id": profile_id})
-
-    if not profile:
-        raise HTTPException(status_code=404, detail="Mentee not found")
-
-    return {"result": financial_aid_gen(profile)}
-
-
 @API.post("/sentiment")
 async def sentiment(text: str):
     """ Returns positive, negative or neutral sentiment of the supplied text.
