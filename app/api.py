@@ -59,35 +59,7 @@ async def computer_assignment_rating_visualizer():
     return computer_assignment_visualizer(API.db)
 
 
-@API.post("/create/mentor")
-async def create_mentor(data: Mentor):
-    """Create a new record in the Mentors collection,
-    validating input fields using Pydantic schema.
-
-    Args:
-        data (Mentor): Mentor class (Pydantic BaseModel) object
-    Returns:
-        New record data or schema discrepancy error as dictionary
-    """
-    return {"result": API.db.create("Mentors", data.dict())}
-
-
-@API.post("/read/mentor")
-async def read(data: Optional[Dict] = None):
-    """Return array of records that exactly match the given query from Mentors.
-
-    Queries from Mentors collection with optional filters
-    given (data). If no filtering data is given, will return all
-    documents within Mentors collection.
-
-    Args:
-        data (dict) (optional): Key value pairs to match
-    Returns: List of all matching documents in the Mentors collection
-    """
-    return {"result": API.db.read("Mentors", data)}
-
-
-@API.post("/update/mentor")
+@API.post("/update/mentors")
 async def update(query: Dict, update_data: Dict):
     """Updates Mentor documents that statisfy the query with update_data.
 
@@ -102,9 +74,29 @@ async def update(query: Dict, update_data: Dict):
         List of all matching documents with updated fields or
         schema discrepancy error as dictionary
     """
-    MentorUpdate(**update_data)
+    MentorUpdate(**update_data) 
     API.db.update("Mentors", query, update_data)
     return {"result": API.db.read("Mentors", query)}
+
+
+@API.post("/update/mentees")
+async def update(query: Dict, update_data: Dict):
+    """Updates Mentee documents that statisfy the query with update_data.
+
+    Queries from Mentee Collection with filters given (query).
+    Validate changes in update_data using MenteeUpdate class (Pydantic schema)
+    and updates the corresponding fields, by overwriting or adding data.
+
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+    Returns:
+        List of all matching documents with updated fields or
+        schema discrepancy error as dictionary
+    """
+    MenteeUpdate(**update_data)
+    API.db.update("Mentees", query, update_data)
+    return {"result": API.db.read("Mentees", query)}
 
 
 @API.post("/{collection}/create")
