@@ -139,7 +139,7 @@ async def collection_search(collection: str, search: str):
     return {"result": API.db.search(collection, search)}
 
 
-@API.post("/read/mentor")
+@API.post("/read/mentors")
 async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query from Mentors.
     Queries from Mentors collection with optional filters
@@ -153,14 +153,7 @@ async def read(data: Optional[Dict] = None):
     """
     return {"result": API.db.read("Mentors", data)}
 
-        Input Example:
-        collection = "Mentees"
-
-    Returns:
-        New collection's data as dictionary
-
-
-@API.post("/read/mentee")
+@API.post("/read/mentees")
 async def read(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query from Mentees.
     Queries from Mentees collection with optional filters given (data).
@@ -169,8 +162,6 @@ async def read(data: Optional[Dict] = None):
         data (dict) (optional): Key value pairs to match
     Returns: List of all matching documents
     """
-    await is_collection(collection)
-    return {"result": API.db.create(collection, data)}
     return {"result": API.db.read("Mentees", data)}
 
 
