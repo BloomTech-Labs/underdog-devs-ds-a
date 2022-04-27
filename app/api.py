@@ -15,7 +15,7 @@ from app.computer_assignment import computer_assignment_visualizer
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.45.4",
+    version="0.45.3",
     docs_url='/',
 )
 API.db = MongoDB("UnderdogDevs")
@@ -140,31 +140,6 @@ async def collection_search(collection: str, search: str):
     """
     await is_collection(collection)
     return {"result": API.db.search(collection, search)}
-
-
-@API.post("/read/mentors")
-async def read(data: Optional[Dict] = None):
-    """Return array of records that exactly match the given query from Mentors.
-    Queries from Mentors collection with optional filters
-    given (data). If no filtering data is given, will return all
-    documents within Mentors collection.
-    Args:
-        data (dict) (optional): Key value pairs to match
-    Returns: List of all matching documents in the Mentors collection
-    """
-    return {"result": API.db.read("Mentors", data)}
-
-
-@API.post("/read/mentees")
-async def read(data: Optional[Dict] = None):
-    """Return array of records that exactly match the given query from Mentees.
-    Queries from Mentees collection with optional filters given (data).
-    If no filtering data is given, will return all documents within collection.
-    Args:
-        data (dict) (optional): Key value pairs to match
-    Returns: List of all matching documents in the Mentees collection
-    """
-    return {"result": API.db.read("Mentees", data)}
 
 
 @API.post("/match/{profile_id}")
