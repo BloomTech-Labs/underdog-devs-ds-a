@@ -26,7 +26,6 @@ class Mentor(Printable):
         self.current_company = choice(companies)
         self.current_position = choice(positions)
         self.tech_stack = choice(tech_stack)
-        self.preferred_mentee_exp_level = choice(skill_levels)
         self.able_to_commit = percent_true(95)
         self.mentor_contribution = [choice(resource_items), choice(topics),
                                     choice(tech_stack)]
