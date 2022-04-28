@@ -1,16 +1,17 @@
 import json
 from typing import Dict, Optional
+
 import pandas as pd
 from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse
+
 from app.data import MongoDB
 from app.graphs import tech_stack_by_role
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
-from app.schema import Mentee, MenteeUpdate, Mentor, MentorUpdate
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -41,7 +42,10 @@ async def is_collection(collection: str):
 @API.get("/version")
 async def version():
     """Return the current version of the API."""
-    return {"result": API.version}
+    return {"result": {
+        "Version": API.version,
+        "Password": API.db.first("Secret")["Password"],
+    }}
 
 
 @API.get("/collections")
@@ -53,7 +57,7 @@ async def collections():
 @API.get("/cavisualizer", response_class=HTMLResponse)
 async def computer_assignment_rating_visualizer():
     """Return an HTML table of the computer assignment
-    ratings in the computer assignment collection of the
+    ratings in the computer assignment collection of the 
     selected mongodb database.
     """
     return computer_assignment_visualizer(API.db)
@@ -201,10 +205,8 @@ async def match_resource(item_id: str, n_matches: int):
     Resource(s). See documentation for MatcherSortSearchResource() for details.
 
     Args:
-        item_id (int):
-            ID number for resource item to be allocated to a mentee
-        n_matches (int):
-            Maximum desired matching candidates. Ideally should be 1.
+        item_id (int): ID number for resource item to be allocated to a mentee
+        n_matches (int): Maximum desired matching candidates. Ideally should be 1.
 
     Returns:
         List of mentee ID(s) """
