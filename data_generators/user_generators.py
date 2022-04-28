@@ -12,7 +12,7 @@ class Printable:
 
 
 class Mentor(Printable):
-    """Mentor Schema"""
+    """Generates Mentor record"""
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
@@ -35,7 +35,7 @@ class Mentor(Printable):
 
 
 class Mentee(Printable):
-    """Mentee Schema"""
+    """Generates Mentee record"""
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
@@ -58,7 +58,7 @@ class Mentee(Printable):
 
 
 class Resource(Printable):
-    """ Creates Resource record """
+    """Generates Resource record"""
 
     def __init__(self):
         self.name = choice(resource_items)
@@ -66,9 +66,8 @@ class Resource(Printable):
 
 
 class MenteeFeedback(Printable):
-    """Create feedback record from mentee (randomly selected from Mentees Collection) to
-    mentor (randomly selected from Mentors Collection), which is stored in Feedbacks Collection.
-    1 mentee can give multiple feedbacks to 1 mentor."""
+    """Generates Feedback record from mentee"""
+
     feedback = pd.read_csv("review.csv", index_col="Id")
 
     def __init__(self, mentee_id, mentor_id):
@@ -79,8 +78,7 @@ class MenteeFeedback(Printable):
 
 
 class Meeting(Printable):
-    """Create dummy meeting record which is stored in
-    meeting collection."""
+    """Generates Meeting record"""
 
     def __init__(self, mentee_id, mentor_id):
         self.meeting_id = generate_uuid(16)
