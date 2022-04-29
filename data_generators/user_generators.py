@@ -26,7 +26,6 @@ class Mentor(Printable):
         self.current_company = choice(companies)
         self.current_position = choice(positions)
         self.tech_stack = choice(tech_stack)
-        self.preferred_mentee_exp_level = choice(skill_levels)
         self.able_to_commit = percent_true(95)
         self.mentor_contribution = [choice(resource_items), choice(topics),
                                     choice(tech_stack)]
@@ -51,7 +50,6 @@ class Mentee(Printable):
         self.low_income = percent_true(70)
         self.list_convictions = sample(convictions, k=randint(1, 3))
         self.tech_stack = choice(tech_stack)
-        self.experience_level = choice(skill_levels)
         self.looking_for = [choice(resource_items), choice(topics),
                             choice(tech_stack)]
         self.anything_else = "anything else may be written here"

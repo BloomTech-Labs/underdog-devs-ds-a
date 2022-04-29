@@ -298,10 +298,6 @@ last_names = (
     "Sanders", "Patel", "Myers", "Long", "Ross", "Foster", "Jimenez",
 )
 
-skill_levels = (
-    "Beginner", "Intermediate", "Advanced", "Expert",
-)
-
 tech_stack = (
     "Web: HTML, CSS, JavaScript", "Data Science: Python",
     "Android: Java", "iOS: Swift", "Career Development",
