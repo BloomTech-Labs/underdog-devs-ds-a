@@ -12,6 +12,7 @@ from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 
 API = FastAPI(
     title='Underdog Devs DS API',
