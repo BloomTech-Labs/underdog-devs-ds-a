@@ -3,17 +3,6 @@ from datetime import datetime
 from pydantic import BaseModel, constr, Extra
 
 
-class Variants:
-    exp_levels = Literal[
-        "Beginner", "Intermediate", "Advanced"
-    ]
-
-    tech_stacks = Literal[
-        "Career Development", "Frontend", "Backend",
-        "Design UI/UX", "iOS", "Android", "Data Science"
-    ]
-
-
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
@@ -25,8 +14,6 @@ class Mentor(BaseModel):
     city: constr(max_length=255)
     current_company: constr(max_length=255)
     current_position: constr(max_length=255)
-    tech_stack: List[Variants.tech_stacks]
-    preferred_mentee_exp_level: Variants.exp_levels
     able_to_commit: bool
     mentor_contribution: List[constr(max_length=255)]
     how_heard_about_us: constr(max_length=255)
@@ -44,8 +31,6 @@ class MentorUpdate(BaseModel):
     city: Optional[constr(max_length=255)]
     current_company: Optional[constr(max_length=255)]
     current_position: Optional[constr(max_length=255)]
-    tech_stack: Optional[List[Variants.tech_stacks]]
-    preferred_mentee_exp_level: Optional[Variants.exp_levels]
     able_to_commit: Optional[bool]
     mentor_contribution: Optional[List[constr(max_length=255)]]
     how_heard_about_us: Optional[constr(max_length=255)]
@@ -68,8 +53,6 @@ class Mentee(BaseModel):
     underrepresented_group: bool
     low_income: bool
     list_convictions: List[constr(max_length=255)]
-    tech_stack: List[Variants.tech_stacks]
-    experience_level: Variants.exp_levels
     looking_for: List[constr(max_length=255)]
     anything_else: Optional[constr(max_length=2500)]
 
@@ -87,8 +70,6 @@ class MenteeUpdate(BaseModel):
     underrepresented_group: Optional[bool]
     low_income: Optional[bool]
     list_convictions: Optional[List[constr(max_length=255)]]
-    tech_stack: Optional[List[Variants.tech_stacks]]
-    experience_level: Optional[Variants.exp_levels]
     looking_for: Optional[List[constr(max_length=255)]]
     anything_else: Optional[constr(max_length=2500)]
 
