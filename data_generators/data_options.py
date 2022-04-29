@@ -299,13 +299,13 @@ last_names = (
 )
 
 tech_stack = (
-    "Web: HTML, CSS, JavaScript", "Data Science: Python",
-    "Android: Java", "iOS: Swift", "Career Development",
-    "General Programming",
+    "Frontend", "Backend", "Design UI/UX", "iOS",
+    "Android", "Career Development", "Data Science",
 )
 
 resource_items = ("Laptop", "Books", "Scholarships",
-                  "Mental Health Need", "Financial stipends")
+                  "Mental Health Need", "Financial stipends"
+                  )
 
 convictions = (
     "Felony", "Misdemeanor", "Infraction",
