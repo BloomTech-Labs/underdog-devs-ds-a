@@ -64,7 +64,7 @@ async def computer_assignment_rating_visualizer():
 
 
 @API.post("/update/mentors")
-async def update(query: Dict, update_data: Dict):
+async def update_mentors(query: Dict, update_data: Dict):
     """Updates Mentor documents that statisfy the query with update_data.
 
     Queries from Mentor Collection with filters given (query).
@@ -82,7 +82,7 @@ async def update(query: Dict, update_data: Dict):
 
 
 @API.post("/update/mentees")
-async def update(query: Dict, update_data: Dict):
+async def update_mentees(query: Dict, update_data: Dict):
     """Updates Mentee documents that statisfy the query with update_data.
 
     Queries from Mentee Collection with filters given (query).
