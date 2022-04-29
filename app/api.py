@@ -151,7 +151,7 @@ async def create_mentor(data: Mentor):
 
 
 @API.post("/create/mentees")
-async def create_mentor(data: Mentee):
+async def create_mentee(data: Mentee):
     """Create a new record in the Mentees collection.
     Creates new document within Menteess using the data parameter to 
     populate its fields. This also uses Pydantic schema to validate 
