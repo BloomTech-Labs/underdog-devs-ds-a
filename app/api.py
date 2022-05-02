@@ -12,10 +12,11 @@ from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.45.3",
+    version="0.45.4",
     docs_url='/',
 )
 API.db = MongoDB("UnderdogDevs")
@@ -61,6 +62,42 @@ async def computer_assignment_rating_visualizer():
     selected mongodb database.
     """
     return computer_assignment_visualizer(API.db)
+
+
+@API.post("/update/mentors")
+async def update_mentors(query: Dict, update_data: Dict):
+    """Updates Mentor documents that statisfy the query with update_data.
+
+    Queries from Mentor Collection with filters given (query).
+    Validate changes in update_data using MentorUpdate class (Pydantic schema)
+    and updates the corresponding fields, by overwriting or adding data.
+
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+    Returns:
+        Updated fields or schema discrepancy error as dictionary
+    """
+    MentorUpdate(**update_data)
+    return {"result": API.db.update("Mentors", query, update_data)}
+
+
+@API.post("/update/mentees")
+async def update_mentees(query: Dict, update_data: Dict):
+    """Updates Mentee documents that statisfy the query with update_data.
+
+    Queries from Mentee Collection with filters given (query).
+    Validate changes in update_data using MenteeUpdate class (Pydantic schema)
+    and updates the corresponding fields, by overwriting or adding data.
+
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+    Returns:
+        Updated fields or schema discrepancy error as dictionary
+    """
+    MenteeUpdate(**update_data)
+    return {"result": API.db.update("Mentees", query, update_data)}
 
 
 @API.post("/{collection}/create")
