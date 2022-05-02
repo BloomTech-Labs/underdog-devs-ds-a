@@ -298,18 +298,14 @@ last_names = (
     "Sanders", "Patel", "Myers", "Long", "Ross", "Foster", "Jimenez",
 )
 
-skill_levels = (
-    "Beginner", "Intermediate", "Advanced", "Expert",
-)
-
 tech_stack = (
-    "Web: HTML, CSS, JavaScript", "Data Science: Python",
-    "Android: Java", "iOS: Swift", "Career Development",
-    "General Programming",
+    "Frontend", "Backend", "Design UI/UX", "iOS",
+    "Android", "Career Development", "Data Science",
 )
 
 resource_items = ("Laptop", "Books", "Scholarships",
-                  "Mental Health Need", "Financial stipends")
+                  "Mental Health Need", "Financial stipends"
+                  )
 
 convictions = (
     "Felony", "Misdemeanor", "Infraction",
@@ -322,6 +318,35 @@ feedbacks = (
 
 topics = (
     "GCA Help", "Resume Help", "Job Search", "Progress Check"
+)
+
+states = (
+    "Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona",
+    "California", "Colorado", "Connecticut", "District ", "of Columbia",
+    "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho",
+    "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts",
+    "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi",
+    "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire",
+    "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma",
+    "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina",
+    "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands",
+    "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"
+)
+
+cities = (
+    "Springfield", "Rochester", "Washington", "Los Alamos", "New Town", "Arrowhead"
+)
+
+companies = (
+    "Alliance Industries", "Meta", "Apple", "Alphabet", "Netflix", "Amazon"
+)
+
+positions = (
+    "Analyst", "Associate", "Salesperson", "Software Engineer", "Director"
+)
+
+heard_about_us = (
+    "Twitter", "Online Ad", "Word of mouth", "State resources", "Peers", "Family"
 )
 
 
