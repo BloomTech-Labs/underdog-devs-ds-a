@@ -67,7 +67,7 @@ async def computer_assignment_rating_visualizer():
 async def create(collection: str, data: Dict):
     """Create a new record in the given collection.
 
-    Creates new document within given collection using the data
+    Creates new doc within given collection using the data
     parameter to populate its fields.
 
     Args:
