@@ -12,10 +12,11 @@ from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.45.3",
+    version="0.45.4",
     docs_url='/',
 )
 API.db = MongoDB("UnderdogDevs")
@@ -63,11 +64,36 @@ async def computer_assignment_rating_visualizer():
     return computer_assignment_visualizer(API.db)
 
 
+@API.post("/read/mentor")
+async def read_mentor(data: Optional[Dict] = None):
+    """Return array of records that exactly match the given query from Mentors.
+    Queries from Mentors collection with optional filters
+    given (data). If no filtering data is given, will return all
+    documents within Mentors collection.
+    Args:
+        data (dict) (optional): Key value pairs to match
+    Returns: List of all matching documents in the Mentors collection
+    """
+    return {"result": API.db.read("Mentors", data)}
+
+
+@API.post("/read/mentee")
+async def read_mentee(data: Optional[Dict] = None):
+    """Return array of records that exactly match the given query from Mentees.
+    Queries from Mentees collection with optional filters given (data).
+    If no filtering data is given, will return all documents within collection.
+    Args:
+        data (dict) (optional): Key value pairs to match
+    Returns: List of all matching documents in the Mentees collection
+    """
+    return {"result": API.db.read("Mentees", data)}
+
+
 @API.post("/{collection}/create")
 async def create(collection: str, data: Dict):
     """Create a new record in the given collection.
 
-    Creates new doc within given collection using the data
+    Creates new document within given collection using the data
     parameter to populate its fields.
 
     Args:
