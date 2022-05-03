@@ -267,6 +267,22 @@ async def match_resource(item_id: str, n_matches: int):
     return {"result": API.resource_matcher(n_matches, item_id)}
 
 
+@API.delete("/{collection}/delete/{profile_id}")
+async def delete(collection: str, profile_id: str):
+    """Removes a user from the given collection.
+    Deletes all documents containing the given profile_id permanently,
+    and returns the deleted profile_id for confirmation.
+    Args:
+        collection (str): Name of collection to query for deletion
+        profile_id (str): ID number of user to be deleted
+    Returns:
+        Dictionary with key of "deleted" and value of the profile_id
+    """
+    await is_collection(collection)
+    API.db.delete(collection, {"profile_id": profile_id})
+    return {"result": {"deleted": profile_id}}
+
+
 @API.exception_handler(Exception)
 async def all_exception_handler(request: Request, exc: Exception):
     """Returns default 500 message for many server errors.
