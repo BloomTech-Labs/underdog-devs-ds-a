@@ -19,7 +19,6 @@ class Mentor(Printable):
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
         self.email = self.first_name + "." + self.last_name + "@gmail"
-        self.located_in_US = percent_true(100)
         self.country = "U.S."
         self.state = choice(states)
         self.city = choice(cities)
@@ -41,7 +40,6 @@ class Mentee(Printable):
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
         self.email = self.first_name + "." + self.last_name + "@gmail"
-        self.located_in_US = percent_true(100)
         self.country = "U.S."
         self.state = choice(states)
         self.city = choice(cities)
@@ -52,6 +50,7 @@ class Mentee(Printable):
         self.tech_stack = choice(tech_stack)
         self.looking_for = [choice(resource_items), choice(topics),
                             choice(tech_stack)]
+        self.how_heard_about_us = choice(heard_about_us)
         self.anything_else = "anything else may be written here"
 
 
