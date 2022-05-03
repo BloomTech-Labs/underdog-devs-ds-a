@@ -30,7 +30,6 @@ API.add_middleware(
     allow_headers=["*"],
 )
 
-
 async def is_collection(collection: str):
     known_collections = (await collections()).get("result").keys()
     if collection not in known_collections:
@@ -38,7 +37,6 @@ async def is_collection(collection: str):
             status_code=404,
             detail=f"Collection: '{collection}', not found",
         )
-
 
 @API.get("/version")
 async def version():
@@ -48,12 +46,10 @@ async def version():
         "Password": API.db.first("Secret")["Password"],
     }}
 
-
 @API.get("/collections")
 async def collections():
     """Return collection names and a count of their child nodes."""
     return {"result": API.db.get_database_info()}
-
 
 @API.get("/cavisualizer", response_class=HTMLResponse)
 async def computer_assignment_rating_visualizer():
@@ -62,7 +58,6 @@ async def computer_assignment_rating_visualizer():
     selected mongodb database.
     """
     return computer_assignment_visualizer(API.db)
-
 
 @API.post("/read/mentor")
 async def read_mentor(data: Optional[Dict] = None):
@@ -76,7 +71,6 @@ async def read_mentor(data: Optional[Dict] = None):
     """
     return {"result": API.db.read("Mentors", data)}
 
-
 @API.post("/read/mentee")
 async def read_mentee(data: Optional[Dict] = None):
     """Return array of records that exactly match the given query from Mentees.
@@ -87,7 +81,6 @@ async def read_mentee(data: Optional[Dict] = None):
     Returns: List of all matching documents in the Mentees collection
     """
     return {"result": API.db.read("Mentees", data)}
-
 
 @API.post("/{collection}/create")
 async def create(collection: str, data: Dict):
@@ -109,7 +102,6 @@ async def create(collection: str, data: Dict):
     await is_collection(collection)
     return {"result": API.db.create(collection, data)}
 
-
 @API.post("/{collection}/read")
 async def read(collection: str, data: Optional[Dict] = None):
     """Return array of records that exactly match the given query.
@@ -127,7 +119,6 @@ async def read(collection: str, data: Optional[Dict] = None):
     """
     await is_collection(collection)
     return {"result": API.db.read(collection, data)}
-
 
 @API.post("/{collection}/update")
 async def update(collection: str, query: Dict, update_data: Dict):
@@ -148,7 +139,6 @@ async def update(collection: str, query: Dict, update_data: Dict):
     await is_collection(collection)
     return {"result": API.db.update(collection, query, update_data)}
 
-
 @API.post("/create/mentor")
 async def create_mentor(data: Mentor):
     """Create a new record in the Mentors collection.
@@ -163,7 +153,6 @@ async def create_mentor(data: Mentor):
         New record data or schema discrepancy error as dictionary
     """
     return {"result": API.db.create("Mentors", data.dict())}
-
 
 @API.post("/create/mentee")
 async def create_mentee(data: Mentee):
@@ -180,7 +169,6 @@ async def create_mentee(data: Mentee):
     """
     return {"result": API.db.create("Mentees", data.dict())}
 
-
 @API.post("/update/mentors")
 async def update_mentors(query: Dict, update_data: Dict):
     """Updates Mentor documents that statisfy the query with update_data.
@@ -195,7 +183,6 @@ async def update_mentors(query: Dict, update_data: Dict):
     """
     MentorUpdate(**update_data)
     return {"result": API.db.update("Mentors", query, update_data)}
-
 
 @API.post("/update/mentees")
 async def update_mentees(query: Dict, update_data: Dict):
@@ -231,7 +218,6 @@ async def collection_search(collection: str, search: str):
     await is_collection(collection)
     return {"result": API.db.search(collection, search)}
 
-
 @API.post("/match/{profile_id}")
 async def match(profile_id: str, n_matches: int):
     """Return an array of mentor matches for any given mentee profile_id.
@@ -249,7 +235,6 @@ async def match(profile_id: str, n_matches: int):
     """
     return {"result": API.matcher(n_matches, profile_id)}
 
-
 @API.post("/match_resource/{item_id}")
 async def match_resource(item_id: str, n_matches: int):
     """ Returns array of mentee matches for any given Resource item_id.
@@ -266,7 +251,6 @@ async def match_resource(item_id: str, n_matches: int):
         List of mentee ID(s) """
     return {"result": API.resource_matcher(n_matches, item_id)}
 
-
 @API.delete("/{collection}/delete/{profile_id}")
 async def delete(collection: str, profile_id: str):
     """Removes a user from the given collection.
@@ -282,7 +266,6 @@ async def delete(collection: str, profile_id: str):
     API.db.delete(collection, {"profile_id": profile_id})
     return {"result": {"deleted": profile_id}}
 
-
 @API.exception_handler(Exception)
 async def all_exception_handler(request: Request, exc: Exception):
     """Returns default 500 message for many server errors.
@@ -297,7 +280,6 @@ async def all_exception_handler(request: Request, exc: Exception):
             "message": "server error",
         },
     )
-
 
 @API.post("/financial_aid/{profile_id}")
 async def financial_aid(profile_id: str):
@@ -321,7 +303,6 @@ async def financial_aid(profile_id: str):
 
     return {"result": financial_aid_gen(profile)}
 
-
 @API.post("/sentiment")
 async def sentiment(text: str):
     """ Returns positive, negative or neutral sentiment of the supplied text.
@@ -332,7 +313,6 @@ async def sentiment(text: str):
         positive/negative/neutral prediction based on sentiment analysis
     """
     return {"result": vader_score(text)}
-
 
 @API.get("/graphs/tech-stack-by-role")
 async def tech_stack_graph():
