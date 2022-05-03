@@ -1,6 +1,6 @@
 from typing import List, Literal, Optional
 from datetime import datetime
-from pydantic import BaseModel, constr
+from pydantic import BaseModel, constr, Extra
 
 
 class Variants:
@@ -51,6 +51,9 @@ class MentorUpdate(BaseModel):
     how_heard_about_us: Optional[constr(max_length=255)]
     anything_else: Optional[constr(max_length=2500)]
 
+    class Config:
+        extra = Extra.forbid
+
 
 class Mentee(BaseModel):
     profile_id: constr(max_length=255)
@@ -88,6 +91,9 @@ class MenteeUpdate(BaseModel):
     experience_level: Optional[Variants.exp_levels]
     looking_for: Optional[List[constr(max_length=255)]]
     anything_else: Optional[constr(max_length=2500)]
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Meeting(BaseModel):
