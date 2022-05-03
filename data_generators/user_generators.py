@@ -6,7 +6,7 @@ from data_generators.data_options import *
 
 
 class Printable:
-    "Creates string generated from dictionary"
+    "Parent Class"
 
     def __str__(self):
         return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
