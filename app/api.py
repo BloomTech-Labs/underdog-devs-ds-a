@@ -65,7 +65,7 @@ async def computer_assignment_rating_visualizer():
 
 
 @API.post("/update/mentors")
-async def update_mentors(query: Dict, update_data: Dict):
+async def update_mentors(query: Dict, update_data: MentorUpdate):
     """Updates Mentor documents that statisfy the query with update_data.
 
     Queries from Mentor Collection with filters given (query).
@@ -78,12 +78,12 @@ async def update_mentors(query: Dict, update_data: Dict):
     Returns:
         Updated fields or schema discrepancy error as dictionary
     """
-    MentorUpdate(**update_data)
-    return {"result": API.db.update("Mentors", query, update_data)}
+    data = update_data.dict(exclude_none=True)
+    return {"result": API.db.update("Mentors", query, data)}
 
 
 @API.post("/update/mentees")
-async def update_mentees(query: Dict, update_data: Dict):
+async def update_mentees(query: Dict, update_data: MenteeUpdate):
     """Updates Mentee documents that statisfy the query with update_data.
 
     Queries from Mentee Collection with filters given (query).
@@ -96,8 +96,8 @@ async def update_mentees(query: Dict, update_data: Dict):
     Returns:
         Updated fields or schema discrepancy error as dictionary
     """
-    MenteeUpdate(**update_data)
-    return {"result": API.db.update("Mentees", query, update_data)}
+    data = update_data.dict(exclude_none=True)
+    return {"result": API.db.update("Mentees", query, data)}
 
 
 @API.post("/{collection}/create")
