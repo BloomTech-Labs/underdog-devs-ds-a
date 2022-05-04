@@ -1,7 +1,7 @@
 from typing import List, Literal, Optional
 from datetime import datetime
 from pydantic import BaseModel, constr, Extra
-
+# TODO add pydantic to requirements.txt
 
 
 class Mentor(BaseModel):
