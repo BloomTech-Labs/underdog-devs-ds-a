@@ -20,8 +20,7 @@ def vader_score(text: str):
 if __name__ == '__main__':
     """
     This is to test the expected result requested in api.py
-    
     """
-    # String text
+
     print({"Result": vader_score("A string is so cool wow, I hope this is a positive.")})
 
