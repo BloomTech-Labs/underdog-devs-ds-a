@@ -23,4 +23,3 @@ if __name__ == '__main__':
     """
 
     print({"Result": vader_score("A string is so cool wow, I hope this is a positive.")})
-
