@@ -1,6 +1,7 @@
 from typing import List, Literal, Optional
 from datetime import datetime
-from pydantic import BaseModel, constr
+from pydantic import BaseModel, constr, Extra
+
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
@@ -31,11 +32,14 @@ class MentorUpdate(BaseModel):
     city: Optional[constr(max_length=255)]
     current_company: Optional[constr(max_length=255)]
     current_position: Optional[constr(max_length=255)]
-    tech_stack: constr(max_length=255)
+    tech_stack: Optional[constr(max_length=255)]
     able_to_commit: Optional[bool]
     mentor_contribution: Optional[List[constr(max_length=255)]]
     how_heard_about_us: Optional[constr(max_length=255)]
     anything_else: Optional[constr(max_length=2500)]
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Mentee(BaseModel):
@@ -69,9 +73,12 @@ class MenteeUpdate(BaseModel):
     underrepresented_group: Optional[bool]
     low_income: Optional[bool]
     list_convictions: Optional[List[constr(max_length=255)]]
-    tech_stack: constr(max_length=255)
+    tech_stack: Optional[constr(max_length=255)]
     looking_for: Optional[List[constr(max_length=255)]]
     anything_else: Optional[constr(max_length=2500)]
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Meeting(BaseModel):
