@@ -3,12 +3,12 @@ from datetime import datetime
 from pydantic import BaseModel, constr, Extra
 
 
+
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: constr(max_length=255)
-    located_in_US: bool
     country: constr(max_length=255)
     state: constr(max_length=255)
     city: constr(max_length=255)
@@ -26,7 +26,6 @@ class MentorUpdate(BaseModel):
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[constr(max_length=255)]
-    located_in_US: Optional[bool]
     country: Optional[constr(max_length=255)]
     state: Optional[constr(max_length=255)]
     city: Optional[constr(max_length=255)]
@@ -47,7 +46,6 @@ class Mentee(BaseModel):
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: constr(max_length=255)
-    located_in_US: bool
     country: constr(max_length=255)
     state: constr(max_length=255)
     city: constr(max_length=255)
@@ -57,6 +55,7 @@ class Mentee(BaseModel):
     list_convictions: List[constr(max_length=255)]
     tech_stack: constr(max_length=255)
     looking_for: List[constr(max_length=255)]
+    how_heard_about_us: constr(max_length=255)
     anything_else: Optional[constr(max_length=2500)]
 
 
@@ -65,7 +64,6 @@ class MenteeUpdate(BaseModel):
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[constr(max_length=255)]
-    located_in_US: Optional[bool]
     country: Optional[constr(max_length=255)]
     state: Optional[constr(max_length=255)]
     city: Optional[constr(max_length=255)]
@@ -75,6 +73,7 @@ class MenteeUpdate(BaseModel):
     list_convictions: Optional[List[constr(max_length=255)]]
     tech_stack: Optional[constr(max_length=255)]
     looking_for: Optional[List[constr(max_length=255)]]
+    how_heard_about_us: Optional[constr(max_length=255)]
     anything_else: Optional[constr(max_length=2500)]
 
     class Config:
