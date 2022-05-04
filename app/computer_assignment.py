@@ -21,7 +21,7 @@ def add_computer_assignment_rating(adict):
 
     x = adict['need_help_acquiring']
     y = adict['need_new_comp']
-    rating_unfiltered = (x**2-m.floor((.7*x))) * (abs(y**3-y**2-y))
+    rating_unfiltered = (x ** 2 - m.floor((.7 * x))) * (abs(y ** 3 - y ** 2 - y))
     rating_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     sortvals = [0, 1, 2, 3, 6, 7, 14, 15, 45, 105]
     rating_filtered = int(
@@ -32,17 +32,19 @@ def add_computer_assignment_rating(adict):
 
 
 def computer_assignment_visualizer(mongodb_class_instance):
-    '''Constructs a visual for the computer assignment
+    """
+    Constructs a visual for the computer assignment
     rating.  Requires the database connection, this
     function automatically calls the collection.
-    Returns a pandas dataframe.'''
+    Returns a pandas dataframe.
+    """
 
     collection = 'computer_assignment'
     search_query = {'already_matched': False}
     data = mongodb_class_instance.read(collection, search_query)
     dataframe = pd.DataFrame(data)
     dataframe.drop(columns=['need_new_comp',
-                 'need_help_acquiring', 'already_matched'], inplace=True)
+                            'need_help_acquiring', 'already_matched'], inplace=True)
     # V Prevents false error popup for next step V
     pd.set_option('mode.chained_assignment', None)
     for x in dataframe.index:

@@ -24,7 +24,7 @@ def financial_aid_gen(profile):
 
         f_i /= 2
         l_i += f_i
-        e_l = l_i + pow(9.9*e_l, -1)
+        e_l = l_i + pow(9.9 * e_l, -1)
         return (e_l - 0.025) / 1.577
 
     return f"{f_a_func(f_i, l_i, e_l):.2%}"

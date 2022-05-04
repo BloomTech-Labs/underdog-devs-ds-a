@@ -70,12 +70,12 @@ class TestingPlatform():
         update_city = update.json()['result'][1]['city']
         read_city = read.json()['result'][0]['city']
         assert update_city == read_city, "test_update: Expected the update to equal " \
-            + str(update_city) + ". Got " + str(read_city)
+                                         + str(update_city) + ". Got " + str(read_city)
 
         update_state = update.json()['result'][1]['state']
         read_state = read.json()['result'][0]['state']
         assert update_state == read_state, "test_update: Expected the update to equal " \
-            + str(update_state) + ". Got " + str(read_state)
+                                           + str(update_state) + ". Got " + str(read_state)
 
         pprint("Update test cases passed")
 
@@ -84,7 +84,7 @@ class TestingPlatform():
         automatically ordered by relevance. """
 
         response = self.client.post("/Mentees/search?search=test001")
-        assert response.json()['result'][0]['subject'] == "Web: HTML, CSS, JavaScript",\
+        assert response.json()['result'][0]['subject'] == "Web: HTML, CSS, JavaScript", \
             pprint('test_search: Web: HTML, CSS, JavaScript. Got ' +
                    str(response.json()['result'][0]['subject']))
 
@@ -97,7 +97,7 @@ class TestingPlatform():
 
     def test_match(self):
         """ Returns array of mentor matches for any given mentee_id. """
-        
+
         '''find mentor info by id of one of the mentors matches'''
         mentee_id = 'test001'
         response = self.client.post(f"/match/{mentee_id}?n_matches=5")
@@ -109,8 +109,8 @@ class TestingPlatform():
             "/Mentees/read", json={'profile_id': mentee_id})
 
         assert read_mentors.json()['result'][0]['subject'] == read_mentees.json()[
-            'result'][0]['subject'],\
-            'test_match: Expected tech_stack to match got ' + str(read_mentors.json()['result'][0]['subject'])\
+            'result'][0]['subject'], \
+            'test_match: Expected tech_stack to match got ' + str(read_mentors.json()['result'][0]['subject']) \
             + ' : ' + str(read_mentees.json()['result'][0]['subject'])
 
         pprint("Match test cases passed")
@@ -168,7 +168,7 @@ class TestingPlatform():
     def populate_db(self):
         """ Repopulates db. Do not change the flag to 
             true unless you need to wipe the testing db """
-        
+
         API.db.reset_collection("Mentees")
         API.db.make_field_unique("Mentees", "profile_id")
         API.db.create_many("Mentees", (vars(Mentee()) for _ in range(100)))
