@@ -50,7 +50,7 @@ class Mentee(Printable):
         self.formerly_incarcerated = percent_true(80)
         self.underrepresented_group = percent_true(70)
         self.low_income = percent_true(70)
-        self.list_convictions = [sample(convictions, k=randint(1, 3))]
+        self.list_convictions = sample(convictions, k=randint(1, 3))[0]
         self.tech_stack = choice(tech_stack)
         self.job_help = percent_true(33)
         self.industry_knowledge = percent_true(33)
