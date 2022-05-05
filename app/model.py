@@ -48,6 +48,8 @@ class MatcherSortSearchResource:
         item = self.db.first("Resources", {"item_id": item_id})
 
         def sort_mentees(mentee: Dict) -> Tuple:
+
+            # need to know which parameters the stakeholder wants to consider for resource matching
             return (
                 mentee["need"] != item["name"],
                 not mentee["parole_restriction"],

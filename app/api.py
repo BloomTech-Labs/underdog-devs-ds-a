@@ -19,6 +19,7 @@ API = FastAPI(
     version="0.45.4",
     docs_url='/',
 )
+
 API.db = MongoDB("UnderdogDevs")
 API.matcher = MatcherSortSearch()
 API.resource_matcher = MatcherSortSearchResource()
@@ -58,46 +59,35 @@ async def collections():
 @API.get("/cavisualizer", response_class=HTMLResponse)
 async def computer_assignment_rating_visualizer():
     """Return an HTML table of the computer assignment
-    ratings in the computer assignment collection of the 
+    ratings in the computer assignment collection of the
     selected mongodb database.
     """
     return computer_assignment_visualizer(API.db)
 
 
-@API.post("/update/mentors")
-async def update_mentors(query: Dict, update_data: Dict):
-    """Updates Mentor documents that statisfy the query with update_data.
-
-    Queries from Mentor Collection with filters given (query).
-    Validate changes in update_data using MentorUpdate class (Pydantic schema)
-    and updates the corresponding fields, by overwriting or adding data.
-
+@API.post("/read/mentor")
+async def read_mentor(data: Optional[Dict] = None):
+    """Return array of records that exactly match the given query from Mentors.
+    Queries from Mentors collection with optional filters
+    given (data). If no filtering data is given, will return all
+    documents within Mentors collection.
     Args:
-        query (dict): Key value pairs to filter for
-        update_data (dict): Key value pairs to update
-    Returns:
-        Updated fields or schema discrepancy error as dictionary
+        data (dict) (optional): Key value pairs to match
+    Returns: List of all matching documents in the Mentors collection
     """
-    MentorUpdate(**update_data)
-    return {"result": API.db.update("Mentors", query, update_data)}
+    return {"result": API.db.read("Mentors", data)}
 
 
-@API.post("/update/mentees")
-async def update_mentees(query: Dict, update_data: Dict):
-    """Updates Mentee documents that statisfy the query with update_data.
-
-    Queries from Mentee Collection with filters given (query).
-    Validate changes in update_data using MenteeUpdate class (Pydantic schema)
-    and updates the corresponding fields, by overwriting or adding data.
-
+@API.post("/read/mentee")
+async def read_mentee(data: Optional[Dict] = None):
+    """Return array of records that exactly match the given query from Mentees.
+    Queries from Mentees collection with optional filters given (data).
+    If no filtering data is given, will return all documents within collection.
     Args:
-        query (dict): Key value pairs to filter for
-        update_data (dict): Key value pairs to update
-    Returns:
-        Updated fields or schema discrepancy error as dictionary
+        data (dict) (optional): Key value pairs to match
+    Returns: List of all matching documents in the Mentees collection
     """
-    MenteeUpdate(**update_data)
-    return {"result": API.db.update("Mentees", query, update_data)}
+    return {"result": API.db.read("Mentees", data)}
 
 
 @API.post("/{collection}/create")
@@ -160,30 +150,11 @@ async def update(collection: str, query: Dict, update_data: Dict):
     return {"result": API.db.update(collection, query, update_data)}
 
 
-@API.delete("/{collection}/delete/{profile_id}")
-async def delete(collection: str, profile_id: str):
-    """Removes a user from the given collection.
-
-    Deletes all documents containing the given profile_id permanently,
-    and returns the deleted profile_id for confirmation.
-
-    Args:
-        collection (str): Name of collection to query for deletion
-        profile_id (str): ID number of user to be deleted
-
-    Returns:
-        Dictionary with key of "deleted" and value of the profile_id
-    """
-    await is_collection(collection)
-    API.db.delete(collection, {"profile_id": profile_id})
-    return {"result": {"deleted": profile_id}}
-
-
 @API.post("/create/mentor")
 async def create_mentor(data: Mentor):
     """Create a new record in the Mentors collection.
-    
-    Creates new document within Mentors using the data parameter to 
+
+    Creates new document within Mentors using the data parameter to
     populate its fields. This also uses Pydantic schema to validate
     incoming data follows the rules.
 
@@ -198,9 +169,9 @@ async def create_mentor(data: Mentor):
 @API.post("/create/mentee")
 async def create_mentee(data: Mentee):
     """Create a new record in the Mentees collection.
-    
-    Creates new document within Mentees using the data parameter to 
-    populate its fields. This also uses Pydantic schema to validate 
+
+    Creates new document within Mentees using the data parameter to
+    populate its fields. This also uses Pydantic schema to validate
     incoming data follows the rules.
 
     Args:
@@ -209,6 +180,38 @@ async def create_mentee(data: Mentee):
         New record data or schema discrepancy error as dictionary
     """
     return {"result": API.db.create("Mentees", data.dict())}
+
+
+@API.post("/update/mentors")
+async def update_mentors(query: Dict, update_data: MentorUpdate):
+    """Updates Mentor documents that statisfy the query with update_data.
+    Queries from Mentor Collection with filters given (query).
+    Validate changes in update_data using MentorUpdate class (Pydantic schema)
+    and updates the corresponding fields, by overwriting or adding data.
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+    Returns:
+        Updated fields or schema discrepancy error as dictionary
+    """
+    data = update_data.dict(exclude_none=True)
+    return {"result": API.db.update("Mentors", query, data)}
+
+
+@API.post("/update/mentees")
+async def update_mentees(query: Dict, update_data: MenteeUpdate):
+    """Updates Mentee documents that statisfy the query with update_data.
+    Queries from Mentee Collection with filters given (query).
+    Validate changes in update_data using MenteeUpdate class (Pydantic schema)
+    and updates the corresponding fields, by overwriting or adding data.
+    Args:
+        query (dict): Key value pairs to filter for
+        update_data (dict): Key value pairs to update
+    Returns:
+        Updated fields or schema discrepancy error as dictionary
+    """
+    data = update_data.dict(exclude_none=True)
+    return {"result": API.db.update("Mentees", query, data)}
 
 
 @API.post("/{collection}/search")
@@ -258,11 +261,27 @@ async def match_resource(item_id: str, n_matches: int):
 
     Args:
         item_id (int): ID number for resource item to be allocated to a mentee
-        n_matches (int): Maximum desired matching candidates. Ideally should be 1.
+        n_matches (int): Maximum desired matching candidates.
 
     Returns:
         List of mentee ID(s) """
     return {"result": API.resource_matcher(n_matches, item_id)}
+
+
+@API.delete("/{collection}/delete/{profile_id}")
+async def delete(collection: str, profile_id: str):
+    """Removes a user from the given collection.
+    Deletes all documents containing the given profile_id permanently,
+    and returns the deleted profile_id for confirmation.
+    Args:
+        collection (str): Name of collection to query for deletion
+        profile_id (str): ID number of user to be deleted
+    Returns:
+        Dictionary with key of "deleted" and value of the profile_id
+    """
+    await is_collection(collection)
+    API.db.delete(collection, {"profile_id": profile_id})
+    return {"result": {"deleted": profile_id}}
 
 
 @API.exception_handler(Exception)
