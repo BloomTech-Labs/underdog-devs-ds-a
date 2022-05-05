@@ -43,7 +43,6 @@ class Mentee(Printable):
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
         self.email = self.first_name + "." + self.last_name + "@gmail"
-        self.located_in_US = percent_true(100)
         self.country = "U.S."
         self.state = choice(states)
         self.city = choice(cities)
