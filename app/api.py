@@ -1,4 +1,5 @@
 import json
+import os
 from typing import Dict, Optional
 
 import pandas as pd
@@ -44,9 +45,12 @@ async def is_collection(collection: str):
 @API.get("/version")
 async def version():
     """Return the current version of the API."""
+    local = os.getenv("CONTEXT") == "local"
+    remote = "Run the API locally to get the password"
+    password = API.db.first("Secret")["Password"] if local else remote
     return {"result": {
         "Version": API.version,
-        "Password": API.db.first("Secret")["Password"],
+        "Password": password,
     }}
 
 
