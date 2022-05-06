@@ -18,8 +18,6 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-# TODO add selenium to requiremnts.txt or remove if not needed.
-
 def combine_individual_datasets(folder_date):
     """
     Loop through a specific folder in the "job-descriptions"
@@ -526,7 +524,7 @@ class JobScraper:
                 job_list.append(parse.quote(job))
             self.search_terms = [
                 x for x in self.search_terms if x
-                                                not in job_list
+                not in job_list
             ]
         elif isinstance(job_list, str):
             self.search_terms = [
