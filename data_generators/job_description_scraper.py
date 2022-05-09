@@ -287,19 +287,19 @@ class JobScraper:
             # the class name below, which will give us location
             if len(item.find_elements(
                     By.CLASS_NAME, 'job-card-container__metadata-wrapper'
-                    )) > 0:
+            )) > 0:
                 i = item.find_element(
                     By.CLASS_NAME, 'job-card-container__metadata-wrapper')
                 location.append(i.text)
             elif len(item.find_elements(
                     By.CLASS_NAME, 'job-card-container__metadata-item'
-                    )) > 0:
+            )) > 0:
                 i = item.find_element(
                     By.CLASS_NAME, 'job-card-container__metadata-item')
                 location.append(i.text)
             elif len(item.find_elements(
                     By.CLASS_NAME, 'artdeco-entity-lockup__caption'
-                    )) > 0:
+            )) > 0:
                 i = item.find_element(
                     By.CLASS_NAME, 'artdeco-entity-lockup__caption')
                 location.append(i.text)
