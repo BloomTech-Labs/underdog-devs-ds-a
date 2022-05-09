@@ -11,7 +11,7 @@ This api contains all of our current endpoints that connect backend to ds. Backe
 
 ## data.py
 
-Not 100% sure what this file contains, but it seems important to working mongodb 
+data.py is where the MongoDB interface (CRUD Operations) are housed.
 
 ## graphs.py
 
@@ -21,13 +21,9 @@ This file current contains the function that is used in the /graphs/tech-stack-b
 
 Here is where our matching classes are located. There are a few matching features implemented and they are stored here. Here is a list of the current classes that we have and what they do. For more detail on each class please open the file and look at doc strings. 
 
-MatcherSortSearch
-
-MatcherSortSearchResource
-
 ## utilities.py
 
-This file current contains the function that is used in the /financial_aid/{profile_id} endpoint.
+This file currently contains the function that is used in the /financial_aid/{profile_id} endpoint.
 
 ## vader_sentiment.py
 
