@@ -17,8 +17,10 @@ class Mentor(BaseModel):
     current_company: constr(max_length=255)
     current_position: constr(max_length=255)
     tech_stack: constr(max_length=255)
+    job_help: bool
+    industry_knowledge: bool
+    pair_programming: bool
     able_to_commit: bool
-    mentor_contribution: List[constr(max_length=255)]
     how_heard_about_us: constr(max_length=255)
     anything_else: constr(max_length=2500)
 
@@ -34,8 +36,10 @@ class MentorUpdate(BaseModel):
     current_company: Optional[constr(max_length=255)]
     current_position: Optional[constr(max_length=255)]
     tech_stack: Optional[constr(max_length=255)]
+    job_help: Optional[bool]
+    industry_knowledge: Optional[bool]
+    pair_programming: Optional[bool]
     able_to_commit: Optional[bool]
-    mentor_contribution: Optional[List[constr(max_length=255)]]
     how_heard_about_us: Optional[constr(max_length=255)]
     anything_else: Optional[constr(max_length=2500)]
 
@@ -54,9 +58,11 @@ class Mentee(BaseModel):
     formerly_incarcerated: bool
     underrepresented_group: bool
     low_income: bool
-    list_convictions: List[constr(max_length=255)]
+    list_convictions: constr(max_length=255)
     tech_stack: constr(max_length=255)
-    looking_for: List[constr(max_length=255)]
+    job_help: bool
+    industry_knowledge: bool
+    pair_programming: bool
     how_heard_about_us: constr(max_length=255)
     anything_else: Optional[constr(max_length=2500)]
 
@@ -72,9 +78,11 @@ class MenteeUpdate(BaseModel):
     formerly_incarcerated: Optional[bool]
     underrepresented_group: Optional[bool]
     low_income: Optional[bool]
-    list_convictions: Optional[List[constr(max_length=255)]]
+    list_convictions: Optional[constr(max_length=255)]
     tech_stack: Optional[constr(max_length=255)]
-    looking_for: Optional[List[constr(max_length=255)]]
+    job_help: Optional[bool]
+    industry_knowledge: Optional[bool]
+    pair_programming: Optional[bool]
     how_heard_about_us: Optional[constr(max_length=255)]
     anything_else: Optional[constr(max_length=2500)]
 
