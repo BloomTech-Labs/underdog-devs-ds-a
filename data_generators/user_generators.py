@@ -6,7 +6,7 @@ from data_generators.data_options import *
 
 
 class Printable:
-    "Parent Class"
+    """Parent Class"""
 
     def __str__(self):
         return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
@@ -27,8 +27,9 @@ class Mentor(Printable):
         self.current_position = choice(positions)
         self.tech_stack = choice(tech_stack)
         self.able_to_commit = percent_true(95)
-        self.mentor_contribution = [choice(resource_items), choice(topics),
-                                    choice(tech_stack)]
+        self.job_help = percent_true(33)
+        self.industry_knowledge = percent_true(33)
+        self.pair_programming = percent_true(33)
         self.how_heard_about_us = choice(heard_about_us)
         self.anything_else = "anything else may be written here"
 
@@ -47,11 +48,12 @@ class Mentee(Printable):
         self.formerly_incarcerated = percent_true(80)
         self.underrepresented_group = percent_true(70)
         self.low_income = percent_true(70)
-        self.list_convictions = sample(convictions, k=randint(1, 3))
+        self.list_convictions = " ".join(
+            item for item in sample(convictions, k=randint(1, 3))).replace(" ", ", ")
         self.tech_stack = choice(tech_stack)
-        self.looking_for = [choice(resource_items), choice(topics),
-                            choice(tech_stack)]
-        self.how_heard_about_us = choice(heard_about_us)
+        self.job_help = percent_true(33)
+        self.industry_knowledge = percent_true(33)
+        self.pair_programming = percent_true(33)
         self.anything_else = "anything else may be written here"
 
 
