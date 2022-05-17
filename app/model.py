@@ -29,9 +29,9 @@ class MatcherSortSearch:
 
         def sort_mentors(mentor: Dict) -> Tuple:
             return (
-                mentee["experience_level"] != mentor["experience_level"],
                 mentee["pair_programming"] != mentor["pair_programming"],
-                mentor["industry_knowledge"],
+                mentee["job_help"] != mentor["job_help"],
+                mentee["industry_knowledge"] != mentor["industry_knowledge"],
             )
 
         results = sorted(
