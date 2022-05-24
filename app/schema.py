@@ -61,7 +61,6 @@ class Mentee(BaseModel):
     list_convictions: Optional[constr(max_length=255)]
     tech_stack: constr(max_length=255)
     job_help: bool
-    industry_knowledge: bool
     pair_programming: bool
     heard_about: constr(max_length=255)
     other_info: Optional[constr(max_length=2500)]
@@ -85,7 +84,6 @@ class MenteeUpdate(BaseModel):
     list_convictions: Optional[constr(max_length=255)]
     tech_stack: Optional[constr(max_length=255)]
     job_help: Optional[bool]
-    industry_knowledge: Optional[bool]
     pair_programming: Optional[bool]
     heard_about: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
