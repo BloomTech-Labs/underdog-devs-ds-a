@@ -1,3 +1,4 @@
+import os
 from random import sample
 
 import pandas as pd
@@ -67,8 +68,8 @@ class Resource(Printable):
 
 class MenteeFeedback(Printable):
     """Generates Feedback record from mentee"""
-
-    feedback = pd.read_csv("review.csv", index_col="Id")
+    file_path = os.path.join("data_generators", "review.csv")
+    feedback = pd.read_csv(file_path, index_col="Id")
 
     def __init__(self, mentee_id, mentor_id):
         self.ticket_id = generate_uuid(16)
