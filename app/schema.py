@@ -1,16 +1,12 @@
-from typing import List, Literal, Optional
+from typing import Literal, Optional
 from datetime import datetime
-from pydantic import BaseModel, constr, Extra
-
-
-# TODO add pydantic to requirements.txt
-
+from pydantic import constr, BaseModel, Extra, EmailStr
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
-    email: constr(max_length=255)
+    email: Optional[EmailStr]
     country: constr(max_length=255)
     state: constr(max_length=255)
     city: constr(max_length=255)
@@ -20,9 +16,14 @@ class Mentor(BaseModel):
     job_help: bool
     industry_knowledge: bool
     pair_programming: bool
-    able_to_commit: bool
-    how_heard_about_us: constr(max_length=255)
-    anything_else: constr(max_length=2500)
+    Backend: bool
+    Frontend: bool
+    commitment: constr(max_length=255)
+    referred_by: constr(max_length=255)
+    other_info: Optional[constr(max_length=2500)]
+
+    class Config:
+        extra = Extra.forbid
 
 
 class MentorUpdate(BaseModel):
