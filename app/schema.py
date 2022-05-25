@@ -1,23 +1,22 @@
-from typing import Literal, Optional
+from typing import Literal, Optional, List
 from datetime import datetime
 from pydantic import constr, BaseModel, Extra, EmailStr
+
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
-    email: Optional[EmailStr]
+    email: EmailStr
     country: constr(max_length=255)
     state: constr(max_length=255)
     city: constr(max_length=255)
     current_company: constr(max_length=255)
     current_position: constr(max_length=255)
-    tech_stack: constr(max_length=255)
+    tech_stack: List[constr(max_length=255)]
     job_help: bool
     industry_knowledge: bool
     pair_programming: bool
-    Backend: bool
-    Frontend: bool
     commitment: constr(max_length=255)
     referred_by: constr(max_length=255)
     other_info: Optional[constr(max_length=2500)]
