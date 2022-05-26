@@ -1,3 +1,4 @@
+import os
 from random import sample
 
 import pandas as pd
@@ -12,25 +13,25 @@ class Printable:
         return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
 
 
-class Mentor(Printable):
+class RandomMentor(Printable):
     """Generates Mentor record"""
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
-        self.email = self.first_name + "." + self.last_name + "@gmail"
+        self.email = f"{self.first_name}.{self.last_name}@gmail.com"
         self.country = "U.S."
         self.state = choice(states)
         self.city = choice(cities)
         self.current_company = choice(companies)
         self.current_position = choice(positions)
-        self.tech_stack = choice(tech_stack)
-        self.able_to_commit = percent_true(95)
+        self.tech_stack = sample(tech_stack, k=randint(1, 3))
+        self.commitment = percent_true(95)
         self.job_help = percent_true(33)
         self.industry_knowledge = percent_true(33)
         self.pair_programming = percent_true(33)
-        self.how_heard_about_us = choice(heard_about_us)
+        self.referred_by = choice(heard_about_us)
         self.other_info = "anything else may be written here"
 
 
@@ -66,8 +67,8 @@ class Resource(Printable):
 
 class MenteeFeedback(Printable):
     """Generates Feedback record from mentee"""
-
-    feedback = pd.read_csv("review.csv", index_col="Id")
+    file_path = os.path.join("data_generators", "review.csv")
+    feedback = pd.read_csv(file_path, index_col="Id")
 
     def __init__(self, mentee_id, mentor_id):
         self.ticket_id = generate_uuid(16)

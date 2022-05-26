@@ -13,13 +13,16 @@ class Mentor(BaseModel):
     city: constr(max_length=255)
     current_company: constr(max_length=255)
     current_position: constr(max_length=255)
-    tech_stack: constr(max_length=255)
+    tech_stack: List[constr(max_length=255)]
     job_help: bool
     industry_knowledge: bool
     pair_programming: bool
-    able_to_commit: bool
-    how_heard_about_us: constr(max_length=255)
-    anything_else: constr(max_length=2500)
+    commitment: constr(max_length=255)
+    referred_by: constr(max_length=255)
+    other_info: Optional[constr(max_length=2500)]
+
+    class Config:
+        extra = Extra.forbid
 
     class Config:
         extra = Extra.forbid
@@ -35,13 +38,13 @@ class MentorUpdate(BaseModel):
     city: Optional[constr(max_length=255)]
     current_company: Optional[constr(max_length=255)]
     current_position: Optional[constr(max_length=255)]
-    tech_stack: Optional[constr(max_length=255)]
+    tech_stack: Optional[List[constr(max_length=255)]]
     job_help: Optional[bool]
     industry_knowledge: Optional[bool]
     pair_programming: Optional[bool]
-    able_to_commit: Optional[bool]
-    how_heard_about_us: Optional[constr(max_length=255)]
-    anything_else: Optional[constr(max_length=2500)]
+    commitment: Optional[constr(max_length=255)]
+    referred_by: Optional[constr(max_length=255)]
+    other_info: Optional[constr(max_length=2500)]
 
     class Config:
         extra = Extra.forbid
