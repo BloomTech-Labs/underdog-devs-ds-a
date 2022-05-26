@@ -1,6 +1,6 @@
 from typing import Literal, Optional, List
 from datetime import datetime
-from pydantic import constr, BaseModel, Extra, EmailStr
+from pydantic import BaseModel, constr, Extra, EmailStr
 
 
 class Mentor(BaseModel):
@@ -20,6 +20,9 @@ class Mentor(BaseModel):
     commitment: constr(max_length=255)
     referred_by: constr(max_length=255)
     other_info: Optional[constr(max_length=2500)]
+
+    class Config:
+        extra = Extra.forbid
 
     class Config:
         extra = Extra.forbid
@@ -51,40 +54,43 @@ class Mentee(BaseModel):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
-    email: constr(max_length=255)
+    email: EmailStr
     country: constr(max_length=255)
     state: constr(max_length=255)
     city: constr(max_length=255)
     formerly_incarcerated: bool
     underrepresented_group: bool
     low_income: bool
-    list_convictions: constr(max_length=255)
+    list_convictions: List[constr(max_length=255)]
     tech_stack: constr(max_length=255)
     job_help: bool
-    industry_knowledge: bool
     pair_programming: bool
-    how_heard_about_us: constr(max_length=255)
-    anything_else: Optional[constr(max_length=2500)]
+    heard_about: constr(max_length=255)
+    other_info: Optional[constr(max_length=2500)]
+    validate_status: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
 
 
 class MenteeUpdate(BaseModel):
     profile_id: Optional[constr(max_length=255)]
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
-    email: Optional[constr(max_length=255)]
+    email: Optional[EmailStr]
     country: Optional[constr(max_length=255)]
     state: Optional[constr(max_length=255)]
     city: Optional[constr(max_length=255)]
     formerly_incarcerated: Optional[bool]
     underrepresented_group: Optional[bool]
     low_income: Optional[bool]
-    list_convictions: Optional[constr(max_length=255)]
+    list_convictions: Optional[List[constr(max_length=255)]]
     tech_stack: Optional[constr(max_length=255)]
     job_help: Optional[bool]
-    industry_knowledge: Optional[bool]
     pair_programming: Optional[bool]
-    how_heard_about_us: Optional[constr(max_length=255)]
-    anything_else: Optional[constr(max_length=2500)]
+    heard_about: Optional[constr(max_length=255)]
+    other_info: Optional[constr(max_length=2500)]
+    validate_status: Optional[constr(max_length=255)]
 
     class Config:
         extra = Extra.forbid
