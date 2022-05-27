@@ -17,7 +17,7 @@ from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.45.4",
+    version="0.46.1",
     docs_url='/',
 )
 

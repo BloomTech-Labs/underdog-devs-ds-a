@@ -17,12 +17,9 @@ class Mentor(BaseModel):
     job_help: bool
     industry_knowledge: bool
     pair_programming: bool
-    commitment: constr(max_length=255)
+    commitment: bool
     referred_by: constr(max_length=255)
     other_info: Optional[constr(max_length=2500)]
-
-    class Config:
-        extra = Extra.forbid
 
     class Config:
         extra = Extra.forbid
@@ -42,7 +39,7 @@ class MentorUpdate(BaseModel):
     job_help: Optional[bool]
     industry_knowledge: Optional[bool]
     pair_programming: Optional[bool]
-    commitment: Optional[constr(max_length=255)]
+    commitment: Optional[bool]
     referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
 
