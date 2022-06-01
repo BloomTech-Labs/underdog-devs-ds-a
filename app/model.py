@@ -1,4 +1,4 @@
-from random import sample, choice
+from random import choice
 from typing import List, Tuple, Dict
 
 from app.data import MongoDB
