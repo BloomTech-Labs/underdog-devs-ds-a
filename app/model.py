@@ -31,7 +31,7 @@ class MatcherSortSearch:
             return (
                 mentee["pair_programming"] != mentor["pair_programming"],
                 mentee["job_help"] != mentor["job_help"],
-                mentee["industry_knowledge"] != mentor["industry_knowledge"],
+                not mentor["industry_knowledge"],
             )
 
         results = sorted(
