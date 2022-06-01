@@ -35,14 +35,14 @@ class RandomMentor(Printable):
         self.other_info = "anything else may be written here"
 
 
-class Mentee(Printable):
+class RandomMentee(Printable):
     """Generates Mentee record"""
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
-        self.email = self.first_name + "." + self.last_name + "@gmail"
+        self.email = f"{self.first_name}.{self.last_name}@gmail.com"
         self.country = "U.S."
         self.state = choice(states)
         self.city = choice(cities)
@@ -57,7 +57,7 @@ class Mentee(Printable):
         self.validate_status = choice(["approved", "pending"])
 
 
-class Resource(Printable):
+class RandomResource(Printable):
     """Generates Resource record"""
 
     def __init__(self):
@@ -65,7 +65,7 @@ class Resource(Printable):
         self.item_id = generate_uuid(16)
 
 
-class MenteeFeedback(Printable):
+class RandomMenteeFeedback(Printable):
     """Generates Feedback record from mentee"""
     file_path = os.path.join("data_generators", "review.csv")
     feedback = pd.read_csv(file_path, index_col="Id")
@@ -77,7 +77,7 @@ class MenteeFeedback(Printable):
         self.feedback = choice(self.feedback["Review"])
 
 
-class Meeting(Printable):
+class RandomMeeting(Printable):
     """Generates Meeting record"""
 
     def __init__(self, mentee_id, mentor_id):
