@@ -9,4 +9,5 @@
 /README.md
 /run.sh
 /data_generators/
-/test_coverage
+/test_coverage/
+/general_documentation/
