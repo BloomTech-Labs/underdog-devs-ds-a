@@ -1,8 +1,7 @@
 from random import choice
 
 from app.data import MongoDB
-from data_generators.user_generators import Mentee, Mentor
-from data_generators.user_generators import MenteeFeedback, Meeting, Resource
+from data_generators.user_generators import *
 
 
 class SeedMongo:
@@ -15,7 +14,7 @@ class SeedMongo:
         else:
             self.db.make_field_unique("Mentees", "profile_id")
         self.db.create_index("Mentees")
-        mentees = (vars(Mentee()) for _ in range(count))
+        mentees = (vars(RandomMentee()) for _ in range(count))
         self.db.create_many("Mentees", mentees)
 
     def mentors(self, fresh_db: bool, count: int):
@@ -25,7 +24,7 @@ class SeedMongo:
         else:
             self.db.make_field_unique("Mentors", "profile_id")
         self.db.create_index("Mentors")
-        mentors = (vars(Mentor()) for _ in range(count))
+        mentors = (vars(RandomMentor()) for _ in range(count))
         self.db.create_many("Mentors", mentors)
 
     def feedback(self, fresh_db: bool, count: int):
@@ -35,7 +34,7 @@ class SeedMongo:
             self.db.delete("Feedback", {})
         else:
             self.db.make_field_unique("Feedback", "ticket_id")
-        feedback = (vars(MenteeFeedback(
+        feedback = (vars(RandomMenteeFeedback(
             choice(mentees)["profile_id"],
             choice(mentors)["profile_id"],
         )) for _ in range(count))
@@ -48,7 +47,7 @@ class SeedMongo:
             self.db.delete("Meetings", {})
         else:
             self.db.make_field_unique("Meetings", "meeting_id")
-        meetings = (vars(Meeting(
+        meetings = (vars(RandomMeeting(
             choice(mentees)["profile_id"],
             choice(mentors)["profile_id"],
         )) for _ in range(count))
@@ -59,7 +58,7 @@ class SeedMongo:
             self.db.delete("Resources", {})
         else:
             self.db.make_field_unique("Resources", "item_id")
-        resources = (vars(Resource()) for _ in range(count))
+        resources = (vars(RandomResource()) for _ in range(count))
         self.db.create_many("Resources", resources)
 
     def __call__(self, fresh: bool):
