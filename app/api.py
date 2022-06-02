@@ -186,7 +186,7 @@ async def create_mentee(data: Mentee):
     return {"result": API.db.create("Mentees", data.dict())}
 
 
-@API.post("/update/mentors")
+@API.post("/update/mentor")
 async def update_mentors(query: Dict, update_data: MentorUpdate):
     """Updates Mentor documents that statisfy the query with update_data.
     Queries from Mentor Collection with filters given (query).
@@ -202,7 +202,7 @@ async def update_mentors(query: Dict, update_data: MentorUpdate):
     return {"result": API.db.update("Mentors", query, data)}
 
 
-@API.post("/update/mentees")
+@API.post("/update/mentee")
 async def update_mentees(query: Dict, update_data: MenteeUpdate):
     """Updates Mentee documents that statisfy the query with update_data.
     Queries from Mentee Collection with filters given (query).
