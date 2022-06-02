@@ -188,8 +188,7 @@ async def create_mentee(data: Mentee):
 
 @API.post("/update/mentor/{profile_id}")
 async def update_mentors(profile_id: str, update_data: MentorUpdate):
-    """Updates Mentor documents that statisfy the query with update_data.
-    Queries from Mentor Collection with filters given (query).
+    """Updates Mentor document.
     Validate changes in update_data using MentorUpdate class (Pydantic schema)
     and updates the corresponding fields, by overwriting or adding data.
     Args:
@@ -204,8 +203,7 @@ async def update_mentors(profile_id: str, update_data: MentorUpdate):
 
 @API.post("/update/mentee/{profile_id}")
 async def update_mentees(profile_id: str, update_data: MenteeUpdate):
-    """Updates Mentee documents that statisfy the query with update_data.
-    Queries from Mentee Collection with filters given (query).
+    """Updates Mentee document.
     Validate changes in update_data using MenteeUpdate class (Pydantic schema)
     and updates the corresponding fields, by overwriting or adding data.
     Args:
