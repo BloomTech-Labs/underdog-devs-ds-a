@@ -1,4 +1,4 @@
-from random import sample, choice
+from random import choice
 from typing import List, Tuple, Dict
 
 from app.data import MongoDB
@@ -31,7 +31,7 @@ class MatcherSortSearch:
             return (
                 mentee["pair_programming"] != mentor["pair_programming"],
                 mentee["job_help"] != mentor["job_help"],
-                mentee["industry_knowledge"] != mentor["industry_knowledge"],
+                not mentor["industry_knowledge"],
             )
 
         results = sorted(
