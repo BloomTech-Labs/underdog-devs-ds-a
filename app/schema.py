@@ -20,6 +20,7 @@ class Mentor(BaseModel):
     commitment: bool
     referred_by: constr(max_length=255)
     other_info: Optional[constr(max_length=2500)]
+    validate_status: constr(max_length=255)
 
     class Config:
         extra = Extra.forbid
@@ -42,6 +43,7 @@ class MentorUpdate(BaseModel):
     commitment: Optional[bool]
     referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
+    validate_status: Optional[constr(max_length=255)]
 
     class Config:
         extra = Extra.forbid
