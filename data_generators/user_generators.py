@@ -33,6 +33,8 @@ class RandomMentor(Printable):
         self.pair_programming = percent_true(33)
         self.referred_by = choice(heard_about_us)
         self.other_info = "anything else may be written here"
+        self.validate_status = choice(["approved", "pending"])
+
 
 
 class RandomMentee(Printable):
