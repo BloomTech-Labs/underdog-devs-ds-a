@@ -28,3 +28,7 @@ def financial_aid_gen(profile):
         return (e_l - 0.025) / 1.577
 
     return f"{f_a_func(f_i, l_i, e_l):.2%}"
+
+def create_single_feedback():
+    """used to create a single feedback for testing in database"""
+

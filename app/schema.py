@@ -1,7 +1,7 @@
 from typing import Literal, Optional, List
 from datetime import datetime
 from pydantic import BaseModel, constr, Extra, EmailStr
-
+from data_generators.data_options import generate_uuid
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
@@ -126,6 +126,8 @@ class Feedback(BaseModel):
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
     feedback: Optional[constr(max_length=2000)]
+    Datetime: datetime
+
 
 
 class Resource(BaseModel):

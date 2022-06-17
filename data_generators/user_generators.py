@@ -1,6 +1,6 @@
 import os
 from random import sample
-
+import datetime
 import pandas as pd
 
 from data_generators.data_options import *
@@ -77,7 +77,7 @@ class RandomMenteeFeedback(Printable):
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
         self.feedback = choice(self.feedback["Review"])
-
+        self.datetime = datetime.datetime.now()
 
 class RandomMeeting(Printable):
     """Generates Meeting record"""

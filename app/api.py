@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 from typing import Dict, Optional
@@ -13,8 +14,8 @@ from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
-from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
-
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback
+from data_generators.user_generators import generate_uuid
 API = FastAPI(
     title='Underdog Devs DS API',
     version="0.46.2",
@@ -345,3 +346,48 @@ async def tech_stack_graph():
     mentees_df["user_role"] = "Mentee"
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
+
+
+@API.post("/create/Feedback")
+async def create_feedback(data: Feedback):
+    """Create a new record in the feedback collection.
+
+    Creates new document within Feedback using the data parameter to
+    populate its fields.
+    Args:
+        ticket_id (uuid) : ticket
+        mentee_id (str): Mentee
+        mentor_id (str): mentor
+        feedback (str): feedback
+        date_time (datetime): datetime
+    Returns:
+        New feed data or schema discrepancy error as dictionary
+    """
+
+    return {"result": API.db.create("Feedback", data.dict())}
+
+
+@API.post("/read/Feedback")
+async def read_feedback(data: Optional[Dict] = None):
+    """Return array of records that exactly match the given query from Mentees.
+    Queries from Mentees collection with optional filters given (data).
+    If no filtering data is given, will return all documents within collection.
+    Args:
+        data (dict) (optional): Key value pairs to match
+    Returns: List of all matching documents in the Mentees collection
+    """
+    return {"result": API.db.read("Feedback", data)}
+
+
+@API.delete("/delete/Feedback/{ticket_id}")
+async def delete_feedback(ticket_id: str):
+    """Removes a user from the given collection.
+    Deletes all documents containing the given profile_id permanently,
+    and returns the deleted profile_id for confirmation.
+    Args:
+        ticket_id (str): Ticket ID of feedback to be deleted
+    Returns:
+        Dictionary with key of "deleted" and value of the profile_id
+    """
+    API.db.delete("Feedback", {"ticket_id": ticket_id})
+    return {"result": {"deleted": ticket_id}}
