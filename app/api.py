@@ -345,3 +345,34 @@ async def tech_stack_graph():
     mentees_df["user_role"] = "Mentee"
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
+
+@API.get("/responses_analysis")
+async def responses_analysis():
+    """Returns the top n most relevant topics for analysis usage 
+
+   Calls the responses collection  within the database and peforms NLP pipeline.
+
+    Returns:
+        the top n most relavant topics from the responses collection
+    """
+
+    cursor = API.db.read("Responses")
+    responses = [y.get(str(x)) for x,y in enumerate(list(cursor))]
+
+    nlp = spacy.load("en_core_web_sm")
+    responses_tokenized = []
+
+    for x in responses:
+        responses_tokenized.append([token.lemma_.lower() for token in nlp(x) if not token.is_stop  
+                                    and not token.is_punct and (token.pos_ == 'ADJ' 
+                                                                or token.pos_ == 'VERB' 
+                                                                or token.pos_ == 'NOUN')])
+    
+    flat_list = list(np.concatenate(responses_tokenized).flat)
+    
+    df = pd.DataFrame(data=pd.value_counts(flat_list), columns=['count'])
+    df['responses'] = df.index
+    df.reset_index(drop=True,inplace=True)
+    responses_dict = dict(zip(df['responses'], df['count']))
+
+    return responses_dict
