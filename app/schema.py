@@ -127,6 +127,7 @@ class Feedback(BaseModel):
     mentor_id: constr(max_length=255)
     feedback: Optional[constr(max_length=2000)]
     Datetime: datetime
+    vaderscore: constr(max_length=255)
 
 
 

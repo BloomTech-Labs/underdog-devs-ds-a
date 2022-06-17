@@ -349,7 +349,7 @@ async def tech_stack_graph():
 
 
 @API.post("/create/Feedback")
-async def create_feedback(data: Feedback):
+async def create_feedback(mentee_id: str, mentor_id: str, feedback: str):
     """Create a new record in the feedback collection.
 
     Creates new document within Feedback using the data parameter to
@@ -360,11 +360,14 @@ async def create_feedback(data: Feedback):
         mentor_id (str): mentor
         feedback (str): feedback
         date_time (datetime): datetime
+        vaderscore(str): compound sentiment value
     Returns:
         New feed data or schema discrepancy error as dictionary
     """
-
-    return {"result": API.db.create("Feedback", data.dict())}
+    feedback_score = vader_score(feedback)
+    data = {"ticket_id": generate_uuid(16), 'mentee_id': mentee_id, 'mentor_id': mentor_id, 'feedback': feedback,
+            'datetime': datetime.datetime.now(), 'vaderscore': feedback_score}
+    return {"result": API.db.create("Feedback", data)}
 
 
 @API.post("/read/Feedback")
