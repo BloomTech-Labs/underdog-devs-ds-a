@@ -130,7 +130,6 @@ class Feedback(BaseModel):
     vaderscore: constr(max_length=255)
 
 
-
 class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)
