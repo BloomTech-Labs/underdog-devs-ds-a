@@ -349,7 +349,7 @@ async def tech_stack_graph():
 
 
 @API.post("/modify/Feedback")
-async def modfiy_feedback(modify_option: str, mentee_id: Optional[str] = None, mentor_id: Optional[str] = None,
+async def query_feedback(modify_option: str, mentee_id: Optional[str] = None, mentor_id: Optional[str] = None,
                           feedback: Optional[str] = None, ticket_id: Optional[str] = None):
     """Create a new record in the feedback collection.
 
