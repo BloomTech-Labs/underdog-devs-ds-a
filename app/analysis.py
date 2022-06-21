@@ -2,6 +2,7 @@ import spacy
 import pandas as pd
 import numpy as np
 
+
 def nlp_analysis (user_responses):
     """Returns the top n most relevant topics for analysis usage
     
