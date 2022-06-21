@@ -14,7 +14,7 @@ from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
-from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 from data_generators.user_generators import generate_uuid
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -307,7 +307,7 @@ async def all_exception_handler(request: Request, exc: Exception):
 async def financial_aid(profile_id: str):
     """Returns the probability that financial aid will be required.
 
-    Calls the financial aid function from functions.py inputing the
+    Calls the financial aid function from functions.py imputing the
     profile_id for calculation involving formally incarcerated, low income,
     and experience level as variables to formulate probability of financial aid
 
@@ -348,7 +348,6 @@ async def tech_stack_graph():
     return json.loads(tech_stack_by_role(df).to_json())
 
 
-
 @API.post("/query/Feedback")
 async def feedback_crud(crud: str, mentee_id: Optional[str] = None, mentor_id: Optional[str] = None,
                         feedback: Optional[str] = None, ticket_id: Optional[str] = None):
@@ -364,7 +363,7 @@ async def feedback_crud(crud: str, mentee_id: Optional[str] = None, mentor_id: O
     - mentor_id (str): Mentor ID (optional)
     - feedback (str): feedback (optional)
     - date_time (datetime): current datetime
-    - vaderscore(str): compound sentiment value
+    - vader_score(str): compound sentiment value
 
     Returns:
     - if crud == create -> supply mentee_id, mentor_id and feedback
@@ -391,5 +390,3 @@ async def feedback_crud(crud: str, mentee_id: Optional[str] = None, mentor_id: O
 
     else:
         return 'Modify_option needs to be create, read or delete'
-
-
