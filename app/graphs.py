@@ -15,6 +15,7 @@ def tech_stack_by_role(dataframe: pd.DataFrame):
 
 
 def feedback(dataframe):
+    """"""
     interval = alt.selection_interval(encodings=['x'])
 
     source = dataframe
