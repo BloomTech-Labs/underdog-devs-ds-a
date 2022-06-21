@@ -354,7 +354,7 @@ async def responses_analysis():
    calls the nlp_analysis function from the analysis.py file.
 
     Returns:
-        the top n most relavant topics from the responses collection
+        the top n most relevant topics from the responses collection
     """
 
     cursor = API.db.read("Responses")
