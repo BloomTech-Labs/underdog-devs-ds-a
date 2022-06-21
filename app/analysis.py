@@ -9,7 +9,7 @@ def nlp_analysis (user_responses):
     takes in a list of user responses in string format and performs nlp analysis
     
     Returns:
-    the top n most relavant topics from the responses collection
+    the top n most relevant topics from the responses collection
   
     """
 
