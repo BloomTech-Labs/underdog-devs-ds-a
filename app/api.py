@@ -347,6 +347,7 @@ async def tech_stack_graph():
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
 
+
 @API.get("/responses_analysis")
 async def responses_analysis():
     """Returns the top n most relevant topics for analysis usage
