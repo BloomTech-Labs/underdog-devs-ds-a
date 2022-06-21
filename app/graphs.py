@@ -13,30 +13,32 @@ def tech_stack_by_role(dataframe: pd.DataFrame):
         tooltip=alt.Tooltip(list(dataframe.columns)),
     )
 
+
 def feedback(dataframe):
-  interval = alt.selection_interval(encodings=['x'])
 
-  source = dataframe
+    interval = alt.selection_interval(encodings=['x'])
 
-  bar = alt.Chart(source).mark_bar().encode(
+    source = dataframe
+
+    bar = alt.Chart(source).mark_bar().encode(
       x='datetime:T',
       y='vader_score:Q',
       color=alt.condition(interval, 'mentor_id:N',
                           alt.value('lightgray'))
-  ).properties(
+    ).properties(
       width=900,
       selection=interval
-  )
-  line = alt.Chart(source).mark_line(color='red').transform_window(
+    )
+    line = alt.Chart(source).mark_line(color='red').transform_window(
       # The field to average
       rolling_mean='mean(vader_score)',
       # The number of values before and after the current value to include.
       frame=[-9, 0]
-  ).encode(
+    ).encode(
       x='datetime',
       y='rolling_mean:Q'
-  ).properties(width=900
-  ).transform_filter(
+    ).properties(width=900
+    ).transform_filter(
       interval
-  )
-  return bar & line
+    )
+    return bar & line
