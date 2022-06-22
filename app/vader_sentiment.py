@@ -6,6 +6,8 @@ def vader_score(text: str):
     Returns vader scores for feedback
     """
     score = analyzer.polarity_scores(text)['compound']
+    if score > .3:
+        return ['positive', score]
     return score
 
 

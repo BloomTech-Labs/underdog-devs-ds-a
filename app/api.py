@@ -16,6 +16,7 @@ from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 from data_generators.user_generators import generate_uuid
+from graphs import feedback, mentor_feedback_progression
 API = FastAPI(
     title='Underdog Devs DS API',
     version="0.46.2",
@@ -381,6 +382,8 @@ async def feedback_crud(crud: str, mentee_id: Optional[str] = None, mentor_id: O
     elif crud == 'read':
         if ticket_id:
             return {"result": API.db.read("Feedback", {'ticket_id': ticket_id})}
+        elif mentor_id:
+            return {"result": API.db.read("Feedback", {'mentor_id': mentor_id})}
         else:
             return {"result": API.db.read("Feedback", ticket_id)}
 
@@ -390,3 +393,10 @@ async def feedback_crud(crud: str, mentee_id: Optional[str] = None, mentor_id: O
 
     else:
         return 'Modify_option needs to be create, read or delete'
+
+
+@API.get("/graphs/tech-stack-by-role")
+async def tech_stack_graph():
+
+    df = pd.DataFrame(feedback_crud('read'))
+    return json.loads(feedback(df).to_json())
