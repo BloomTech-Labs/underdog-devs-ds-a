@@ -136,8 +136,8 @@ class Tickets_Table(BaseModel):
     ticket_id: constr(max_length=255)
     ticket_type: Optional[Literal['Action', 'Application', 'Resource', 'Role']]
     ticket_status: Optional[Literal['Pending', 'Approved', 'Rejected']]
-    ticket_subject: Optional[Literal['Action', 'Application', 'Resource', 'Role']]
-    urgent: Optional[Literal['Mild', 'A Little Mild', 'Urgent']]
+    ticket_subject: constr(max_length=255)
+    urgent: Optional[Literal['Low', 'Normal', 'High']]
     notes: constr(max_length=255)
     requested_for: constr(max_length=255)
     submitted_by: constr(max_length=255)
