@@ -350,15 +350,11 @@ async def tech_stack_graph():
 
 @API.get("/responses_analysis")
 async def responses_analysis():
-    """Returns the top n most relevant topics for analysis usage
+    """Returns relevant topics for analysis usage
 
    calls the nlp_analysis function from the analysis.py file.
 
     Returns:
-        the top n most relevant topics from the responses collection
+        (dict)relevant topics from the responses collection
     """
-
-    cursor = API.db.read("Responses")
-    responses = [y.get(str(x)) for x, y in enumerate(list(cursor))]
-
-    return nlp_analysis(responses)
+    return nlp_analysis([obj["text"] for obj in API.db.read("Responses")])
