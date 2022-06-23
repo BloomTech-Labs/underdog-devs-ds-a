@@ -131,3 +131,10 @@ class Feedback(BaseModel):
 class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)
+
+
+class Assignment(BaseModel):
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+    assignment_id: constr(max_length=255)
+
