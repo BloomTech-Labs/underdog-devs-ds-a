@@ -24,7 +24,7 @@ def feedback(dataframe):
         x='datetime:T',
         y='vader_score:Q',
         color=alt.condition(interval, 'mentor_id:N',
-                          alt.value('lightgray'))
+                            alt.value('lightgray'))
     ).properties(
         width=900,
         selection=interval
@@ -38,7 +38,7 @@ def feedback(dataframe):
         x='datetime',
         y='rolling_mean:Q'
     ).properties(width=900
-    ).transform_filter(
+                 ).transform_filter(
         interval)
     return bar & mean_line
 
