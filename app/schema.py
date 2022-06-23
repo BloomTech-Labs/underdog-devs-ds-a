@@ -154,3 +154,11 @@ class MentorIntake(BaseModel):
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: constr(max_length=255)
+
+
+class MenteeIntake(BaseModel):
+    intake_id: constr(max_length=255)
+    profile_id: constr(max_length=255)
+    first_name: constr(max_length=255)
+    last_name: constr(max_length=255)
+    email: EmailStr
