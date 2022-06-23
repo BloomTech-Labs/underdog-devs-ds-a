@@ -131,3 +131,26 @@ class Feedback(BaseModel):
 class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)
+
+# Mirror of PostgresSQL Database begins:
+
+class Profiles(BaseModel):
+    profile_id: constr(max_length=255)
+    email: constr(max_length=255)
+    first_name: constr(max_length=255)
+    last_name: constr(max_length=255)
+    location: constr(max_length=255)
+    company: constr(max_length=255)
+    tech_stack: constr(max_length=255)
+    created_at: datetime
+    is_active: bool
+    progress_status: constr(max_length=255)
+    attendance_rate: constr(max_length=255)
+
+
+class MentorIntake(BaseModel):
+    intake_id: constr(max_length=255)
+    profile_id: constr(max_length=255)
+    first_name: constr(max_length=255)
+    last_name: constr(max_length=255)
+    email: constr(max_length=255)
