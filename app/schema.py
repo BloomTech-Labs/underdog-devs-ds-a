@@ -143,3 +143,8 @@ class Tickets_Table(BaseModel):
     submitted_by: constr(max_length=255)
     approved_by: constr(max_length=255)
 
+class Assignment(BaseModel):
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+    assignment_id: constr(max_length=255)
+
