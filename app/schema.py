@@ -136,7 +136,7 @@ class Resource(BaseModel):
 
 class Profiles(BaseModel):
     profile_id: constr(max_length=255)
-    email: constr(max_length=255)
+    email: EmailStr
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     location: constr(max_length=255)
@@ -153,7 +153,7 @@ class MentorIntake(BaseModel):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
-    email: constr(max_length=255)
+    email: EmailStr
 
 
 class MenteeIntake(BaseModel):
