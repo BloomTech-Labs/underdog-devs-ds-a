@@ -61,7 +61,7 @@ class Mentee(BaseModel):
     underrepresented_group: bool
     low_income: bool
     list_convictions: List[constr(max_length=255)]
-    tech_stack: constr(max_length=255)
+    tech_stack: constr(max_length=255) # Mentor class takes list here instead
     job_help: bool
     pair_programming: bool
     heard_about: constr(max_length=255)
@@ -132,8 +132,8 @@ class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)
 
-# Mirror of PostgresSQL Database begins:
 
+# Mirror of PostgresSQL Database begins:
 class Profiles(BaseModel):
     profile_id: constr(max_length=255)
     email: EmailStr
@@ -142,6 +142,7 @@ class Profiles(BaseModel):
     location: constr(max_length=255)
     company: constr(max_length=255)
     tech_stack: constr(max_length=255)
+    role_id: constr(max_length=255)
     created_at: datetime
     is_active: bool
     progress_status: constr(max_length=255)
@@ -149,16 +150,30 @@ class Profiles(BaseModel):
 
 
 class MentorIntake(BaseModel):
-    intake_id: constr(max_length=255)
+    mentor_intake_id: constr(max_length=255)
+    email: EmailStr
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
-    email: EmailStr
+    country: constr(max_length=255)
+    state: constr(max_length=255)
+    city: constr(max_length=255)
+    current_company: constr(max_length=255)
+    current_position: constr(max_length=255)
+    tech_stack: constr(max_length=255)
+    job_help: constr(max_length=255)
+    industry_knowledge: constr(max_length=255)
+    pair_programming: constr(max_length=255)
+    commitment: constr(max_length=255)
+    referred_by: constr(max_length=255)
+    other_info: Optional[constr(max_length=2500)]
+    validate_status: constr(max_length=255)
 
 
 class MenteeIntake(BaseModel):
     intake_id: constr(max_length=255)
     profile_id: constr(max_length=255)
+    email: EmailStr
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
-    email: EmailStr
+
