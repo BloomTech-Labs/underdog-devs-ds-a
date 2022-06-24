@@ -193,3 +193,18 @@ class MenteeIntake(BaseModel):
     heard_about: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
     validate_status: constr(max_length=255)
+
+
+class Meetings(BaseModel):
+    """host_id references profile_id in Profiles collection
+    attendee_id references profile_id in Profiles collection"""
+    meeting_id: constr(max_length=255)
+    created_at: datetime
+    updated_at: datetime
+    meeting_topic: constr(max_length=255)
+    meeting_start_date: datetime
+    meeting_end_date: datetime
+    host_id: constr(max_length=255)
+    attendee_id: constr(max_length=255)
+    meeting_notes: Optional[constr(max_length=2000)]
+    meeting_missed: Optional[Literal['Missed', 'Pending', 'Attended']]
