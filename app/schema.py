@@ -140,3 +140,19 @@ class Comments(BaseModel):
     note_id: constr(max_length=255)
     updated_at: datetime
 
+
+class Notes(BaseModel):
+    note_id: constr(max_length=255)
+    created_by: constr(max_length=255)
+    status: Literal['in progress', 'resolved', 'no action needed', 'escalated']
+    content_type: constr(max_length=255)
+    content: constr(max_length=255)
+    level: constr(max_length=255)
+    visible_to_admin: Optional[bool]
+    visible_to_mentor: Optional[bool]
+    visible_to_mentee: Optional[bool]
+    created_at: datetime
+    updated_at: datetime
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+
