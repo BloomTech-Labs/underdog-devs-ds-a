@@ -13,3 +13,5 @@ vaderSentiment~=3.3.2
 scikit-learn~=1.0.2
 numpy~=1.22.3
 pydantic[email]~=1.9.0
+spacy>=2.2.0,<3.0.0
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz
