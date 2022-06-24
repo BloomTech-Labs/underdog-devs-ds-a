@@ -133,7 +133,6 @@ class Resource(BaseModel):
     item_id: constr(max_length=255)
 
 
-# Mirror of PostgresSQL Database begins:
 class Profiles(BaseModel):
     profile_id: constr(max_length=255)
     email: EmailStr
