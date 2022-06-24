@@ -10,14 +10,14 @@ from fastapi.responses import JSONResponse, HTMLResponse
 import numpy as np
 
 from app.data import MongoDB
-from app.graphs import tech_stack_by_role
+from app.graphs import tech_stack_by_role, feedback, mentor_feedback_progression
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 from data_generators.user_generators import generate_uuid
-from graphs import feedback, mentor_feedback_progression
+
 API = FastAPI(
     title='Underdog Devs DS API',
     version="0.46.2",
