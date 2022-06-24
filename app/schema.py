@@ -156,3 +156,7 @@ class Notes(BaseModel):
     mentor_id: constr(max_length=255)
     mentee_id: constr(max_length=255)
 
+
+class MenteeProgression(BaseModel):
+    progress_id: constr(max_length=255)
+    progress: Literal['learning', 'in_program', 'interview_prep', 'applying/interviewing', 'hired']
