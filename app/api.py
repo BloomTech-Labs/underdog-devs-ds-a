@@ -408,7 +408,7 @@ async def mentor_feedback():
     '''create the dataframe for visual function'''
     df = pd.DataFrame(API.db.read('Feedback'))
     df['datetime'] = np.random.choice(
-                        pd.data_range('2020-01-01', '2022-01-01'),
+                        pd.date_range('2020-01-01', '2022-01-01'),
                         len(df))
     df['vader_score'] = df['feedback'].apply(vader_score)
     return json.loads(feedback(df).to_json())
@@ -419,7 +419,7 @@ async def mentor_feedback_progress():
     '''create the dataframe for visual function'''
     df = pd.DataFrame(API.db.read('Feedback'))
     df['datetime'] = np.random.choice(
-                        pd.data_range('2020-01-01', '2022-01-01'),
+                        pd.date_range('2020-01-01', '2022-01-01'),
                         len(df))
     df['vader_score'] = df['feedback'].apply(vader_score)
     return json.loads(mentor_feedback_progression(df).to_json())
