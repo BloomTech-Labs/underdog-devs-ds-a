@@ -133,7 +133,9 @@ class Resource(BaseModel):
     item_id: constr(max_length=255)
 
 
+# --------------------------------------
 # Mirror of PostgresSQL Database begins:
+
 class Profiles(BaseModel):
     profile_id: constr(max_length=255)
     email: EmailStr
@@ -150,6 +152,7 @@ class Profiles(BaseModel):
 
 
 class MentorIntake(BaseModel):
+    '''profile_id references profile_id from Profile schema'''
     mentor_intake_id: constr(max_length=255)
     email: EmailStr
     profile_id: constr(max_length=255)
@@ -171,6 +174,7 @@ class MentorIntake(BaseModel):
 
 
 class MenteeIntake(BaseModel):
+    '''profile_id references profile_id from Profile schema'''
     mentee_intake_id: constr(max_length=255)
     profile_id: constr(max_length=255)
     email: EmailStr
