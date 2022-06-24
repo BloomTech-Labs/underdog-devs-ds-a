@@ -131,3 +131,12 @@ class Feedback(BaseModel):
 class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)
+
+
+class Comments(BaseModel):
+    comment_id: constr(max_length=255)
+    comment_text: Optional[constr(max_length=2000)]
+    created_at: datetime
+    note_id: constr(max_length=255)
+    updated_at: datetime
+
