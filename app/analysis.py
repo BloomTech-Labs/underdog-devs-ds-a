@@ -14,9 +14,10 @@ def nlp_analysis (user_responses):
 
     nlp = spacy.load("en_core_web_sm")
    
-    list_responses=[token.lemma_.lower() for x in user_responses for token in nlp(x) if not token.is_stop
-                                    and not token.is_punct and (token.pos_ == 'ADJ'
-                                                                or token.pos_ == 'VERB'
-                                                                or token.pos_ == 'NOUN')]
+    list_responses = [token.lemma_.lower() for x in user_responses 
+                                           for token in nlp(x) 
+                                           if not token.is_stop
+                                           and not token.is_punct 
+                                           and token.pos_ in('ADJ','VERB','NOUN')]
    
     return dict(Counter(list_responses))
