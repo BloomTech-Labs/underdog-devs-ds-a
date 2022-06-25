@@ -5,7 +5,7 @@ from collections import Counter
 def nlp_analysis (user_responses):
     """Returns the relevant topics for analysis usage
     
-    takes in a list of user responses in string format and performs nlp analysis
+    takes in a list of (str)responses and performs nlp analysis
     
     Returns:
     (dict) unordered dict of topics from mentee responses collection
