@@ -132,7 +132,8 @@ class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)
 
-class Tickets_Table(BaseModel):
+
+class TicketsTable(BaseModel):
     ticket_id: constr(max_length=255)
     ticket_type: Optional[Literal['Action', 'Application', 'Resource', 'Role']]
     ticket_status: Optional[Literal['Pending', 'Approved', 'Rejected']]
@@ -142,6 +143,7 @@ class Tickets_Table(BaseModel):
     requested_for: constr(max_length=255)
     submitted_by: constr(max_length=255)
     approved_by: constr(max_length=255)
+
 
 class Assignment(BaseModel):
     mentor_id: constr(max_length=255)
