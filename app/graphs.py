@@ -14,7 +14,7 @@ def tech_stack_by_role(dataframe: pd.DataFrame):
     )
 
 
-def feedback(dataframe):
+def feedback_window(dataframe):
     """Global average positivity
        feedback of all Mentors by Mentees.
        Sliding window on the bar chart to see
