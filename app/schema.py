@@ -133,7 +133,7 @@ class Resource(BaseModel):
     item_id: constr(max_length=255)
 
 
-class Tickets_Table(BaseModel):
+class TicketsTable(BaseModel):
     ticket_id: constr(max_length=255)
     ticket_type: Optional[Literal['Action', 'Application', 'Resource', 'Role']]
     ticket_status: Optional[Literal['Pending', 'Approved', 'Rejected']]
