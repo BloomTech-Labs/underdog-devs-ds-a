@@ -7,16 +7,17 @@ import pandas as pd
 from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse
+import numpy as np
 
 from app.data import MongoDB
-from app.graphs import tech_stack_by_role
+from app.graphs import tech_stack_by_role, feedback, mentor_feedback_progression
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 from data_generators.user_generators import generate_uuid
-from graphs import feedback, mentor_feedback_progression
+
 API = FastAPI(
     title='Underdog Devs DS API',
     version="0.46.2",
@@ -400,3 +401,25 @@ async def tech_stack_graph():
 
     df = pd.DataFrame(feedback_crud('read'))
     return json.loads(feedback(df).to_json())
+
+
+@API.get("/graphs/feedback")
+async def mentor_feedback():
+    """create the dataframe for visualization"""
+    df = pd.DataFrame(API.db.read('Feedback'))
+    df['datetime'] = np.random.choice(
+                        pd.date_range('2020-01-01', '2022-01-01'),
+                        len(df))
+    df['vader_score'] = df['feedback'].apply(vader_score)
+    return json.loads(feedback(df).to_json())
+
+
+@API.get("/graphs/mentor_feedback_progression")
+async def mentor_feedback_progress():
+    """create the dataframe for visualization"""
+    df = pd.DataFrame(API.db.read('Feedback'))
+    df['datetime'] = np.random.choice(
+                        pd.date_range('2020-01-01', '2022-01-01'),
+                        len(df))
+    df['vader_score'] = df['feedback'].apply(vader_score)
+    return json.loads(mentor_feedback_progression(df).to_json())
