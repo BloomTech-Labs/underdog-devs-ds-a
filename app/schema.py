@@ -1,6 +1,6 @@
 from typing import Literal, Optional, List
 from datetime import datetime
-from pydantic import BaseModel, constr, Extra, EmailStr
+from pydantic import BaseModel, constr, Extra, EmailStr, conint
 
 
 class Mentor(BaseModel):
@@ -162,3 +162,11 @@ class Resources(BaseModel):
     previous_assignee: constr(max_length=255)
     monetary_value: constr(max_length=255)
     deductible_donation: constr(max_length=255)
+
+
+class Reviews(BaseModel):
+    review_id: constr(max_length=255)
+    review: constr(max_length=255)
+    rating: conint(ge=1, le=5)
+    mentee_id: constr(max_length=255)
+    mentor_id: constr(max_length=255)
