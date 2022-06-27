@@ -132,6 +132,7 @@ class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)
 
+
 class Tickets_Table(BaseModel):
     ticket_id: constr(max_length=255)
     ticket_type: Optional[Literal['Action', 'Application', 'Resource', 'Role']]
@@ -143,8 +144,21 @@ class Tickets_Table(BaseModel):
     submitted_by: constr(max_length=255)
     approved_by: constr(max_length=255)
 
+
 class Assignment(BaseModel):
     mentor_id: constr(max_length=255)
     mentee_id: constr(max_length=255)
     assignment_id: constr(max_length=255)
 
+
+class Resources(BaseModel):
+    resource_id: constr(max_length=255)
+    updated_at: constr(max_length=255)
+    resource_name: constr(max_length=255)
+    category: constr(max_length=255)
+    condition: constr(max_length=255)
+    assigned: constr(max_length=255)
+    current_assignee: constr(max_length=255)
+    previous_assignee: constr(max_length=255)
+    monetary_value: constr(max_length=255)
+    deductible_donation: constr(max_length=255)
