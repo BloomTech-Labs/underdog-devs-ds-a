@@ -96,7 +96,8 @@ class MenteeUpdate(BaseModel):
 
 
 class Meeting(BaseModel):
-    """NOTE: 'Meetings' table from postgres nearly identical"""
+    """NOTE: 'Meetings' table from postgres nearly identical.
+    Intentionally duplicated to reflect Postgres in entirety."""
     meeting_id: constr(max_length=255)
     created_at: datetime
     updated_at: datetime
