@@ -130,8 +130,8 @@ class Feedback(BaseModel):
 
 class TicketsTable(BaseModel):
     ticket_id: constr(max_length=255)
-    ticket_type: Optional[Literal['Action', 'Application', 'Resource', 'Role']]
-    ticket_status: Optional[Literal['Pending', 'Approved', 'Rejected']]
+    ticket_type: Literal['Action', 'Application', 'Resource', 'Role']
+    ticket_status: Literal['Pending', 'Approved', 'Rejected']
     ticket_subject: constr(max_length=255)
     urgent: Optional[Literal['Low', 'Normal', 'High']]
     notes: constr(max_length=255)
