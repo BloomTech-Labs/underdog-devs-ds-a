@@ -128,11 +128,6 @@ class Feedback(BaseModel):
     feedback: Optional[constr(max_length=2000)]
 
 
-class Resource(BaseModel):
-    name: constr(max_length=255)
-    item_id: constr(max_length=255)
-
-
 class TicketsTable(BaseModel):
     ticket_id: constr(max_length=255)
     ticket_type: Optional[Literal['Action', 'Application', 'Resource', 'Role']]
