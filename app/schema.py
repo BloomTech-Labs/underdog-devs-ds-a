@@ -155,7 +155,7 @@ class Resources(BaseModel):
     assigned: constr(max_length=255)
     current_assignee: constr(max_length=255)
     previous_assignee: constr(max_length=255)
-    monetary_value: constr(max_length=255)
+    monetary_value: float
     deductible_donation: constr(max_length=255)
 
 
