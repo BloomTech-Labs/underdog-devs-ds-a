@@ -3,12 +3,12 @@ from collections import Counter
 
 
 def nlp_analysis (user_responses):
-    """Returns the relevant topics for analysis usage
+    """Returns relevant topics
     
-    takes list (str)responses and performs nlp analysis
+    takes responses performs nlp analysis
     
     Returns:
-    unordered dict of topics from mentee responses collection
+    unordered (dict)topics from mentee responses collection
   
     """
 
