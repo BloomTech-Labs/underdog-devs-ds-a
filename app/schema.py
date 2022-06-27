@@ -95,21 +95,6 @@ class MenteeUpdate(BaseModel):
         extra = Extra.forbid
 
 
-class Meeting(BaseModel):
-    """NOTE: 'Meetings' table from postgres nearly identical.
-    Intentionally duplicated to reflect Postgres in entirety."""
-    meeting_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
-    meeting_topic: constr(max_length=255)
-    meeting_start_date: datetime
-    meeting_end_date: datetime
-    host_id: constr(max_length=255)
-    attendee_id: constr(max_length=255)
-    meeting_notes: Optional[constr(max_length=2000)]
-    meeting_missed: Optional[Literal['Missed', 'Attended']]
-
-
 class MeetingUpdate(BaseModel):
     meeting_id: Optional[constr(max_length=255)]
     created_at: Optional[datetime]
