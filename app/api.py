@@ -405,7 +405,7 @@ async def tech_stack_graph():
 
 @API.get("/graphs/feedback")
 async def mentor_feedback():
-    '''create the dataframe for visualization'''
+    """create the dataframe for visualization"""
     df = pd.DataFrame(API.db.read('Feedback'))
     df['datetime'] = np.random.choice(
                         pd.date_range('2020-01-01', '2022-01-01'),
@@ -416,7 +416,7 @@ async def mentor_feedback():
 
 @API.get("/graphs/mentor_feedback_progression")
 async def mentor_feedback_progress():
-    '''create the dataframe for visualization'''
+    """create the dataframe for visualization"""
     df = pd.DataFrame(API.db.read('Feedback'))
     df['datetime'] = np.random.choice(
                         pd.date_range('2020-01-01', '2022-01-01'),
