@@ -182,7 +182,7 @@ class MenteeIntake(BaseModel):
     validate_status: constr(max_length=255)
 
 
-class Meetings(BaseModel):
+class Meeting(BaseModel):
     """host_id references profile_id in Profiles collection
     attendee_id references profile_id in Profiles collection"""
     meeting_id: constr(max_length=255)
@@ -199,4 +199,4 @@ class Meetings(BaseModel):
 
 class Role(BaseModel):
     role_id: constr(max_length=255)
-    role_name: constr(max_length=255)
+    role_name: Literal['superAdmin', 'admin', 'mentor', 'mentee', 'pending']
