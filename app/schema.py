@@ -95,19 +95,6 @@ class MenteeUpdate(BaseModel):
         extra = Extra.forbid
 
 
-class Meeting(BaseModel):
-    meeting_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
-    meeting_topic: constr(max_length=255)
-    meeting_start_date: datetime
-    meeting_end_date: datetime
-    host_id: constr(max_length=255)
-    attendee_id: constr(max_length=255)
-    meeting_notes: Optional[constr(max_length=2000)]
-    meeting_missed: Optional[Literal['Missed', 'Attended']]
-
-
 class MeetingUpdate(BaseModel):
     meeting_id: Optional[constr(max_length=255)]
     created_at: Optional[datetime]
@@ -133,6 +120,88 @@ class Resource(BaseModel):
     item_id: constr(max_length=255)
 
 
+
+# ----------------------------------
+# Begin mirroring of Postgres schema
+
+class Profiles(BaseModel):
+    profile_id: constr(max_length=255)
+    email: EmailStr
+    first_name: constr(max_length=255)
+    last_name: constr(max_length=255)
+    location: constr(max_length=255)
+    company: constr(max_length=255)
+    tech_stack: constr(max_length=255)
+    role_id: constr(max_length=255)
+    created_at: datetime
+    is_active: bool
+    progress_status: constr(max_length=255)
+    attendance_rate: constr(max_length=255)
+
+
+class MentorIntake(BaseModel):
+    """profile_id references profile_id in Profiles collection"""
+    mentor_intake_id: constr(max_length=255)
+    email: EmailStr
+    profile_id: constr(max_length=255)
+    first_name: constr(max_length=255)
+    last_name: constr(max_length=255)
+    country: constr(max_length=255)
+    state: constr(max_length=255)
+    city: constr(max_length=255)
+    current_company: constr(max_length=255)
+    current_position: constr(max_length=255)
+    tech_stack: List[constr(max_length=255)]
+    job_help: constr(max_length=255)
+    industry_knowledge: constr(max_length=255)
+    pair_programming: constr(max_length=255)
+    commitment: constr(max_length=255)
+    referred_by: Optional[constr(max_length=255)]
+    other_info: Optional[constr(max_length=2500)]
+    validate_status: constr(max_length=255)
+
+
+class MenteeIntake(BaseModel):
+    """profile_id references profile_id in Profiles collection"""
+    mentee_intake_id: constr(max_length=255)
+    profile_id: constr(max_length=255)
+    email: EmailStr
+    country: constr(max_length=255)
+    city: constr(max_length=255)
+    state: constr(max_length=255)
+    first_name: constr(max_length=255)
+    last_name: constr(max_length=255)
+    tech_stack: constr(max_length=255)
+    formerly_incarcerated: bool
+    underrepresented_group: bool
+    low_income: bool
+    list_convictions: List[constr(max_length=255)]
+    job_help: bool
+    pair_programming: bool
+    heard_about: Optional[constr(max_length=255)]
+    other_info: Optional[constr(max_length=2500)]
+    validate_status: constr(max_length=255)
+
+
+class Meeting(BaseModel):
+    """host_id references profile_id in Profiles collection
+    attendee_id references profile_id in Profiles collection"""
+    meeting_id: constr(max_length=255)
+    created_at: datetime
+    updated_at: datetime
+    meeting_topic: constr(max_length=255)
+    meeting_start_date: datetime
+    meeting_end_date: datetime
+    host_id: constr(max_length=255)
+    attendee_id: constr(max_length=255)
+    meeting_notes: Optional[constr(max_length=2000)]
+    meeting_missed: Optional[Literal['Missed', 'Attended']]
+
+
+class Role(BaseModel):
+    role_id: constr(max_length=255)
+    role_name: Literal['superAdmin', 'admin', 'mentor', 'mentee', 'pending']
+=======
 class Comments(BaseModel):
     comment_id: constr(max_length=255)
     comment_text: Optional[constr(max_length=2000)]
@@ -198,4 +267,3 @@ class Reviews(BaseModel):
     rating: conint(ge=1, le=5)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
-
