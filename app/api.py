@@ -10,7 +10,7 @@ from fastapi.responses import JSONResponse, HTMLResponse
 import numpy as np
 
 from app.data import MongoDB
-from app.graphs import tech_stack_by_role, feedback, mentor_feedback_progression
+from app.graphs import tech_stack_by_role, feedback_window, mentor_feedback_individual
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
@@ -403,7 +403,7 @@ async def tech_stack_graph():
     return json.loads(feedback(df).to_json())
 
 
-@API.get("/graphs/feedback")
+@API.get("/graphs/feedback_window")
 async def mentor_feedback():
     """create the dataframe for visualization"""
     df = pd.DataFrame(API.db.read('Feedback'))
@@ -411,10 +411,10 @@ async def mentor_feedback():
                         pd.date_range('2020-01-01', '2022-01-01'),
                         len(df))
     df['vader_score'] = df['feedback'].apply(vader_score)
-    return json.loads(feedback(df).to_json())
+    return json.loads(feedback_window(df).to_json())
 
 
-@API.get("/graphs/mentor_feedback_progression")
+@API.get("/graphs/mentor_feedback_individual")
 async def mentor_feedback_progress():
     """create the dataframe for visualization"""
     df = pd.DataFrame(API.db.read('Feedback'))
@@ -422,4 +422,4 @@ async def mentor_feedback_progress():
                         pd.date_range('2020-01-01', '2022-01-01'),
                         len(df))
     df['vader_score'] = df['feedback'].apply(vader_score)
-    return json.loads(mentor_feedback_progression(df).to_json())
+    return json.loads(mentor_feedback_individual(df).to_json())
