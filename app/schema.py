@@ -1,6 +1,6 @@
 from typing import Literal, Optional, List
 from datetime import datetime
-from pydantic import BaseModel, constr, Extra, EmailStr
+from pydantic import BaseModel, constr, Extra, EmailStr, conint
 
 
 class Mentor(BaseModel):
@@ -160,3 +160,42 @@ class Notes(BaseModel):
 class MenteeProgression(BaseModel):
     progress_id: constr(max_length=255)
     progress: Literal['learning', 'in_program', 'interview_prep', 'applying/interviewing', 'hired']
+=======
+class TicketsTable(BaseModel):
+    ticket_id: constr(max_length=255)
+    ticket_type: Literal['Action', 'Application', 'Resource', 'Role']
+    ticket_status: Literal['Pending', 'Approved', 'Rejected']
+    ticket_subject: constr(max_length=255)
+    urgent: Optional[Literal['Low', 'Normal', 'High']]
+    notes: constr(max_length=255)
+    requested_for: constr(max_length=255)
+    submitted_by: constr(max_length=255)
+    approved_by: constr(max_length=255)
+
+
+class Assignment(BaseModel):
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+    assignment_id: constr(max_length=255)
+
+
+class Resources(BaseModel):
+    resource_id: constr(max_length=255)
+    updated_at: constr(max_length=255)
+    resource_name: constr(max_length=255)
+    category: constr(max_length=255)
+    condition: constr(max_length=255)
+    assigned: constr(max_length=255)
+    current_assignee: constr(max_length=255)
+    previous_assignee: constr(max_length=255)
+    monetary_value: float
+    deductible_donation: bool
+
+
+class Reviews(BaseModel):
+    review_id: constr(max_length=255)
+    review: constr(max_length=255)
+    rating: conint(ge=1, le=5)
+    mentee_id: constr(max_length=255)
+    mentor_id: constr(max_length=255)
+
