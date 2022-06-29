@@ -5,6 +5,8 @@ from pydantic import BaseModel, constr, Extra, EmailStr, conint
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
+    created_at: datetime
+    updated_ar: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -18,9 +20,12 @@ class Mentor(BaseModel):
     industry_knowledge: bool
     pair_programming: bool
     commitment: bool
-    referred_by: constr(max_length=255)
+    referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
-    validate_status: constr(max_length=255)
+    validate_status: Literal['approved', 'rejected', 'pending']
+    is_active: bool
+    attendance_rate: float
+    accepting_new_mentees: bool
 
     class Config:
         extra = Extra.forbid
