@@ -201,7 +201,8 @@ class Meeting(BaseModel):
 class Role(BaseModel):
     role_id: constr(max_length=255)
     role_name: Literal['superAdmin', 'admin', 'mentor', 'mentee', 'pending']
-=======
+
+
 class Comments(BaseModel):
     comment_id: constr(max_length=255)
     comment_text: Optional[constr(max_length=2000)]
@@ -229,7 +230,8 @@ class Notes(BaseModel):
 class MenteeProgression(BaseModel):
     progress_id: constr(max_length=255)
     progress: Literal['learning', 'in_program', 'interview_prep', 'applying/interviewing', 'hired']
-=======
+
+
 class TicketsTable(BaseModel):
     ticket_id: constr(max_length=255)
     ticket_type: Literal['Action', 'Application', 'Resource', 'Role']
