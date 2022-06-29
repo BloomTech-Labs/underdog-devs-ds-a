@@ -1,6 +1,6 @@
 from typing import Literal, Optional, List
 from datetime import datetime
-from pydantic import BaseModel, constr, Extra, EmailStr
+from pydantic import BaseModel, constr, Extra, EmailStr, conint
 
 
 class Mentor(BaseModel):
@@ -120,6 +120,7 @@ class Resource(BaseModel):
     item_id: constr(max_length=255)
 
 
+
 # ----------------------------------
 # Begin mirroring of Postgres schema
 
@@ -200,3 +201,69 @@ class Meeting(BaseModel):
 class Role(BaseModel):
     role_id: constr(max_length=255)
     role_name: Literal['superAdmin', 'admin', 'mentor', 'mentee', 'pending']
+=======
+class Comments(BaseModel):
+    comment_id: constr(max_length=255)
+    comment_text: Optional[constr(max_length=2000)]
+    created_at: datetime
+    note_id: constr(max_length=255)
+    updated_at: datetime
+
+
+class Notes(BaseModel):
+    note_id: constr(max_length=255)
+    created_by: constr(max_length=255)
+    status: Literal['in progress', 'resolved', 'no action needed', 'escalated']
+    content_type: constr(max_length=255)
+    content: constr(max_length=255)
+    level: constr(max_length=255)
+    visible_to_admin: Optional[bool]
+    visible_to_mentor: Optional[bool]
+    visible_to_mentee: Optional[bool]
+    created_at: datetime
+    updated_at: datetime
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+
+
+class MenteeProgression(BaseModel):
+    progress_id: constr(max_length=255)
+    progress: Literal['learning', 'in_program', 'interview_prep', 'applying/interviewing', 'hired']
+=======
+class TicketsTable(BaseModel):
+    ticket_id: constr(max_length=255)
+    ticket_type: Literal['Action', 'Application', 'Resource', 'Role']
+    ticket_status: Literal['Pending', 'Approved', 'Rejected']
+    ticket_subject: constr(max_length=255)
+    urgent: Optional[Literal['Low', 'Normal', 'High']]
+    notes: constr(max_length=255)
+    requested_for: constr(max_length=255)
+    submitted_by: constr(max_length=255)
+    approved_by: constr(max_length=255)
+
+
+class Assignment(BaseModel):
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+    assignment_id: constr(max_length=255)
+
+
+class Resources(BaseModel):
+    resource_id: constr(max_length=255)
+    updated_at: constr(max_length=255)
+    resource_name: constr(max_length=255)
+    category: constr(max_length=255)
+    condition: constr(max_length=255)
+    assigned: constr(max_length=255)
+    current_assignee: constr(max_length=255)
+    previous_assignee: constr(max_length=255)
+    monetary_value: float
+    deductible_donation: bool
+
+
+class Reviews(BaseModel):
+    review_id: constr(max_length=255)
+    review: constr(max_length=255)
+    rating: conint(ge=1, le=5)
+    mentee_id: constr(max_length=255)
+    mentor_id: constr(max_length=255)
