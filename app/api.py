@@ -14,6 +14,7 @@ from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
+from app.analysis import nlp_analysis
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -345,3 +346,15 @@ async def tech_stack_graph():
     mentees_df["user_role"] = "Mentee"
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
     return json.loads(tech_stack_by_role(df).to_json())
+
+
+@API.get("/responses_analysis")
+async def responses_analysis():
+    """Returns relevant topics for analysis usage
+
+   calls the nlp_analysis function from the analysis.py file.
+
+    Returns:
+        (dict)relevant topics from the responses collection
+    """
+    return nlp_analysis([obj["text"] for obj in API.db.read("Responses")])
