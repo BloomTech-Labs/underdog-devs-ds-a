@@ -68,7 +68,7 @@ class Mentee(BaseModel):
     pair_programming: bool
     heard_about: constr(max_length=255)
     other_info: Optional[constr(max_length=2500)]
-    validate_status: constr(max_length=255)
+    validate_status: Literal['approved', 'rejected', 'pending']
     is_active: bool
     attendance_rate: float
 
@@ -94,7 +94,7 @@ class MenteeUpdate(BaseModel):
     pair_programming: Optional[bool]
     heard_about: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
-    validate_status: Optional[constr(max_length=255)]
+    validate_status: Optional[Literal['approved', 'rejected', 'pending']]
     is_active: Optional[bool]
     attendance_rate: Optional[float]
 
