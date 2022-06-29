@@ -78,6 +78,7 @@ class Mentee(BaseModel):
 
 class MenteeUpdate(BaseModel):
     profile_id: Optional[constr(max_length=255)]
+    updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -94,6 +95,8 @@ class MenteeUpdate(BaseModel):
     heard_about: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
     validate_status: Optional[constr(max_length=255)]
+    is_active: Optional[bool]
+    attendance_rate: Optional[float]
 
     class Config:
         extra = Extra.forbid
