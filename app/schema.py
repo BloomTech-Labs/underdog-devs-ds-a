@@ -24,7 +24,6 @@ class Mentor(BaseModel):
     other_info: Optional[constr(max_length=2500)]
     validate_status: Literal['approved', 'rejected', 'pending']
     is_active: bool
-    attendance_rate: float
     accepting_new_mentees: bool
 
     class Config:
