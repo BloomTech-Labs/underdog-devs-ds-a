@@ -31,7 +31,9 @@ class Mentor(BaseModel):
 
 
 class MentorUpdate(BaseModel):
-    profile_id: Optional[constr(max_length=255)]
+    profile_id: constr(max_length=255)
+    created_at: Optional[datetime]
+    updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -48,6 +50,8 @@ class MentorUpdate(BaseModel):
     referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
     validate_status: Optional[constr(max_length=255)]
+    is_active: Optional[bool]
+    accepting_new_mentees: Optional[bool]
 
     class Config:
         extra = Extra.forbid
