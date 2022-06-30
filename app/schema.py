@@ -127,7 +127,6 @@ class Resource(BaseModel):
     item_id: constr(max_length=255)
 
 
-
 class MentorIntake(BaseModel):
     """profile_id references profile_id in Profiles collection"""
     mentor_intake_id: constr(max_length=255)
