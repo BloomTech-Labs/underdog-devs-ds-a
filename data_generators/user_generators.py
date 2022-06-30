@@ -40,8 +40,6 @@ class RandomMentor(Printable):
         self.accepting_new_mentees = percent_true(33)
 
 
-
-
 class RandomMentee(Printable):
     """Generates Mentee record"""
 
