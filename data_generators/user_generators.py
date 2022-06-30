@@ -39,7 +39,7 @@ class RandomMentor(Printable):
 
 
 class RandomMentee(Printable):
-    """Generates Mentee record"""
+    """Generates a mock Mentee record"""
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
