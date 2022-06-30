@@ -269,3 +269,7 @@ class Reviews(BaseModel):
     rating: conint(ge=1, le=5)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
+
+
+class Responses(BaseModel):
+    text: Optional[constr(max_length=2000)]
