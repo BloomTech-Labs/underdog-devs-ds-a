@@ -6,7 +6,7 @@ from pydantic import BaseModel, constr, Extra, EmailStr, conint
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
     created_at: datetime
-    updated_ar: datetime
+    updated_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
