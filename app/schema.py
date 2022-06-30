@@ -62,7 +62,7 @@ class Mentee(BaseModel):
     formerly_incarcerated: bool
     underrepresented_group: bool
     low_income: bool
-    list_convictions: Optional[constr(max_length=2500)]
+    convictions: Optional[constr(max_length=2500)]
     tech_stack: constr(max_length=255)
     job_help: bool
     pair_programming: bool
