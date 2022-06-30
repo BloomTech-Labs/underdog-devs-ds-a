@@ -127,20 +127,6 @@ class Resource(BaseModel):
     item_id: constr(max_length=255)
 
 
-class Profiles(BaseModel):
-    profile_id: constr(max_length=255)
-    email: EmailStr
-    first_name: constr(max_length=255)
-    last_name: constr(max_length=255)
-    location: constr(max_length=255)
-    company: constr(max_length=255)
-    tech_stack: constr(max_length=255)
-    role_id: constr(max_length=255)
-    created_at: datetime
-    is_active: bool
-    progress_status: constr(max_length=255)
-    attendance_rate: constr(max_length=255)
-
 
 class MentorIntake(BaseModel):
     """profile_id references profile_id in Profiles collection"""
@@ -160,28 +146,6 @@ class MentorIntake(BaseModel):
     pair_programming: constr(max_length=255)
     commitment: constr(max_length=255)
     referred_by: Optional[constr(max_length=255)]
-    other_info: Optional[constr(max_length=2500)]
-    validate_status: constr(max_length=255)
-
-
-class MenteeIntake(BaseModel):
-    """profile_id references profile_id in Profiles collection"""
-    mentee_intake_id: constr(max_length=255)
-    profile_id: constr(max_length=255)
-    email: EmailStr
-    country: constr(max_length=255)
-    city: constr(max_length=255)
-    state: constr(max_length=255)
-    first_name: constr(max_length=255)
-    last_name: constr(max_length=255)
-    tech_stack: constr(max_length=255)
-    formerly_incarcerated: bool
-    underrepresented_group: bool
-    low_income: bool
-    list_convictions: List[constr(max_length=255)]
-    job_help: bool
-    pair_programming: bool
-    heard_about: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
     validate_status: constr(max_length=255)
 
