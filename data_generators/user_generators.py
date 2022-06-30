@@ -54,7 +54,7 @@ class RandomMentee(Printable):
         self.formerly_incarcerated = percent_true(80)
         self.underrepresented_group = percent_true(70)
         self.low_income = percent_true(70)
-        self.list_convictions = ", ".join(sample(convictions, k=randint(1, 3)))
+        self.convictions = ", ".join(sample(convictions, k=randint(1, 3)))
         self.tech_stack = choice(tech_stack)
         self.job_help = percent_true(33)
         self.pair_programming = percent_true(33)
