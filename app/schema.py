@@ -127,10 +127,6 @@ class Resource(BaseModel):
     item_id: constr(max_length=255)
 
 
-
-# ----------------------------------
-# Begin mirroring of Postgres schema
-
 class Profiles(BaseModel):
     profile_id: constr(max_length=255)
     email: EmailStr
