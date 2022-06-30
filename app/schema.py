@@ -71,6 +71,7 @@ class Mentee(BaseModel):
     validate_status: Literal['approved', 'rejected', 'pending']
     is_active: bool
     attendance_rate: float
+    in_project_underdog: bool
 
     class Config:
         extra = Extra.forbid
@@ -97,6 +98,7 @@ class MenteeUpdate(BaseModel):
     validate_status: Optional[Literal['approved', 'rejected', 'pending']]
     is_active: Optional[bool]
     attendance_rate: Optional[float]
+    in_project_underdog: Optional[bool]
 
     class Config:
         extra = Extra.forbid
