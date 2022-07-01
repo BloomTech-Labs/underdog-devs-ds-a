@@ -37,7 +37,7 @@ class RandomMentor(Printable):
         self.referred_by = choice(heard_about_us)
         self.other_info = "anything else may be written here"
         self.validate_status = choice(["approved", "pending"])
-        self.is_active = percent_true(33)
+        self.is_active = percent_true(80)
         self.accepting_new_mentees = percent_true(33)
 
 
