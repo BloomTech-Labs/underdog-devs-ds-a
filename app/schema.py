@@ -32,7 +32,6 @@ class Mentor(BaseModel):
 
 class MentorUpdate(BaseModel):
     profile_id: constr(max_length=255)
-    created_at: Optional[datetime]
     updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
