@@ -31,15 +31,6 @@ API.add_middleware(
 )
 
 
-async def is_collection(collection: str):
-    known_collections = (await collections()).get("result").keys()
-    if collection not in known_collections:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Collection: '{collection}', not found",
-        )
-
-
 @API.get("/version")
 async def version():
     """Return the current version of the API."""
@@ -86,7 +77,6 @@ async def read_mentee(data: Optional[Dict] = None):
 @API.post("/{collection}/read")
 async def read(collection: str, data: Optional[Dict] = None):
     """Deprecated"""
-    await is_collection(collection)
     return {"result": API.db.read(collection, data)}
 
 
@@ -170,7 +160,6 @@ async def collection_search(collection: str, search: str):
     Returns:
         List of queried documents
     """
-    await is_collection(collection)
     return {"result": API.db.search(collection, search)}
 
 
@@ -223,6 +212,7 @@ async def sentiment(text: str):
 
 @API.get("/graphs/tech-stack-by-role")
 async def tech_stack_graph():
+    """ PLACEHOLDER - NOT WORKING """
     mentors_df = pd.DataFrame(API.db.read("Mentors"))[["tech_stack", "name"]]
     mentees_df = pd.DataFrame(API.db.read("Mentees"))[["tech_stack", "name"]]
     mentors_df["user_role"] = "Mentor"
