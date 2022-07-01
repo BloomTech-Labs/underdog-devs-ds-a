@@ -48,7 +48,7 @@ class MentorUpdate(BaseModel):
     commitment: Optional[bool]
     referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
-    validate_status: Optional[constr(max_length=255)]
+    validate_status: Optional[Literal['approved', 'rejected', 'pending']]
     is_active: Optional[bool]
     accepting_new_mentees: Optional[bool]
 
