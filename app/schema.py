@@ -88,7 +88,7 @@ class MenteeUpdate(BaseModel):
     formerly_incarcerated: Optional[bool]
     underrepresented_group: Optional[bool]
     low_income: Optional[bool]
-    list_convictions: Optional[constr(max_length=2500)]
+    convictions: Optional[constr(max_length=2500)]
     tech_stack: Optional[constr(max_length=255)]
     job_help: Optional[bool]
     pair_programming: Optional[bool]
