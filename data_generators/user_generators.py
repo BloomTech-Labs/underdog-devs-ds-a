@@ -36,7 +36,6 @@ class RandomMentor(Printable):
         self.validate_status = choice(["approved", "pending"])
 
 
-
 class RandomMentee(Printable):
     """Generates Mentee record"""
 

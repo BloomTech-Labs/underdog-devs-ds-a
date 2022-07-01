@@ -77,7 +77,7 @@ class Mentee(BaseModel):
 
 
 class MenteeUpdate(BaseModel):
-    profile_id: Optional[constr(max_length=255)]
+    profile_id: constr(max_length=255)
     updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
