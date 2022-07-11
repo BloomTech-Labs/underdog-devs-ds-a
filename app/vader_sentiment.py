@@ -16,6 +16,14 @@ def vader_score(text: str):
         return "Neutral"
 
 
+def vader_compound_score(text: str):
+    """
+    Gets the compound vader score.
+    For use with feedback graphs.
+    """
+    return vader.polarity_scores(text)['compound']
+
+
 if __name__ == '__main__':
     """
     This is to test the expected result requested in api.py
