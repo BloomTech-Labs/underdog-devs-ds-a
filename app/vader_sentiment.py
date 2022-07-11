@@ -21,7 +21,7 @@ def vader_compound_score(text: str):
     Gets the compound vader score.
     For use with feedback graphs.
     """
-    return vader.polarity_scores(text)['compound']
+    return vader.polarity_scores(text)["compound"]
 
 
 if __name__ == '__main__':
