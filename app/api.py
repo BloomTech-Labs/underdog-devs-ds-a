@@ -13,7 +13,7 @@ from app.data import MongoDB
 from app.graphs import tech_stack_by_role, feedback_window, mentor_feedback_individual
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
-from app.vader_sentiment import vader_score
+from app.vader_sentiment import vader_score, vader_compound_score
 from app.computer_assignment import computer_assignment_visualizer
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 from data_generators.user_generators import generate_uuid
@@ -412,12 +412,24 @@ async def tech_stack_graph():
 @API.get("/graphs/feedback_window")
 async def mentor_feedback():
     """create the dataframe for visualization"""
-    df = pd.DataFrame(API.db.read('Feedback'))
-    df['datetime'] = np.random.choice(
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.read('Mentees'))
+    mentor_df = pd.DataFrame(API.db.read('Mentors'))
+    mentee_df.rename(
+        columns={'profile_id': 'mentee_id', 'first_name': 'mentee_first_name', 'last_name': 'mentee_last_name'},
+        inplace=True)
+    mentor_df.rename(
+        columns={'profile_id': 'mentor_id', 'first_name': 'mentor_first_name', 'last_name': 'mentor_last_name'},
+        inplace=True)
+    mentor_df['mentor_full_name'] = mentor_df.mentor_first_name + " " + mentor_df.mentor_last_name
+    mentee_df['mentee_full_name'] = mentee_df.mentee_first_name + " " + mentee_df.mentee_last_name
+    df_1 = pd.merge(feedback_df, mentee_df, on='mentee_id', how='left')
+    mentor_feedback_df = pd.merge(df_1, mentor_df, on='mentor_id', how='left')
+    mentor_feedback_df['datetime'] = np.random.choice(
                         pd.date_range('2020-01-01', '2022-01-01'),
-                        len(df))
-    df['vader_score'] = df['feedback'].apply(vader_score)
-    return json.loads(feedback_window(df).to_json())
+                        len(mentor_feedback_df))
+    mentor_feedback_df['vader_score'] = mentor_feedback_df['feedback'].apply(lambda x: vader_compound_score(x))
+    return json.loads(feedback_window(mentor_feedback_df).to_json())
 
 
 @API.get("/graphs/mentor_feedback_individual")
