@@ -402,13 +402,6 @@ async def feedback_delete(ticket_id: str):
     return {"result": {"deleted": ticket_id}}
 
 
-@API.get("/graphs/tech-stack-by-role")
-async def tech_stack_graph():
-
-    df = pd.DataFrame(feedback_crud('read'))
-    return json.loads(feedback(df).to_json())
-
-
 @API.get("/graphs/feedback_window")
 async def mentor_feedback():
     """create the dataframe for visualization"""
