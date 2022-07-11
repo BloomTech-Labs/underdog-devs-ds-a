@@ -22,31 +22,32 @@ def feedback_window(dataframe):
 
     interval = alt.selection_interval(encodings=['x'])
 
-    source = dataframe
-
-    bar = alt.Chart(source).mark_bar().encode(
-        x='datetime:T',
-        y='vader_score:Q',
-        color=alt.condition(interval, 'mentor_id:N',
+    bar = alt.Chart(dataframe, title="Global Feedback & Average of Feedback Positivity"
+                    ).mark_bar().encode(
+        alt.X('datetime', title='Time'),
+        alt.Y('vader_score', title='Positivity of Feedback by Mentees'),
+        color=alt.condition(interval, 'mentor_full_name:N',
                             alt.value('lightgray'))
     ).properties(
         width=900,
         selection=interval
     )
-    mean_line = alt.Chart(source).mark_line(color='red').transform_window(
+    mean_line = alt.Chart(dataframe).mark_line(color='red').transform_window(
         # The field to average
-        rolling_mean='mean(vader_score)',
+        mentor_progress='mean(vader_score)',
         # The number of values before and after the current value to include.
-        # frame default is [null, 0]
-        # frame=[-9, 0]
+        frame=[-9, 0]
     ).encode(
-        x='datetime',
-        y='rolling_mean:Q'
-    ).properties(width=900
-                 ).transform_filter(
-        interval)
+        alt.X('datetime', title='Time'),
+        y='mentor_progress:Q'
+    ).properties(
+        width=900
+    ).transform_filter(
+        interval
+    )
+
     return (bar & mean_line).configure_title(fontSize=20
-                                             ).configure(background='#D9E9F0')
+                                      ).configure(background='#D9E9F0')
 
 
 def mentor_feedback_individual(dataframe):
@@ -56,21 +57,17 @@ def mentor_feedback_individual(dataframe):
        by which Mentee, and the actual feedback
        given."""
 
-    source = dataframe
-    selection = alt.selection_multi(fields=['mentor_id'], on='mouseover', bind='legend')
+    selection = alt.selection_multi(fields=['mentor_full_name'], on='mouseover', bind='legend')
 
-    mentor_bar = alt.Chart(source,
-                           title="Individual Feedback Positivity Scores About a Mentor"
-                           ).mark_bar(
-        ).encode(
+    mentor_bar = alt.Chart(dataframe, title="Individual Feedback Positivity Scores About a Mentor").mark_bar().encode(
         alt.X('datetime', title='Time'),
         alt.Y('vader_score', title='Positivity of Feedback by Mentees'),
-        color=alt.condition(selection, 'mentor_id:N',
+        color=alt.condition(selection, 'mentor_full_name:N',
                             alt.value('lightgray')),
         opacity=alt.condition(selection, alt.value(1), alt.value(0.2)),
-        tooltip=[alt.Tooltip('mentor_id'),
+        tooltip=[alt.Tooltip('mentor_full_name'),
                  alt.Tooltip('feedback_outcome'),
-                 alt.Tooltip('mentee_id'),
+                 alt.Tooltip('mentee_full_name'),
                  alt.Tooltip('feedback')]
     ).configure_range(
         category={'scheme': 'dark2'}
@@ -80,6 +77,5 @@ def mentor_feedback_individual(dataframe):
     ).add_selection(
         selection
     )
-    return mentor_bar.configure_title(fontSize=20
-                                      ).configure(background='#D9E9F0'
-                                                  ).interactive()
+
+    return mentor_bar.configure_title(fontSize=26).configure(background='#D9E9F0').interactive()
