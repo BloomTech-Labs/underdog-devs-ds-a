@@ -1,5 +1,17 @@
 import altair as alt
 import pandas as pd
+import numpy as np
+from app.vader_sentiment import vader_score, vader_compound_score
+from fastapi import FastAPI
+from app.data import MongoDB
+
+API = FastAPI(
+    title='Underdog Devs DS API',
+    version="0.46.2",
+    docs_url='/',
+)
+
+API.db = MongoDB("UnderdogDevs")
 
 
 def tech_stack_by_role(dataframe: pd.DataFrame):
@@ -12,6 +24,44 @@ def tech_stack_by_role(dataframe: pd.DataFrame):
         color=alt.Color('user_role', title="User Role"),
         tooltip=alt.Tooltip(list(dataframe.columns)),
     )
+
+
+def mentor_feedback_dataframe():
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentee_df.rename(
+        columns={
+            'profile_id': 'mentee_id',
+            'first_name': 'mentee_first_name',
+            'last_name': 'mentee_last_name',
+        },
+        inplace=True)
+    mentor_df.rename(
+        columns={
+            'profile_id': 'mentor_id',
+            'first_name': 'mentor_first_name',
+            'last_name': 'mentor_last_name',
+        },
+        inplace=True)
+    mentor_df['mentor_full_name'] = mentor_df.mentor_first_name.str.cat(mentor_df.mentor_last_name, sep=" ")
+    mentee_df['mentee_full_name'] = mentee_df.mentee_first_name.str.cat(mentee_df.mentee_last_name, sep=" ")
+    df_1 = pd.merge(feedback_df, mentee_df, on='mentee_id', how='left')
+    mentor_feedback_df = pd.merge(df_1, mentor_df, on='mentor_id', how='left')
+    mentor_feedback_df['datetime'] = np.random.choice(
+        pd.date_range('2020-01-01', '2022-01-01'),
+        len(mentor_feedback_df))
+    mentor_feedback_df['feedback_outcome'] = mentor_feedback_df['feedback'].apply(lambda x: vader_score(x))
+    mentor_feedback_df['vader_score'] = mentor_feedback_df['feedback'].apply(lambda x: vader_compound_score(x))
+    return mentor_feedback_df
 
 
 def feedback_window(dataframe):
@@ -47,7 +97,7 @@ def feedback_window(dataframe):
     )
 
     return (bar & mean_line).configure_title(fontSize=20
-                                      ).configure(background='#D9E9F0')
+                                             ).configure(background='#D9E9F0')
 
 
 def mentor_feedback_individual(dataframe):

@@ -3,6 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel, constr, Extra, EmailStr
 from data_generators.data_options import generate_uuid
 
+
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
