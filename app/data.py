@@ -130,7 +130,7 @@ class MongoDB:
 
     def projection(self, collection: str, query: Dict, projection: Dict) -> List[Dict]:
         projection["_id"] = False
-        return list(self.get_collection(collection).find(query, {"_id": False}))
+        return list(self.get_collection(collection).find(query, projection))
 
     def update(self, collection: str, query: Dict, update_data: Dict) -> Tuple:
         """Update existing documents in collection matching given data.
@@ -265,6 +265,6 @@ class MongoDB:
 if __name__ == '__main__':
     db = MongoDB("UnderdogDevs")
     test = db.projection("Mentors", {}, {
-        "first_name": False
+        "first_name": True
     })
     print(test)
