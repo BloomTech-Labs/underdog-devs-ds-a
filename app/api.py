@@ -421,6 +421,7 @@ async def mentor_feedback():
     mentor_feedback_df['datetime'] = np.random.choice(
                         pd.date_range('2020-01-01', '2022-01-01'),
                         len(mentor_feedback_df))
+    mentor_feedback_df['feedback_outcome'] = mentor_feedback_df['feedback'].apply(lambda x: vader_score(x))
     mentor_feedback_df['vader_score'] = mentor_feedback_df['feedback'].apply(lambda x: vader_compound_score(x))
     return json.loads(feedback_window(mentor_feedback_df).to_json())
 
@@ -444,5 +445,6 @@ async def mentor_feedback_progress():
     mentor_feedback_df['datetime'] = np.random.choice(
         pd.date_range('2020-01-01', '2022-01-01'),
         len(mentor_feedback_df))
+    mentor_feedback_df['feedback_outcome'] = mentor_feedback_df['feedback'].apply(lambda x: vader_score(x))
     mentor_feedback_df['vader_score'] = mentor_feedback_df['feedback'].apply(lambda x: vader_compound_score(x))
     return json.loads(mentor_feedback_individual(mentor_feedback_df).to_json())
