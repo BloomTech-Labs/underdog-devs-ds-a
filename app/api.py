@@ -406,40 +406,7 @@ async def feedback_delete(ticket_id: str):
 @API.get("/graphs/feedback_window")
 async def mentor_feedback():
     """create the dataframe for visualization"""
-    feedback_df = pd.DataFrame(API.db.read('Feedback'))
-    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
-        "first_name": True,
-        "last_name": True,
-        "profile_id": True,
-    }))
-    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
-        "first_name": True,
-        "last_name": True,
-        "profile_id": True,
-    }))
-    mentee_df.rename(
-        columns={
-            'profile_id': 'mentee_id',
-            'first_name': 'mentee_first_name',
-            'last_name': 'mentee_last_name',
-        },
-        inplace=True)
-    mentor_df.rename(
-        columns={
-            'profile_id': 'mentor_id',
-            'first_name': 'mentor_first_name',
-            'last_name': 'mentor_last_name',
-        },
-        inplace=True)
-    mentor_df['mentor_full_name'] = mentor_df.mentor_first_name.str.cat(mentor_df.mentor_last_name, sep=" ")
-    mentee_df['mentee_full_name'] = mentee_df.mentee_first_name.str.cat(mentee_df.mentee_last_name, sep=" ")
-    df_1 = pd.merge(feedback_df, mentee_df, on='mentee_id', how='left')
-    mentor_feedback_df = pd.merge(df_1, mentor_df, on='mentor_id', how='left')
-    mentor_feedback_df['datetime'] = np.random.choice(
-        pd.date_range('2020-01-01', '2022-01-01'),
-        len(mentor_feedback_df))
-    mentor_feedback_df['feedback_outcome'] = mentor_feedback_df['feedback'].apply(lambda x: vader_score(x))
-    mentor_feedback_df['vader_score'] = mentor_feedback_df['feedback'].apply(lambda x: vader_compound_score(x))
+    mentor_feedback_df = mentor_feedback_dataframe()
     return json.loads(feedback_window(mentor_feedback_df).to_json())
 
 
