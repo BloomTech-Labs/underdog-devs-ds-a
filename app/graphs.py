@@ -76,7 +76,9 @@ def feedback_window(dataframe):
                     ).mark_bar().encode(
         alt.X('datetime', title='Time'),
         alt.Y('vader_score', title='Positivity of Feedback by Mentees'),
-        color=alt.condition(interval, 'mentor_full_name:N',
+        color=alt.condition(interval, alt.Color('mentor_full_name:N',
+                                                title="Mentor",
+                                                legend=alt.Legend(orient="left")),
                             alt.value('lightgray'))
     ).properties(
         width=900,
@@ -89,7 +91,7 @@ def feedback_window(dataframe):
         frame=[-9, 0]
     ).encode(
         alt.X('datetime', title='Time'),
-        y='mentor_progress:Q'
+        alt.Y("mean(vader_score)", title="Progress of Mentors")
     ).properties(
         width=900
     ).transform_filter(
@@ -112,13 +114,15 @@ def mentor_feedback_individual(dataframe):
     mentor_bar = alt.Chart(dataframe, title="Individual Feedback Positivity Scores About a Mentor").mark_bar().encode(
         alt.X('datetime', title='Time'),
         alt.Y('vader_score', title='Positivity of Feedback by Mentees'),
-        color=alt.condition(selection, 'mentor_full_name:N',
+        color=alt.condition(selection, alt.Color('mentor_full_name:N',
+                                                 title="Mentor",
+                                                 legend=alt.Legend(orient="left")),
                             alt.value('lightgray')),
         opacity=alt.condition(selection, alt.value(1), alt.value(0.2)),
-        tooltip=[alt.Tooltip('mentor_full_name'),
-                 alt.Tooltip('feedback_outcome'),
-                 alt.Tooltip('mentee_full_name'),
-                 alt.Tooltip('feedback')]
+        tooltip=[alt.Tooltip('mentor_full_name', title='Mentor'),
+                 alt.Tooltip('feedback_outcome', title='Feedback Outcome'),
+                 alt.Tooltip('mentee_full_name', title='Mentee'),
+                 alt.Tooltip('feedback', title='Feedback Given')]
     ).configure_range(
         category={'scheme': 'dark2'}
     ).properties(
