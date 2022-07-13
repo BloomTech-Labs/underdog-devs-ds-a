@@ -5,6 +5,8 @@ from pydantic import BaseModel, constr, Extra, EmailStr, conint
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
+    created_at: datetime
+    updated_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -18,16 +20,19 @@ class Mentor(BaseModel):
     industry_knowledge: bool
     pair_programming: bool
     commitment: bool
-    referred_by: constr(max_length=255)
+    referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
-    validate_status: constr(max_length=255)
+    validate_status: Literal['approved', 'rejected', 'pending']
+    is_active: bool
+    accepting_new_mentees: bool
 
     class Config:
         extra = Extra.forbid
 
 
 class MentorUpdate(BaseModel):
-    profile_id: Optional[constr(max_length=255)]
+    profile_id: constr(max_length=255)
+    updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -43,7 +48,9 @@ class MentorUpdate(BaseModel):
     commitment: Optional[bool]
     referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
-    validate_status: Optional[constr(max_length=255)]
+    validate_status: Optional[Literal['approved', 'rejected', 'pending']]
+    is_active: Optional[bool]
+    accepting_new_mentees: Optional[bool]
 
     class Config:
         extra = Extra.forbid
@@ -137,28 +144,6 @@ class Profiles(BaseModel):
     is_active: bool
     progress_status: constr(max_length=255)
     attendance_rate: constr(max_length=255)
-
-
-class MentorIntake(BaseModel):
-    """profile_id references profile_id in Profiles collection"""
-    mentor_intake_id: constr(max_length=255)
-    email: EmailStr
-    profile_id: constr(max_length=255)
-    first_name: constr(max_length=255)
-    last_name: constr(max_length=255)
-    country: constr(max_length=255)
-    state: constr(max_length=255)
-    city: constr(max_length=255)
-    current_company: constr(max_length=255)
-    current_position: constr(max_length=255)
-    tech_stack: List[constr(max_length=255)]
-    job_help: constr(max_length=255)
-    industry_knowledge: constr(max_length=255)
-    pair_programming: constr(max_length=255)
-    commitment: constr(max_length=255)
-    referred_by: Optional[constr(max_length=255)]
-    other_info: Optional[constr(max_length=2500)]
-    validate_status: constr(max_length=255)
 
 
 class MenteeIntake(BaseModel):
