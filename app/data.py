@@ -129,6 +129,21 @@ class MongoDB:
         return list(self.get_collection(collection).find(query, {"_id": False}))
 
     def projection(self, collection: str, query: Dict, projection: Dict) -> List[Dict]:
+        """Query collection with specific parameters.
+
+                Searches the given collection with the default parameter of
+                _id: false and the option to include further parameters. Search
+                parameters must be formatted as a dictionary.
+
+                Args:
+                    collection (str): name of collection to query
+                    query (dict): List of key value pairs to match
+                    projection (dict): _id: False, search for other
+                    parameters to match
+
+                Returns:
+                    List of all documents matching query parameters
+                """
         projection["_id"] = False
         return list(self.get_collection(collection).find(query, projection))
 
