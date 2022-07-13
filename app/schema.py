@@ -3,6 +3,8 @@ from datetime import datetime
 from pydantic import BaseModel, constr, Extra, EmailStr
 from data_generators.data_options import generate_uuid
 
+from app.vader_sentiment import vader_score
+
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
@@ -123,12 +125,17 @@ class MeetingUpdate(BaseModel):
 
 
 class Feedback(BaseModel):
-    ticket_id: constr(max_length=255)
+    ticket_id: constr(max_length=16)
+    text: constr(max_length=255)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
-    feedback: Optional[constr(max_length=2000)]
     Datetime: datetime
     vader_score: constr(max_length=255)
+
+    def __init__(self, **data) -> None:
+        super().__init__(**data)
+        self.ticket_id = generate_uuid(16)
+        self.vader_score = vader_score(self.text)
 
 
 class Resource(BaseModel):

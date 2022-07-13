@@ -16,8 +16,9 @@ from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score, vader_compound_score
 from app.computer_assignment import computer_assignment_visualizer
-from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback
 from data_generators.user_generators import generate_uuid
+
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -371,23 +372,22 @@ async def feedback_read(mentor_id: Optional[str] = None, ticket_id: Optional[str
 
 
 @API.post("/create/Feedback")
-async def feedback_create(mentee_id: str, mentor_id: str, feedback: str):
+async def feedback_create(data: Feedback):
     """Create records in the feedback collection.
 
         Creates new document within Feedback using the data parameter to
         populate its fields.
 
         Args:
-            mentee_id: str
-            mentor_id: str
-            feedback: str
+            data (feedback): text, Mentor_id, mentee_id
+
+        Future:
+        Eventually this function should pull the current user mentee_id and allow user to select assigned
+        mentor_id
         """
 
-    feedback_score = vader_score(feedback)
-    return {"result": API.db.create("Feedback", {"ticket_id": generate_uuid(16),
-                                                 'mentee_id': mentee_id, 'mentor_id': mentor_id,
-                                                 'feedback': feedback, 'datetime': datetime.datetime.now(),
-                                                 'vader_score': feedback_score})}
+    return {"result": API.db.create("Feedback", data.dict())}
+
 
 
 @API.delete("/delete/Feedback")
@@ -401,6 +401,7 @@ async def feedback_delete(ticket_id: str):
         """
     API.db.delete("Feedback", {"ticket_id": ticket_id})
     return {"result": {"deleted": ticket_id}}
+
 
 
 @API.get("/graphs/feedback_window")
