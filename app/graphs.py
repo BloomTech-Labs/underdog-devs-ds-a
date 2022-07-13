@@ -56,7 +56,7 @@ def mentor_feedback_dataframe():
     mentee_df['mentee_full_name'] = mentee_df.mentee_first_name.str.cat(mentee_df.mentee_last_name, sep=" ")
     df_1 = pd.merge(feedback_df, mentee_df, on='mentee_id', how='left')
     mentor_feedback_df = pd.merge(df_1, mentor_df, on='mentor_id', how='left')
-    mentor_feedback_df['datetime'] = np.random.choice(
+    mentor_feedback_df['datetime'] = np.random.choice(  # will be removed once its regenerated
         pd.date_range('2020-01-01', '2022-01-01'),
         len(mentor_feedback_df))
     mentor_feedback_df['feedback_outcome'] = mentor_feedback_df['feedback'].apply(lambda x: vader_score(x))
