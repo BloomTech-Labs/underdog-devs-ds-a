@@ -1,4 +1,4 @@
-import datetime
+
 import json
 import os
 from typing import Dict, Optional
@@ -14,10 +14,9 @@ from app.graphs import tech_stack_by_role, feedback_window,\
     mentor_feedback_individual, mentor_feedback_dataframe
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
-from app.vader_sentiment import vader_score, vader_compound_score
+from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback
-from data_generators.user_generators import generate_uuid
 
 
 API = FastAPI(
@@ -380,14 +379,8 @@ async def feedback_create(data: Feedback):
 
         Args:
             data (feedback): text, Mentor_id, mentee_id
-
-        Future:
-        Eventually this function should pull the current user mentee_id and allow user to select assigned
-        mentor_id
         """
-
     return {"result": API.db.create("Feedback", data.dict())}
-
 
 
 @API.delete("/delete/Feedback")
@@ -401,7 +394,6 @@ async def feedback_delete(ticket_id: str):
         """
     API.db.delete("Feedback", {"ticket_id": ticket_id})
     return {"result": {"deleted": ticket_id}}
-
 
 
 @API.get("/graphs/feedback_window")
