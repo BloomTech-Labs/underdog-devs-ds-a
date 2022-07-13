@@ -260,11 +260,3 @@ class MongoDB:
 
     def make_field_unique(self, collection: str, field: str):
         self.get_collection(collection).create_index([(field, 1)], unique=True)
-
-
-if __name__ == '__main__':
-    db = MongoDB("UnderdogDevs")
-    test = db.projection("Mentors", {}, {
-        "first_name": True
-    })
-    print(test)
