@@ -125,12 +125,12 @@ class MeetingUpdate(BaseModel):
 
 
 class Feedback(BaseModel):
-    ticket_id: constr(max_length=16)
     text: constr(max_length=255)
+    ticket_id: constr(max_length=16)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
     Datetime: datetime
-    vader_score: constr(max_length=255)
+    vader_score: Optional[constr(max_length=255)]
 
     def __init__(self, **data) -> None:
         super().__init__(**data)
