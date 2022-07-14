@@ -351,51 +351,6 @@ async def tech_stack_graph():
     return json.loads(tech_stack_by_role(df).to_json())
 
 
-@API.get("/read/Feedback")
-async def feedback_read(mentor_id: Optional[str] = None, ticket_id: Optional[str] = None):
-    """Read records in the feedback collection.
-
-    Reads new document within Feedback using the ticket_id  or mentor_id parameter to
-    populate its fields.
-
-    Args:
-        ticket_id: 16 digit UUID
-        mentor_id: str
-    """
-    if ticket_id:
-        return {"result": API.db.read("Feedback", {'ticket_id': ticket_id})}
-    elif mentor_id:
-        return {"result": API.db.read("Feedback", {'mentor_id': mentor_id})}
-    else:
-        return {"result": API.db.read("Feedback", ticket_id)}
-
-
-@API.post("/create/Feedback")
-async def feedback_create(data: Feedback):
-    """Create records in the feedback collection.
-
-        Creates new document within Feedback using the data parameter to
-        populate its fields.
-
-        Args:
-            data (feedback): text, Mentor_id, mentee_id
-        """
-    return {"result": API.db.create("Feedback", data.dict())}
-
-
-@API.delete("/delete/Feedback")
-async def feedback_delete(ticket_id: str):
-    """Delete records in the feedback collection.
-
-        Creates new document within Feedback using the data parameter to
-        populate its fields.
-
-        Args:
-        """
-    API.db.delete("Feedback", {"ticket_id": ticket_id})
-    return {"result": {"deleted": ticket_id}}
-
-
 @API.get("/graphs/feedback_window")
 async def mentor_feedback():
     """create the dataframe for visualization"""
