@@ -43,8 +43,11 @@ def computer_assignment_visualizer(mongodb_class_instance):
     search_query = {'already_matched': False}
     data = mongodb_class_instance.read(collection, search_query)
     dataframe = pd.DataFrame(data)
-    dataframe.drop(columns=['need_new_comp',
-                            'need_help_acquiring', 'already_matched'], inplace=True)
+    dataframe.drop(columns=[
+        'need_new_comp',
+        'need_help_acquiring',
+        'already_matched',
+    ], inplace=True)
     # V Prevents false error popup for next step V
     pd.set_option('mode.chained_assignment', None)
     for x in dataframe.index:
