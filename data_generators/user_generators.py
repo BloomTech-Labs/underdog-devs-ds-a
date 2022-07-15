@@ -1,8 +1,8 @@
 import os
-from datetime import datetime
-from random import sample
+from random import sample, randint
 
 import pandas as pd
+from datetime import datetime
 
 from data_generators.data_options import *
 
@@ -41,10 +41,12 @@ class RandomMentor(Printable):
         self.accepting_new_mentees = percent_true(33)
 
 class RandomMentee(Printable):
-    """Generates Mentee record"""
+    """Generates a mock Mentee record"""
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
+        self.created_at = datetime.now().isoformat()
+        self.updated_at = datetime.now().isoformat()
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"
@@ -54,12 +56,15 @@ class RandomMentee(Printable):
         self.formerly_incarcerated = percent_true(80)
         self.underrepresented_group = percent_true(70)
         self.low_income = percent_true(70)
-        self.list_convictions = sample(convictions, k=randint(1, 3))
+        self.convictions = ", ".join(sample(convictions, k=randint(1, 3)))
         self.tech_stack = choice(tech_stack)
         self.job_help = percent_true(33)
         self.pair_programming = percent_true(33)
+        self.heard_about = choice(heard_about_us)
         self.other_info = "anything else may be written here"
         self.validate_status = choice(["approved", "pending"])
+        self.is_active = percent_true(80)
+        self.in_project_underdog = percent_true(15)
 
 
 class RandomResource(Printable):
