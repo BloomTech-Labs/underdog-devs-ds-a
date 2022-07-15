@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from random import sample
 
 import pandas as pd
@@ -14,10 +15,12 @@ class Printable:
 
 
 class RandomMentor(Printable):
-    """Generates Mentor record"""
+    """Generates a mock Mentor record"""
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
+        self.created_at = datetime.now().isoformat()
+        self.updated_at = datetime.now().isoformat()
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"
@@ -34,7 +37,8 @@ class RandomMentor(Printable):
         self.referred_by = choice(heard_about_us)
         self.other_info = "anything else may be written here"
         self.validate_status = choice(["approved", "pending"])
-
+        self.is_active = percent_true(80)
+        self.accepting_new_mentees = percent_true(33)
 
 
 class RandomMentee(Printable):
