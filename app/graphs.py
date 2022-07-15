@@ -2,7 +2,7 @@ import altair as alt
 import pandas as pd
 
 
-def tech_stack_by_role(dataframe: pd.DataFrame):
+def tech_stack_by_role(dataframe: pd.DataFrame) -> alt.Chart:
     return alt.Chart(
         dataframe,
         title='Tech Stack by Role',
