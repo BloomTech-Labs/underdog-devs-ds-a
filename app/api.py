@@ -1,4 +1,3 @@
-
 import json
 import os
 from typing import Dict, Optional
@@ -9,14 +8,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse
 
 from app.data import MongoDB
-from app.graphs import tech_stack_by_role, feedback_window,\
+from app.graphs import tech_stack_by_role, feedback_window, \
     mentor_feedback_individual, mentor_feedback_dataframe
 from app.utilities import financial_aid_gen
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.computer_assignment import computer_assignment_visualizer
-from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback
-
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
 
 API = FastAPI(
     title='Underdog Devs DS API',
