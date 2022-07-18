@@ -1,5 +1,5 @@
 import os
-from random import sample, randint
+from random import sample
 
 import pandas as pd
 from datetime import datetime
@@ -101,3 +101,4 @@ class RandomMeeting(Printable):
         self.attendee_id = mentee_id
         self.meeting_notes = "Meeting notes here!"
         self.meeting_missed = choice(['Missed', 'Attended'])
+
