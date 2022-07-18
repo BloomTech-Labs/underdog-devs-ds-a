@@ -353,13 +353,39 @@ async def tech_stack_graph():
 
 @API.get("/graphs/feedback_window")
 async def mentor_feedback():
-    """create the dataframe for visualization"""
-    mentor_feedback_df = mentor_feedback_dataframe()
+    """create the dataframe for global
+     mentor feedback visualization"""
+
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_feedback_df = mentor_feedback_dataframe(feedback_df, mentee_df, mentor_df)
     return json.loads(feedback_window(mentor_feedback_df).to_json())
 
 
 @API.get("/graphs/mentor_feedback_individual")
 async def mentor_feedback_progress():
-    """create the dataframe for visualization"""
-    mentor_feedback_df = mentor_feedback_dataframe()
+    """create the dataframe for individual
+     mentor feedback visualization"""
+
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_feedback_df = mentor_feedback_dataframe(feedback_df, mentee_df, mentor_df)
     return json.loads(mentor_feedback_individual(mentor_feedback_df).to_json())

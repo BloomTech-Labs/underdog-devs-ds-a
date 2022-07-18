@@ -5,14 +5,6 @@ from app.vader_sentiment import vader_score, vader_compound_score
 from fastapi import FastAPI
 from app.data import MongoDB
 
-API = FastAPI(
-    title='Underdog Devs DS API',
-    version="0.46.2",
-    docs_url='/',
-)
-
-API.db = MongoDB("UnderdogDevs")
-
 
 def tech_stack_by_role(dataframe: pd.DataFrame):
     return alt.Chart(
@@ -26,18 +18,10 @@ def tech_stack_by_role(dataframe: pd.DataFrame):
     )
 
 
-def mentor_feedback_dataframe():
-    feedback_df = pd.DataFrame(API.db.read('Feedback'))
-    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
-        "first_name": True,
-        "last_name": True,
-        "profile_id": True,
-    }))
-    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
-        "first_name": True,
-        "last_name": True,
-        "profile_id": True,
-    }))
+def mentor_feedback_dataframe(feedback_df: pd.DataFrame,
+                              mentee_df: pd.DataFrame,
+                              mentor_df: pd.DataFrame,
+                              ) -> pd.DataFrame:
     mentee_df.rename(
         columns={
             'profile_id': 'mentee_id',
