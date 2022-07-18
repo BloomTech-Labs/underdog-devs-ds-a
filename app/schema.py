@@ -127,20 +127,3 @@ class MeetingUpdate(BaseModel):
 class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)
-
-
-class Feedback(BaseModel):
-    text: constr(max_length=255)
-    ticket_id: constr(max_length=16)
-    mentee_id: constr(max_length=255)
-    mentor_id: constr(max_length=255)
-    Datetime: datetime
-    vader_score: Optional[constr(max_length=255)]
-
-    def __init__(self, data) -> None:
-        super().__init__(data)
-        self.ticket_id = generate_uuid(16)
-        self.vader_score = vader_score(self.text)
-
-    class Config:
-        extra = Extra.forbid
