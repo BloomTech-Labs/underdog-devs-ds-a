@@ -354,7 +354,8 @@ async def tech_stack_graph():
 @API.get("/graphs/feedback_window")
 async def mentor_feedback():
     """create the dataframe for global
-     mentor feedback visualization"""
+     mentor feedback visualization and show
+     the visualization"""
 
     feedback_df = pd.DataFrame(API.db.read('Feedback'))
     mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
@@ -374,7 +375,8 @@ async def mentor_feedback():
 @API.get("/graphs/mentor_feedback_individual")
 async def mentor_feedback_progress():
     """create the dataframe for individual
-     mentor feedback visualization"""
+     mentor feedback visualization and show
+     visualization"""
 
     feedback_df = pd.DataFrame(API.db.read('Feedback'))
     mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
