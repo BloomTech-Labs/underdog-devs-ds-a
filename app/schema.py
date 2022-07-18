@@ -152,7 +152,6 @@ class Feedback(BaseModel):
     feedback: Optional[constr(max_length=2000)]
 
 
-
 class Role(BaseModel):
     """schema mirrored from BE's postgres db"""
     role_id: constr(max_length=255)
