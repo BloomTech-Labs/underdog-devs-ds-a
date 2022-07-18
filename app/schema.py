@@ -129,33 +129,6 @@ class Feedback(BaseModel):
     feedback: Optional[constr(max_length=2000)]
 
 
-class Resource(BaseModel):
-    name: constr(max_length=255)
-    item_id: constr(max_length=255)
-
-
-class MentorIntake(BaseModel):
-    """profile_id references profile_id in Profiles collection"""
-    mentor_intake_id: constr(max_length=255)
-    email: EmailStr
-    profile_id: constr(max_length=255)
-    first_name: constr(max_length=255)
-    last_name: constr(max_length=255)
-    country: constr(max_length=255)
-    state: constr(max_length=255)
-    city: constr(max_length=255)
-    current_company: constr(max_length=255)
-    current_position: constr(max_length=255)
-    tech_stack: List[constr(max_length=255)]
-    job_help: constr(max_length=255)
-    industry_knowledge: constr(max_length=255)
-    pair_programming: constr(max_length=255)
-    commitment: constr(max_length=255)
-    referred_by: Optional[constr(max_length=255)]
-    other_info: Optional[constr(max_length=2500)]
-    validate_status: constr(max_length=255)
-
-
 class Meeting(BaseModel):
     """host_id references profile_id in Profiles collection
     attendee_id references profile_id in Profiles collection"""
@@ -172,11 +145,13 @@ class Meeting(BaseModel):
 
 
 class Role(BaseModel):
+    """schema mirrored from BE's postgres db"""
     role_id: constr(max_length=255)
     role_name: Literal['superAdmin', 'admin', 'mentor', 'mentee', 'pending']
 
 
 class Comments(BaseModel):
+    """schema mirrored from BE's postgres db"""
     comment_id: constr(max_length=255)
     comment_text: Optional[constr(max_length=2000)]
     created_at: datetime
@@ -185,6 +160,7 @@ class Comments(BaseModel):
 
 
 class Notes(BaseModel):
+    """schema mirrored from BE's postgres db"""
     note_id: constr(max_length=255)
     created_by: constr(max_length=255)
     status: Literal['in progress', 'resolved', 'no action needed', 'escalated']
@@ -201,11 +177,13 @@ class Notes(BaseModel):
 
 
 class MenteeProgression(BaseModel):
+    """schema mirrored from BE's postgres db"""
     progress_id: constr(max_length=255)
     progress: Literal['learning', 'in_program', 'interview_prep', 'applying/interviewing', 'hired']
 
 
 class TicketsTable(BaseModel):
+    """schema mirrored from BE's postgres db"""
     ticket_id: constr(max_length=255)
     ticket_type: Literal['Action', 'Application', 'Resource', 'Role']
     ticket_status: Literal['Pending', 'Approved', 'Rejected']
@@ -218,12 +196,15 @@ class TicketsTable(BaseModel):
 
 
 class Assignment(BaseModel):
+    """schema mirrored from BE's postgres db"""
     mentor_id: constr(max_length=255)
     mentee_id: constr(max_length=255)
     assignment_id: constr(max_length=255)
 
 
 class Resources(BaseModel):
+    """schema mirrored from BE's postgres db
+    not part of MVP- stretch goal"""
     resource_id: constr(max_length=255)
     updated_at: constr(max_length=255)
     resource_name: constr(max_length=255)
@@ -237,6 +218,7 @@ class Resources(BaseModel):
 
 
 class Reviews(BaseModel):
+    """schema mirrored from BE's postgres db"""
     review_id: constr(max_length=255)
     review: constr(max_length=255)
     rating: conint(ge=1, le=5)
