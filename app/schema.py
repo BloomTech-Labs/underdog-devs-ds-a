@@ -137,7 +137,7 @@ class Feedback(BaseModel):
     Datetime: datetime
     vader_score: Optional[constr(max_length=255)]
 
-    def init(self, data) -> None:
+    def __init__(self, data) -> None:
         super().init(data)
         self.ticket_id = generate_uuid(16)
         self.vader_score = vader_score(self.text)
