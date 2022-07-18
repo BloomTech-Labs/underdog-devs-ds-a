@@ -6,8 +6,6 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import certifi
 
-from app.computer_assignment import add_computer_assignment_rating
-
 
 class MongoDB:
     """Class with pymongo CRUD operations as methods
@@ -75,8 +73,6 @@ class MongoDB:
         Returns:
             data (dict): The data that was inserted into the collection
         """
-        if collection == 'computer_assignment':
-            add_computer_assignment_rating(data)
         self.get_collection(collection).insert_one(dict(data))
         return data
 
@@ -161,7 +157,8 @@ class MongoDB:
             Tuple containing the filter (dict) and the update_data (dict)
         """
         self.get_collection(collection).update_many(
-            query, {"$set": update_data})
+            query, {"$set": update_data}
+        )
         return query, update_data
 
     def delete(self, collection: str, query: Dict):

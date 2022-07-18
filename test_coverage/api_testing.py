@@ -3,7 +3,7 @@ import json
 import sys
 from fastapi.testclient import TestClient
 from app.api import API
-from data_generators.user_generators import Mentee, Mentor
+from data_generators.generators import Mentee, Mentor
 from pprint import pprint
 
 

@@ -1,7 +1,7 @@
 from random import choice
 
 from app.data import MongoDB
-from data_generators.user_generators import *
+from data_generators.generators import *
 
 
 class SeedMongo:
