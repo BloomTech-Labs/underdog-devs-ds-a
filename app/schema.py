@@ -141,3 +141,6 @@ class Feedback(BaseModel):
         super().init(data)
         self.ticket_id = generate_uuid(16)
         self.vader_score = vader_score(self.text)
+
+    class Config:
+        extra = Extra.forbid
