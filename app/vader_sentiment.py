@@ -1,5 +1,7 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
 vader = SentimentIntensityAnalyzer()
+
 
 def vader_score(text: str):
     """

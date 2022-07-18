@@ -7,7 +7,6 @@ import pandas as pd
 from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse
-import numpy as np
 
 from app.data import MongoDB
 from app.graphs import tech_stack_by_role, feedback_window,\
