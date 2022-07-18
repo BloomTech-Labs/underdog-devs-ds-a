@@ -1,10 +1,6 @@
 from typing import Literal, Optional, List
 from datetime import datetime
 from pydantic import BaseModel, constr, Extra, EmailStr
-from data_generators.data_options import generate_uuid
-
-from app.vader_sentiment import vader_score
-
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
