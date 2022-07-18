@@ -40,6 +40,7 @@ class RandomMentor(Printable):
         self.is_active = percent_true(80)
         self.accepting_new_mentees = percent_true(33)
 
+
 class RandomMentee(Printable):
     """Generates Mentee record"""
 
@@ -85,7 +86,8 @@ class RandomMenteeFeedback(Printable):
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
         self.feedback = choice(self.feedback["Review"])
-        self.datetime = datetime.datetime.now()
+        self.datetime = datetime.now()
+
 
 class RandomMeeting(Printable):
     """Generates Meeting record"""

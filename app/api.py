@@ -7,9 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.data import MongoDB
-from app.graphs import tech_stack_by_role, feedback_window, \
-    mentor_feedback_individual, mentor_feedback_dataframe
-from app.utilities import financial_aid_gen
+from app.graphs import feedback_window, mentor_feedback_individual, mentor_feedback_dataframe
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
