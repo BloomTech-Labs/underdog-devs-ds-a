@@ -2,8 +2,6 @@ import altair as alt
 import pandas as pd
 import numpy as np
 from app.vader_sentiment import vader_score, vader_compound_score
-from fastapi import FastAPI
-from app.data import MongoDB
 
 
 def tech_stack_by_role(dataframe: pd.DataFrame):
