@@ -7,11 +7,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.data import MongoDB
-from app.graphs import tech_stack_by_role
+from app.graphs import feedback_window, mentor_feedback_individual, mentor_feedback_dataframe
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
-from app.analysis import nlp_analysis
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -210,24 +209,43 @@ async def sentiment(text: str):
     return {"result": vader_score(text)}
 
 
-@API.get("/graphs/tech-stack-by-role")
-async def tech_stack_graph():
-    """ PLACEHOLDER - NOT WORKING """
-    mentors_df = pd.DataFrame(API.db.read("Mentors"))[["tech_stack", "name"]]
-    mentees_df = pd.DataFrame(API.db.read("Mentees"))[["tech_stack", "name"]]
-    mentors_df["user_role"] = "Mentor"
-    mentees_df["user_role"] = "Mentee"
-    df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
-    return json.loads(tech_stack_by_role(df).to_json())
+@API.get("/graphs/feedback_window")
+async def mentor_feedback():
+    """create the dataframe for global
+     mentor feedback visualization and show
+     the visualization"""
+
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_feedback_df = mentor_feedback_dataframe(feedback_df, mentee_df, mentor_df)
+    return json.loads(feedback_window(mentor_feedback_df).to_json())
 
 
-@API.get("/responses_analysis")
-async def responses_analysis():
-    """Returns relevant topics for analysis usage
+@API.get("/graphs/mentor_feedback_individual")
+async def mentor_feedback_progress():
+    """create the dataframe for individual
+     mentor feedback visualization and show
+     visualization"""
 
-   calls the nlp_analysis function from the analysis.py file.
-
-    Returns:
-        (dict)relevant topics from the responses collection
-    """
-    return nlp_analysis([obj["text"] for obj in API.db.read("Responses")])
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_feedback_df = mentor_feedback_dataframe(feedback_df, mentee_df, mentor_df)
+    return json.loads(mentor_feedback_individual(mentor_feedback_df).to_json())
