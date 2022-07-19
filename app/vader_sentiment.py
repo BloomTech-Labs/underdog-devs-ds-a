@@ -1,4 +1,5 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
 vader = SentimentIntensityAnalyzer()
 
 
@@ -15,6 +16,14 @@ def vader_score(text: str):
         return "Negative"
     else:
         return "Neutral"
+
+
+def vader_compound_score(text: str):
+    """
+    Gets the compound vader score.
+    For use with feedback graphs.
+    """
+    return vader.polarity_scores(text)["compound"]
 
 
 if __name__ == '__main__':
