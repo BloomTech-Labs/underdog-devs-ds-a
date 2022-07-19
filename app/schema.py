@@ -239,20 +239,6 @@ class Reviews(BaseModel):
     mentor_id: constr(max_length=255)
 
 
-class FeedbackUpdate(BaseModel):
-    text: Optional[constr(max_length=255)]
-    mentee_id: Optional[constr(max_length=255)]
-    mentor_id: Optional[constr(max_length=255)]
-    vader_score: Optional[constr(max_length=255)]
-
-    def __init__(self, **data) -> None:
-        super().__init__(**data)
-        self.vader_score = vader_score(self.text)
-
-    class Config:
-        extra = Extra.forbid
-
-
 class Feedback(BaseModel):
     text: constr(max_length=800)
     ticket_id: constr(max_length=16)
@@ -268,3 +254,20 @@ class Feedback(BaseModel):
 
     class Config:
         extra = Extra.forbid
+
+
+class FeedbackUpdate(BaseModel):
+    text: Optional[constr(max_length=255)]
+    mentee_id: Optional[constr(max_length=255)]
+    mentor_id: Optional[constr(max_length=255)]
+    vader_score: Optional[constr(max_length=255)]
+
+    def __init__(self, **data) -> None:
+        super().__init__(**data)
+        self.vader_score = vader_score(self.text)
+
+    class Config:
+        extra = Extra.forbid
+
+
+
