@@ -145,13 +145,6 @@ class MeetingUpdate(BaseModel):
         extra = Extra.forbid
 
 
-class Feedback(BaseModel):
-    ticket_id: constr(max_length=255)
-    mentee_id: constr(max_length=255)
-    mentor_id: constr(max_length=255)
-    feedback: Optional[constr(max_length=2000)]
-
-
 class Role(BaseModel):
     """schema mirrored from BE's postgres db"""
     role_id: constr(max_length=255)
