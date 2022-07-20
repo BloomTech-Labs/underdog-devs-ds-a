@@ -94,13 +94,14 @@ class RandomMeeting(Printable):
 
     def __init__(self, mentee_id, mentor_id):
         self.meeting_id = generate_uuid(16)
-        self.created_at = "2018-06-12T09:55:22"
-        self.updated_at = "2018-06-12T09:55:22"
+        self.created_at = datetime.now().isoformat()
+        self.updated_at = datetime.now().isoformat()
         self.meeting_topic = choice(topics)
-        self.meeting_start_date = "2018-06-12T09:55:22"
-        self.meeting_end_date = "2018-06-12T09:55:22"
-        self.host_id = mentor_id
-        self.attendee_id = mentee_id
-        self.meeting_notes = "Meeting notes here!"
-        self.meeting_missed = choice(['Missed', 'Attended'])
-
+        self.meeting_start_time = datetime.now().isoformat()
+        self.meeting_end_time = datetime.now().isoformat()
+        self.mentor_id = mentor_id
+        self.mentee_id = mentee_id
+        self.admin_meeting_notes = "Meeting notes here!"
+        self.meeting_missed_by_mentee = choice(['Missed', 'Attended'])
+        self.mentor_meeting_notes = "Mentor meeting notes"
+        self.mentee_meeting_notes = "Mentee meeting notes"
