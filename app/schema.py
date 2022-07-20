@@ -1,7 +1,7 @@
 from typing import Literal, Optional, List
 from datetime import datetime
 from pydantic import BaseModel, constr, Extra, EmailStr, conint
-from vader_sentiment import vader_score
+from app.vader_sentiment import vader_score
 from data_generators.data_options import generate_uuid
 
 
@@ -244,7 +244,7 @@ class Feedback(BaseModel):
     ticket_id: constr(max_length=16)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
-    Datetime: datetime
+    timestamp: datetime
     vader_score: Optional[constr(max_length=255)]
 
     def __init__(self, **data) -> None:

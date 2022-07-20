@@ -15,7 +15,7 @@ from app.analysis import nlp_analysis
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.47.1",
+    version="0.47.2",
     docs_url='/',
 )
 
