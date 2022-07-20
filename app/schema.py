@@ -122,13 +122,6 @@ class MeetingUpdate(BaseModel):
     meeting_missed: Optional[Literal['Missed', 'Attended']]
 
 
-class Feedback(BaseModel):
-    ticket_id: constr(max_length=255)
-    mentee_id: constr(max_length=255)
-    mentor_id: constr(max_length=255)
-    feedback: Optional[constr(max_length=2000)]
-
-
 class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)

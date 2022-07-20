@@ -15,7 +15,7 @@ class Printable:
 
 
 class RandomMentor(Printable):
-    """Generates a mock Mentor record"""
+    """Generates Mentor record"""
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
@@ -40,8 +40,9 @@ class RandomMentor(Printable):
         self.is_active = percent_true(80)
         self.accepting_new_mentees = percent_true(33)
 
+
 class RandomMentee(Printable):
-    """Generates a mock Mentee record"""
+    """Generates Mentee record"""
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
@@ -56,7 +57,7 @@ class RandomMentee(Printable):
         self.formerly_incarcerated = percent_true(80)
         self.underrepresented_group = percent_true(70)
         self.low_income = percent_true(70)
-        self.convictions = ", ".join(sample(convictions, k=randint(1, 3)))
+        self.list_convictions = sample(convictions, k=randint(1, 3))
         self.tech_stack = choice(tech_stack)
         self.job_help = percent_true(33)
         self.pair_programming = percent_true(33)
@@ -85,6 +86,7 @@ class RandomMenteeFeedback(Printable):
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
         self.feedback = choice(self.feedback["Review"])
+        self.datetime = datetime.now()
 
 
 class RandomMeeting(Printable):
