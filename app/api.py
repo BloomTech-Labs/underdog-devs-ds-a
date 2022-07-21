@@ -7,11 +7,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.data import MongoDB
-from app.graphs import tech_stack_by_role
+from app.graphs import feedback_window, mentor_feedback_individual, mentor_feedback_dataframe
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback, FeedbackUpdate, FeedbackOptions
 from app.analysis import nlp_analysis
+
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -289,3 +290,45 @@ async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
     data_dict = update_data.dict(exclude_none=True)
     data_dict["vader_score"] = vader_score(data_dict["text"])
     return {"result": API.db.update("Feedback", {"ticket_id": ticket_id}, data_dict)}
+
+
+@API.get("/graphs/feedback_window")
+async def mentor_feedback():
+    """create the dataframe for global
+     mentor feedback visualization and show
+     the visualization"""
+
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_feedback_df = mentor_feedback_dataframe(feedback_df, mentee_df, mentor_df)
+    return json.loads(feedback_window(mentor_feedback_df).to_json())
+
+
+@API.get("/graphs/mentor_feedback_individual")
+async def mentor_feedback_progress():
+    """create the dataframe for individual
+     mentor feedback visualization and show
+     visualization"""
+
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_feedback_df = mentor_feedback_dataframe(feedback_df, mentee_df, mentor_df)
+    return json.loads(mentor_feedback_individual(mentor_feedback_df).to_json())
