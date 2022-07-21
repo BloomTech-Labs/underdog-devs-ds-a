@@ -168,7 +168,11 @@ async def create_mentor(data: Mentor):
     Returns:
         New record data or schema discrepancy error as dictionary
     """
-    return {"result": API.db.create("Mentors", data.dict())}
+    try:
+        return {"result": API.db.create("Mentors", data.dict())}
+    except:
+        return {"result": f"The field 'profile_id' must be unique, '{data.profile_id}' already exists."}
+
 
 
 @API.post("/create/mentee")
