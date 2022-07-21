@@ -10,7 +10,7 @@ from app.data import MongoDB
 from app.graphs import tech_stack_by_role
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
-from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback, FeedbackUpdate
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback, FeedbackUpdate, FeedbackOptions
 from app.analysis import nlp_analysis
 
 API = FastAPI(
@@ -234,26 +234,12 @@ async def responses_analysis():
 
 
 @API.get("/read/feedback")
-async def read_feedback(mentee_id: Optional[str] = None, mentor_id: Optional[str] = None,
-                        ticket_id: Optional[str] = None):
+async def read_feedback(query: FeedbackOptions):
     """Read records in the feedback collection.
-
     Reads new document within Feedback using the ticket_id  or mentor_id parameter to
     populate its fields.
-
-    Args:
-        ticket_id: 16 digit UUID
-        mentor_id: str
-        mentee_id: str
     """
-    if ticket_id:
-        return {"result": API.db.read("Feedback", {'ticket_id': ticket_id})}
-    elif mentor_id:
-        return {"result": API.db.read("Feedback", {'mentor_id': mentor_id})}
-    elif mentee_id:
-        return {"result": API.db.read("Feedback", {'mentee_id': mentee_id})}
-    else:
-        return {"result": API.db.read("Feedback", ticket_id)}
+    return {"result": API.db.read("Feedback", query.dict())}
 
 
 @API.post("/create/feedback")
@@ -266,7 +252,9 @@ async def create_feedback(data: Feedback):
         Args:
             data (feedback): text, Mentor_id, mentee_id
         """
-    return {"result": API.db.create("Feedback", data.dict())}
+    data_dict = data.dict()
+    data_dict["vader_score"] = vader_score(data_dict["text"])
+    return {"result": API.db.create("Feedback", data_dict)}
 
 
 @API.delete("/delete/feedback")
@@ -298,5 +286,6 @@ async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
     Returns:
         result of updated data
     """
-    data = update_data.dict(exclude_none=True)
-    return {"result": API.db.update("Feedback", {"ticket_id": ticket_id}, data)}
+    data_dict = update_data.dict(exclude_none=True)
+    data_dict["vader_score"] = vader_score(data_dict["text"])
+    return {"result": API.db.update("Feedback", {"ticket_id": ticket_id}, data_dict)}

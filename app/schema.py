@@ -244,13 +244,6 @@ class Feedback(BaseModel):
     ticket_id: constr(max_length=16)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
-    timestamp: datetime
-    vader_score: Optional[constr(max_length=255)]
-
-    def __init__(self, **data) -> None:
-        super().__init__(**data)
-        self.ticket_id = generate_uuid(16)
-        self.vader_score = vader_score(self.text)
 
     class Config:
         extra = Extra.forbid
@@ -260,14 +253,19 @@ class FeedbackUpdate(BaseModel):
     text: Optional[constr(max_length=255)]
     mentee_id: Optional[constr(max_length=255)]
     mentor_id: Optional[constr(max_length=255)]
-    vader_score: Optional[constr(max_length=255)]
-
-    def __init__(self, **data) -> None:
-        super().__init__(**data)
-        self.vader_score = vader_score(self.text)
 
     class Config:
         extra = Extra.forbid
+
+
+class FeedbackOptions(BaseModel):
+    ticket_id: Optional[constr(max_length=16)]
+    mentee_id: Optional[constr(max_length=255)]
+    mentor_id: Optional[constr(max_length=255)]
+
+    class Config:
+        extra = Extra.forbid
+
 
 
 
