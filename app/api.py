@@ -234,7 +234,7 @@ async def responses_analysis():
     return nlp_analysis([obj["text"] for obj in API.db.read("Responses")])
 
 
-@API.get("/read/feedback")
+@API.post("/read/feedback")
 async def read_feedback(query: FeedbackOptions):
     """Read records in the feedback collection.
     Reads new document within Feedback using the ticket_id  or mentor_id parameter to
