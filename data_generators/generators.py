@@ -1,5 +1,5 @@
 import os
-from random import sample
+from random import sample, randint
 
 import pandas as pd
 from datetime import datetime
