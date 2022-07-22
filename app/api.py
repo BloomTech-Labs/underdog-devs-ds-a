@@ -11,12 +11,11 @@ from app.graphs import feedback_window, mentor_feedback_individual, mentor_feedb
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback, FeedbackUpdate, FeedbackOptions
-from app.analysis import nlp_analysis
 
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.47.2",
+    version="0.47.3",
     docs_url='/',
 )
 
@@ -211,29 +210,6 @@ async def sentiment(text: str):
     return {"result": vader_score(text)}
 
 
-@API.get("/graphs/tech-stack-by-role")
-async def tech_stack_graph():
-    """ PLACEHOLDER - NOT WORKING """
-    mentors_df = pd.DataFrame(API.db.read("Mentors"))[["tech_stack", "name"]]
-    mentees_df = pd.DataFrame(API.db.read("Mentees"))[["tech_stack", "name"]]
-    mentors_df["user_role"] = "Mentor"
-    mentees_df["user_role"] = "Mentee"
-    df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
-    return json.loads(tech_stack_by_role(df).to_json())
-
-
-@API.get("/responses_analysis")
-async def responses_analysis():
-    """Returns relevant topics for analysis usage
-
-   calls the nlp_analysis function from the analysis.py file.
-
-    Returns:
-        (dict)relevant topics from the responses collection
-    """
-    return nlp_analysis([obj["text"] for obj in API.db.read("Responses")])
-
-
 @API.post("/read/feedback")
 async def read_feedback(query: FeedbackOptions):
     """Read records in the feedback collection.
@@ -247,12 +223,12 @@ async def read_feedback(query: FeedbackOptions):
 async def create_feedback(data: Feedback):
     """Create records in the feedback collection.
 
-        Creates new document within Feedback using the Feedback schema to
-        populate its fields. Creates ticket_id and vader_score automatically on submission
+    Creates new document within Feedback using the Feedback schema to
+    populate its fields. Creates ticket_id and vader_score automatically on submission
 
-        Args:
-            data (feedback): text, Mentor_id, mentee_id
-        """
+    Args:
+        data (feedback): text, Mentor_id, mentee_id
+    """
     data_dict = data.dict()
     data_dict["vader_score"] = vader_score(data_dict["text"])
     return {"result": API.db.create("Feedback", data_dict)}
@@ -262,12 +238,12 @@ async def create_feedback(data: Feedback):
 async def delete_feedback(ticket_id: str):
     """Delete records in the feedback collection.
 
-        Deletes document within Feedback using the ticket_id to
-        populate its fields.
+    Deletes document within Feedback using the ticket_id to
+    populate its fields.
 
-        Args:
-            ticket_id (str): ticket_id string max length of 16
-        """
+    Args:
+        ticket_id (str): ticket_id string max length of 16
+    """
     API.db.delete("Feedback", {"ticket_id": ticket_id})
     return {"result": {"deleted": ticket_id}}
 

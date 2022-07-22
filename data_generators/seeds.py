@@ -1,5 +1,3 @@
-from random import choice
-
 from app.data import MongoDB
 from data_generators.generators import *
 

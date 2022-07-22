@@ -1,8 +1,6 @@
 from typing import Literal, Optional, List
 from datetime import datetime
 from pydantic import BaseModel, constr, Extra, EmailStr, conint
-from app.vader_sentiment import vader_score
-from data_generators.data_options import generate_uuid
 
 
 class Mentor(BaseModel):
@@ -265,7 +263,3 @@ class FeedbackOptions(BaseModel):
 
     class Config:
         extra = Extra.forbid
-
-
-
-
