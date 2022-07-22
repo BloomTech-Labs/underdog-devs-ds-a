@@ -1,6 +1,8 @@
 from typing import Literal, Optional, List
 from datetime import datetime
 from pydantic import BaseModel, constr, Extra, EmailStr, conint
+from app.vader_sentiment import vader_score
+from data_generators.data_options import generate_uuid
 
 
 class Mentor(BaseModel):
@@ -235,3 +237,35 @@ class Reviews(BaseModel):
     rating: conint(ge=1, le=5)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
+
+
+class Feedback(BaseModel):
+    text: constr(max_length=800)
+    ticket_id: constr(max_length=16)
+    mentee_id: constr(max_length=255)
+    mentor_id: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
+
+
+class FeedbackUpdate(BaseModel):
+    text: Optional[constr(max_length=255)]
+    mentee_id: Optional[constr(max_length=255)]
+    mentor_id: Optional[constr(max_length=255)]
+
+    class Config:
+        extra = Extra.forbid
+
+
+class FeedbackOptions(BaseModel):
+    ticket_id: Optional[constr(max_length=16)]
+    mentee_id: Optional[constr(max_length=255)]
+    mentor_id: Optional[constr(max_length=255)]
+
+    class Config:
+        extra = Extra.forbid
+
+
+
+
