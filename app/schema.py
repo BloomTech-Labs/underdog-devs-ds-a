@@ -6,7 +6,6 @@ from pydantic import BaseModel, constr, Extra, EmailStr, conint
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
     created_at: datetime
-    updated_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -32,7 +31,6 @@ class Mentor(BaseModel):
 
 class MentorUpdate(BaseModel):
     profile_id: constr(max_length=255)
-    updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -59,7 +57,6 @@ class MentorUpdate(BaseModel):
 class Mentee(BaseModel):
     profile_id: constr(max_length=255)
     created_at: datetime
-    updated_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -85,7 +82,6 @@ class Mentee(BaseModel):
 
 class MenteeUpdate(BaseModel):
     profile_id: constr(max_length=255)
-    updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
