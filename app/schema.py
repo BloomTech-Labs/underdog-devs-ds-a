@@ -142,36 +142,6 @@ class MeetingUpdate(BaseModel):
         extra = Extra.forbid
 
 
-class Resource(BaseModel):
-    name: constr(max_length=255)
-    item_id: constr(max_length=255)
-
-
-class MentorIntake(BaseModel):
-    """profile_id references profile_id in Profiles collection"""
-    mentor_intake_id: constr(max_length=255)
-    email: EmailStr
-    profile_id: constr(max_length=255)
-    first_name: constr(max_length=255)
-    last_name: constr(max_length=255)
-    country: constr(max_length=255)
-    state: constr(max_length=255)
-    city: constr(max_length=255)
-    current_company: constr(max_length=255)
-    current_position: constr(max_length=255)
-    tech_stack: List[constr(max_length=255)]
-    job_help: constr(max_length=255)
-    industry_knowledge: constr(max_length=255)
-    pair_programming: constr(max_length=255)
-    commitment: constr(max_length=255)
-    referred_by: Optional[constr(max_length=255)]
-    other_info: Optional[constr(max_length=2500)]
-    validate_status: constr(max_length=255)
-
-
-
-
-
 class Role(BaseModel):
     role_id: constr(max_length=255)
     role_name: Literal['superAdmin', 'admin', 'mentor', 'mentee', 'pending']
