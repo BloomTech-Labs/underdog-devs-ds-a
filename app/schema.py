@@ -1,6 +1,8 @@
 from typing import Literal, Optional, List
 from datetime import datetime
 from pydantic import BaseModel, constr, Extra, EmailStr, conint
+from app.vader_sentiment import vader_score
+from data_generators.data_options import generate_uuid
 
 
 class Mentor(BaseModel):
@@ -109,17 +111,41 @@ class MenteeUpdate(BaseModel):
         extra = Extra.forbid
 
 
+class Meeting(BaseModel):
+    meeting_id: constr(max_length=255)
+    created_at: datetime
+    updated_at: datetime
+    meeting_topic: constr(max_length=255)
+    meeting_start_time: datetime
+    meeting_end_time: datetime
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+    admin_meeting_notes: Optional[constr(max_length=2000)]
+    meeting_missed_by_mentee: Optional[Literal['Missed', 'Attended']]
+    mentor_meeting_notes: Optional[constr(max_length=2000)]
+    mentee_meeting_notes: Optional[constr(max_length=2000)]
+
+    class Config:
+        extra = Extra.forbid
+
+
 class MeetingUpdate(BaseModel):
     meeting_id: Optional[constr(max_length=255)]
     created_at: Optional[datetime]
-    updated_at: Optional[datetime]
+    updated_at: datetime
     meeting_topic: Optional[constr(max_length=255)]
-    meeting_start_date: Optional[datetime]
-    meeting_end_date: Optional[datetime]
-    host_id: Optional[constr(max_length=255)]
-    attendee_id: Optional[constr(max_length=255)]
-    meeting_notes: Optional[constr(max_length=2000)]
-    meeting_missed: Optional[Literal['Missed', 'Attended']]
+    meeting_start_time: Optional[datetime]
+    meeting_end_time: Optional[datetime]
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+    admin_meeting_notes: Optional[constr(max_length=2000)]
+    meeting_missed_by_mentee: Optional[Literal['Missed', 'Attended']]
+    mentor_meeting_notes: Optional[constr(max_length=2000)]
+    mentee_meeting_notes: Optional[constr(max_length=2000)]
+
+    class Config:
+        extra = Extra.forbid
+
 
 
 class Resource(BaseModel):
@@ -149,19 +175,7 @@ class MentorIntake(BaseModel):
     validate_status: constr(max_length=255)
 
 
-class Meeting(BaseModel):
-    """host_id references profile_id in Profiles collection
-    attendee_id references profile_id in Profiles collection"""
-    meeting_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
-    meeting_topic: constr(max_length=255)
-    meeting_start_date: datetime
-    meeting_end_date: datetime
-    host_id: constr(max_length=255)
-    attendee_id: constr(max_length=255)
-    meeting_notes: Optional[constr(max_length=2000)]
-    meeting_missed: Optional[Literal['Missed', 'Attended']]
+
 
 
 class Role(BaseModel):
@@ -235,3 +249,35 @@ class Reviews(BaseModel):
     rating: conint(ge=1, le=5)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
+
+
+class Feedback(BaseModel):
+    text: constr(max_length=800)
+    ticket_id: constr(max_length=16)
+    mentee_id: constr(max_length=255)
+    mentor_id: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
+
+
+class FeedbackUpdate(BaseModel):
+    text: Optional[constr(max_length=255)]
+    mentee_id: Optional[constr(max_length=255)]
+    mentor_id: Optional[constr(max_length=255)]
+
+    class Config:
+        extra = Extra.forbid
+
+
+class FeedbackOptions(BaseModel):
+    ticket_id: Optional[constr(max_length=16)]
+    mentee_id: Optional[constr(max_length=255)]
+    mentor_id: Optional[constr(max_length=255)]
+
+    class Config:
+        extra = Extra.forbid
+
+
+
+
