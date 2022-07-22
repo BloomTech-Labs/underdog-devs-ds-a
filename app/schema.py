@@ -73,7 +73,7 @@ class Mentee(BaseModel):
     tech_stack: constr(max_length=255)
     job_help: bool
     pair_programming: bool
-    heard_about: constr(max_length=255)
+    referred_by: constr(max_length=255)
     other_info: Optional[constr(max_length=2500)]
     validate_status: Literal['approved', 'rejected', 'pending']
     is_active: bool
@@ -99,7 +99,7 @@ class MenteeUpdate(BaseModel):
     tech_stack: Optional[constr(max_length=255)]
     job_help: Optional[bool]
     pair_programming: Optional[bool]
-    heard_about: Optional[constr(max_length=255)]
+    referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
     validate_status: Optional[Literal['approved', 'rejected', 'pending']]
     is_active: Optional[bool]
