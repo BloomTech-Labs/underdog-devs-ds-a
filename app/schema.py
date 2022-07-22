@@ -111,17 +111,41 @@ class MenteeUpdate(BaseModel):
         extra = Extra.forbid
 
 
+class Meeting(BaseModel):
+    meeting_id: constr(max_length=255)
+    created_at: datetime
+    updated_at: datetime
+    meeting_topic: constr(max_length=255)
+    meeting_start_time: datetime
+    meeting_end_time: datetime
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+    admin_meeting_notes: Optional[constr(max_length=2000)]
+    meeting_missed_by_mentee: Optional[Literal['Missed', 'Attended']]
+    mentor_meeting_notes: Optional[constr(max_length=2000)]
+    mentee_meeting_notes: Optional[constr(max_length=2000)]
+
+    class Config:
+        extra = Extra.forbid
+
+
 class MeetingUpdate(BaseModel):
     meeting_id: Optional[constr(max_length=255)]
     created_at: Optional[datetime]
-    updated_at: Optional[datetime]
+    updated_at: datetime
     meeting_topic: Optional[constr(max_length=255)]
-    meeting_start_date: Optional[datetime]
-    meeting_end_date: Optional[datetime]
-    host_id: Optional[constr(max_length=255)]
-    attendee_id: Optional[constr(max_length=255)]
-    meeting_notes: Optional[constr(max_length=2000)]
-    meeting_missed: Optional[Literal['Missed', 'Attended']]
+    meeting_start_time: Optional[datetime]
+    meeting_end_time: Optional[datetime]
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
+    admin_meeting_notes: Optional[constr(max_length=2000)]
+    meeting_missed_by_mentee: Optional[Literal['Missed', 'Attended']]
+    mentor_meeting_notes: Optional[constr(max_length=2000)]
+    mentee_meeting_notes: Optional[constr(max_length=2000)]
+
+    class Config:
+        extra = Extra.forbid
+
 
 
 class Resource(BaseModel):
@@ -151,19 +175,7 @@ class MentorIntake(BaseModel):
     validate_status: constr(max_length=255)
 
 
-class Meeting(BaseModel):
-    """host_id references profile_id in Profiles collection
-    attendee_id references profile_id in Profiles collection"""
-    meeting_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
-    meeting_topic: constr(max_length=255)
-    meeting_start_date: datetime
-    meeting_end_date: datetime
-    host_id: constr(max_length=255)
-    attendee_id: constr(max_length=255)
-    meeting_notes: Optional[constr(max_length=2000)]
-    meeting_missed: Optional[Literal['Missed', 'Attended']]
+
 
 
 class Role(BaseModel):
