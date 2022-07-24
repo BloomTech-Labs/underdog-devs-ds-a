@@ -166,12 +166,13 @@ async def create_mentor(data: Mentor):
     Args:
         data (Mentor): Mentor
     Returns:
-        New record data or schema discrepancy error as dictionary
+        New record data or schema discrepancy error as dictionary6
     """
     try:
         return {"result": API.db.create("Mentors", data.dict())}
     except:
-        return {"result": f"The field 'profile_id' must be unique, '{data.profile_id}' already exists."}
+        #return {"result": f"The field 'profile_id' must be unique, '{data.profile_id}' already exists."}
+        raise HTTPException(status_code=409, detail="Profile ID must be unique.")
 
 
 
@@ -188,7 +189,11 @@ async def create_mentee(data: Mentee):
     Returns:
         New record data or schema discrepancy error as dictionary
     """
-    return {"result": API.db.create("Mentees", data.dict())}
+    try:
+        return {"result": API.db.create("Mentees", data.dict())}
+    except:
+        raise HTTPException(status_code=409, detail="Profile ID must be unique.")
+
 
 
 @API.post("/update/mentor/{profile_id}")
@@ -200,7 +205,7 @@ async def update_mentors(profile_id: str, update_data: MentorUpdate):
         profile_id (str): User Id
         update_data (dict): Key value pairs to update
     Returns:
-        Updated fields or schema discrepancy error as dictionary
+        Updated fields or schema discrepancy error as dictionary-
     """
     data = update_data.dict(exclude_none=True)
     return {"result": API.db.update("Mentors", {"profile_id": profile_id}, data)}
@@ -291,7 +296,7 @@ async def delete(collection: str, profile_id: str):
     return {"result": {"deleted": profile_id}}
 
 
-@API.exception_handler(Exception)
+'''@API.exception_handler(Exception)
 async def all_exception_handler(request: Request, exc: Exception):
     """Returns default 500 message for many server errors.
     Mostly handles where collection is not found
@@ -304,7 +309,7 @@ async def all_exception_handler(request: Request, exc: Exception):
             "data": {"error": str(exc)},
             "message": "server error",
         },
-    )
+    )'''
 
 
 @API.post("/financial_aid/{profile_id}")
