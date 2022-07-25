@@ -171,7 +171,6 @@ async def create_mentor(data: Mentor):
     try:
         return {"result": API.db.create("Mentors", data.dict())}
     except:
-        #return {"result": f"The field 'profile_id' must be unique, '{data.profile_id}' already exists."}
         raise HTTPException(status_code=409, detail="Profile ID must be unique.")
 
 
