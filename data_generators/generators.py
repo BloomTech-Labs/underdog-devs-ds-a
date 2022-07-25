@@ -2,6 +2,7 @@ import os
 from random import sample
 
 import pandas as pd
+from datetime import datetime
 
 from data_generators.data_options import *
 
@@ -18,6 +19,8 @@ class RandomMentor(Printable):
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
+        self.created_at = datetime.now().isoformat()
+        self.updated_at = datetime.now().isoformat()
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"
@@ -34,7 +37,8 @@ class RandomMentor(Printable):
         self.referred_by = choice(heard_about_us)
         self.other_info = "anything else may be written here"
         self.validate_status = choice(["approved", "pending"])
-
+        self.is_active = percent_true(80)
+        self.accepting_new_mentees = percent_true(33)
 
 
 class RandomMentee(Printable):
@@ -42,6 +46,8 @@ class RandomMentee(Printable):
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
+        self.created_at = datetime.now().isoformat()
+        self.updated_at = datetime.now().isoformat()
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"
@@ -55,8 +61,11 @@ class RandomMentee(Printable):
         self.tech_stack = choice(tech_stack)
         self.job_help = percent_true(33)
         self.pair_programming = percent_true(33)
+        self.heard_about = choice(heard_about_us)
         self.other_info = "anything else may be written here"
         self.validate_status = choice(["approved", "pending"])
+        self.is_active = percent_true(80)
+        self.in_project_underdog = percent_true(15)
 
 
 class RandomResource(Printable):
@@ -77,6 +86,7 @@ class RandomMenteeFeedback(Printable):
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
         self.feedback = choice(self.feedback["Review"])
+        self.datetime = datetime.now()
 
 
 class RandomMeeting(Printable):
@@ -84,12 +94,14 @@ class RandomMeeting(Printable):
 
     def __init__(self, mentee_id, mentor_id):
         self.meeting_id = generate_uuid(16)
-        self.created_at = "2018-06-12T09:55:22"
-        self.updated_at = "2018-06-12T09:55:22"
+        self.created_at = datetime.now().isoformat()
+        self.updated_at = datetime.now().isoformat()
         self.meeting_topic = choice(topics)
-        self.meeting_start_date = "2018-06-12T09:55:22"
-        self.meeting_end_date = "2018-06-12T09:55:22"
-        self.host_id = mentor_id
-        self.attendee_id = mentee_id
-        self.meeting_notes = "Meeting notes here!"
-        self.meeting_missed = choice(['Missed', 'Attended'])
+        self.meeting_start_time = datetime.now().isoformat()
+        self.meeting_end_time = datetime.now().isoformat()
+        self.mentor_id = mentor_id
+        self.mentee_id = mentee_id
+        self.admin_meeting_notes = "Meeting notes here!"
+        self.meeting_missed_by_mentee = choice(['Missed', 'Attended'])
+        self.mentor_meeting_notes = "Mentor meeting notes"
+        self.mentee_meeting_notes = "Mentee meeting notes"

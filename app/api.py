@@ -3,22 +3,19 @@ import os
 from typing import Dict, Optional
 
 import pandas as pd
-from fastapi import FastAPI, status, Request, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, HTMLResponse
 
 from app.data import MongoDB
-from app.graphs import tech_stack_by_role
-from app.utilities import financial_aid_gen
+from app.graphs import feedback_window, mentor_feedback_individual, mentor_feedback_dataframe
 from app.model import MatcherSortSearch, MatcherSortSearchResource
 from app.vader_sentiment import vader_score
-from app.computer_assignment import computer_assignment_visualizer
-from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
-from app.analysis import nlp_analysis
+from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate, Feedback, FeedbackUpdate, FeedbackOptions
+
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.46.2",
+    version="0.47.3",
     docs_url='/',
 )
 
@@ -32,15 +29,6 @@ API.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-async def is_collection(collection: str):
-    known_collections = (await collections()).get("result").keys()
-    if collection not in known_collections:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Collection: '{collection}', not found",
-        )
 
 
 @API.get("/version")
@@ -59,15 +47,6 @@ async def version():
 async def collections():
     """Return collection names and a count of their child nodes."""
     return {"result": API.db.get_database_info()}
-
-
-@API.get("/cavisualizer", response_class=HTMLResponse)
-async def computer_assignment_rating_visualizer():
-    """Return an HTML table of the computer assignment
-    ratings in the computer assignment collection of the
-    selected mongodb database.
-    """
-    return computer_assignment_visualizer(API.db)
 
 
 @API.post("/read/mentor")
@@ -95,64 +74,10 @@ async def read_mentee(data: Optional[Dict] = None):
     return {"result": API.db.read("Mentees", data)}
 
 
-@API.post("/{collection}/create")
-async def create(collection: str, data: Dict):
-    """Create a new record in the given collection.
-
-    Creates new document within given collection using the data
-    parameter to populate its fields.
-
-    Args:
-        collection (str): Name of collection retrieved from URL
-        data (dict): Key value pairs to be mapped to document fields
-
-        Input Example:
-        collection = "Mentees"
-
-    Returns:
-        New collection's data as dictionary
-    """
-    await is_collection(collection)
-    return {"result": API.db.create(collection, data)}
-
-
 @API.post("/{collection}/read")
 async def read(collection: str, data: Optional[Dict] = None):
-    """Return array of records that exactly match the given query.
-
-    Defines collection from URL and queries it with optional filters
-    given (data). If no filtering data is given, will return all
-    documents within collection.
-
-    Args:
-        collection (str): Name of collection retrieved from URL
-        data (dict) (optional): Key value pairs to match
-
-    Returns:
-        List of all matching documents
-    """
-    await is_collection(collection)
+    """Deprecated"""
     return {"result": API.db.read(collection, data)}
-
-
-@API.post("/{collection}/update")
-async def update(collection: str, query: Dict, update_data: Dict):
-    """Update collection and return the number of updated documents.
-
-    Defines collection from URL and queries it with filters
-    given (query). Then updates fields using update_data, either adding
-    or overwriting data.
-
-    Args:
-        collection (str): Name of collection retrieved from URL
-        query (dict): Key value pairs to filter for
-        update_data (dict): Key value pairs to update
-
-    Returns:
-        Integer count of updated documents
-    """
-    await is_collection(collection)
-    return {"result": API.db.update(collection, query, update_data)}
 
 
 @API.post("/create/mentor")
@@ -229,6 +154,9 @@ async def collection_search(collection: str, search: str):
     given string (search), and then presents them, automatically
     ordering results by relevance to the search.
 
+    Example:
+        /Mentees/search?search=iOS
+
     Args:
         collection (str): Name of collection to query
         search (str): Querying parameter
@@ -236,7 +164,6 @@ async def collection_search(collection: str, search: str):
     Returns:
         List of queried documents
     """
-    await is_collection(collection)
     return {"result": API.db.search(collection, search)}
 
 
@@ -275,61 +202,6 @@ async def match_resource(item_id: str, n_matches: int):
     return {"result": API.resource_matcher(n_matches, item_id)}
 
 
-@API.delete("/{collection}/delete/{profile_id}")
-async def delete(collection: str, profile_id: str):
-    """Removes a user from the given collection.
-    Deletes all documents containing the given profile_id permanently,
-    and returns the deleted profile_id for confirmation.
-    Args:
-        collection (str): Name of collection to query for deletion
-        profile_id (str): ID number of user to be deleted
-    Returns:
-        Dictionary with key of "deleted" and value of the profile_id
-    """
-    await is_collection(collection)
-    API.db.delete(collection, {"profile_id": profile_id})
-    return {"result": {"deleted": profile_id}}
-
-
-@API.exception_handler(Exception)
-async def all_exception_handler(request: Request, exc: Exception):
-    """Returns default 500 message for many server errors.
-    Mostly handles where collection is not found
-    Prints the stringed exception."""
-
-    return JSONResponse(
-        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        content={
-            "code": 500,
-            "data": {"error": str(exc)},
-            "message": "server error",
-        },
-    )
-
-
-@API.post("/financial_aid/{profile_id}")
-async def financial_aid(profile_id: str):
-    """Returns the probability that financial aid will be required.
-
-    Calls the financial aid function from functions.py inputing the
-    profile_id for calculation involving formally incarcerated, low income,
-    and experience level as variables to formulate probability of financial aid
-
-    Args:
-        profile_id (str): the profile id of the mentee
-
-    Returns:
-        the probability that financial aid will be required
-    """
-
-    profile = API.db.first('Mentees', {"profile_id": profile_id})
-
-    if not profile:
-        raise HTTPException(status_code=404, detail="Mentee not found")
-
-    return {"result": financial_aid_gen(profile)}
-
-
 @API.post("/sentiment")
 async def sentiment(text: str):
     """ Returns positive, negative or neutral sentiment of the supplied text.
@@ -342,23 +214,101 @@ async def sentiment(text: str):
     return {"result": vader_score(text)}
 
 
-@API.get("/graphs/tech-stack-by-role")
-async def tech_stack_graph():
-    mentors_df = pd.DataFrame(API.db.read("Mentors"))[["tech_stack", "name"]]
-    mentees_df = pd.DataFrame(API.db.read("Mentees"))[["tech_stack", "name"]]
-    mentors_df["user_role"] = "Mentor"
-    mentees_df["user_role"] = "Mentee"
-    df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
-    return json.loads(tech_stack_by_role(df).to_json())
+@API.post("/read/feedback")
+async def read_feedback(query: FeedbackOptions):
+    """Read records in the feedback collection.
+    Reads new document within Feedback using the ticket_id  or mentor_id parameter to
+    populate its fields.
+    """
+    return {"result": API.db.read("Feedback", query.dict())}
 
 
-@API.get("/responses_analysis")
-async def responses_analysis():
-    """Returns relevant topics for analysis usage
+@API.post("/create/feedback")
+async def create_feedback(data: Feedback):
+    """Create records in the feedback collection.
 
-   calls the nlp_analysis function from the analysis.py file.
+    Creates new document within Feedback using the Feedback schema to
+    populate its fields. Creates ticket_id and vader_score automatically on submission
+
+    Args:
+        data (feedback): text, Mentor_id, mentee_id
+    """
+    data_dict = data.dict()
+    data_dict["vader_score"] = vader_score(data_dict["text"])
+    return {"result": API.db.create("Feedback", data_dict)}
+
+
+@API.delete("/delete/feedback")
+async def delete_feedback(ticket_id: str):
+    """Delete records in the feedback collection.
+
+    Deletes document within Feedback using the ticket_id to
+    populate its fields.
+
+    Args:
+        ticket_id (str): ticket_id string max length of 16
+    """
+    API.db.delete("Feedback", {"ticket_id": ticket_id})
+    return {"result": {"deleted": ticket_id}}
+
+
+@API.patch("/update/feedback")
+async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
+    """Update feedback collection.
+
+    Given a ticket_id this function updates all fields in the feedback class. Make sure to include the original
+    ticket_id otherwise it will be updated with the default value. Vader_score will be updated on its own and will
+    reflect the sentiment of the new text.
+
+    Args:
+        ticket_id (str): ticket ID to search by to update
+        update_data (dict): Key value pairs to update
 
     Returns:
-        (dict)relevant topics from the responses collection
+        result of updated data
     """
-    return nlp_analysis([obj["text"] for obj in API.db.read("Responses")])
+    data_dict = update_data.dict(exclude_none=True)
+    data_dict["vader_score"] = vader_score(data_dict["text"])
+    return {"result": API.db.update("Feedback", {"ticket_id": ticket_id}, data_dict)}
+
+
+@API.get("/graphs/feedback_window")
+async def mentor_feedback():
+    """create the dataframe for global
+     mentor feedback visualization and show
+     the visualization"""
+
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_feedback_df = mentor_feedback_dataframe(feedback_df, mentee_df, mentor_df)
+    return json.loads(feedback_window(mentor_feedback_df).to_json())
+
+
+@API.get("/graphs/mentor_feedback_individual")
+async def mentor_feedback_progress():
+    """create the dataframe for individual
+     mentor feedback visualization and show
+     visualization"""
+
+    feedback_df = pd.DataFrame(API.db.read('Feedback'))
+    mentee_df = pd.DataFrame(API.db.projection('Mentees', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_df = pd.DataFrame(API.db.projection('Mentors', {}, {
+        "first_name": True,
+        "last_name": True,
+        "profile_id": True,
+    }))
+    mentor_feedback_df = mentor_feedback_dataframe(feedback_df, mentee_df, mentor_df)
+    return json.loads(mentor_feedback_individual(mentor_feedback_df).to_json())
