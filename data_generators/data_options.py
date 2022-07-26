@@ -2,6 +2,7 @@ import string
 from itertools import chain
 from math import ceil, floor
 from random import randint, choice, random, choices, shuffle
+from datetime import timedelta, datetime
 
 male_first_names = (
     "Liam", "Noah", "Oliver", "Elijah", "William", "James", "Benjamin", "Lucas",
@@ -337,6 +338,13 @@ def generate_uuid(n_len: int):
     shuffle(uuid_list)
     uuid = "".join(uuid_list)
     return uuid
+
+
+def random_datetime(start: datetime, end: datetime) -> datetime:
+    """ Returns a random datetime between start and end. """
+    delta = end - start
+    random_second = randint(0, int(delta.total_seconds()))
+    return start + timedelta(seconds=random_second)
 
 
 if __name__ == '__main__':
