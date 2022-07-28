@@ -35,7 +35,7 @@ class MongoDB:
         search: Loosely search given collection with given parameters.
         scan_collections: Return all collections with document counts.
         reset_collection: Remove all documents from collection.
-        timestamp: Create a datetime object that can be implemented on creation or update.
+        timestamp: Create a datetime object that can be implemented on creation/update.
         """
     load_dotenv()
 

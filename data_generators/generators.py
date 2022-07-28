@@ -97,3 +97,4 @@ class RandomMeeting(Printable):
         self.attendee_id = mentee_id
         self.meeting_notes = "Meeting notes here!"
         self.meeting_missed = choice(['Missed', 'Attended'])
+
