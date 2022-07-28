@@ -179,9 +179,7 @@ class Role(BaseModel):
 class Comments(BaseModel):
     comment_id: constr(max_length=255)
     comment_text: Optional[constr(max_length=2000)]
-    created_at: datetime
     note_id: constr(max_length=255)
-    updated_at: datetime
 
     class Config:
         extra = Extra.forbid
@@ -197,8 +195,6 @@ class Notes(BaseModel):
     visible_to_admin: Optional[bool]
     visible_to_mentor: Optional[bool]
     visible_to_mentee: Optional[bool]
-    created_at: datetime
-    updated_at: datetime
     mentor_id: constr(max_length=255)
     mentee_id: constr(max_length=255)
 
