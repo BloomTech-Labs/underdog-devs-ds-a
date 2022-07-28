@@ -7,8 +7,6 @@ from data_generators.data_options import generate_uuid
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -34,7 +32,6 @@ class Mentor(BaseModel):
 
 class MentorUpdate(BaseModel):
     profile_id: constr(max_length=255)
-    updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -60,8 +57,6 @@ class MentorUpdate(BaseModel):
 
 class Mentee(BaseModel):
     profile_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -87,7 +82,6 @@ class Mentee(BaseModel):
 
 class MenteeUpdate(BaseModel):
     profile_id: constr(max_length=255)
-    updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -113,8 +107,6 @@ class MenteeUpdate(BaseModel):
 
 class MeetingUpdate(BaseModel):
     meeting_id: Optional[constr(max_length=255)]
-    created_at: Optional[datetime]
-    updated_at: Optional[datetime]
     meeting_topic: Optional[constr(max_length=255)]
     meeting_start_date: Optional[datetime]
     meeting_end_date: Optional[datetime]
@@ -155,8 +147,6 @@ class Meeting(BaseModel):
     """host_id references profile_id in Profiles collection
     attendee_id references profile_id in Profiles collection"""
     meeting_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
     meeting_topic: constr(max_length=255)
     meeting_start_date: datetime
     meeting_end_date: datetime
