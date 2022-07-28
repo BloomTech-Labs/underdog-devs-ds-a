@@ -5,8 +5,6 @@ from pydantic import BaseModel, constr, Extra, EmailStr, conint
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -32,7 +30,6 @@ class Mentor(BaseModel):
 
 class MentorUpdate(BaseModel):
     profile_id: constr(max_length=255)
-    updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -58,8 +55,6 @@ class MentorUpdate(BaseModel):
 
 class Mentee(BaseModel):
     profile_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -85,7 +80,6 @@ class Mentee(BaseModel):
 
 class MenteeUpdate(BaseModel):
     profile_id: constr(max_length=255)
-    updated_at: datetime
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -111,8 +105,6 @@ class MenteeUpdate(BaseModel):
 
 class Meeting(BaseModel):
     meeting_id: constr(max_length=255)
-    created_at: datetime
-    updated_at: datetime
     meeting_topic: constr(max_length=255)
     meeting_start_time: datetime
     meeting_end_time: datetime
@@ -129,8 +121,6 @@ class Meeting(BaseModel):
 
 class MeetingUpdate(BaseModel):
     meeting_id: Optional[constr(max_length=255)]
-    created_at: Optional[datetime]
-    updated_at: datetime
     meeting_topic: Optional[constr(max_length=255)]
     meeting_start_time: Optional[datetime]
     meeting_end_time: Optional[datetime]
@@ -145,10 +135,12 @@ class MeetingUpdate(BaseModel):
         extra = Extra.forbid
 
 
-
 class Resource(BaseModel):
     name: constr(max_length=255)
     item_id: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
 
 
 class MentorIntake(BaseModel):
@@ -172,13 +164,16 @@ class MentorIntake(BaseModel):
     other_info: Optional[constr(max_length=2500)]
     validate_status: constr(max_length=255)
 
-
-
+    class Config:
+        extra = Extra.forbid
 
 
 class Role(BaseModel):
     role_id: constr(max_length=255)
     role_name: Literal['superAdmin', 'admin', 'mentor', 'mentee', 'pending']
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Comments(BaseModel):
@@ -187,6 +182,9 @@ class Comments(BaseModel):
     created_at: datetime
     note_id: constr(max_length=255)
     updated_at: datetime
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Notes(BaseModel):
@@ -204,10 +202,16 @@ class Notes(BaseModel):
     mentor_id: constr(max_length=255)
     mentee_id: constr(max_length=255)
 
+    class Config:
+        extra = Extra.forbid
+
 
 class MenteeProgression(BaseModel):
     progress_id: constr(max_length=255)
     progress: Literal['learning', 'in_program', 'interview_prep', 'applying/interviewing', 'hired']
+
+    class Config:
+        extra = Extra.forbid
 
 
 class TicketsTable(BaseModel):
@@ -221,11 +225,17 @@ class TicketsTable(BaseModel):
     submitted_by: constr(max_length=255)
     approved_by: constr(max_length=255)
 
+    class Config:
+        extra = Extra.forbid
+
 
 class Assignment(BaseModel):
     mentor_id: constr(max_length=255)
     mentee_id: constr(max_length=255)
     assignment_id: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Resources(BaseModel):
@@ -240,6 +250,9 @@ class Resources(BaseModel):
     monetary_value: float
     deductible_donation: bool
 
+    class Config:
+        extra = Extra.forbid
+
 
 class Reviews(BaseModel):
     review_id: constr(max_length=255)
@@ -247,6 +260,9 @@ class Reviews(BaseModel):
     rating: conint(ge=1, le=5)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Feedback(BaseModel):

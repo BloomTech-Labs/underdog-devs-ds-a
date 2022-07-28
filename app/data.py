@@ -35,6 +35,7 @@ class MongoDB:
         search: Loosely search given collection with given parameters.
         scan_collections: Return all collections with document counts.
         reset_collection: Remove all documents from collection.
+        timestamp: Create a datetime object that can be implemented on creation or update.
         """
     load_dotenv()
 
@@ -280,17 +281,16 @@ class MongoDB:
         return data
 
 
-if __name__ == '__main__':
-    from data_generators.generators import RandomMeeting
-    db = MongoDB("UnderdogDevs")
-    meeting = RandomMeeting(mentor_id= "5y1UG46025m1ygDG", mentee_id="5y1UG46025m1ygDG")
-    # print(meeting.meeting_id)
-    # db.create("MeetingTest", vars(meeting))
-    print(db.read("MeetingTest", {"meeting_id": meeting.meeting_id}))
-    print(db.read("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}))
-    # db.update("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}, {"meeting_notes": "Delaware"})
-    # print(db.read("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}))
-    db.delete("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"})
-    # db.delete("Mentor", {"profile_id": "5B0J271G64kpkV3E"})
-    print(db.read("MenteeTest"))
-
+# if __name__ == '__main__':
+#     from data_generators.generators import RandomMeeting
+#     db = MongoDB("UnderdogDevs")
+#     meeting = RandomMeeting(mentor_id= "5y1UG46025m1ygDG", mentee_id="5y1UG46025m1ygDG")
+#     # print(meeting.meeting_id)
+#     # db.create("MeetingTest", vars(meeting))
+#     print(db.read("MeetingTest", {"meeting_id": meeting.meeting_id}))
+#     print(db.read("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}))
+#     # db.update("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}, {"meeting_notes": "Delaware"})
+#     # print(db.read("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}))
+#     db.delete("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"})
+#     # db.delete("Mentor", {"profile_id": "5B0J271G64kpkV3E"})
+#     print(db.read("MenteeTest"))
