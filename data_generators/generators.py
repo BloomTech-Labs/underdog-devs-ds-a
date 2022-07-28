@@ -19,8 +19,6 @@ class RandomMentor(Printable):
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
-        self.created_at = datetime.now().isoformat()
-        self.updated_at = datetime.now().isoformat()
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"

@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 from os import getenv
 from typing import Optional, List, Dict, Iterator, Tuple
@@ -64,7 +65,7 @@ class MongoDB:
 
         Connects to the collection given and inserts the data as
         a single document. Data given will be mapped to dictionary
-        by default.
+        by default with an automatic timestamp.
 
         Args:
             collection (str): name of collection to add data to
@@ -73,7 +74,7 @@ class MongoDB:
         Returns:
             data (dict): The data that was inserted into the collection
         """
-        self.get_collection(collection).insert_one(dict(data))
+        self.get_collection(collection).insert_one(self.timestamp(data))
         return data
 
     def create_many(self, collection: str, data: Iterator[Dict]):
@@ -143,7 +144,8 @@ class MongoDB:
         return list(self.get_collection(collection).find(query, projection))
 
     def update(self, collection: str, query: Dict, update_data: Dict) -> Tuple:
-        """Update existing documents in collection matching given data.
+        """Update existing documents in collection matching given data
+         and generates a timestamp for this change.
 
         Filters the given collection based on query parameters and adds
         or rewrites fields using update_data.
@@ -157,7 +159,7 @@ class MongoDB:
             Tuple containing the filter (dict) and the update_data (dict)
         """
         self.get_collection(collection).update_many(
-            query, {"$set": update_data}
+            query, {"$set": self.timestamp(update_data, "updated_at")}
         )
         return query, update_data
 
@@ -271,3 +273,23 @@ class MongoDB:
 
     def make_field_unique(self, collection: str, field: str):
         self.get_collection(collection).create_index([(field, 1)], unique=True)
+
+    @staticmethod
+    def timestamp(data: Dict, label: str = "created_at") -> Dict:
+        data[label] = datetime.now()
+        return data
+
+
+if __name__ == '__main__':
+    from data_generators.generators import RandomMentor
+    db = MongoDB("UnderdogDevs")
+    # mentor = RandomMentor()
+    # print(mentor.profile_id)
+    # db.create("Mentor", vars(mentor))
+    # print(db.read("Mentor", {"profile_id": mentor.profile_id}))
+    # print(db.read("Mentor", {"profile_id": "1yduKP817l257pr2"}))
+    # db.update("Mentor", {"profile_id": "1yduKP817l257pr2"}, {"state": "Florida"})
+    # print(db.read("Mentor", {"profile_id": "1yduKP817l257pr2"}))
+    # db.delete("Mentor", {"profile_id": "1yduKP817l257pr2"})
+    # db.delete("Mentor", {"profile_id": "5B0J271G64kpkV3E"})
+    print(db.read("Mentor"))
