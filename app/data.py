@@ -281,15 +281,16 @@ class MongoDB:
 
 
 if __name__ == '__main__':
-    from data_generators.generators import RandomMentor
+    from data_generators.generators import RandomMeeting
     db = MongoDB("UnderdogDevs")
-    # mentor = RandomMentor()
-    # print(mentor.profile_id)
-    # db.create("Mentor", vars(mentor))
-    # print(db.read("Mentor", {"profile_id": mentor.profile_id}))
-    # print(db.read("Mentor", {"profile_id": "1yduKP817l257pr2"}))
-    # db.update("Mentor", {"profile_id": "1yduKP817l257pr2"}, {"state": "Florida"})
-    # print(db.read("Mentor", {"profile_id": "1yduKP817l257pr2"}))
-    # db.delete("Mentor", {"profile_id": "1yduKP817l257pr2"})
+    meeting = RandomMeeting(mentor_id= "5y1UG46025m1ygDG", mentee_id="5y1UG46025m1ygDG")
+    # print(meeting.meeting_id)
+    # db.create("MeetingTest", vars(meeting))
+    print(db.read("MeetingTest", {"meeting_id": meeting.meeting_id}))
+    print(db.read("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}))
+    # db.update("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}, {"meeting_notes": "Delaware"})
+    # print(db.read("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}))
+    db.delete("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"})
     # db.delete("Mentor", {"profile_id": "5B0J271G64kpkV3E"})
-    print(db.read("Mentor"))
+    print(db.read("MenteeTest"))
+

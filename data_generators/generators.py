@@ -1,5 +1,5 @@
 import os
-from random import sample
+from random import sample, randint
 
 import pandas as pd
 from datetime import datetime
@@ -44,8 +44,6 @@ class RandomMentee(Printable):
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
-        self.created_at = datetime.now().isoformat()
-        self.updated_at = datetime.now().isoformat()
         self.first_name = random_first_name()
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"
@@ -92,8 +90,6 @@ class RandomMeeting(Printable):
 
     def __init__(self, mentee_id, mentor_id):
         self.meeting_id = generate_uuid(16)
-        self.created_at = datetime.now().isoformat()
-        self.updated_at = datetime.now().isoformat()
         self.meeting_topic = choice(topics)
         self.meeting_start_time = datetime.now().isoformat()
         self.meeting_end_time = datetime.now().isoformat()
