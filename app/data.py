@@ -246,9 +246,6 @@ class MongoDB:
         collections, iteratively retrieving counts of documents within
         each respective collection.
 
-        Args:
-            None
-
         Returns:
             Dictionary: keys are collections, values are doc counts.
         """
