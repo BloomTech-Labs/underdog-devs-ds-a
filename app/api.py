@@ -3,8 +3,9 @@ import os
 from typing import Dict, Optional
 
 import pandas as pd
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pymongo.errors import DuplicateKeyError
 
 from app.data import MongoDB
 from app.graphs import feedback_window, mentor_feedback_individual, mentor_feedback_dataframe
@@ -93,7 +94,10 @@ async def create_mentor(data: Mentor):
     Returns:
         New record data or schema discrepancy error as dictionary
     """
-    return {"result": API.db.create("Mentors", data.dict())}
+    try:
+        return {"result": API.db.create("Mentors", data.dict())}
+    except DuplicateKeyError:
+        raise HTTPException(status_code=409, detail="Profile ID must be unique.")
 
 
 @API.post("/create/mentee")
@@ -109,7 +113,10 @@ async def create_mentee(data: Mentee):
     Returns:
         New record data or schema discrepancy error as dictionary
     """
-    return {"result": API.db.create("Mentees", data.dict())}
+    try:
+        return {"result": API.db.create("Mentees", data.dict())} 
+    except DuplicateKeyError:
+        raise HTTPException(status_code=409, detail="Profile ID must be unique.")
 
 
 @API.post("/update/mentor/{profile_id}")
