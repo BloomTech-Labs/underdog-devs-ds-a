@@ -5,7 +5,6 @@ from pydantic import BaseModel, constr, Extra, EmailStr, conint
 
 class Mentor(BaseModel):
     profile_id: constr(max_length=255)
-    created_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -56,7 +55,6 @@ class MentorUpdate(BaseModel):
 
 class Mentee(BaseModel):
     profile_id: constr(max_length=255)
-    created_at: datetime
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -107,7 +105,6 @@ class MenteeUpdate(BaseModel):
 
 class Meeting(BaseModel):
     meeting_id: constr(max_length=255)
-    created_at: datetime
     meeting_topic: constr(max_length=255)
     meeting_start_time: datetime
     meeting_end_time: datetime
@@ -123,7 +120,6 @@ class Meeting(BaseModel):
 
 
 class MeetingUpdate(BaseModel):
-    updated_at: datetime
     meeting_topic: Optional[constr(max_length=255)]
     meeting_start_time: Optional[datetime]
     meeting_end_time: Optional[datetime]
@@ -146,9 +142,7 @@ class Role(BaseModel):
 class Comments(BaseModel):
     comment_id: constr(max_length=255)
     comment_text: Optional[constr(max_length=2000)]
-    created_at: datetime
     note_id: constr(max_length=255)
-    updated_at: datetime
 
 
 class Notes(BaseModel):
@@ -192,7 +186,6 @@ class Assignment(BaseModel):
 
 class Resources(BaseModel):
     resource_id: constr(max_length=255)
-    updated_at: constr(max_length=255)
     resource_name: constr(max_length=255)
     category: constr(max_length=255)
     condition: constr(max_length=255)
