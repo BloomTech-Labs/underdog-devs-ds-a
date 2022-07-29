@@ -277,17 +277,3 @@ class MongoDB:
         data[label] = datetime.now()
         return data
 
-
-# if __name__ == '__main__':
-#     from data_generators.generators import RandomMeeting
-#     db = MongoDB("UnderdogDevs")
-#     meeting = RandomMeeting(mentor_id= "5y1UG46025m1ygDG", mentee_id="5y1UG46025m1ygDG")
-#     # print(meeting.meeting_id)
-#     # db.create("MeetingTest", vars(meeting))
-#     print(db.read("MeetingTest", {"meeting_id": meeting.meeting_id}))
-#     print(db.read("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}))
-#     # db.update("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}, {"meeting_notes": "Delaware"})
-#     # print(db.read("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"}))
-#     db.delete("MeetingTest", {"meeting_id": "7Chp6C2h53Vt40q2"})
-#     # db.delete("Mentor", {"profile_id": "5B0J271G64kpkV3E"})
-#     print(db.read("MenteeTest"))
