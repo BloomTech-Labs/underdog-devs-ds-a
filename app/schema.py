@@ -120,7 +120,6 @@ class Meeting(BaseModel):
 
 
 class MeetingUpdate(BaseModel):
-    meeting_id: Optional[constr(max_length=255)]
     meeting_topic: Optional[constr(max_length=255)]
     meeting_start_time: Optional[datetime]
     meeting_end_time: Optional[datetime]
