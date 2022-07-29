@@ -66,6 +66,10 @@ class SeedMongo:
         self.meetings(fresh, 150)
         self.resources(fresh, 10)
 
+    def validate(self, json_data):
+
+
+
 
 if __name__ == '__main__':
     seed_mongo = SeedMongo()
