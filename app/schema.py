@@ -112,7 +112,6 @@ class MenteeUpdate(BaseModel):
 class Meeting(BaseModel):
     meeting_id: constr(max_length=255)
     created_at: datetime
-    updated_at: datetime
     meeting_topic: constr(max_length=255)
     meeting_start_time: datetime
     meeting_end_time: datetime
@@ -128,8 +127,6 @@ class Meeting(BaseModel):
 
 
 class MeetingUpdate(BaseModel):
-    meeting_id: Optional[constr(max_length=255)]
-    created_at: Optional[datetime]
     updated_at: datetime
     meeting_topic: Optional[constr(max_length=255)]
     meeting_start_time: Optional[datetime]
@@ -143,7 +140,6 @@ class MeetingUpdate(BaseModel):
 
     class Config:
         extra = Extra.forbid
-
 
 
 class Resource(BaseModel):
