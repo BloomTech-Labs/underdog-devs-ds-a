@@ -68,7 +68,7 @@ class Mentee(BaseModel):
     tech_stack: constr(max_length=255)
     job_help: bool
     pair_programming: bool
-    heard_about: constr(max_length=255)
+    referred_by: constr(max_length=255)
     other_info: Optional[constr(max_length=2500)]
     validate_status: Literal['approved', 'rejected', 'pending']
     is_active: bool
@@ -93,7 +93,7 @@ class MenteeUpdate(BaseModel):
     tech_stack: Optional[constr(max_length=255)]
     job_help: Optional[bool]
     pair_programming: Optional[bool]
-    heard_about: Optional[constr(max_length=255)]
+    referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
     validate_status: Optional[Literal['approved', 'rejected', 'pending']]
     is_active: Optional[bool]
@@ -129,39 +129,6 @@ class MeetingUpdate(BaseModel):
     meeting_missed_by_mentee: Optional[Literal['Missed', 'Attended']]
     mentor_meeting_notes: Optional[constr(max_length=2000)]
     mentee_meeting_notes: Optional[constr(max_length=2000)]
-
-    class Config:
-        extra = Extra.forbid
-
-
-class Resource(BaseModel):
-    name: constr(max_length=255)
-    item_id: constr(max_length=255)
-
-    class Config:
-        extra = Extra.forbid
-
-
-class MentorIntake(BaseModel):
-    """profile_id references profile_id in Profiles collection"""
-    mentor_intake_id: constr(max_length=255)
-    email: EmailStr
-    profile_id: constr(max_length=255)
-    first_name: constr(max_length=255)
-    last_name: constr(max_length=255)
-    country: constr(max_length=255)
-    state: constr(max_length=255)
-    city: constr(max_length=255)
-    current_company: constr(max_length=255)
-    current_position: constr(max_length=255)
-    tech_stack: List[constr(max_length=255)]
-    job_help: constr(max_length=255)
-    industry_knowledge: constr(max_length=255)
-    pair_programming: constr(max_length=255)
-    commitment: constr(max_length=255)
-    referred_by: Optional[constr(max_length=255)]
-    other_info: Optional[constr(max_length=2500)]
-    validate_status: constr(max_length=255)
 
     class Config:
         extra = Extra.forbid
@@ -235,7 +202,6 @@ class Assignment(BaseModel):
 
 class Resources(BaseModel):
     resource_id: constr(max_length=255)
-    updated_at: constr(max_length=255)
     resource_name: constr(max_length=255)
     category: constr(max_length=255)
     condition: constr(max_length=255)
