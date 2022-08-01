@@ -1,20 +1,27 @@
 import inspect
 from app.schema import *
-from data_generators.generators import *
+#from data_generators.generators import *
 
-def validate(collection, random_collection):
-    length1 = 0
-    length2 = 0
 
-    col = collection
-    rand_col = random_collection
+ment = Mentor
+print(inspect.getmembers(ment))
 
-    for i in range(len(inspect.getmembers(col)[2][1]:
-        length1 += 1
-    for i in range(len(inspect.getmembers(rand_col)[2][1]:
-        length2 += 1
 
-    assert length1 == length2, "Collections don't match"
+
+
+#def validate(collection, random_collection):
+    #length1 = 0
+    #length2 = 0
+
+    #col = collection
+    #rand_col = random_collection
+
+    #for i in range(len(inspect.getmembers(col)[2][1]:
+        #length1 += 1
+    #for i in range(len(inspect.getmembers(rand_col)[2][1]:
+        #length2 += 1
+
+    #assert length1 == length2, "Collections don't match"
     
 '''
 def validate_mentor():
@@ -69,13 +76,4 @@ def validate_feedback():
         length2 += 1
 
     assert length1 == length2, "collections don't match"
-    '''
-
-length = 0
-mentor = Mentor
-for i in inspect.getmembers(mentor):
-    length += 1
-
-#print(length)
-
-print(len(inspect.getmembers(mentor)[2][1]))'''
+'''
