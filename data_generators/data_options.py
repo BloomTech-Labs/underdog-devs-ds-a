@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 import string
 from itertools import chain
 from math import ceil, floor
@@ -370,3 +371,10 @@ def generate_uuid(n_len: int) -> str:
     shuffle(uuid_list)
     uuid = "".join(uuid_list)
     return uuid
+
+
+def random_datetime(start: datetime, end: datetime) -> datetime:
+    """ Returns a random datetime between start and end. """
+    delta = end - start
+    random_second = randint(0, int(delta.total_seconds()))
+    return start + timedelta(seconds=random_second)
