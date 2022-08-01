@@ -138,11 +138,17 @@ class Role(BaseModel):
     role_id: constr(max_length=255)
     role_name: Literal['superAdmin', 'admin', 'mentor', 'mentee', 'pending']
 
+    class Config:
+        extra = Extra.forbid
+
 
 class Comments(BaseModel):
     comment_id: constr(max_length=255)
     comment_text: Optional[constr(max_length=2000)]
     note_id: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Notes(BaseModel):
@@ -155,15 +161,19 @@ class Notes(BaseModel):
     visible_to_admin: Optional[bool]
     visible_to_mentor: Optional[bool]
     visible_to_mentee: Optional[bool]
-    created_at: datetime
-    updated_at: datetime
     mentor_id: constr(max_length=255)
     mentee_id: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
 
 
 class MenteeProgression(BaseModel):
     progress_id: constr(max_length=255)
     progress: Literal['learning', 'in_program', 'interview_prep', 'applying/interviewing', 'hired']
+
+    class Config:
+        extra = Extra.forbid
 
 
 class TicketsTable(BaseModel):
@@ -177,11 +187,17 @@ class TicketsTable(BaseModel):
     submitted_by: constr(max_length=255)
     approved_by: constr(max_length=255)
 
+    class Config:
+        extra = Extra.forbid
+
 
 class Assignment(BaseModel):
     mentor_id: constr(max_length=255)
     mentee_id: constr(max_length=255)
     assignment_id: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Resources(BaseModel):
@@ -195,6 +211,9 @@ class Resources(BaseModel):
     monetary_value: float
     deductible_donation: bool
 
+    class Config:
+        extra = Extra.forbid
+
 
 class Reviews(BaseModel):
     review_id: constr(max_length=255)
@@ -202,6 +221,9 @@ class Reviews(BaseModel):
     rating: conint(ge=1, le=5)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
+
+    class Config:
+        extra = Extra.forbid
 
 
 class Feedback(BaseModel):
