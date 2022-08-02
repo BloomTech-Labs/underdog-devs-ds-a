@@ -57,7 +57,8 @@ class RandomMentee(Printable):
         self.tech_stack = choice(tech_stack)
         self.job_help = percent_true(33)
         self.pair_programming = percent_true(33)
-        self.heard_about = choice(heard_about_us)
+        self.heard_about = choice(heard_about_us)\
+        self.referred_by = choice(heard_about_us)
         self.other_info = "anything else may be written here"
         self.validate_status = choice(["approved", "pending"])
         self.is_active = percent_true(80)
