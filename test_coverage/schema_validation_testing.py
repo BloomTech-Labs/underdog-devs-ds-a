@@ -3,34 +3,26 @@ from data_generators.generators import RandomMentor, RandomMentee, RandomMeeting
 from data_generators.data_options import generate_uuid
 
 
-
 def test_mentor():
-    mentor = RandomMentor()
-    mentor_dict = vars(mentor)
-
-    assert Mentor(**mentor_dict)
+    assert all(Mentor(**vars(RandomMentor()) for _ in range(1000)))
 
 
 def test_mentee():
     mentee = RandomMentee()
-    mentee_dict = vars(mentee)
 
-    assert Mentee(**mentee_dict)
+    assert all(Mentee(**vars(mentee) for _ in range(1000)))
 
 
 def test_meeting():
     meeting = RandomMeeting(generate_uuid(16), generate_uuid(16))
-    meeting_dict = vars(meeting)
 
-    assert Meeting(**meeting_dict)
+    assert all(Meeting(**vars(meeting) for _ in range(1000)))
 
 
 def test_feedback():
     feedback = RandomMenteeFeedback(generate_uuid(16), generate_uuid(16))
-    feedback_dict = vars(feedback)
-    Feedback(**feedback_dict)
 
-    assert Feedback(**feedback_dict)
+    assert all(Feedback(**vars(feedback) for _ in range(1000)))
 
 
 def test_collections():
