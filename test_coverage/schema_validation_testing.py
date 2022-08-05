@@ -12,13 +12,11 @@ def test_mentee():
 
 
 def test_meeting():
-    # meeting = RandomMeeting(generate_uuid(16), generate_uuid(16))
-    assert all(Meeting(**vars(RandomMeeting())) for _ in range(1000))
+    assert all(Meeting(**vars(RandomMeeting(generate_uuid(16), generate_uuid(16)))) for _ in range(1000))
 
 
 def test_feedback():
-    # feedback = RandomMenteeFeedback(generate_uuid(16), generate_uuid(16))
-    assert all(Feedback(**vars(RandomMenteeFeedback())) for _ in range(1000))
+    assert all(Feedback(**vars(RandomMenteeFeedback(generate_uuid(16), generate_uuid(16)))) for _ in range(1000))
 
 
 def test_collections():
