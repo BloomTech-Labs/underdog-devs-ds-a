@@ -2,7 +2,6 @@ import os
 from random import sample
 
 import pandas as pd
-from datetime import datetime
 
 from data_generators.data_options import *
 
@@ -38,11 +37,6 @@ class RandomMentor(Printable):
         self.is_active = percent_true(80)
         self.accepting_new_mentees = percent_true(33)
 
-#
-# self.created_at = random_datetime(
-#             datetime.now() - timedelta(weeks=52),
-#             datetime.now(),
-#         )
 
 class RandomMentee(Printable):
     """Generates Mentee record"""
