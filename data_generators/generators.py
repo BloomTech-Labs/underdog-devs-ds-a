@@ -38,6 +38,11 @@ class RandomMentor(Printable):
         self.is_active = percent_true(80)
         self.accepting_new_mentees = percent_true(33)
 
+#
+# self.created_at = random_datetime(
+#             datetime.now() - timedelta(weeks=52),
+#             datetime.now(),
+#         )
 
 class RandomMentee(Printable):
     """Generates Mentee record"""
