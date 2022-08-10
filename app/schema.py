@@ -29,7 +29,6 @@ class Mentor(BaseModel):
 
 
 class MentorUpdate(BaseModel):
-    profile_id: constr(max_length=255)
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -79,7 +78,6 @@ class Mentee(BaseModel):
 
 
 class MenteeUpdate(BaseModel):
-    profile_id: constr(max_length=255)
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
