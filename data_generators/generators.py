@@ -2,7 +2,6 @@ import os
 from random import sample
 
 import pandas as pd
-from datetime import datetime
 
 from data_generators.data_options import *
 

@@ -1,9 +1,11 @@
 from app.data import MongoDB
 from data_generators.generators import *
+from test_coverage.schema_validation_testing import test_collections
 
 
 class SeedMongo:
     db = MongoDB("UnderdogDevs")
+    test_collections()
 
     def mentees(self, fresh_db: bool, count: int):
         if not fresh_db:
