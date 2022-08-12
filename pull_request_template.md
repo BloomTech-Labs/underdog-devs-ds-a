@@ -1,19 +1,15 @@
 ## Description
+Please include a detailed summary.
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
+## Jira Ticket
+Please include a link to the associated Jira Ticket.
 
-Fixes # (issue)
-
-## Type of change
-
-Please delete options that are not relevant.
-
+## Type of Change
 - [ ] Bug fix
 - [ ] New feature
 - [ ] This change requires a documentation update
 
-## Checklist:
-
+## Checklist
 - [ ] My code follows PEP8 style guide
 - [ ] I have removed unnecessary print statements from my code
 - [ ] I have made corresponding changes to the documentation if necessary
@@ -21,3 +17,7 @@ Please delete options that are not relevant.
 - [ ] No commented-out code
 - [ ] Size of pull request kept to a minimum
 - [ ] Pull request description clearly describes changes made & motivations for said changes
+
+
+## Loom Video
+Please include a link to a short but descriptive video about this Pull Request.
