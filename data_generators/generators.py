@@ -81,7 +81,7 @@ class RandomMenteeFeedback(Printable):
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
         self.feedback = choice(self.feedback["Review"])
-        self.datetime = random_datetime(datetime(2020, 1, 1), datetime(2022, 12, 30))
+        self.datetime = random_datetime(datetime(2022, 1, 1), datetime(2022, 12, 30))
 
 
 class RandomMeeting(Printable):
