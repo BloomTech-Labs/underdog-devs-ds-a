@@ -1,11 +1,11 @@
 from app.data import MongoDB
 from data_generators.generators import *
-from test_coverage.schema_validation_testing import test_collections
+from tests.schema_validation import validate_schemas
 
 
 class SeedMongo:
-    db = MongoDB("UnderdogDevs")
-    test_collections()
+    validate_schemas()
+    db = MongoDB()
 
     def mentees(self, fresh_db: bool, count: int):
         if not fresh_db:
@@ -53,20 +53,11 @@ class SeedMongo:
         )) for _ in range(count))
         self.db.create_many("Meetings", meetings)
 
-    def resources(self, fresh_db: bool, count: int):
-        if not fresh_db:
-            self.db.delete("Resources", {})
-        else:
-            self.db.make_field_unique("Resources", "item_id")
-        resources = (vars(RandomResource()) for _ in range(count))
-        self.db.create_many("Resources", resources)
-
     def __call__(self, fresh: bool):
         self.mentees(fresh, 100)
         self.mentors(fresh, 20)
         self.feedback(fresh, 50)
         self.meetings(fresh, 150)
-        self.resources(fresh, 10)
 
 
 if __name__ == '__main__':
