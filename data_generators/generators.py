@@ -18,7 +18,7 @@ class RandomMentor(Printable):
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
-        self.first_name = random_first_name()
+        self.first_name = random_first_name(percent_male=75)
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"
         self.country = "U.S."
@@ -35,7 +35,7 @@ class RandomMentor(Printable):
         self.other_info = "anything else may be written here"
         self.validate_status = choice(["approved", "pending"])
         self.is_active = percent_true(80)
-        self.accepting_new_mentees = percent_true(33)
+        self.accepting_new_mentees = percent_true(80)
 
 
 class RandomMentee(Printable):
@@ -43,7 +43,7 @@ class RandomMentee(Printable):
 
     def __init__(self):
         self.profile_id = generate_uuid(16)
-        self.first_name = random_first_name()
+        self.first_name = random_first_name(percent_male=75)
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"
         self.country = "U.S."
@@ -61,14 +61,6 @@ class RandomMentee(Printable):
         self.validate_status = choice(["approved", "pending"])
         self.is_active = percent_true(80)
         self.in_project_underdog = percent_true(15)
-
-
-class RandomResource(Printable):
-    """Generates Resource record"""
-
-    def __init__(self):
-        self.name = choice(resource_items)
-        self.item_id = generate_uuid(16)
 
 
 class RandomMenteeFeedback(Printable):
