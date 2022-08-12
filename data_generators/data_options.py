@@ -304,17 +304,9 @@ tech_stack = (
     "Android", "Career Development", "Data Science",
 )
 
-resource_items = ("Laptop", "Books", "Scholarships",
-                  "Mental Health Need", "Financial stipends"
-                  )
 
 convictions = (
     "Felony", "Misdemeanor", "Infraction",
-)
-
-feedbacks = (
-    "Not Recommended, Poor", "Conflicted, Fair", "Recommended, Good",
-    "Highly Recommended, Very Good", "Best, Excellent",
 )
 
 topics = (
@@ -335,34 +327,38 @@ states = (
 )
 
 cities = (
-    "Springfield", "Rochester", "Washington", "Los Alamos", "New Town", "Arrowhead"
+    "Springfield", "Rochester", "Washington", "Los Alamos",
+    "New Town", "Arrowhead",
 )
 
 companies = (
-    "Alliance Industries", "Meta", "Apple", "Alphabet", "Netflix", "Amazon"
+    "Meta", "Apple", "Alphabet", "Netflix", "Amazon", "Jet Brains",
+    "Acme", "Oracle", "Microsoft", "Uber", "Disney", "YouTube",
 )
 
 positions = (
-    "Analyst", "Associate", "Salesperson", "Software Engineer", "Director"
+    "Data Analyst", "Software Engineer", "Project Manager",
+    "Data Scientist", "Data Engineer", "Full Stack Engineer",
 )
 
 heard_about_us = (
-    "Twitter", "Online Ad", "Word of mouth", "State resources", "Peers", "Family"
+    "Twitter", "YouTube", "Meta", "Friend", "Family", "Colleague",
 )
 
 
-def random_first_name(percent_male: int = 50):
-    if randint(1, 100) > percent_male:
-        return choice(female_first_names)
-    else:
-        return choice(male_first_names)
-
-
-def percent_true(percent):
+def percent_true(percent: int) -> bool:
     return 100 * random() < percent
 
 
+def random_first_name(percent_male: int):
+    if percent_true(percent_male):
+        return choice(male_first_names)
+    else:
+        return choice(female_first_names)
+
+
 def generate_uuid(n_len: int) -> str:
+    # ToDo: Replace with uuid.uuid_4()
     n1 = ceil(n_len / 2)
     n2 = floor(n_len / 2)
     prefix = choices(string.ascii_letters, k=n1)
@@ -374,7 +370,7 @@ def generate_uuid(n_len: int) -> str:
 
 
 def random_datetime(start: datetime, end: datetime) -> datetime:
-    """ Returns a random datetime between start and end. """
+    """ Returns a random datetime between start and end """
     delta = end - start
     random_second = randint(0, int(delta.total_seconds()))
     return start + timedelta(seconds=random_second)
