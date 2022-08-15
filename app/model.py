@@ -15,6 +15,9 @@ class MatcherSortSearch:
             return (
                 mentee["pair_programming"] != mentor["pair_programming"],
                 mentee["job_help"] != mentor["job_help"],
+                mentee["validate_status"] != mentor["validate_status"],
+                mentee["is_active"] != mentor["validate_status"],
+                not mentor["accepting_new_mentees"],
                 not mentor["industry_knowledge"],
             )
 
