@@ -82,7 +82,7 @@ class RandomMeeting(Printable):
     def __init__(self, mentee_id, mentor_id):
         self.meeting_id = generate_uuid(16)
         self.meeting_topic = choice(topics)
-        self.meeting_start_time = random_datetime(datetime(2022, 8, 1), datetime(2022, 8, 2))
+        self.meeting_start_time = random_datetime(datetime(2022, 1, 1), datetime(2022, 12, 30))
         self.meeting_end_time = self.meeting_start_time + timedelta(hours=1)
         self.mentor_id = mentor_id
         self.mentee_id = mentee_id
