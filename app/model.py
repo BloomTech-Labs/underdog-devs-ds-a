@@ -15,14 +15,16 @@ class MatcherSortSearch:
             return (
                 mentee["pair_programming"] != mentor["pair_programming"],
                 mentee["job_help"] != mentor["job_help"],
-                mentee["validate_status"] != mentor["validate_status"],
-                mentee["is_active"] != mentor["validate_status"],
+                mentee["validate_status"] == mentor["validate_status"] == "approved",
+                mentee["is_active"] == mentor["is_active"] == True,
                 not mentor["accepting_new_mentees"],
                 not mentor["industry_knowledge"],
             )
 
         results = sorted(
             self.db.search("Mentors", mentee["tech_stack"]),
+            self.db.search("Mentors", mentee["validate_status"]),
+            self.db.search("Mentors", mentee["is_active"]),
             key=sort_mentors,
         )[:n_matches]
         return [mentor["profile_id"] for mentor in results]
