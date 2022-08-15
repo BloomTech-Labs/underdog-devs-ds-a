@@ -25,6 +25,7 @@ class MatcherSortSearch:
                 "accepting_new_mentees": True,
                 "validate_status": 'approved'
             }),
+
             key=sort_mentors,
         )[:n_matches]
 
