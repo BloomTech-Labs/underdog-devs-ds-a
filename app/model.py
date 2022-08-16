@@ -24,7 +24,7 @@ class MatcherSortSearch:
                 "is_active": True,
                 "accepting_new_mentees": True,
                 "validate_status": 'approved'
-                }),
+            }),
             key=sort_mentors,
         )[:n_matches]
         return [mentor["profile_id"] for mentor in results]
