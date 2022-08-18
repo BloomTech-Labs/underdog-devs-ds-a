@@ -112,7 +112,7 @@ async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
 
 @API.get("/graph/tech-stack-by-role")
 async def tech_stack_by_role(column1, column2):
-    """ Tech Stack by Role - stacked bar chart
+    """ Tech Stack Count by Role - stacked bar chart
     Returns an Altair Chart in JSON format """
     return stacked_bar_chart(
         df_tech_stack_by_role(API.db),
