@@ -110,9 +110,12 @@ async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
     return {"result": API.db.update("Feedback", {"ticket_id": ticket_id}, data_dict)}
 
 
-@API.get("/graph")
-async def graph(column1, column2):
-    # column1 = "tech_stack"
-    # column2 = "role"
-    df = df_tech_stack_by_role(API.db)
-    return stacked_bar_chart(df, column1, column2).to_dict()
+@API.get("/graph/tech-stack-by-role")
+async def tech_stack_by_role(column1, column2):
+    """ Tech Stack by Role - stacked bar chart
+    Returns an Altair Chart in JSON format """
+    return stacked_bar_chart(
+        df_tech_stack_by_role(API.db),
+        column1,
+        column2,
+    ).to_dict()
