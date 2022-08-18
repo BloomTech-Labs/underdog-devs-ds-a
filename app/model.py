@@ -19,7 +19,12 @@ class MatcherSortSearch:
             )
 
         results = sorted(
-            self.db.search("Mentors", mentee["tech_stack"]),
+            self.db.read("Mentors", {
+                "tech_stack": mentee["tech_stack"],
+                "is_active": True,
+                "accepting_new_mentees": True,
+                "validate_status": 'approved'
+            }),
             key=sort_mentors,
         )[:n_matches]
         return [mentor["profile_id"] for mentor in results]
