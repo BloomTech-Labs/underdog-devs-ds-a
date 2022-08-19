@@ -14,7 +14,7 @@ from app.schema import Feedback, FeedbackUpdate, FeedbackOptions
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.49.0",
+    version="0.49.1",
     docs_url='/',
 )
 
