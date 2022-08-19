@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pymongo.errors import DuplicateKeyError
 
 from app.data import MongoDB
+from app.graphs import stacked_bar_chart, df_tech_stack_by_role
 from app.model import MatcherSortSearch
 from app.sentiment import sentiment_rank
 from app.schema import Mentor, MentorUpdate, Mentee, MenteeUpdate
@@ -107,3 +108,14 @@ async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
     data_dict = update_data.dict(exclude_none=True)
     data_dict["vader_score"] = sentiment_rank(data_dict["text"])
     return {"result": API.db.update("Feedback", {"ticket_id": ticket_id}, data_dict)}
+
+
+@API.get("/graph/tech-stack-by-role")
+async def tech_stack_by_role():
+    """ Tech Stack Count by Role - stacked bar chart
+    Returns an Altair Chart in JSON format """
+    return stacked_bar_chart(
+        df_tech_stack_by_role(API.db),
+        "tech_stack",
+        "role",
+    ).to_dict()
