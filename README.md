@@ -7,23 +7,71 @@ You can find the deployed project at [Underdog Devs](https://www.underdogdevs.or
 
 
 # Contributors
-| Senior Management Team  | Data Science Team FT44                                                  | Data Science Team FT43 |
-| ------------- |-------------------------------------------------------------------------| ------------ |
-| [Robert Sharp](https://github.com/BrokenShell)    | [Mitch Hollberg](https://github.com/hollberg)                    | [Christine Wang](https://github.com/ChristineWangcy) |
-| [Ryan Hamblin](https://github.com/ryan-hamblin)  | [Brogan Stich](https://github.com/ad-victoriam-101)            | [Sirivennela Vempati](https://github.com/sirivennelavempati) |
-| [Paul St.Germain](https://github.com/paulstgermain) | [Brandon Smith](https://github.com/BrandonSmith710)                   | [Rodrico Sanchez](https://github.com/rodricobsanchez) |
-| | [Austin Wolff](https://github.com/AustinJamesWolff)                     | [Samuel Ulloa](https://github.com/ulloa) |
-| | [Nicholas Papenburg](https://github.com/NPAPENBURG)                     | [Ryland Gomez](https://github.com/RylandGomez) |
-| | [Scott Reynders](https://github.com/wscottreynders)                     | [Michael Tran](https://github.com/mktran0417) |
-| | [Jonathan McGraw](https://github.com/jonathan-mcgraw)                   | [Evgeny Khoroshukhin](https://github.com/ev-horrosh) |
-| | [Yefim Gorodnitskiy](https://github.com/yefim-g)                        | [Archana Coimbatore Sivagurunathan](https://github.com/archana062031) |
-| | [Dagim Bantikassegn](https://github.com/DagimB)                         | [Daniel Ho](https://github.com/djho57) |
-| | [Eisenhower Lancheros](https://github.com/Ike888)                       | [BhavaniLakshmi Annapurna Jagarlamudi](https://github.com/Annapurnaj91) |
-| | [John Baker](https://github.com/BakerJr1904)                            | [Kevin Lynner](https://github.com/LynnerKevin) |
-| | [Matt Grohnke](https://github.com/mgrohnke)                             | [Olatomi Adigun](https://github.com/OlatomiAdigun) |
-| | | [Mohamed Mosaed](https://github.com/mohamedmosaed) |
-| | | [Zachary Rock](https://github.com/ZacharyRock) |
-| | | [Zachary Quintana](https://github.com/Zack-Quintana) |
+<details><summary><h>See Contributors List</h></summary>
+
+|                Senior Management Team                |                            Data Science Team                            |
+|:----------------------------------------------------:|:-----------------------------------------------------------------------:|
+| [Christine Wang](https://github.com/ChristineWangcy) |                [Abdel Balla](https://github.com/amballa)                |
+|    [Mitch Hollberg](https://github.com/hollberg)     |                  [Adam Vu](https://github.com/AdamHVu)                  |
+|    [Robert Sharp](https://github.com/BrokenShell)    |              [Anna Koduru](https://github.com/annakoduru6)              |
+|                                                      |  [Archana Coimbatore Sivagurunathan](https://github.com/archana062031)  |
+|                                                      |           [Austin Wolff](https://github.com/AustinJamesWolff)           |
+|                                                      |                [Austin Wood](https://github.com/zdravoj)                |
+|                                                      |               [Ben Wood](https://github.com/woodbenwood)                |
+|                                                      | [BhavaniLakshmi Annapurna Jagarlamudi](https://github.com/Annapurnaj91) |
+|                                                      |               [Bobby Wilt](https://github.com/BobbyWilt)                |
+|                                                      |               [Brad Baker](https://github.com/bradwbaker)               |
+|                                                      |           [Brandon Smith](https://github.com/BrandonSmith710)           |
+|                                                      |           [Brogan Stich](https://github.com/ad-victoriam-101)           |
+|                                                      |          [Christine Wang](https://github.com/ChristineWangcy)           |
+|                                                      |                [Colin Bell](https://github.com/cbell98)                 |
+|                                                      |          [Cristian Ibarra-Villegas](https://github.com/CrisIV)          |
+|                                                      |             [Dagim Bantikassegn](https://github.com/DagimB)             |
+|                                                      |                 [Daniel Ho](https://github.com/djho57)                  |
+|                                                      |              [Demi Tuck](https://github.com/demetriustuck)              |
+|                                                      |            [Eisenhower Lancheros](https://github.com/Ike888)            |
+|                                                      |                [Erin Costolo](https://github.com/ErinNC)                |
+|                                                      |          [Evgeny Khoroshukhin](https://github.com/ev-horrosh)           |
+|                                                      |          [Fabiola Velasco](https://github.com/fabiolavelasco)           |
+|                                                      |             [German Parra](https://github.com/GermanParra)              |
+|                                                      |              [Jack Semder](https://github.com/jack-semder)              |
+|                                                      |              [Jason Gersing](https://github.com/jsgersing)              |
+|                                                      |              [John Baker](https://github.com/BakerJr1904)               |
+|                                                      |               [John Lopez](https://github.com/Lopez-John)               |
+|                                                      |          [Jonathan McGraw](https://github.com/jonathan-mcgraw)          |
+|                                                      |             [Jonathan Torres](https://github.com/jtorres03)             |
+|                                                      |               [Joshua Hayes](https://github.com/Josh2035)               |
+|                                                      |              [Justin Brim](https://github.com/brimjustin)               |
+|                                                      |             [Kevin Lynner](https://github.com/LynnerKevin)              |
+|                                                      |              [Logan Olbrich](https://github.com/L0lbrich)               |
+|                                                      |             [Martha Gonzalez](https://github.com/marthabg)              |
+|                                                      |               [Matt Grohnke](https://github.com/mgrohnke)               |
+|                                                      |              [Michael Tran](https://github.com/mktran0417)              |
+|                                                      |          [Mikayla Kosmala](https://github.com/mikayla-kosmala)          |
+|                                                      |              [Mitch Hollberg](https://github.com/hollberg)              |
+|                                                      |            [Mitchell Hollberg](https://github.com/hollberg)             |
+|                                                      |           [Mohamed Mosaed](https://github.com/mohamedmosaed)            |
+|                                                      |           [Nicholas Papenburg](https://github.com/NPAPENBURG)           |
+|                                                      |           [Olatomi Adigun](https://github.com/OlatomiAdigun)            |
+|                                                      |         [Olivia Peterschmidt](https://github.com/opeterschmidt)         |
+|                                                      |          [Philip McDavid](https://github.com/FftyShadesofCode)          |
+|                                                      |          [Rodrico Sanchez](https://github.com/rodricobsanchez)          |
+|                                                      |         [Roger Flores Vieira](https://github.com/rogerfvieira)          |
+|                                                      |             [Ryland Gomez](https://github.com/RylandGomez)              |
+|                                                      |                [Samuel Ulloa](https://github.com/ulloa)                 |
+|                                                      |             [Sayer Kanakriyeh](https://github.com/sayerjk)              |
+|                                                      |           [Scott Reynders](https://github.com/wscottreynders)           |
+|                                                      |      [Sirivennela Vempati](https://github.com/sirivennelavempati)       |
+|                                                      |          [Stephen Spradling](https://github.com/sspradling78)           |
+|                                                      |          [Steven Hastings](https://github.com/stevenhastings)           |
+|                                                      |             [Sujata Sahoo](https://github.com/sujatasahoo)              |
+|                                                      |               [Tammer Riad](https://github.com/tammer81)                |
+|                                                      |           [Willis Bridges](https://github.com/willisbridges)            |
+|                                                      |            [Yefim Gorodnitskiy](https://github.com/yefim-g)             |
+|                                                      |          [Zachary Quintana](https://github.com/Zack-Quintana)           |
+|                                                      |             [Zachary Rock](https://github.com/ZacharyRock)              |
+
+</details>
 
 
 # Architecture
