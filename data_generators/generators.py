@@ -1,5 +1,6 @@
 import os
-from random import sample
+from typing import List, Any
+from random import sample, triangular
 
 import pandas as pd
 
@@ -11,6 +12,22 @@ class Printable:
 
     def __str__(self):
         return "\n".join(f"{k}: {v}" for k, v in vars(self).items())
+
+
+class LinearChoice:
+
+    def __init__(self, values: List[Any]):
+        self.values = values
+        self.size = len(values)
+
+    def front(self) -> Any:
+        return self.values[int(triangular(0, self.size, 0))]
+
+    def middle(self) -> Any:
+        return self.values[int(triangular(0, self.size, self.size / 2))]
+
+    def back(self) -> Any:
+        return self.values[int(triangular(0, self.size, self.size))]
 
 
 class RandomMentor(Printable):
@@ -26,7 +43,10 @@ class RandomMentor(Printable):
         self.city = choice(cities)
         self.current_company = choice(companies)
         self.current_position = choice(positions)
-        self.tech_stack = sample(tech_stack, k=randint(1, 3))
+        self.tech_stack = [
+            LinearChoice(tech_stack).back()
+            for _ in range(randint(1, 3))
+        ]
         self.commitment = percent_true(95)
         self.job_help = percent_true(33)
         self.industry_knowledge = percent_true(33)
@@ -52,8 +72,8 @@ class RandomMentee(Printable):
         self.formerly_incarcerated = percent_true(80)
         self.underrepresented_group = percent_true(70)
         self.low_income = percent_true(70)
-        self.convictions = sample(convictions, k=randint(1, 3)) 
-        self.tech_stack = choice(tech_stack)
+        self.convictions = ", ".join(sample(convictions, k=randint(1, 3)))
+        self.tech_stack = LinearChoice(tech_stack).front()
         self.job_help = percent_true(33)
         self.pair_programming = percent_true(33)
         self.referred_by = choice(heard_about_us)  
@@ -72,8 +92,7 @@ class RandomMenteeFeedback(Printable):
         self.ticket_id = generate_uuid(16)
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
-        self.feedback = choice(self.feedback["Review"])
-        self.datetime = random_datetime(datetime(2022, 1, 1), datetime(2022, 12, 31))
+        self.text = choice(self.feedback["Review"])[:800]
 
 
 class RandomMeeting(Printable):
@@ -82,7 +101,10 @@ class RandomMeeting(Printable):
     def __init__(self, mentee_id, mentor_id):
         self.meeting_id = generate_uuid(16)
         self.meeting_topic = choice(topics)
-        self.meeting_start_time = random_datetime(datetime(2022, 1, 1), datetime(2022, 12, 31))
+        self.meeting_start_time = random_datetime(
+            datetime(2022, 1, 1),
+            datetime(2022, 12, 31),
+        )
         self.meeting_end_time = self.meeting_start_time + timedelta(hours=1)
         self.mentor_id = mentor_id
         self.mentee_id = mentee_id
