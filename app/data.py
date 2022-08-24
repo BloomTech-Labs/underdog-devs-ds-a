@@ -16,10 +16,11 @@ class MongoDB:
     def collection(self, collection):
         return self.database()[collection]
 
-    def create(self, collection: str, data: Dict) -> Dict:
+    def create(self, collection: str, data: Dict) -> bool:
         """ Insert a single document into a collection """
-        self.collection(collection).insert_one(self.timestamp(data))
-        return data
+        return self.collection(
+            collection,
+        ).insert_one(self.timestamp(data)).acknowledged
 
     def create_many(self, collection: str, data: Iterator[Dict]):
         """ Insert multiple documents into a collection """
