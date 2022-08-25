@@ -24,7 +24,7 @@ class MongoDB:
 
     def create_many(self, collection: str, data: Iterator[Dict]):
         """ Insert multiple documents into a collection """
-        self.collection(collection).insert_many(map(dict, data))
+        self.collection(collection).insert_many(self.timestamp(map(dict, data), "created_at"))
 
     def first(self, collection: str, query: Optional[Dict] = None) -> Dict:
         """ Return first document in collection """
