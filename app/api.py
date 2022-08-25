@@ -293,7 +293,7 @@ async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
 @API.get("/graph/tech-stack-by-role")
 async def tech_stack_by_role():
     """
-    Tech Stack Count by Role - stacked bar chart.
+    Tech Stack Count by Role, stacked bar chart.
 
 
     Returns
