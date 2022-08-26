@@ -43,10 +43,10 @@ class RandomMentor(Printable):
         self.city = choice(cities)
         self.current_company = choice(companies)
         self.current_position = choice(positions)
-        self.tech_stack = [
+        self.tech_stack = list({
             LinearChoice(tech_stack).back()
-            for _ in range(randint(1, 3))
-        ]
+            for _ in range(randint(1, 5))
+        })
         self.commitment = percent_true(95)
         self.job_help = percent_true(33)
         self.industry_knowledge = percent_true(33)
