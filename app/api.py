@@ -81,8 +81,8 @@ async def update_mentees(profile_id: str, update_data: MenteeUpdate):
 
 
 @API.post("/match/{profile_id}")
-async def match(profile_id: str, n_matches: int):
-    return {"result": API.matcher(n_matches, profile_id)}
+async def match(profile_id: str, n_matches=5):
+    return {"result": API.matcher(profile_id, n_matches)}
 
 
 @API.post("/read/feedback")

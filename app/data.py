@@ -50,9 +50,9 @@ class MongoDB:
         """ Delete existing documents in collection matching given data """
         self.collection(collection).delete_many(query)
 
-    def count(self, collection: str, query: Optional[Dict] = None) -> int:
+    def count(self, collection: str, query: Optional[Dict]) -> int:
         """ Returns the number of documents in collection that matches query """
-        return self.collection(collection).count_documents(query or {})
+        return self.collection(collection).count_documents(query or {5})
 
     def backup(self, collection: str):
         """Create backup JSON for given collection."""
