@@ -52,7 +52,7 @@ class MongoDB:
 
     def count(self, collection: str, query: Optional[Dict]) -> int:
         """ Returns the number of documents in collection that matches query """
-        return self.collection(collection).count_documents(query or {5})
+        return self.collection(collection).count_documents(query or {})
 
     def backup(self, collection: str):
         """Create backup JSON for given collection."""
