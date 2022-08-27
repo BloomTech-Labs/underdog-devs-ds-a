@@ -5,6 +5,7 @@ from random import sample, triangular
 import pandas as pd
 
 from data_generators.data_options import *
+from app.sentiment import sentiment_rank
 
 
 class Printable:
@@ -76,7 +77,7 @@ class RandomMentee(Printable):
         self.tech_stack = LinearChoice(tech_stack).front()
         self.job_help = percent_true(33)
         self.pair_programming = percent_true(33)
-        self.referred_by = choice(heard_about_us)  
+        self.referred_by = choice(heard_about_us)
         self.other_info = "anything else may be written here"
         self.validate_status = choice(["approved", "pending"])
         self.is_active = percent_true(80)
@@ -92,7 +93,7 @@ class RandomMenteeFeedback(Printable):
         self.ticket_id = generate_uuid(16)
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
-        self.text = choice(self.feedback["Review"])[:800]
+        self.text = sentiment_rank(choice(self.feedback["Review"])[:800])
 
 
 class RandomMeeting(Printable):
