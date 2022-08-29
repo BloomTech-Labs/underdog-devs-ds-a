@@ -93,7 +93,8 @@ class RandomMenteeFeedback(Printable):
         self.ticket_id = generate_uuid(16)
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
-        self.text = sentiment_rank(choice(self.feedback["Review"])[:800])
+        self.text = choice(self.feedback["Review"])
+        self.sentiment = sentiment_rank(self.text)
 
 
 class RandomMeeting(Printable):
