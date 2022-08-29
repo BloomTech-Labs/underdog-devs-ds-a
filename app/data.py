@@ -12,7 +12,10 @@ class MongoDB:
     load_dotenv()
 
     def database(self):
-        return MongoClient(getenv("MONGO_URL"), tlsCAFile=certifi.where())["UnderdogDevs"]
+        return MongoClient(
+            getenv("MONGO_URL"),
+            tlsCAFile=certifi.where()
+        )["UnderdogDevs"]
 
     def collection(self, collection):
         return self.database()[collection]
