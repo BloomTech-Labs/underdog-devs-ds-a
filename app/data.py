@@ -6,14 +6,13 @@ from typing import Optional, List, Dict, Iterator, Tuple
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
-import certifi
 
 
 class MongoDB:
     load_dotenv()
 
     def database(self):
-        return MongoClient(getenv("MONGO_URL"), tlsCAFile=certifi.where())["UnderdogDevs"]
+        return MongoClient(getenv("MONGO_URL"))["UnderdogDevs"]
 
     def collection(self, collection):
         return self.database()[collection]
