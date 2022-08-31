@@ -7,7 +7,6 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 
 
-
 class MongoDB:
     load_dotenv()
 
