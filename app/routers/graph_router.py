@@ -4,7 +4,7 @@ from app.graphs import stacked_bar_chart, df_tech_stack_by_role
 
 
 Router = APIRouter(
-    prefix="/data",
+    prefix="/graph",
     tags=["Graph Operations"]
 )
 
