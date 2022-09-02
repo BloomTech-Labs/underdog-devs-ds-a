@@ -1,5 +1,6 @@
 import os
 
+from app.data import MongoDB
 from app.routers import (mentor_router,
                          mentee_router,
                          feedback_router,
@@ -8,9 +9,6 @@ from app.routers import (mentor_router,
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.data import MongoDB
-from app.model import MatcherSortSearch
-
 API = FastAPI(
     title='Underdog Devs DS API',
     version="0.49.2",
@@ -18,7 +16,6 @@ API = FastAPI(
 )
 
 API.db = MongoDB()
-API.matcher = MatcherSortSearch()
 API.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

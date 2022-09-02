@@ -13,17 +13,17 @@ Router = APIRouter(
 Router.db = MongoDB()
 
 
-@Router.post("/read/mentee")
-async def read_mentee(data: Optional[Dict] = None):
-    return {"result": Router.db.read("Mentees", data)}
-
-
 @Router.post("/create/mentee")
 async def create_mentee(data: Mentee):
     try:
         return {"result": Router.db.create("Mentees", data.dict())}
     except DuplicateKeyError:
         raise HTTPException(status_code=409, detail="Profile ID must be unique.")
+
+
+@Router.post("/read/mentee")
+async def read_mentee(data: Optional[Dict] = None):
+    return {"result": Router.db.read("Mentees", data)}
 
 
 @Router.post("/update/mentee/{profile_id}")
