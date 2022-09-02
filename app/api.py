@@ -11,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.49.2",
+    version="0.50.0",
     docs_url='/',
 )
 
