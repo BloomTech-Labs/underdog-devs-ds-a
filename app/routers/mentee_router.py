@@ -7,7 +7,6 @@ from app.data import MongoDB
 from app.schema import Mentee, MenteeUpdate
 
 Router = APIRouter(
-    prefix="/mentee",
     tags=["Mentee Operations"],
 )
 

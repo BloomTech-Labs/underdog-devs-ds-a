@@ -4,7 +4,6 @@ from app.schema import FeedbackOptions, FeedbackUpdate
 from app.sentiment import sentiment_rank
 
 Router = APIRouter(
-    prefix="/feedback",
     tags=["Feedback Operations"],
 )
 

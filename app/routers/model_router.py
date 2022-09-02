@@ -4,7 +4,6 @@ from app.schema import Feedback
 from app.sentiment import sentiment_rank
 
 Router = APIRouter(
-    prefix="/model",
     tags=["Model Operations"],
 )
 Router.db = MongoDB()

@@ -7,7 +7,6 @@ from app.data import MongoDB
 from app.schema import Mentor, MentorUpdate
 
 Router = APIRouter(
-    prefix="/mentor",
     tags=["Mentor Operations"],
 )
 

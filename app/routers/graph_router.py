@@ -4,7 +4,6 @@ from app.data import MongoDB
 from app.graphs import stacked_bar_chart, df_tech_stack_by_role
 
 Router = APIRouter(
-    prefix="/graph",
     tags=["Graph Operations"],
 )
 Router.db = MongoDB()
