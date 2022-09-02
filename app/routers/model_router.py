@@ -1,10 +1,21 @@
-from app.routers.data_router import Router
 from fastapi import APIRouter
+from app.data import MongoDB
+from app.schema import Feedback
+from app.sentiment import sentiment_rank
 
 Router = APIRouter(
     prefix="/model",
-    tags=["Model Operations"]
+    tags=["Model Operations"],
 )
+Router.db = MongoDB()
+
+
+@Router.post("/create/feedback")
+async def create_feedback(data: Feedback):
+    data_dict = data.dict(exclude_none=True)
+    data_dict["vader_score"] = sentiment_rank(data_dict["text"])
+    return {"result": Router.db.create("Feedback", data_dict)}
+
 
 @Router.post("/match/{profile_id}")
 async def match(profile_id: str, n_matches: int):
