@@ -45,10 +45,9 @@ class MongoDB:
 
     def update(self, collection: str, query: Dict, update_data: Dict) -> Tuple:
         """ Update existing documents in collection matching given data """
-        self.collection(collection).update_many(
+        return self.collection(collection).update_many(
             query, {"$set": self.timestamp(update_data, "updated_at")}
-        )
-        return query, update_data
+        ).acknowledged
 
     def delete(self, collection: str, query: Dict):
         """ Delete existing documents in collection matching given data """
