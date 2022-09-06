@@ -50,7 +50,7 @@ class MongoDB:
         """ Delete existing documents in collection matching given data """
         self.collection(collection).delete_many(query)
 
-    def count(self, collection: str, query: Optional[Dict]) -> int:
+    def count(self, collection: str, query: Optional[Dict] = None) -> int:
         """ Returns the number of documents in collection that matches query """
         return self.collection(collection).count_documents(query or {})
 

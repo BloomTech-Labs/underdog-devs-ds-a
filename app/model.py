@@ -7,7 +7,7 @@ class MatcherSortSearch:
     """ Callable matching class implementing sorted search algorithm """
     db = MongoDB()
 
-    def __call__(self,  profile_id: str, n_matches: int) -> List[str]:
+    def __call__(self, profile_id: str, n_matches: int) -> List[str]:
         """ Return a list of profile_id for matched mentors """
         mentee = self.db.first("Mentees", {"profile_id": profile_id})
 
