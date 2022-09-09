@@ -1,8 +1,9 @@
 from datetime import datetime
 import json
 from os import getenv
-from typing import Optional, List, Dict, Iterator, Tuple
+from typing import Optional, List, Dict, Iterable, Tuple
 
+import certifi
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
@@ -11,7 +12,7 @@ class MongoDB:
     load_dotenv()
 
     def database(self):
-        return MongoClient(getenv("MONGO_URL"))["UnderdogDevs"]
+        return MongoClient(getenv("MONGO_URL"), tlsCAFile=certifi.where())["UnderdogDevs"]
 
     def collection(self, collection):
         return self.database()[collection]
@@ -22,9 +23,9 @@ class MongoDB:
             collection,
         ).insert_one(self.timestamp(data)).acknowledged
 
-    def create_many(self, collection: str, data: Iterator[Dict]):
+    def create_many(self, collection: str, data: Iterable[Dict]):
         """ Insert multiple documents into a collection """
-        self.collection(collection).insert_many(map(dict, data))
+        self.collection(collection).insert_many(map(self.timestamp, data))
 
     def first(self, collection: str, query: Optional[Dict] = None) -> Dict:
         """ Return first document in collection """
@@ -41,10 +42,9 @@ class MongoDB:
 
     def update(self, collection: str, query: Dict, update_data: Dict) -> Tuple:
         """ Update existing documents in collection matching given data """
-        self.collection(collection).update_many(
+        return self.collection(collection).update_many(
             query, {"$set": self.timestamp(update_data, "updated_at")}
-        )
-        return query, update_data
+        ).acknowledged
 
     def delete(self, collection: str, query: Dict):
         """ Delete existing documents in collection matching given data """
