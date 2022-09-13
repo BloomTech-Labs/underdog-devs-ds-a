@@ -113,13 +113,13 @@ async def update_mentees(profile_id: str, update_data: MenteeUpdate):
 
 
 @API.post("/match/{profile_id}")
-async def match(profile_id: str, n_matches: int):
+async def match(profile_id: str, n_matches: Optional[int] = None):
     """Returns n_matches mentor profiles for mentee profile_id
     <pre><code>
     @param profile_id: str
-    @param n_matches: int
+    @param n_matches: Optional[int] = None
     @return JSON[Array[profile_id]]</pre></code>"""
-    return {"result": API.matcher(n_matches, profile_id)}
+    return {"result": API.matcher(profile_id, n_matches)}
 
 
 @API.post("/read/feedback")
