@@ -43,3 +43,5 @@ def df_tech_stack_by_role(database: MongoDB) -> DataFrame:
     mentors = mentors.explode(column="tech_stack")
     mentors["role"] = "Mentor"
     return pandas.concat([mentees, mentors])
+
+#we need to add descriptive paragraphs for our graphs (working on it in BL-962)
