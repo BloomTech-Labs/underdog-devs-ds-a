@@ -3,7 +3,12 @@ from datetime import datetime
 from pydantic import BaseModel, constr, Extra, EmailStr
 
 
-class Mentor(BaseModel):
+class ExtraForbid(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+
+class Mentor(ExtraForbid):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
@@ -24,11 +29,8 @@ class Mentor(BaseModel):
     is_active: bool
     accepting_new_mentees: bool
 
-    class Config:
-        extra = Extra.forbid
 
-
-class MentorUpdate(BaseModel):
+class MentorUpdate(ExtraForbid):
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -48,11 +50,8 @@ class MentorUpdate(BaseModel):
     is_active: Optional[bool]
     accepting_new_mentees: Optional[bool]
 
-    class Config:
-        extra = Extra.forbid
 
-
-class Mentee(BaseModel):
+class Mentee(ExtraForbid):
     profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
@@ -73,11 +72,8 @@ class Mentee(BaseModel):
     is_active: bool
     in_project_underdog: bool
 
-    class Config:
-        extra = Extra.forbid
 
-
-class MenteeUpdate(BaseModel):
+class MenteeUpdate(ExtraForbid):
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -91,17 +87,14 @@ class MenteeUpdate(BaseModel):
     tech_stack: Optional[constr(max_length=255)]
     job_help: Optional[bool]
     pair_programming: Optional[bool]
-    referred_by: Optional[constr(max_length=255)] 
+    referred_by: Optional[constr(max_length=255)]
     other_info: Optional[constr(max_length=2500)]
     validate_status: Optional[Literal['approved', 'rejected', 'pending']]
     is_active: Optional[bool]
     in_project_underdog: Optional[bool]
 
-    class Config:
-        extra = Extra.forbid
 
-
-class Meeting(BaseModel):
+class Meeting(ExtraForbid):
     meeting_id: constr(max_length=255)
     meeting_topic: constr(max_length=255)
     meeting_start_time: datetime
@@ -113,11 +106,8 @@ class Meeting(BaseModel):
     mentor_meeting_notes: Optional[constr(max_length=2000)]
     mentee_meeting_notes: Optional[constr(max_length=2000)]
 
-    class Config:
-        extra = Extra.forbid
 
-
-class MeetingUpdate(BaseModel):
+class MeetingUpdate(ExtraForbid):
     meeting_topic: Optional[constr(max_length=255)]
     meeting_start_time: Optional[datetime]
     meeting_end_time: Optional[datetime]
@@ -128,33 +118,21 @@ class MeetingUpdate(BaseModel):
     mentor_meeting_notes: Optional[constr(max_length=2000)]
     mentee_meeting_notes: Optional[constr(max_length=2000)]
 
-    class Config:
-        extra = Extra.forbid
 
-
-class Feedback(BaseModel):
+class Feedback(ExtraForbid):
     text: constr(max_length=800)
     ticket_id: constr(max_length=16)
     mentee_id: constr(max_length=255)
     mentor_id: constr(max_length=255)
 
-    class Config:
-        extra = Extra.forbid
 
-
-class FeedbackUpdate(BaseModel):
+class FeedbackUpdate(ExtraForbid):
     text: Optional[constr(max_length=255)]
     mentee_id: Optional[constr(max_length=255)]
     mentor_id: Optional[constr(max_length=255)]
 
-    class Config:
-        extra = Extra.forbid
 
-
-class FeedbackOptions(BaseModel):
+class FeedbackOptions(ExtraForbid):
     ticket_id: Optional[constr(max_length=16)]
     mentee_id: Optional[constr(max_length=255)]
     mentor_id: Optional[constr(max_length=255)]
-
-    class Config:
-        extra = Extra.forbid
