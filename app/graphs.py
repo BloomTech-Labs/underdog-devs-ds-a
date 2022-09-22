@@ -46,5 +46,3 @@ def df_tech_stack_by_role(database: MongoDB) -> DataFrame:
                       "Each bar represents a different area of Tech Stack as well" \
                       "as the ratio of Mentor availability to Mentee interest."
     return pandas.concat([mentees, mentors], desc_para_final)
-
-#we need to add descriptive paragraphs for our graphs (working on it in BL-962)
