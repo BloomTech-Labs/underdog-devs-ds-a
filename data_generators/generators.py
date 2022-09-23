@@ -1,11 +1,46 @@
 import os
+import string
+from datetime import datetime, timedelta
+from itertools import chain
+from math import ceil, floor
 from typing import List, Any
-from random import sample, triangular
+from random import sample, triangular, random, choice, choices, shuffle, randint
 
 import pandas as pd
 
-from data_generators.data_options import *
 from app.sentiment import sentiment_rank
+from data_generators.data_options import male_first_names, female_first_names, last_names, states, cities, companies, \
+    positions, tech_stack, heard_about_us, convictions, topics
+
+
+def percent_true(percent: int) -> bool:
+    return 100 * random() < percent
+
+
+def random_first_name(percent_male: int):
+    if percent_true(percent_male):
+        return choice(male_first_names)
+    else:
+        return choice(female_first_names)
+
+
+def generate_uuid(n_len: int) -> str:
+    # ToDo: Replace with uuid.uuid_4()
+    n1 = ceil(n_len / 2)
+    n2 = floor(n_len / 2)
+    prefix = choices(string.ascii_letters, k=n1)
+    suffix = map(str, choices(range(0, 9), k=n2))
+    uuid_list = list(chain(prefix, suffix))
+    shuffle(uuid_list)
+    uuid = "".join(uuid_list)
+    return uuid
+
+
+def random_datetime(start: datetime, end: datetime) -> datetime:
+    """ Returns a random datetime between start and end """
+    delta = end - start
+    random_second = randint(0, int(delta.total_seconds()))
+    return start + timedelta(seconds=random_second)
 
 
 class Printable:
