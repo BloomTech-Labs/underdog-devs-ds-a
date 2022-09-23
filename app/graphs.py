@@ -43,3 +43,9 @@ def df_tech_stack_by_role(database: MongoDB) -> DataFrame:
     mentors = mentors.explode(column="tech_stack")
     mentors["role"] = "Mentor"
     return pandas.concat([mentees, mentors])
+
+
+if __name__ == '__main__':
+    db = MongoDB()
+    test = df_tech_stack_by_role(db)
+    print(type(test))
