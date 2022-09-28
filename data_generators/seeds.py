@@ -1,4 +1,6 @@
+from typing import Dict
 from app.data import MongoDB
+from app.sentiment import sentiment_rank
 from data_generators.generators import *
 from tests.schema_validation import validate_schemas
 
@@ -34,11 +36,14 @@ class SeedMongo:
             self.db.delete("Feedback", {})
         else:
             self.db.make_field_unique("Feedback", "ticket_id")
-        feedback = (vars(RandomMenteeFeedback(
+        raw_feedback = (vars(RandomMenteeFeedback(
             choice(mentees)["profile_id"],
             choice(mentors)["profile_id"],
         )) for _ in range(count))
-        self.db.create_many("Feedback", feedback)
+
+        sentiment_feedback = map(run_sentiment, raw_feedback)
+
+        self.db.create_many("Feedback", sentiment_feedback)
 
     def meetings(self, fresh_db: bool, count: int):
         mentees = self.db.read("Mentees")
@@ -58,6 +63,11 @@ class SeedMongo:
         self.mentors(fresh, 20)
         self.feedback(fresh, 50)
         self.meetings(fresh, 150)
+
+
+def run_sentiment(feedback: Dict) -> Dict:
+    feedback.update({"sentiment": sentiment_rank(feedback["text"])})
+    return feedback
 
 
 if __name__ == '__main__':
