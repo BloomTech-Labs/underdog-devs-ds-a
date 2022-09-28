@@ -8,7 +8,6 @@ from random import sample, triangular, random, choice, choices, shuffle, randint
 
 import pandas as pd
 
-from app.sentiment import sentiment_rank
 from data_generators.data_options import male_first_names, female_first_names, last_names, states, cities, companies, \
     positions, tech_stack, heard_about_us, convictions, topics
 
@@ -128,8 +127,7 @@ class RandomMenteeFeedback(Printable):
         self.ticket_id = generate_uuid(16)
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
-        self.text = choice(self.feedback["Review"])
-        self.sentiment = sentiment_rank(self.text)
+        self.text = choice(self.feedback["Review"])[:2000]
 
 
 class RandomMeeting(Printable):
