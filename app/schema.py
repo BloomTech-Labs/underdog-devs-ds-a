@@ -120,7 +120,7 @@ class MeetingUpdate(ExtraForbid):
 
 
 class Feedback(ExtraForbid):
-    text: constr(max_length=800)
+    text: constr(max_length=2000)
     ticket_id: constr(max_length=36)
     mentee_id: constr(max_length=36)
     mentor_id: constr(max_length=36)
