@@ -9,7 +9,7 @@ class ExtraForbid(BaseModel):
 
 
 class Mentor(ExtraForbid):
-    profile_id: constr(max_length=36)
+    profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -52,7 +52,7 @@ class MentorUpdate(ExtraForbid):
 
 
 class Mentee(ExtraForbid):
-    profile_id: constr(max_length=36)
+    profile_id: constr(max_length=255)
     first_name: constr(max_length=255)
     last_name: constr(max_length=255)
     email: EmailStr
@@ -95,12 +95,12 @@ class MenteeUpdate(ExtraForbid):
 
 
 class Meeting(ExtraForbid):
-    meeting_id: constr(max_length=36)
+    meeting_id: constr(max_length=255)
     meeting_topic: constr(max_length=255)
     meeting_start_time: datetime
     meeting_end_time: datetime
-    mentor_id: constr(max_length=36)
-    mentee_id: constr(max_length=36)
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
     admin_meeting_notes: Optional[constr(max_length=2000)]
     meeting_missed_by_mentee: Optional[Literal['Missed', 'Attended']]
     mentor_meeting_notes: Optional[constr(max_length=2000)]
@@ -111,8 +111,8 @@ class MeetingUpdate(ExtraForbid):
     meeting_topic: Optional[constr(max_length=255)]
     meeting_start_time: Optional[datetime]
     meeting_end_time: Optional[datetime]
-    mentor_id: constr(max_length=36)
-    mentee_id: constr(max_length=36)
+    mentor_id: constr(max_length=255)
+    mentee_id: constr(max_length=255)
     admin_meeting_notes: Optional[constr(max_length=2000)]
     meeting_missed_by_mentee: Optional[Literal['Missed', 'Attended']]
     mentor_meeting_notes: Optional[constr(max_length=2000)]
@@ -120,19 +120,19 @@ class MeetingUpdate(ExtraForbid):
 
 
 class Feedback(ExtraForbid):
-    text: constr(max_length=800)
-    ticket_id: constr(max_length=36)
-    mentee_id: constr(max_length=36)
-    mentor_id: constr(max_length=36)
+    text: constr(max_length=2000)
+    ticket_id: constr(max_length=16)
+    mentee_id: constr(max_length=255)
+    mentor_id: constr(max_length=255)
 
 
 class FeedbackUpdate(ExtraForbid):
     text: Optional[constr(max_length=255)]
-    mentee_id: Optional[constr(max_length=36)]
-    mentor_id: Optional[constr(max_length=36)]
+    mentee_id: Optional[constr(max_length=255)]
+    mentor_id: Optional[constr(max_length=255)]
 
 
 class FeedbackOptions(ExtraForbid):
-    ticket_id: Optional[constr(max_length=36)]
-    mentee_id: Optional[constr(max_length=36)]
-    mentor_id: Optional[constr(max_length=36)]
+    ticket_id: Optional[constr(max_length=16)]
+    mentee_id: Optional[constr(max_length=255)]
+    mentor_id: Optional[constr(max_length=255)]
