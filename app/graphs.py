@@ -65,6 +65,11 @@ def meeting_chart(df, column_1, column_2):
     )
 
 
+def df_meeting_topics(database: MongoDB) -> DataFrame:
+    meeting = DataFrame(database.read("Meetings"))
+    return meeting
+
+
 def topic_chart(df, column_1, column_2):
     return Chart(
         df,
