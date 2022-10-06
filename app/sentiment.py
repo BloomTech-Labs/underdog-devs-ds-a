@@ -1,3 +1,4 @@
+from typing import Dict
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 vader = SentimentIntensityAnalyzer()
@@ -15,3 +16,8 @@ def sentiment_rank(text: str) -> str:
         return "Negative"
     else:
         return "Neutral"
+
+
+def apply_sentiment(feedback: Dict) -> Dict:
+    feedback.update({"sentiment": sentiment_rank(feedback["text"])})
+    return feedback
