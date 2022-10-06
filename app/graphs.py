@@ -90,6 +90,11 @@ def topic_chart(df, column_1, column_2):
     )
 
 
+def df_meeting_topics(database: MongoDB) -> DataFrame:
+    meeting = DataFrame(database.read("Meetings"))
+    return meeting
+
+
 def activity_chart(df, column_1, column_2):
     return Chart(
         df,
@@ -108,6 +113,30 @@ def activity_chart(df, column_1, column_2):
         title={"fontSize": 20, "offset": 24},
         view={"stroke": "#FFF"},
     )
+
+
+def df_is_active(database: MongoDB) -> DataFrame:
+    mentees = DataFrame(database.read("Mentees"))
+    mentees["role"] = "Mentee"
+    mentors = DataFrame(database.read("Mentors"))
+    mentors["role"] = "Mentor"
+    return pandas.concat([mentees, mentors])
+
+
+# def df_tech_stack_by_role(database: MongoDB) -> DataFrame:
+#     mentees = DataFrame(database.projection("Mentees", {
+#         "is_active": True,
+#         "validate_status": "approved",
+#     }, {"tech_stack": True}))
+#     mentees["role"] = "Mentee"
+#     mentors = DataFrame(database.projection("Mentors", {
+#         "accepting_new_mentees": True,
+#         "is_active": True,
+#         "validate_status": "approved",
+#     }, {"tech_stack": True}))
+#     mentors = mentors.explode(column="tech_stack")
+#     mentors["role"] = "Mentor"
+#     return pandas.concat([mentees, mentors])
 
 
 if __name__ == '__main__':
