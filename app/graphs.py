@@ -108,3 +108,9 @@ def activity_chart(df, column_1, column_2):
         title={"fontSize": 20, "offset": 24},
         view={"stroke": "#FFF"},
     )
+
+
+if __name__ == '__main__':
+    db = MongoDB()
+    test = df_tech_stack_by_role(db)
+    print(type(test))

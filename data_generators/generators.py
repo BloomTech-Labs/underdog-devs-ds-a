@@ -1,11 +1,31 @@
 import os
+from uuid import uuid4
+from datetime import datetime, timedelta
 from typing import List, Any
-from random import sample, triangular
+from random import sample, triangular, random, choice, randint
 
 import pandas as pd
 
-from data_generators.data_options import *
-from app.sentiment import sentiment_rank
+from data_generators.data_options import male_first_names, female_first_names, last_names, states, cities, companies, \
+    positions, tech_stack, heard_about_us, convictions, topics
+
+
+def percent_true(percent: int) -> bool:
+    return 100 * random() < percent
+
+
+def random_first_name(percent_male: int):
+    if percent_true(percent_male):
+        return choice(male_first_names)
+    else:
+        return choice(female_first_names)
+
+
+def random_datetime(start: datetime, end: datetime) -> datetime:
+    """ Returns a random datetime between start and end """
+    delta = end - start
+    random_second = randint(0, int(delta.total_seconds()))
+    return start + timedelta(seconds=random_second)
 
 
 class Printable:
@@ -35,7 +55,7 @@ class RandomMentor(Printable):
     """Generates Mentor record"""
 
     def __init__(self):
-        self.profile_id = generate_uuid(16)
+        self.profile_id = str(uuid4())
         self.first_name = random_first_name(percent_male=75)
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"
@@ -63,7 +83,7 @@ class RandomMentee(Printable):
     """Generates Mentee record"""
 
     def __init__(self):
-        self.profile_id = generate_uuid(16)
+        self.profile_id = str(uuid4())
         self.first_name = random_first_name(percent_male=75)
         self.last_name = choice(last_names)
         self.email = f"{self.first_name}.{self.last_name}@gmail.com"
@@ -90,18 +110,17 @@ class RandomMenteeFeedback(Printable):
     feedback = pd.read_csv(file_path, index_col="Id")
 
     def __init__(self, mentee_id, mentor_id):
-        self.ticket_id = generate_uuid(16)
+        self.ticket_id = str(uuid4())
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
-        self.text = choice(self.feedback["Review"])
-        self.sentiment = sentiment_rank(self.text)
+        self.text = choice(self.feedback["Review"])[:2000]
 
 
 class RandomMeeting(Printable):
     """Generates Meeting record"""
 
     def __init__(self, mentee_id, mentor_id):
-        self.meeting_id = generate_uuid(16)
+        self.meeting_id = str(uuid4())
         self.meeting_topic = choice(topics)
         self.meeting_start_time = random_datetime(
             datetime(2022, 1, 1),

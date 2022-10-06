@@ -1,7 +1,7 @@
+from uuid import uuid4
 from app.schema import Mentor, Mentee, Meeting, Feedback
 from data_generators.generators import RandomMentor, RandomMentee
 from data_generators.generators import RandomMeeting, RandomMenteeFeedback
-from data_generators.data_options import generate_uuid
 
 
 def validate_mentor():
@@ -15,8 +15,8 @@ def validate_mentee():
 def validate_meeting():
     assert all(
         Meeting(**vars(RandomMeeting(
-            generate_uuid(16),
-            generate_uuid(16),
+            str(uuid4()),
+            str(uuid4()),
         )))
         for _ in range(1000)
     )
@@ -25,8 +25,8 @@ def validate_meeting():
 def validate_feedback():
     assert all(
         Feedback(**vars(RandomMenteeFeedback(
-            generate_uuid(16),
-            generate_uuid(16),
+            str(uuid4()),
+            str(uuid4()),
         )))
         for _ in range(1000)
     )
