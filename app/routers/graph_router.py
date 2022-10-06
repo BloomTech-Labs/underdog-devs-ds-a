@@ -31,7 +31,7 @@ async def meeting_topics():
     """Meeting subjects, stacked bar chart
     <pre><code>
     @return JSON{Altair.Chart}</pre></code>"""
-    description = "This graph shows something."
+    description = "This graph the different meeting topics between mentors and mentees."
     return {
         "graph": meeting_chart(
             df_meeting_topics(Router.db),
