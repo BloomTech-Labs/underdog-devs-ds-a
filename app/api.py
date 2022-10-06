@@ -1,15 +1,13 @@
 import os
 
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-
 from app.data import MongoDB
 from app.routers import (mentor_router,
                          mentee_router,
                          feedback_router,
                          graph_router,
-                         model_router,
-                         match_router)
+                         model_router)
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 API = FastAPI(
     title='Underdog Devs DS API',
@@ -46,5 +44,5 @@ async def collections():
     return {"result": API.db.get_database_info()}
 
 
-for router in (mentor_router, mentee_router, feedback_router, graph_router, model_router, match_router):
+for router in (mentor_router, mentee_router, feedback_router, graph_router, model_router):
     API.include_router(router.Router)
