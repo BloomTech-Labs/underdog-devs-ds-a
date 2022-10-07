@@ -65,7 +65,7 @@ class MongoDB:
     def upsert_to_set_array(self, collection: str, query: Dict, update_data: Dict) -> bool:
         """ Creates new document or adds only new values to document with specified array field"""
         return self.collection(collection).update_one(
-            query, {"addToSet": update_data,
+            query, {"$addToSet": update_data,
                     "$set": self.timestamp({}, "updated_at"),
                     "$setOnInsert": self.timestamp({})},
             upsert=True).acknowledged

@@ -136,3 +136,13 @@ class FeedbackOptions(ExtraForbid):
     ticket_id: Optional[constr(max_length=36)]
     mentee_id: Optional[constr(max_length=36)]
     mentor_id: Optional[constr(max_length=36)]
+
+
+class MatchUpdate(ExtraForbid):
+    mentor_id: constr(max_length=36)
+    mentee_id: constr(max_length=36)
+
+
+class MatchQuery(ExtraForbid):
+    user_id: constr(max_length=36)
+    user_type: Literal['mentor', 'mentee']
