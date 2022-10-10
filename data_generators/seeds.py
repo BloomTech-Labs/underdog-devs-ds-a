@@ -1,6 +1,5 @@
-from typing import Dict
 from app.data import MongoDB
-from app.sentiment import sentiment_rank
+from app.sentiment import apply_sentiment
 from data_generators.generators import *
 from tests.schema_validation import validate_schemas
 
@@ -41,7 +40,7 @@ class SeedMongo:
             choice(mentors)["profile_id"],
         )) for _ in range(count))
 
-        sentiment_feedback = map(run_sentiment, raw_feedback)
+        sentiment_feedback = map(apply_sentiment, raw_feedback)
 
         self.db.create_many("Feedback", sentiment_feedback)
 
@@ -63,11 +62,6 @@ class SeedMongo:
         self.mentors(fresh, 20)
         self.feedback(fresh, 50)
         self.meetings(fresh, 150)
-
-
-def run_sentiment(feedback: Dict) -> Dict:
-    feedback.update({"sentiment": sentiment_rank(feedback["text"])})
-    return feedback
 
 
 if __name__ == '__main__':
