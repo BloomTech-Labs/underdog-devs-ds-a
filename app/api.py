@@ -13,7 +13,7 @@ from app.routers import (mentor_router,
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.50.2",
+    version="0.51.2",
     docs_url='/',
 )
 

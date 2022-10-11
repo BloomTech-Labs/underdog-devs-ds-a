@@ -49,13 +49,6 @@ class MongoDB:
             query, {"$set": self.timestamp(update_data, "updated_at")}
         ).acknowledged
 
-    def upsert_one(self, collection: str, query: Dict, update_data: Dict) -> bool:
-        """ Update single document or add document matching query if none exist"""
-        return self.collection(collection).update_one(
-            query, {"$set": self.timestamp(update_data, "updated_at"),
-                    "$setOnInsert": self.timestamp({})},
-            upsert=True).acknowledged
-
     def delete_from_array(self, collection: str, query: Dict, update_data: Dict) -> bool:
         """ Removes specified element from specified array field in queried document"""
         return self.collection(collection).update_one(
