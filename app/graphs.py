@@ -45,7 +45,74 @@ def df_tech_stack_by_role(database: MongoDB) -> DataFrame:
     return pandas.concat([mentees, mentors])
 
 
-if __name__ == '__main__':
-    db = MongoDB()
-    test = df_tech_stack_by_role(db)
-    print(type(test))
+def meeting_chart(df, column_1, column_2):
+    return Chart(
+        df,
+        title=f"{title_fix(column_1)}",
+    ).mark_bar().encode(
+        x=X(column_1, title=title_fix(column_1), sort="-y"),
+        y=Y(f"count({column_1})"),
+        color=Color(column_1, title=title_fix(f"Legend")),
+        tooltip=Tooltip([column_2, column_1, f"count({column_1})"])
+    ).properties(
+        width=480,
+        height=400,
+        padding=24,
+    ).configure(
+        legend={"padding": 24},
+        title={"fontSize": 20, "offset": 24},
+        view={"stroke": "#FFF"},
+    )
+
+
+def topic_chart(df, column_1, column_2):
+    return Chart(
+        df,
+        title=f"{title_fix(column_1)}",
+    ).mark_bar().encode(
+        x=X(column_1, title=title_fix(column_1), sort="-y"),
+        y=Y(f"count({column_1})"),
+        color=Color(column_2, title='Count'),
+        tooltip=Tooltip([column_2, column_1, f"count({column_1})"])
+    ).properties(
+        width=480,
+        height=400,
+        padding=24,
+    ).configure(
+        legend={"padding": 24},
+        title={"fontSize": 20, "offset": 24},
+        view={"stroke": "#FFF"},
+    )
+
+
+def df_meeting(database: MongoDB) -> DataFrame:
+    meeting = DataFrame(database.read("Meetings"))
+    return meeting
+
+
+def activity_chart(df, column_1, column_2):
+    return Chart(
+        df,
+        title=f"{title_fix(column_1)}",
+    ).mark_bar().encode(
+        x=X(column_1, title=title_fix(column_1), sort="-y"),
+        y=Y(f"count({column_1})"),
+        color=Color(column_2, title=title_fix(column_2)),
+        tooltip=Tooltip([column_2, column_1, f"count({column_1})"])
+    ).properties(
+        width=480,
+        height=400,
+        padding=24,
+    ).configure(
+        legend={"padding": 24},
+        title={"fontSize": 20, "offset": 24},
+        view={"stroke": "#FFF"},
+    )
+
+
+def df_mentor_mentee(database: MongoDB) -> DataFrame:
+    mentees = DataFrame(database.read("Mentees"))
+    mentees["role"] = "Mentee"
+    mentors = DataFrame(database.read("Mentors"))
+    mentors["role"] = "Mentor"
+    return pandas.concat([mentees, mentors])

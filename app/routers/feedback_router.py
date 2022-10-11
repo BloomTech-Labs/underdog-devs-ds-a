@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from app.data import MongoDB
 from app.schema import FeedbackOptions, FeedbackUpdate, Feedback
-from app.sentiment import sentiment_rank
+from app.sentiment import apply_sentiment
 
 Router = APIRouter(
     tags=["Feedback Operations"],
@@ -17,7 +17,7 @@ async def create_feedback(data: Feedback):
     @param data: Feedback
     @return JSON[Boolean] - Indicates success or failure of feedback creation</pre></code>"""
     data_dict = data.dict(exclude_none=True)
-    data_dict["vader_score"] = sentiment_rank(data_dict["text"])
+    data_dict = apply_sentiment(data_dict)
     return {"result": Router.db.create("Feedback", data_dict)}
 
 
@@ -38,7 +38,7 @@ async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
     @param update_data: FeedbackUpdate
     @return JSON[Boolean] - indicates success or failure of update</pre></code>"""
     data_dict = update_data.dict(exclude_none=True)
-    data_dict["vader_score"] = sentiment_rank(data_dict["text"])
+    data_dict = apply_sentiment(data_dict)
     return {"result": Router.db.update("Feedback", {"ticket_id": ticket_id}, data_dict)}
 
 
