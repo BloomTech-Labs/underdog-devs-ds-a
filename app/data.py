@@ -1,11 +1,11 @@
-from datetime import datetime
 import json
+from datetime import datetime
 from os import getenv
 from typing import Optional, List, Dict, Iterable, Tuple
 
 import certifi
-from pymongo import MongoClient
 from dotenv import load_dotenv
+from pymongo import MongoClient
 
 
 class MongoDB:
@@ -48,6 +48,20 @@ class MongoDB:
         return self.collection(collection).update_many(
             query, {"$set": self.timestamp(update_data, "updated_at")}
         ).acknowledged
+
+    def delete_from_array(self, collection: str, query: Dict, update_data: Dict) -> bool:
+        """ Removes specified element from specified array field in queried document"""
+        return self.collection(collection).update_one(
+            query, {"$pull": update_data,
+                    "$set": self.timestamp({}, "updated_at")}).acknowledged
+
+    def upsert_to_set_array(self, collection: str, query: Dict, update_data: Dict) -> bool:
+        """ Creates new document or adds only new values to document with specified array field"""
+        return self.collection(collection).update_one(
+            query, {"$addToSet": update_data,
+                    "$set": self.timestamp({}, "updated_at"),
+                    "$setOnInsert": self.timestamp({})},
+            upsert=True).acknowledged
 
     def delete(self, collection: str, query: Dict):
         """ Delete existing documents in collection matching given data """
