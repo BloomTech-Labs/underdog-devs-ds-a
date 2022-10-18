@@ -2,7 +2,7 @@
 
 ---
 ### Organization
-- Each module to be tested should have its tests in a separate file in the  `/tests/unit_tests` folder named `test_<app subfolder name><module name>.py` (eg. `/tests/unit_tests/test_routers_data.py`)
+- Each module to be tested should have its tests in a separate file in the  `/tests/unit_tests` folder named `test_<app subfolder name><module name>.py` (eg. `/tests/unit_tests/test_app_data.py`)
 - For consistency, each test suite class should be named `Test<ClassName>` or `Test<FunctionName>` and each test method should be named `test_<method>_<details>` or `test_<function>_<details>` respectively, depending on the structure of the module being tested.
 - For ease of later reference, try to keep test suites in roughly the same order as the functions they test appear in the original files.
 ---
