@@ -1,2 +1,2 @@
 cd ../..
-python -m unittest -v
+python -m unittest discover -v
