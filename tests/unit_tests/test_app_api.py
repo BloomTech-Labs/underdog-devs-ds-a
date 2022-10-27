@@ -1,6 +1,6 @@
 import unittest
 
-from app.api import *
+from app.api import API, FastAPI
 
 
 class TestAPISetup(unittest.TestCase):
@@ -14,8 +14,8 @@ class TestAPISetup(unittest.TestCase):
         self.assertIsNotNone(API.db)
         self.assertIn("version", attr.keys())
         self.assertIn("title", attr.keys())
-        self.assertIsNotNone(API.router.routes)
-        self.assertIsNotNone(attr['user_middleware'])
+        self.assertTrue(API.router.routes)
+        self.assertTrue(attr['user_middleware'])
 
 
 if __name__ == '__main__':

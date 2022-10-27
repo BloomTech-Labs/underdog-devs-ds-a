@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
-from app.model import *
+from app.model import MatcherSortSearch
 
 
 class TestMatcherSortSearch(unittest.TestCase):
@@ -23,20 +23,17 @@ class TestMatcherSortSearch(unittest.TestCase):
         self.test_matcher.db.read = Mock()
         self.test_matcher.db.read.return_value = self.test_mentors
 
-    def test_matcher_null_fields(self):
-        self.assertIsNotNone(self.test_matcher(self.test_mentee["profile_id"]))
+    def test_matcher_output(self):
+        self.assertTrue(self.test_matcher(self.test_mentee["profile_id"]))
 
-        bad_mentors = self.test_mentors.copy()
-        for mentor in bad_mentors:
+    def test_matcher_null_mentor_field(self):
+        for mentor in self.test_mentors:
             mentor.pop("pair_programming")
-        self.test_matcher.db.read.return_value = bad_mentors
         with self.assertRaises(KeyError):
             self.test_matcher(self.test_mentee["profile_id"])
 
-        bad_mentee = self.test_mentee.copy()
-        bad_mentee.pop("job_help")
-        self.test_matcher.db.first.return_value = bad_mentee
-        self.test_matcher.db.read.return_value = self.test_mentors
+    def test_matcher_null_mentee_field(self):
+        self.test_mentee.pop("job_help")
         with self.assertRaises(KeyError):
             self.test_matcher(self.test_mentee["profile_id"])
 

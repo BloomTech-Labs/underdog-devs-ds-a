@@ -1,11 +1,12 @@
 import time
 import unittest
+from datetime import datetime
 from unittest.mock import patch, Mock
 
 import pymongo.collection as collection
 import pymongo.results as results
 
-from app.data import *
+from app.data import MongoDB
 
 
 class TestMongoDBQueries(unittest.TestCase):
@@ -15,6 +16,7 @@ class TestMongoDBQueries(unittest.TestCase):
         """Initialize environment for test suite"""
         cls.test_collection = "Test_Collection"
         cls.test_entry = {"test": "something"}
+        cls.test_doc_id = "test_id"
 
         MongoDB.collection = Mock()
         MongoDB.collection.return_value = collection.Collection
@@ -25,37 +27,37 @@ class TestMongoDBQueries(unittest.TestCase):
 
     @patch('pymongo.collection.Collection.insert_one')
     def test_create_response(self, mock_response):
-        mock_response.return_value = results.InsertOneResult(None, acknowledged=True)
+        mock_response.return_value = results.InsertOneResult(self.test_doc_id, acknowledged=True)
         response = self.test_db.create(self.test_collection, self.test_entry)
         self.assertTrue(response)
-        mock_response.return_value = results.InsertOneResult(None, acknowledged=False)
+        mock_response.return_value = results.InsertOneResult(self.test_doc_id, acknowledged=False)
         response = self.test_db.create(self.test_collection, self.test_entry)
         self.assertFalse(response)
 
     @patch('pymongo.collection.Collection.update_many')
     def test_update_response(self, mock_response):
-        mock_response.return_value = results.UpdateResult(None, acknowledged=True)
+        mock_response.return_value = results.UpdateResult(self.test_doc_id, acknowledged=True)
         response = self.test_db.update(self.test_collection, self.test_entry, self.test_entry)
         self.assertTrue(response)
-        mock_response.return_value = results.UpdateResult(None, acknowledged=False)
+        mock_response.return_value = results.UpdateResult(self.test_doc_id, acknowledged=False)
         response = self.test_db.update(self.test_collection, self.test_entry, self.test_entry)
         self.assertFalse(response)
 
     @patch('pymongo.collection.Collection.update_one')
     def test_delete_from_array_response(self, mock_response):
-        mock_response.return_value = results.UpdateResult(None, acknowledged=True)
+        mock_response.return_value = results.UpdateResult(self.test_doc_id, acknowledged=True)
         response = self.test_db.delete_from_array(self.test_collection, self.test_entry, self.test_entry)
         self.assertTrue(response)
-        mock_response.return_value = results.UpdateResult(None, acknowledged=False)
+        mock_response.return_value = results.UpdateResult(self.test_doc_id, acknowledged=False)
         response = self.test_db.delete_from_array(self.test_collection, self.test_entry, self.test_entry)
         self.assertFalse(response)
 
     @patch('pymongo.collection.Collection.update_one')
     def test_upsert_to_set_array_response(self, mock_response):
-        mock_response.return_value = results.UpdateResult(None, acknowledged=True)
+        mock_response.return_value = results.UpdateResult(self.test_doc_id, acknowledged=True)
         response = self.test_db.upsert_to_set_array(self.test_collection, self.test_entry, self.test_entry)
         self.assertTrue(response)
-        mock_response.return_value = results.UpdateResult(None, acknowledged=False)
+        mock_response.return_value = results.UpdateResult(self.test_doc_id, acknowledged=False)
         response = self.test_db.upsert_to_set_array(self.test_collection, self.test_entry, self.test_entry)
         self.assertFalse(response)
 
