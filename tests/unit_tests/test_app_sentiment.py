@@ -25,7 +25,9 @@ class TestSentiment(unittest.TestCase):
         self.assertEqual(sentiment_rank(self.text_neutral), "Neutral")
 
     def test_apply_sentiment_update(self):
-        with self.assertRaises(KeyError): apply_sentiment({})
+        with self.assertRaises(KeyError):
+            apply_sentiment({})
+
         self.assertIn("sentiment", apply_sentiment({"text": self.text_neutral}).keys())
 
 

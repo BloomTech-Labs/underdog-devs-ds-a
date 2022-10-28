@@ -1,15 +1,12 @@
 import unittest
 
-from app.api import API, FastAPI
+from app.api import API
 
 
 class TestAPISetup(unittest.TestCase):
 
-    def test_api_object(self):
-        self.assertIsNotNone(API)
-        self.assertIsInstance(API, FastAPI)
-
     def test_api_attributes(self):
+        self.assertIsNotNone(API)
         attr = vars(API)
         self.assertIsNotNone(API.db)
         self.assertIn("version", attr.keys())

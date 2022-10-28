@@ -12,8 +12,6 @@ class TestRandomizerFunctions(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             percent_true('String')
-        with self.assertRaises(TypeError):
-            percent_true(55.55)
 
     def test_percent_true_output(self):
         self.assertIsInstance(percent_true(50), bool)
