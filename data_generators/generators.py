@@ -6,6 +6,7 @@ from random import sample, triangular, random, choice, randint
 
 import pandas as pd
 
+from app.model import MatcherSortSearch
 from data_generators.data_options import male_first_names, female_first_names, last_names, states, cities, companies, \
     positions, tech_stack, heard_about_us, convictions, topics
 
@@ -133,3 +134,12 @@ class RandomMeeting(Printable):
         self.meeting_missed_by_mentee = choice(['Missed', 'Attended'])
         self.mentor_meeting_notes = "Mentor meeting notes"
         self.mentee_meeting_notes = "Mentee meeting notes"
+
+
+class RandomMatch(Printable):
+    """Generates Match record"""
+    matcher = MatcherSortSearch()
+
+    def __init__(self, mentee_id):
+        self.mentee_id = mentee_id
+        self.mentor_id = self.matcher(mentee_id)
