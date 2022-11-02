@@ -57,7 +57,7 @@ class SeedMongo:
         )) for _ in range(count))
         self.db.create_many("Meetings", meetings)
 
-    def matches(self, fresh_db: bool, count: int, count_mentees):
+    def matches(self, fresh_db: bool, count: int, count_mentees: int):
         mentees = self.db.read("Mentees")
         mentors = self.db.read("Mentors")
         if not fresh_db:
