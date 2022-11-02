@@ -141,5 +141,6 @@ class RandomMatch(Printable):
     matcher = MatcherSortSearch()
 
     def __init__(self, mentee_id):
-        self.mentee_ids = [mentee_id]
-        self.mentor_id = self.matcher(mentee_id)
+        if self.matcher(mentee_id):
+            self.mentee_ids = [mentee_id]
+            self.mentor_id = self.matcher(mentee_id)[0]
