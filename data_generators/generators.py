@@ -135,12 +135,3 @@ class RandomMeeting(Printable):
         self.mentor_meeting_notes = "Mentor meeting notes"
         self.mentee_meeting_notes = "Mentee meeting notes"
 
-
-class RandomMatch(Printable):
-    """Generates Match record"""
-    matcher = MatcherSortSearch()
-
-    def __init__(self, mentee_id):
-        if self.matcher(mentee_id):
-            self.mentee_ids = [mentee_id]
-            self.mentor_id = self.matcher(mentee_id)[0]

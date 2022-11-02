@@ -57,13 +57,14 @@ class SeedMongo:
         )) for _ in range(count))
         self.db.create_many("Meetings", meetings)
 
-    def matches(self, fresh_db: bool, count: int):
+    def matches(self, fresh_db: bool, count: int, count_mentees):
         mentees = self.db.read("Mentees")
+        mentors = self.db.read("Mentors")
         if not fresh_db:
             self.db.delete("Matches", {})
-        matches = (vars(RandomMatch(
-            choice(mentees)["profile_id"]
-        )) for _ in range(count))
+        matches = ({'mentee_ids': [choice(mentees)["profile_id"] for _ in range(randint(1, count_mentees))],
+                    'mentor_id': choice(mentors)["profile_id"]}
+                   for _ in range(count))
         self.db.create_many("Matches", matches)
 
     def __call__(self, fresh: bool):
@@ -71,7 +72,7 @@ class SeedMongo:
         self.mentors(fresh, 20)
         self.feedback(fresh, 50)
         self.meetings(fresh, 150)
-        self.matches(fresh, 40)
+        self.matches(fresh, 20, 5)
 
 
 if __name__ == '__main__':
