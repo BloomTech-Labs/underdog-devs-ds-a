@@ -1,9 +1,3 @@
-from datetime import datetime, timedelta
-import string
-from itertools import chain
-from math import ceil, floor
-from random import randint, choice, random, choices, shuffle
-
 male_first_names = (
     "Liam", "Noah", "Oliver", "Elijah", "William", "James", "Benjamin", "Lucas",
     "Henry", "Alexander", "Mason", "Michael", "Ethan", "Daniel", "Jacob",
