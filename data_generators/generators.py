@@ -133,3 +133,4 @@ class RandomMeeting(Printable):
         self.meeting_missed_by_mentee = choice(['Missed', 'Attended'])
         self.mentor_meeting_notes = "Mentor meeting notes"
         self.mentee_meeting_notes = "Mentee meeting notes"
+
