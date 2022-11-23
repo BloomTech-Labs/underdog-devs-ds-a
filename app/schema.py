@@ -111,8 +111,8 @@ class MeetingUpdate(ExtraForbid):
     meeting_topic: Optional[constr(max_length=255)]
     meeting_start_time: Optional[datetime]
     meeting_end_time: Optional[datetime]
-    mentor_id: constr(max_length=36)
-    mentee_id: constr(max_length=36)
+    mentor_id: Optional[constr(max_length=36)]
+    mentee_id: Optional[constr(max_length=36)]
     admin_meeting_notes: Optional[constr(max_length=2000)]
     meeting_missed_by_mentee: Optional[Literal['Missed', 'Attended']]
     mentor_meeting_notes: Optional[constr(max_length=2000)]
