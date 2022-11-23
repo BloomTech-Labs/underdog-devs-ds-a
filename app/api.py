@@ -47,7 +47,11 @@ async def collections():
     return {"result": API.db.get_database_info()}
 
 
-for router in (mentor_router, mentee_router, feedback_router,
-               graph_router, model_router, match_router,
+for router in (mentor_router,
+               mentee_router,
+               feedback_router,
+               graph_router,
+               model_router,
+               match_router,
                meeting_router):
     API.include_router(router.Router)
