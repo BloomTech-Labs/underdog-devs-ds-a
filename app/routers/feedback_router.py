@@ -38,7 +38,8 @@ async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
     @param update_data: FeedbackUpdate
     @return JSON[Boolean] - indicates success or failure of update</pre></code>"""
     data_dict = update_data.dict(exclude_none=True)
-    data_dict = apply_sentiment(data_dict)
+    if "text" in data_dict:
+        data_dict = apply_sentiment(data_dict)
     return {"result": Router.db.update("Feedback", {"ticket_id": ticket_id}, data_dict)}
 
 

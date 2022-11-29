@@ -114,6 +114,7 @@ class RandomMenteeFeedback(Printable):
         self.mentee_id = mentee_id
         self.mentor_id = mentor_id
         self.text = choice(self.feedback["Review"])[:2000]
+        self.archived = choice([True, False])
 
 
 class RandomMeeting(Printable):
@@ -133,4 +134,3 @@ class RandomMeeting(Printable):
         self.meeting_missed_by_mentee = choice(['Missed', 'Attended'])
         self.mentor_meeting_notes = "Mentor meeting notes"
         self.mentee_meeting_notes = "Mentee meeting notes"
-

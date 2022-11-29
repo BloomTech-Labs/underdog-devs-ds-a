@@ -124,18 +124,21 @@ class Feedback(ExtraForbid):
     ticket_id: constr(max_length=36)
     mentee_id: constr(max_length=36)
     mentor_id: constr(max_length=36)
+    archived: bool = False
 
 
 class FeedbackUpdate(ExtraForbid):
     text: Optional[constr(max_length=255)]
     mentee_id: Optional[constr(max_length=36)]
     mentor_id: Optional[constr(max_length=36)]
+    archived: Optional[bool]
 
 
 class FeedbackOptions(ExtraForbid):
     ticket_id: Optional[constr(max_length=36)]
     mentee_id: Optional[constr(max_length=36)]
     mentor_id: Optional[constr(max_length=36)]
+    archived: Optional[bool]
 
 
 class MatchUpdate(ExtraForbid):
