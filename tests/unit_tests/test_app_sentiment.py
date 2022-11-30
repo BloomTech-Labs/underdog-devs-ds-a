@@ -28,7 +28,9 @@ class TestSentiment(unittest.TestCase):
         with self.assertRaises(KeyError):
             apply_sentiment({})
 
-        self.assertIn("sentiment", apply_sentiment({"text": self.text_neutral}).keys())
+        self.assertIn("sentiment", apply_sentiment(
+            {"text": self.text_neutral}).keys()
+        )
 
 
 if __name__ == '__main__':
