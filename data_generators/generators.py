@@ -6,9 +6,17 @@ from random import sample, triangular, random, choice, randint
 
 import pandas as pd
 
-from data_generators.data_options import male_first_names, female_first_names,\
-    last_names, states, cities, companies, positions, tech_stack,\
-    heard_about_us, convictions, topics
+from data_generators.data_options import (male_first_names,
+                                          female_first_names,
+                                          last_names,
+                                          states,
+                                          cities,
+                                          companies,
+                                          positions,
+                                          tech_stack,
+                                          heard_about_us,
+                                          convictions,
+                                          topics)
 
 
 def percent_true(percent: int) -> bool:

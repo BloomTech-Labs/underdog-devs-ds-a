@@ -1,10 +1,12 @@
+from random import choice, randint
+
 from app.data import MongoDB
 from app.sentiment import apply_sentiment
-from data_generators.generators import (RandomMentee,
-                                        RandomMentor,
+from data_generators.generators import (RandomMeeting,
+                                        RandomMentee,
                                         RandomMenteeFeedback,
-                                        RandomMeeting)
-from random import choice, randint
+                                        RandomMentor
+                                        )
 from tests.schema_validation import validate_schemas
 
 

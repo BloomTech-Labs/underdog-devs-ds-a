@@ -1,6 +1,6 @@
+from datetime import datetime
 import time
 import unittest
-from datetime import datetime
 from unittest.mock import patch, Mock
 
 import pymongo.collection as collection
