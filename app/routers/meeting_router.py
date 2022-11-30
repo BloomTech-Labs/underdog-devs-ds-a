@@ -38,7 +38,7 @@ async def read_meeting(data: Optional[Dict] = None):
     return {"result": Router.db.read("Meetings", data)}
 
 
-@Router.put("/update/meeting/{meeting_id}")
+@Router.patch("/update/meeting/{meeting_id}")
 async def update_meeting(meeting_id: str, update_data: MeetingUpdate):
     """Updates a meeting
     <pre><code>
@@ -51,7 +51,7 @@ async def update_meeting(meeting_id: str, update_data: MeetingUpdate):
         "Meetings", {"meeting_id": meeting_id}, data)}
 
 
-@Router.delete("/delete/meeting")
+@Router.delete("/delete/meeting/{meeting_id}")
 async def delete_meeting(meeting_id: str):
     """Deletes meeting
     <pre><code>
