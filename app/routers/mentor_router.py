@@ -1,4 +1,4 @@
-from typing import Optional, Dict
+from typing import Dict, Optional
 
 from fastapi import APIRouter, HTTPException
 from pymongo.errors import DuplicateKeyError
@@ -15,7 +15,7 @@ Router.db = MongoDB()
 
 @Router.post("/create/mentor")
 async def create_mentor(data: Mentor):
-    """Creates a mentor
+    """Create a mentor
     <pre><code>
     @param data: JSON[Mentor]
     @return JSON[Boolean] - Indicates success or failure of document creation

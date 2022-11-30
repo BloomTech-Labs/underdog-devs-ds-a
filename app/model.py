@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict, Optional
+from typing import Dict, List, Optional, Tuple
 
 from app.data import MongoDB
 

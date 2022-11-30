@@ -1,4 +1,4 @@
-from altair import Chart, Color, Y, X, Tooltip
+from altair import Chart, Color, Tooltip, X, Y
 import pandas as pd
 from pandas import DataFrame
 

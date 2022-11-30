@@ -1,8 +1,10 @@
 from uuid import uuid4
 
-from app.schema import Mentor, Mentee, Meeting, Feedback
-from data_generators.generators import RandomMentor, RandomMentee
-from data_generators.generators import RandomMeeting, RandomMenteeFeedback
+from app.schema import Feedback, Meeting, Mentee, Mentor
+from data_generators.generators import (RandomMeeting,
+                                        RandomMentee,
+                                        RandomMenteeFeedback,
+                                        RandomMentor)
 
 
 def validate_mentor():

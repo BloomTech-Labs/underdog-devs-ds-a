@@ -1,10 +1,10 @@
 from fastapi import APIRouter
 
 from app.data import MongoDB
-from app.graphs import (stacked_bar_chart,
+from app.graphs import (df_meeting,
+                        df_mentor_mentee,
                         df_tech_stack_by_role,
-                        df_meeting,
-                        df_mentor_mentee)
+                        stacked_bar_chart)
 
 
 Router = APIRouter(

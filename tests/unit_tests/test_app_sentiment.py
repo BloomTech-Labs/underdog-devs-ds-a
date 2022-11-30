@@ -1,6 +1,6 @@
 import unittest
 
-from app.sentiment import sentiment_score, sentiment_rank, apply_sentiment
+from app.sentiment import apply_sentiment, sentiment_rank, sentiment_score
 
 
 class TestSentiment(unittest.TestCase):

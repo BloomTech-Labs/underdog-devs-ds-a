@@ -1,21 +1,21 @@
-import os
-from uuid import uuid4
 from datetime import datetime, timedelta
-from typing import List, Any
-from random import sample, triangular, random, choice, randint
+import os
+from random import choice, randint, random, sample, triangular
+from typing import Any, List
+from uuid import uuid4
 
 import pandas as pd
 
-from data_generators.data_options import (male_first_names,
-                                          female_first_names,
-                                          last_names,
-                                          states,
-                                          cities,
+from data_generators.data_options import (cities,
                                           companies,
-                                          positions,
-                                          tech_stack,
-                                          heard_about_us,
                                           convictions,
+                                          female_first_names,
+                                          heard_about_us,
+                                          last_names,
+                                          male_first_names,
+                                          positions,
+                                          states,
+                                          tech_stack,
                                           topics)
 
 

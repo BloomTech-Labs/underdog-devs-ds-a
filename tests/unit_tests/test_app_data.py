@@ -1,7 +1,7 @@
 from datetime import datetime
 import time
 import unittest
-from unittest.mock import patch, Mock
+from unittest.mock import Mock, patch
 
 import pymongo.collection as collection
 import pymongo.results as results

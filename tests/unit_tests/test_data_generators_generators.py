@@ -1,9 +1,9 @@
-import unittest
 from datetime import datetime
+import unittest
 
 from data_generators.generators import (percent_true,
-                                        random_first_name,
-                                        random_datetime)
+                                        random_datetime,
+                                        random_first_name)
 
 
 class TestRandomizerFunctions(unittest.TestCase):

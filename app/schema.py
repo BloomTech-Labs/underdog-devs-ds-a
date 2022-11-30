@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Literal, Optional, List
+from typing import List, Literal, Optional
 
-from pydantic import BaseModel, constr, Extra, EmailStr
+from pydantic import BaseModel, constr, EmailStr, Extra
 
 
 class ExtraForbid(BaseModel):

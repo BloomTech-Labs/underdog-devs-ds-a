@@ -1,4 +1,4 @@
-from typing import Optional, Dict
+from typing import Dict, Optional
 
 from fastapi import APIRouter, HTTPException
 from pymongo.errors import DuplicateKeyError
