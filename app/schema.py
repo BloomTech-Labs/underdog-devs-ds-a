@@ -138,7 +138,7 @@ class FeedbackOptions(ExtraForbid):
     ticket_id: Optional[constr(max_length=36)]
     mentee_id: Optional[constr(max_length=36)]
     mentor_id: Optional[constr(max_length=36)]
-    archived: Optional[bool]
+    archived: bool = False
 
 
 class MatchUpdate(ExtraForbid):
