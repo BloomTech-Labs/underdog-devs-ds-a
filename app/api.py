@@ -33,7 +33,8 @@ API.add_middleware(
 async def version():
     """API version and password
     <pre><code>
-    @return: JSON[JSON[String,String]]</pre></code>"""
+    @return: JSON[JSON[String,String]]</pre></code>
+    """
     local = os.getenv("CONTEXT") == "local"
     remote = "Run the API locally with the proper environment variables"
     password = API.db.first("Secret")["Password"] if local else remote
@@ -44,7 +45,8 @@ async def version():
 async def collections():
     """Names of collections and the count of documents in each collection
     <pre><code>
-    @return JSON[JSON[String,Integer]]</pre></code>"""
+    @return JSON[JSON[String,Integer]]</pre></code>
+    """
     return {"result": API.db.get_database_info()}
 
 

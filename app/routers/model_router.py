@@ -18,5 +18,6 @@ async def match(profile_id: str, n_matches: Optional[int] = None):
     <pre><code>
     @param profile_id: str
     @param n_matches: Optional[int] = None
-    @return JSON[Array[profile_id]]</pre></code>"""
+    @return JSON[Array[profile_id]]</pre></code>
+    """
     return {"result": Router.matcher(profile_id, n_matches)}

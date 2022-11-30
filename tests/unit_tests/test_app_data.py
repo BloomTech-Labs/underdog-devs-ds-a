@@ -13,7 +13,7 @@ class TestMongoDBQueries(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """Initialize environment for test suite"""
+        """Initialize environment for test suite."""
         cls.test_collection = "Test_Collection"
         cls.test_entry = {"test": "something"}
         cls.test_doc_id = "test_id"
@@ -22,7 +22,7 @@ class TestMongoDBQueries(unittest.TestCase):
         MongoDB.collection.return_value = collection.Collection
 
     def setUp(self):
-        """Initialize object(s) before each test case"""
+        """Initialize object(s) before each test case."""
         self.test_db = MongoDB()
 
     @patch('pymongo.collection.Collection.insert_one')
@@ -80,11 +80,11 @@ class TestMongoDBTimestamp(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """Initialize environment for test suite"""
+        """Initialize environment for test suite."""
         cls.test_entry = {"test": "something"}
 
     def setUp(self):
-        """Initialize object(s) before each test case"""
+        """Initialize object(s) before each test case."""
         self.test_db = MongoDB()
 
     def test_timestamp_default(self):

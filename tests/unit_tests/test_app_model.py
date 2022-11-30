@@ -7,7 +7,7 @@ from app.model import MatcherSortSearch
 class TestMatcherSortSearch(unittest.TestCase):
 
     def setUp(self):
-        """Initialize object(s) before each test case"""
+        """Initialize object(s) before each test case."""
         self.test_matcher = MatcherSortSearch()
         self.test_mentee = {"profile_id": "test_mentee_id_0",
                             "tech_stack": None,

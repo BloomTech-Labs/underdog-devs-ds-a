@@ -16,7 +16,8 @@ async def create_match(data: MatchUpdate):
     <pre><code>
     @param data: JSON[MatchUpdate]
     @return JSON[Boolean] - success or failure of match creation
-    </pre></code>"""
+    </pre></code>
+    """
     return {
         "result": Router.db.upsert_to_set_array("Matches",
                                                 {"mentor_id": data.mentor_id},
@@ -30,7 +31,8 @@ async def delete_match(data: MatchUpdate):
     <pre><code>
     @param data: JSON[MatchUpdate]
     @return JSON[Boolean] - success or failure of match removal
-    </pre></code>"""
+    </pre></code>
+    """
     return {
         "result": Router.db.delete_from_array("Matches",
                                               {"mentor_id": data.mentor_id},
@@ -43,7 +45,8 @@ async def get_match(data: MatchQuery):
     """Retrieve all matching mentor/mentee objects for a given mentee/mentor
     <pre><code>
     @param data: JSON[MatchQuery]
-    @return JSON[Array[Mentor]] | JSON[Array[Mentee]]</pre></code>"""
+    @return JSON[Array[Mentor]] | JSON[Array[Mentee]]</pre></code>
+    """
     if data.user_type == "mentor":
         collection = "Mentees"
         user_query = {"profile_id": {"$in": Router.db.first(

@@ -31,7 +31,7 @@ def random_first_name(percent_male: int):
 
 
 def random_datetime(start: datetime, end: datetime) -> datetime:
-    """ Returns a random datetime between start and end """
+    """Return a random datetime between start and end"""
     delta = end - start
     random_second = randint(0, int(delta.total_seconds()))
     return start + timedelta(seconds=random_second)
@@ -61,7 +61,7 @@ class LinearChoice:
 
 
 class RandomMentor(Printable):
-    """Generates Mentor record"""
+    """Generate Mentor record"""
 
     def __init__(self):
         self.profile_id = str(uuid4())
@@ -89,7 +89,7 @@ class RandomMentor(Printable):
 
 
 class RandomMentee(Printable):
-    """Generates Mentee record"""
+    """Generate Mentee record"""
 
     def __init__(self):
         self.profile_id = str(uuid4())
@@ -114,7 +114,7 @@ class RandomMentee(Printable):
 
 
 class RandomMenteeFeedback(Printable):
-    """Generates Feedback record from mentee"""
+    """Generate Feedback record from mentee"""
     file_path = os.path.join("data_generators", "review.csv")
     feedback = pd.read_csv(file_path, index_col="Id")
 
@@ -126,7 +126,7 @@ class RandomMenteeFeedback(Printable):
 
 
 class RandomMeeting(Printable):
-    """Generates Meeting record"""
+    """Generate Meeting record"""
 
     def __init__(self, mentee_id, mentor_id):
         self.meeting_id = str(uuid4())

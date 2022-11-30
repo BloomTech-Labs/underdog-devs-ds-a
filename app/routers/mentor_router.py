@@ -19,7 +19,8 @@ async def create_mentor(data: Mentor):
     <pre><code>
     @param data: JSON[Mentor]
     @return JSON[Boolean] - Indicates success or failure of document creation
-    </pre></code>"""
+    </pre></code>
+    """
     try:
         return {"result": Router.db.create("Mentors", data.dict())}
     except DuplicateKeyError:
@@ -33,7 +34,8 @@ async def read_mentor(data: Optional[Dict] = None):
     Displays all mentors if no input provided
     <pre><code>
     @param data: JSON[Optional[Dict]]
-    @return JSON[Array[Mentor]]</pre></code>"""
+    @return JSON[Array[Mentor]]</pre></code>
+    """
     return {"result": Router.db.read("Mentors", data)}
 
 
@@ -44,7 +46,8 @@ async def update_mentors(profile_id: str, update_data: MentorUpdate):
     @param profile_id: str
     @param update_data: JSON[MentorUpdate]
     @return JSON[Boolean] - Indicates success or failure of update
-    </pre></code>"""
+    </pre></code>
+    """
     data = update_data.dict(exclude_none=True)
     return {
         "result": Router.db.update("Mentors", {"profile_id": profile_id}, data)

@@ -17,7 +17,8 @@ Router.db = MongoDB()
 async def tech_stack_by_role():
     """Tech Stack Count by Role, stacked bar chart
     <pre><code>
-    @return JSON{graph: Altair.Chart, description: String}</pre></code>"""
+    @return JSON{graph: Altair.Chart, description: String}</pre></code>
+    """
     desc_para_final = "Shows the mentor to mentee tech stack ratio."
     return {
         "graph": stacked_bar_chart(
@@ -34,7 +35,8 @@ async def tech_stack_by_role():
 async def meeting_topics():
     """Meeting subjects, stacked bar chart
     <pre><code>
-    @return JSON{Altair.Chart}</pre></code>"""
+    @return JSON{Altair.Chart}</pre></code>
+    """
     description = "Shows different meeting topics between mentors and mentees."
     return {
         "graph": stacked_bar_chart(
@@ -51,7 +53,8 @@ async def meeting_topics():
 async def meetings_missed():
     """Meetings missed by mentee, stacked bar chart
     <pre><code>
-    @return JSON{Altair.Chart}</pre></code>"""
+    @return JSON{Altair.Chart}</pre></code>
+    """
     description = "Shows total number of meetings missed by mentees."
     return {
         "graph": stacked_bar_chart(
@@ -68,7 +71,8 @@ async def meetings_missed():
 async def is_active():
     """Activity status for mentees and/or mentors, stacked bar chart
     <pre><code>
-    @return JSON{Altair.Chart}</pre></code>"""
+    @return JSON{Altair.Chart}</pre></code>
+    """
     description = "Shows activity status of both mentees and mentors."
     return {
         "graph": stacked_bar_chart(
