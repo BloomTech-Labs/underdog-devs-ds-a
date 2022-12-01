@@ -30,7 +30,7 @@ async def read_feedback(query: FeedbackOptions):
     return {"result": Router.db.read("Feedback", query.dict(exclude_none=True))}
 
 
-@Router.patch("/update/feedback")
+@Router.patch("/update/feedback/{ticket_id}")
 async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
     """Updates feedback
     <pre><code>
@@ -42,7 +42,7 @@ async def update_feedback(ticket_id: str, update_data: FeedbackUpdate):
     return {"result": Router.db.update("Feedback", {"ticket_id": ticket_id}, data_dict)}
 
 
-@Router.delete("/delete/feedback")
+@Router.delete("/delete/feedback/{ticket_id}")
 async def delete_feedback(ticket_id: str):
     """Deletes feedback
     <pre><code>
