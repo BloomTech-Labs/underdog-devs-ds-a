@@ -4,7 +4,7 @@ from fastapi import APIRouter, HTTPException
 from pymongo.errors import DuplicateKeyError
 
 from app.data import MongoDB
-from app.schema import Mentee, MenteeUpdate
+from app.schema import Mentee, MenteeOptions, MenteeUpdate
 
 Router = APIRouter(
     tags=["Mentee Operations"],
@@ -26,12 +26,12 @@ async def create_mentee(data: Mentee):
 
 
 @Router.post("/read/mentee")
-async def read_mentee(data: Optional[Dict] = None):
+async def read_mentee(query: MenteeOptions):
     """Displays mentee(s) who meet provided criteria. Displays all mentees if no input provided
     <pre><code>
-    @param data: JSON[Optional[Dict]]
+    @param query: MenteeOptions
     @return JSON[Array[Mentee]]</pre></code>"""
-    return {"result": Router.db.read("Mentees", data)}
+    return {"result": Router.db.read("Mentees", query.dict(exclude_none=True))}
 
 
 @Router.post("/update/mentee/{profile_id}")
