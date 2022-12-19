@@ -1,13 +1,22 @@
-import os
-from uuid import uuid4
 from datetime import datetime, timedelta
-from typing import List, Any
-from random import sample, triangular, random, choice, randint
+import os
+from random import choice, randint, random, sample, triangular
+from typing import Any, List
+from uuid import uuid4
 
 import pandas as pd
 
-from data_generators.data_options import male_first_names, female_first_names, last_names, states, cities, companies, \
-    positions, tech_stack, heard_about_us, convictions, topics
+from data_generators.data_options import (cities,
+                                          companies,
+                                          convictions,
+                                          female_first_names,
+                                          heard_about_us,
+                                          last_names,
+                                          male_first_names,
+                                          positions,
+                                          states,
+                                          tech_stack,
+                                          topics)
 
 
 def percent_true(percent: int) -> bool:
@@ -22,7 +31,7 @@ def random_first_name(percent_male: int):
 
 
 def random_datetime(start: datetime, end: datetime) -> datetime:
-    """ Returns a random datetime between start and end """
+    """Return a random datetime between start and end"""
     delta = end - start
     random_second = randint(0, int(delta.total_seconds()))
     return start + timedelta(seconds=random_second)
@@ -52,7 +61,7 @@ class LinearChoice:
 
 
 class RandomMentor(Printable):
-    """Generates Mentor record"""
+    """Generate Mentor record"""
 
     def __init__(self):
         self.profile_id = str(uuid4())
@@ -80,7 +89,7 @@ class RandomMentor(Printable):
 
 
 class RandomMentee(Printable):
-    """Generates Mentee record"""
+    """Generate Mentee record"""
 
     def __init__(self):
         self.profile_id = str(uuid4())
@@ -105,7 +114,7 @@ class RandomMentee(Printable):
 
 
 class RandomMenteeFeedback(Printable):
-    """Generates Feedback record from mentee"""
+    """Generate Feedback record from mentee"""
     file_path = os.path.join("data_generators", "review.csv")
     feedback = pd.read_csv(file_path, index_col="Id")
 
@@ -117,7 +126,7 @@ class RandomMenteeFeedback(Printable):
 
 
 class RandomMeeting(Printable):
-    """Generates Meeting record"""
+    """Generate Meeting record"""
 
     def __init__(self, mentee_id, mentor_id):
         self.meeting_id = str(uuid4())
@@ -133,4 +142,3 @@ class RandomMeeting(Printable):
         self.meeting_missed_by_mentee = choice(['Missed', 'Attended'])
         self.mentor_meeting_notes = "Mentor meeting notes"
         self.mentee_meeting_notes = "Mentee meeting notes"
-
