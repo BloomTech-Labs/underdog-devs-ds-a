@@ -1,6 +1,12 @@
+from random import choice, randint
+
 from app.data import MongoDB
 from app.sentiment import apply_sentiment
-from data_generators.generators import *
+from data_generators.generators import (RandomMeeting,
+                                        RandomMentee,
+                                        RandomMenteeFeedback,
+                                        RandomMentor
+                                        )
 from tests.schema_validation import validate_schemas
 
 
@@ -62,9 +68,11 @@ class SeedMongo:
         mentors = self.db.read("Mentors")
         if not fresh_db:
             self.db.delete("Matches", {})
-        matches = ({'mentee_ids': [choice(mentees)["profile_id"] for _ in range(randint(1, count_mentees))],
-                    'mentor_id': choice(mentors)["profile_id"]}
-                   for _ in range(count))
+        matches = ({
+            'mentee_ids': [choice(mentees)["profile_id"] for _ in range(randint(1, count_mentees))],
+            'mentor_id': choice(mentors)["profile_id"]
+        }
+            for _ in range(count))
         self.db.create_many("Matches", matches)
 
     def __call__(self, fresh: bool):

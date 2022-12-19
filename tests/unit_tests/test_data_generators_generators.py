@@ -1,7 +1,9 @@
-import unittest
 from datetime import datetime
+import unittest
 
-from data_generators.generators import percent_true, random_first_name, random_datetime
+from data_generators.generators import (percent_true,
+                                        random_datetime,
+                                        random_first_name)
 
 
 class TestRandomizerFunctions(unittest.TestCase):
@@ -23,7 +25,8 @@ class TestRandomizerFunctions(unittest.TestCase):
         self.assertNotEqual(random_first_name(50), "")
 
     def test_random_datetime_output(self):
-        rnd_datetime = random_datetime(datetime(2022, 1, 1), datetime(2022, 12, 31))
+        rnd_datetime = random_datetime(
+            datetime(2022, 1, 1), datetime(2022, 12, 31))
         self.assertIsInstance(rnd_datetime, datetime)
         self.assertGreater(rnd_datetime, datetime(2022, 1, 1))
         self.assertLess(rnd_datetime, datetime(2022, 12, 31))
