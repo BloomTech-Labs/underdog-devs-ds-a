@@ -1,5 +1,3 @@
-from typing import Dict, Optional
-
 from fastapi import APIRouter, HTTPException
 from pymongo.errors import DuplicateKeyError
 
@@ -29,23 +27,16 @@ async def create_mentor(data: Mentor):
 
 
 @Router.post("/read/mentor")
-<<<<<<< HEAD
 async def read_mentor(query: MentorOptions):
-    """Displays mentor(s) who meet provided criteria. Displays all mentors if no input provided
-    <pre><code>
-    @param query: MentorOptions
-    @return JSON[Array[Mentor]]</pre></code>"""
-    return {"result": Router.db.read("Mentors", query.dict(exclude_none=True))}
-=======
-async def read_mentor(data: Optional[Dict] = None):
     """Displays mentor(s) who meet provided criteria.
     Displays all mentors if no input provided
     <pre><code>
-    @param data: JSON[Optional[Dict]]
+    @param query: MentorOptions
     @return JSON[Array[Mentor]]</pre></code>
     """
-    return {"result": Router.db.read("Mentors", data)}
->>>>>>> main
+    return {
+        "result": Router.db.read("Mentors", query.dict(exclude_none=True))
+        }
 
 
 @Router.post("/update/mentor/{profile_id}")

@@ -1,5 +1,3 @@
-from typing import Dict, Optional
-
 from fastapi import APIRouter, HTTPException
 from pymongo.errors import DuplicateKeyError
 
@@ -29,23 +27,16 @@ async def create_mentee(data: Mentee):
 
 
 @Router.post("/read/mentee")
-<<<<<<< HEAD
 async def read_mentee(query: MenteeOptions):
-    """Displays mentee(s) who meet provided criteria. Displays all mentees if no input provided
-    <pre><code>
-    @param query: MenteeOptions
-    @return JSON[Array[Mentee]]</pre></code>"""
-    return {"result": Router.db.read("Mentees", query.dict(exclude_none=True))}
-=======
-async def read_mentee(data: Optional[Dict] = None):
     """Displays mentee(s) who meet provided criteria.
     Displays all mentees if no input provided
     <pre><code>
-    @param data: JSON[Optional[Dict]]
+    @param query: MenteeOptions
     @return JSON[Array[Mentee]]</pre></code>
     """
-    return {"result": Router.db.read("Mentees", data)}
->>>>>>> main
+    return {
+        "result": Router.db.read("Mentees", query.dict(exclude_none=True))
+        }
 
 
 @Router.post("/update/mentee/{profile_id}")
