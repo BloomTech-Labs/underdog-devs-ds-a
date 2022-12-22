@@ -7,7 +7,7 @@ from app.model import MatcherSortSearch
 class TestMatcherSortSearch(unittest.TestCase):
 
     def setUp(self):
-        """Initialize object(s) before each test case"""
+        """Initialize object(s) before each test case."""
         self.test_matcher = MatcherSortSearch()
         self.test_mentee = {"profile_id": "test_mentee_id_0",
                             "tech_stack": None,
@@ -38,11 +38,14 @@ class TestMatcherSortSearch(unittest.TestCase):
             self.test_matcher(self.test_mentee["profile_id"])
 
     def test_matcher_range_bounds(self):
-        self.assertEqual(self.test_matcher(self.test_mentee["profile_id"], 0), [])
+        self.assertEqual(self.test_matcher(
+            self.test_mentee["profile_id"], 0), [])
 
-        self.assertIsNotNone(self.test_matcher(self.test_mentee["profile_id"], -10))
+        self.assertIsNotNone(self.test_matcher(
+            self.test_mentee["profile_id"], -10))
 
-        self.assertEqual(len(self.test_matcher(self.test_mentee["profile_id"], 10)), len(self.test_mentors))
+        self.assertEqual(len(self.test_matcher(
+            self.test_mentee["profile_id"], 10)), len(self.test_mentors))
 
 
 if __name__ == '__main__':

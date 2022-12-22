@@ -1,13 +1,13 @@
 import unittest
 
-from app.sentiment import sentiment_score, sentiment_rank, apply_sentiment
+from app.sentiment import apply_sentiment, sentiment_rank, sentiment_score
 
 
 class TestSentiment(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """Initialize environment for test suite"""
+        """Initialize environment for test suite."""
         cls.text_positive = "Wow! This is super!"
         cls.text_negative = "Very disappointed. Bad quality!"
         cls.text_neutral = "No opinion"
@@ -28,7 +28,9 @@ class TestSentiment(unittest.TestCase):
         with self.assertRaises(KeyError):
             apply_sentiment({})
 
-        self.assertIn("sentiment", apply_sentiment({"text": self.text_neutral}).keys())
+        self.assertIn("sentiment", apply_sentiment(
+            {"text": self.text_neutral}).keys()
+        )
 
 
 if __name__ == '__main__':

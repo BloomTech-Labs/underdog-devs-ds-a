@@ -1,5 +1,5 @@
-import pandas
-from altair import Chart, Color, Y, X, Tooltip
+from altair import Chart, Color, Tooltip, X, Y
+import pandas as pd
 from pandas import DataFrame
 
 from app.data import MongoDB
@@ -43,7 +43,7 @@ def df_tech_stack_by_role(database: MongoDB) -> DataFrame:
     }, {"tech_stack": True}))
     mentors = mentors.explode(column="tech_stack")
     mentors["role"] = "Mentor"
-    return pandas.concat([mentees, mentors])
+    return pd.concat([mentees, mentors])
 
 
 def df_meeting(database: MongoDB) -> DataFrame:
@@ -56,4 +56,4 @@ def df_mentor_mentee(database: MongoDB) -> DataFrame:
     mentees["role"] = "Mentee"
     mentors = DataFrame(database.read("Mentors"))
     mentors["role"] = "Mentor"
-    return pandas.concat([mentees, mentors])
+    return pd.concat([mentees, mentors])
