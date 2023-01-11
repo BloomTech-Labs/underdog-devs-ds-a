@@ -4,7 +4,8 @@ from app.data import MongoDB
 from app.graphs import (df_meeting,
                         df_mentor_mentee,
                         df_tech_stack_by_role,
-                        stacked_bar_chart)
+                        stacked_bar_chart,
+                        df_sentiments)
 
 
 Router = APIRouter(
@@ -80,6 +81,23 @@ async def is_active():
             "is_active",
             "role",
             "Count of Mentors and Mentees"
+        ).to_dict(),
+        "description": description,
+    }
+
+
+@Router.get("/graph/sentiment-data")
+async def sentiments():
+    """Sentiments of mentees, stacked bar chart
+    <pre><code>
+    @return JSON{Altair.Chart}</pre></code>"""
+    description = "This graph shows the sentiments of mentees."
+    return {
+        "graph": stacked_bar_chart(
+            df_sentiments(Router.db),
+            "sentiment",
+            "count(sentiment)",
+            "Sentiments of Mentees"
         ).to_dict(),
         "description": description,
     }

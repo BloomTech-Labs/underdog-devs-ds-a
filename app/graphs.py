@@ -57,3 +57,9 @@ def df_mentor_mentee(database: MongoDB) -> DataFrame:
     mentors = DataFrame(database.read("Mentors"))
     mentors["role"] = "Mentor"
     return pd.concat([mentees, mentors])
+
+
+def df_sentiments(database: MongoDB) -> DataFrame:
+    feedback_data = DataFrame(database.read("Feedback"))
+    sentiment_data = feedback_data.filter(['sentiment'])
+    return sentiment_data
