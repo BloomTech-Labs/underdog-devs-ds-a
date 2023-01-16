@@ -4,16 +4,18 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.data import MongoDB
-from app.routers import (mentor_router,
-                         mentee_router,
+from app.routers import (graph_router,
                          feedback_router,
-                         graph_router,
-                         model_router,
-                         match_router)
+                         match_router,
+                         meeting_router,
+                         mentee_router,
+                         mentor_router,
+                         model_router
+                         )
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.51.2",
+    version="0.52.0",
     docs_url='/',
 )
 
@@ -31,7 +33,8 @@ API.add_middleware(
 async def version():
     """API version and password
     <pre><code>
-    @return: JSON[JSON[String,String]]</pre></code>"""
+    @return: JSON[JSON[String,String]]</pre></code>
+    """
     local = os.getenv("CONTEXT") == "local"
     remote = "Run the API locally with the proper environment variables"
     password = API.db.first("Secret")["Password"] if local else remote
@@ -42,9 +45,16 @@ async def version():
 async def collections():
     """Names of collections and the count of documents in each collection
     <pre><code>
-    @return JSON[JSON[String,Integer]]</pre></code>"""
+    @return JSON[JSON[String,Integer]]</pre></code>
+    """
     return {"result": API.db.get_database_info()}
 
 
-for router in (mentor_router, mentee_router, feedback_router, graph_router, model_router, match_router):
+for router in (mentor_router,
+               mentee_router,
+               feedback_router,
+               graph_router,
+               model_router,
+               match_router,
+               meeting_router):
     API.include_router(router.Router)
