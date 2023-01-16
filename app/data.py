@@ -1,7 +1,7 @@
 from datetime import datetime
 import json
 from os import getenv
-from typing import Dict, Iterable, List, Optional, Tuple
+from typing import Optional, List, Dict, Iterable
 
 import certifi
 from dotenv import load_dotenv
@@ -44,8 +44,8 @@ class MongoDB:
         projection["_id"] = False
         return list(self.collection(collection).find(query, projection))
 
-    def update(self, collection: str, query: Dict, update_data: Dict) -> Tuple:
-        """Update existing documents in collection matching given data."""
+    def update(self, collection: str, query: Dict, update_data: Dict) -> bool:
+        """ Update existing documents in collection matching given data """
         return self.collection(collection).update_many(
             query, {"$set": self.timestamp(update_data, "updated_at")}
         ).acknowledged
