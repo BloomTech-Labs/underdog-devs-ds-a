@@ -3,7 +3,7 @@ from typing import Dict, List, Optional, Tuple
 from app.data import MongoDB
 
 
-class MatcherSortSearch:
+class MenteeMatcherSearch:
     """Callable matching class implementing sorted search algorithm."""
     db = MongoDB()
 
@@ -28,3 +28,30 @@ class MatcherSortSearch:
             key=sort_mentors,
         )[:n_matches]
         return [mentor["profile_id"] for mentor in results]
+
+
+class MentorMatcherSearch:
+    """Callable matching class implementing sorted search algorithm."""
+    db = MongoDB()
+
+    def __call__(self, profile_id: str, n_matches: Optional[int] = None) -> List[str]:
+        """Return a list of profile_id for matched mentors."""
+        mentor = self.db.first("Mentors", {"profile_id": profile_id})
+
+        def sort_mentees(mentee: Dict) -> Tuple:
+            return (
+                mentor["pair_programming"] != mentee["pair_programming"],
+                mentor["job_help"] != mentee["job_help"],
+                not mentee["industry_knowledge"],
+            )
+
+        results = sorted(
+            self.db.read("Mentees", {
+                "tech_stack": mentor["tech_stack"],
+                "is_active": True,
+                "accepting_new_mentors": True,
+                "validate_status": 'approved'
+            }),
+            key=sort_mentees,
+        )[:n_matches]
+        return [mentee["profile_id"] for mentee in results]
