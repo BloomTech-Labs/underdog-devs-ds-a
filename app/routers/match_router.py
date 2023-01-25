@@ -49,17 +49,18 @@ async def get_match(data: MatchQuery):
     """
     if data.user_type == "mentor":
         collection = "Mentees"
-        user_query = {"profile_id": {"$in": Router.db.first(
-            "Matches", {"mentor_id": data.user_id})['mentee_ids']}}
+        user_query = {"profile_id": {"$in": [match["mentee_id"] for match in Router.db.read(
+            "Matches", {"mentor_id": data.user_id})]}}
     elif data.user_type == "mentee":
         collection = "Mentors"
         user_query = {
             "profile_id": {
                 "$in": [mentor["mentor_id"] for mentor in Router.db.read(
-                    "Matches", {"mentee_ids": data.user_id})]
+                    "Matches", {"mentee_id": data.user_id})]
             }
         }
     else:
         raise ValueError("get_match: user_type must be 'mentor' or 'mentee'")
 
     return {"result": Router.db.read(collection, user_query)}
+
