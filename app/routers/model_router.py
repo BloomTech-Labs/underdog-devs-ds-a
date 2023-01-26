@@ -13,7 +13,7 @@ Router.db = MongoDB()
 Router.mentee_matcher = MenteeMatcherSearch()
 Router.mentor_matcher = MentorMatcherSearch()
 
-@Router.post("/mentee_match/{profile_id}")
+@Router.post("/mentee-match/{profile_id}")
 async def mentee_match(profile_id: str, n_matches: Optional[int] = None):
     """Returns mentor profiles for mentee profile_id
     <pre><code>
@@ -23,7 +23,7 @@ async def mentee_match(profile_id: str, n_matches: Optional[int] = None):
     """
     return {"result": Router.mentee_matcher(profile_id, n_matches)}
 
-@Router.post("/mentor_match/{profile_id}")
+@Router.post("/mentor-match/{profile_id}")
 async def mentor_match(profile_id: str, n_matches: Optional[int] = None):
     """Returns mentee profiles for mentor profile_id
     <pre><code>
