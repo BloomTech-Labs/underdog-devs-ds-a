@@ -35,14 +35,13 @@ class MentorMatcherSearch:
     db = MongoDB()
 
     def __call__(self, profile_id: str, n_matches: Optional[int] = None) -> List[str]:
-        """Return a list of profile_id for matched mentors."""
+        """Return a list of profile_id for matched mentees."""
         mentor = self.db.first("Mentors", {"profile_id": profile_id})
 
         def sort_mentees(mentee: Dict) -> Tuple:
             return (
                 mentor["pair_programming"] != mentee["pair_programming"],
                 mentor["job_help"] != mentee["job_help"],
-                not mentee["industry_knowledge"],
             )
 
         results = sorted(
