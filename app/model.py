@@ -48,7 +48,6 @@ class MentorMatcherSearch:
             self.db.read("Mentees", {
                 "tech_stack": mentor["tech_stack"],
                 "is_active": True,
-                "accepting_new_mentors": True,
                 "validate_status": 'approved'
             }),
             key=sort_mentees,
