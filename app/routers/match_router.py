@@ -21,7 +21,8 @@ async def create_match(data: MatchUpdate):
     return {
         "result": Router.db.upsert_to_set_array("Matches",
                                                 {"mentor_id": data.mentor_id},
-                                                {"mentee_ids": data.mentee_id})
+                                                {"mentee_ids": data.mentee_id,
+                                                 "mentee_archive": data.mentee_id})
     }
 
 
@@ -40,6 +41,25 @@ async def delete_match(data: MatchUpdate):
     }
 
 
+def get_match_ids(profile_id: str, profile_type: str, use_archive: bool = False) -> list:
+    """Retrieves ids of mentees/mentors matched with profile id"""
+    ids = []
+    if profile_type == "mentor":
+        if use_archive:
+            ids = Router.db.first("Matches", {"mentor_id": profile_id})["mentee_archive"]
+        else:
+            ids = Router.db.first("Matches", {"mentor_id": profile_id})["mentee_ids"]
+    elif profile_type == "mentee":
+        if use_archive:
+            ids = [mentor["mentor_id"] for mentor in Router.db.read(
+                "Matches", {"mentee_archive": profile_id})]
+        else:
+            ids = [mentor["mentor_id"] for mentor in Router.db.read(
+                "Matches", {"mentee_ids": profile_id})]
+
+    return ids
+
+
 @Router.post("/read/match")
 async def get_match(data: MatchQuery):
     """Retrieve all matching mentor/mentee objects for a given mentee/mentor
@@ -49,17 +69,12 @@ async def get_match(data: MatchQuery):
     """
     if data.user_type == "mentor":
         collection = "Mentees"
-        user_query = {"profile_id": {"$in": Router.db.first(
-            "Matches", {"mentor_id": data.user_id})['mentee_ids']}}
     elif data.user_type == "mentee":
         collection = "Mentors"
-        user_query = {
-            "profile_id": {
-                "$in": [mentor["mentor_id"] for mentor in Router.db.read(
-                    "Matches", {"mentee_ids": data.user_id})]
-            }
-        }
     else:
         raise ValueError("get_match: user_type must be 'mentor' or 'mentee'")
+
+    match_ids = get_match_ids(data.user_id, data.user_type)
+    user_query = {"profile_id": {"$in": match_ids}}
 
     return {"result": Router.db.read(collection, user_query)}
