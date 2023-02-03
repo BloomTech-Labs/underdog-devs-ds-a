@@ -10,12 +10,11 @@ from app.routers import (graph_router,
                          meeting_router,
                          mentee_router,
                          mentor_router,
-                         model_router
-                         )
+                         model_router)
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.52.1",
+    version="0.52.2",
     docs_url='/',
 )
 

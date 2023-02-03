@@ -1,14 +1,14 @@
 import unittest
 from unittest.mock import Mock
 
-from app.model import MatcherSortSearch
+from app.model import MenteeMatcherSearch
 
 
 class TestMatcherSortSearch(unittest.TestCase):
 
     def setUp(self):
         """Initialize object(s) before each test case."""
-        self.test_matcher = MatcherSortSearch()
+        self.test_matcher = MenteeMatcherSearch()
         self.test_mentee = {"profile_id": "test_mentee_id_0",
                             "tech_stack": None,
                             "pair_programming": None,
