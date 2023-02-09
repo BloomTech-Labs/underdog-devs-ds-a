@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from fastapi.exceptions import HTTPException
 
 from app.data import MongoDB
 from app.schema import MatchQuery, MatchUpdate
@@ -72,9 +73,11 @@ async def get_match(data: MatchQuery):
     elif data.user_type == "mentee":
         collection = "Mentors"
     else:
-        raise ValueError("get_match: user_type must be 'mentor' or 'mentee'")
+        return HTTPException(404, "user_type should be `mentor` or `mentee`")
 
-    match_ids = get_match_ids(data.user_id, data.user_type)
-    user_query = {"profile_id": {"$in": match_ids}}
-
-    return {"result": Router.db.read(collection, user_query)}
+    if Router.db.count(collection, {"profile_id": data.user_id}):
+        match_ids = get_match_ids(data.user_id, data.user_type)
+        user_query = {"profile_id": {"$in": match_ids}}
+        return {"result": Router.db.read(collection, user_query)}
+    else:
+        return HTTPException(404, f"{data.user_id}, not found")
