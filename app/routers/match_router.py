@@ -73,11 +73,11 @@ async def get_match(data: MatchQuery):
     elif data.user_type == "mentee":
         collection = "Mentors"
     else:
-        return HTTPException(404, "user_type should be `mentor` or `mentee`")
+        raise HTTPException(404, "user_type should be `mentor` or `mentee`")
 
     if Router.db.count(collection, {"profile_id": data.user_id}):
         match_ids = get_match_ids(data.user_id, data.user_type)
         user_query = {"profile_id": {"$in": match_ids}}
         return {"result": Router.db.read(collection, user_query)}
     else:
-        return HTTPException(404, f"{data.user_id}, not found")
+        raise HTTPException(404, f"user_id `{data.user_id}`, not found")
