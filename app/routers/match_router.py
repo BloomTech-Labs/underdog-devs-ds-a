@@ -78,7 +78,7 @@ async def get_match(data: MatchQuery):
         raise HTTPException(404, f"Matches for user `{data.user_id}`, not found")
 
 
-@Router.get("/matches/read-all")
+@Router.get("/matches/all")
 async def read_all_matches():
     """Retrieves all matches"""
     return Router.db.read("Matches")
