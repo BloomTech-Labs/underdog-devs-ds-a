@@ -1,13 +1,12 @@
+from typing import List
+
 from fastapi import APIRouter
 from fastapi.exceptions import HTTPException
 
 from app.data import MongoDB
 from app.schema import MatchQuery, MatchUpdate
 
-Router = APIRouter(
-    tags=["Matching Operations"],
-)
-
+Router = APIRouter(tags=["Matching Operations"])
 Router.db = MongoDB()
 
 
@@ -19,12 +18,12 @@ async def create_match(data: MatchUpdate):
     @return JSON[Boolean] - success or failure of match creation
     </pre></code>
     """
-    return {
-        "result": Router.db.upsert_to_set_array("Matches",
-                                                {"mentor_id": data.mentor_id},
-                                                {"mentee_ids": data.mentee_id,
-                                                 "mentee_archive": data.mentee_id})
-    }
+    result = Router.db.upsert_to_set_array(
+        "Matches",
+        {"mentor_id": data.mentor_id},
+        {"mentee_ids": data.mentee_id, "mentee_archive": data.mentee_id},
+    )
+    return {"result": result}
 
 
 @Router.post("/delete/match")
@@ -35,30 +34,25 @@ async def delete_match(data: MatchUpdate):
     @return JSON[Boolean] - success or failure of match removal
     </pre></code>
     """
-    return {
-        "result": Router.db.delete_from_array("Matches",
-                                              {"mentor_id": data.mentor_id},
-                                              {"mentee_ids": data.mentee_id})
-    }
+    result = Router.db.delete_from_array(
+        "Matches",
+        {"mentor_id": data.mentor_id},
+        {"mentee_ids": data.mentee_id},
+    )
+    return {"result": result}
 
 
-def get_match_ids(profile_id: str, profile_type: str, use_archive: bool = False) -> list:
-    """Retrieves ids of mentees/mentors matched with profile id"""
-    ids = []
-    if profile_type == "mentor":
-        if use_archive:
-            ids = Router.db.first("Matches", {"mentor_id": profile_id})["mentee_archive"]
-        else:
-            ids = Router.db.first("Matches", {"mentor_id": profile_id})["mentee_ids"]
-    elif profile_type == "mentee":
-        if use_archive:
-            ids = [mentor["mentor_id"] for mentor in Router.db.read(
-                "Matches", {"mentee_archive": profile_id})]
-        else:
-            ids = [mentor["mentor_id"] for mentor in Router.db.read(
-                "Matches", {"mentee_ids": profile_id})]
+def get_mentor_matches(profile_id: str, use_archive: bool = False) -> List[str]:
+    """Retrieves of mentee ids matched with this mentor """
+    mentor = Router.db.first("Matches", {"mentor_id": profile_id})
+    return mentor["mentee_archive"] if use_archive else mentor["mentee_ids"]
 
-    return ids
+
+def get_mentee_matches(profile_id: str, use_archive: bool = False) -> List[str]:
+    """Retrieves mentor ids matched with this mentee """
+    key = "mentee_ids" if not use_archive else "mentee_archive"
+    mentors = Router.db.read("Matches", {key: profile_id})
+    return [mentor["mentor_id"] for mentor in mentors]
 
 
 @Router.post("/read/match")
@@ -70,14 +64,21 @@ async def get_match(data: MatchQuery):
     """
     if data.user_type == "mentor":
         collection = "Mentees"
+        matches = get_mentor_matches(data.user_id)
     elif data.user_type == "mentee":
         collection = "Mentors"
+        matches = get_mentee_matches(data.user_id)
     else:
         raise HTTPException(404, "user_type should be `mentor` or `mentee`")
 
     if Router.db.count(collection, {"profile_id": data.user_id}):
-        match_ids = get_match_ids(data.user_id, data.user_type)
-        user_query = {"profile_id": {"$in": match_ids}}
+        user_query = {"profile_id": {"$in": matches}}
         return {"result": Router.db.read(collection, user_query)}
     else:
-        raise HTTPException(404, f"user_id `{data.user_id}`, not found")
+        raise HTTPException(404, f"Matches for user `{data.user_id}`, not found")
+
+
+@Router.get("/matches/read-all")
+async def read_all_matches():
+    """Retrieves all matches"""
+    return Router.db.read("Matches")
