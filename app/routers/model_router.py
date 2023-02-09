@@ -6,9 +6,7 @@ from app.data import MongoDB
 from app.model import MenteeMatcherSearch
 from app.model import MentorMatcherSearch
 
-Router = APIRouter(
-    tags=["Model Operations"],
-)
+Router = APIRouter(tags=["Match Suggestions"])
 Router.db = MongoDB()
 Router.mentee_matcher = MenteeMatcherSearch()
 Router.mentor_matcher = MentorMatcherSearch()

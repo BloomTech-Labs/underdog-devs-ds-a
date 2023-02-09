@@ -7,10 +7,7 @@ from app.graphs import (df_meeting,
                         stacked_bar_chart,
                         df_sentiments)
 
-
-Router = APIRouter(
-    tags=["Graph Operations"],
-)
+Router = APIRouter(tags=["Graph Operations"])
 Router.db = MongoDB()
 
 

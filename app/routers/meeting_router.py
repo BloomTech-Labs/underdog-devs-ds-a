@@ -6,10 +6,7 @@ from pymongo.errors import DuplicateKeyError
 from app.data import MongoDB
 from app.schema import Meeting, MeetingUpdate
 
-Router = APIRouter(
-    tags=["Meeting Operations"],
-)
-
+Router = APIRouter(tags=["Meeting Operations"])
 Router.db = MongoDB()
 
 

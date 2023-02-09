@@ -4,10 +4,7 @@ from pymongo.errors import DuplicateKeyError
 from app.data import MongoDB
 from app.schema import Mentee, MenteeOptions, MenteeUpdate
 
-Router = APIRouter(
-    tags=["Mentee Operations"],
-)
-
+Router = APIRouter(tags=["Mentee Operations"])
 Router.db = MongoDB()
 
 
