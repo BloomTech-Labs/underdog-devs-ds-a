@@ -42,17 +42,16 @@ async def delete_match(data: MatchUpdate):
     return {"result": result}
 
 
-def get_mentor_matches(profile_id: str, use_archive: bool = False) -> List[str]:
-    """Retrieves of mentee ids matched with this mentor """
-    mentor = Router.db.first("Matches", {"mentor_id": profile_id})
-    return mentor["mentee_archive"] if use_archive else mentor["mentee_ids"]
+def get_mentor_matches(profile_id: str) -> List[dict]:
+    """Retrieves of mentees matched with this mentor """
+    matches = Router.db.first("Matches", {"mentor_id": profile_id})["mentee_ids"]
+    return [Router.db.first("Mentees", {"profile_id": mentee}) for mentee in matches]
 
 
-def get_mentee_matches(profile_id: str, use_archive: bool = False) -> List[str]:
-    """Retrieves mentor ids matched with this mentee """
-    key = "mentee_ids" if not use_archive else "mentee_archive"
-    mentors = Router.db.read("Matches", {key: profile_id})
-    return [mentor["mentor_id"] for mentor in mentors]
+def get_mentee_matches(profile_id: str) -> List[dict]:
+    """Retrieves mentors matched with this mentee """
+    matches = Router.db.read("Matches", {"mentee_ids": profile_id})
+    return [Router.db.first("Mentors", {"profile_id": mentor}) for mentor in matches]
 
 
 @Router.post("/read/match")
