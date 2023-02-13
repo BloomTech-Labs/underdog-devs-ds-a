@@ -62,20 +62,13 @@ async def get_match(data: MatchQuery):
     @param data: JSON[MatchQuery]
     @return JSON[Array[Mentor]] | JSON[Array[Mentee]]</pre></code>
     """
-    if data.user_type == "mentor":
-        collection = "Mentees"
-        matches = get_mentor_matches(data.user_id)
-    elif data.user_type == "mentee":
-        collection = "Mentors"
-        matches = get_mentee_matches(data.user_id)
-    else:
-        raise HTTPException(404, "user_type should be `mentor` or `mentee`")
-
-    if Router.db.count(collection, {"profile_id": data.user_id}):
-        user_query = {"profile_id": {"$in": matches}}
-        return {"result": Router.db.read(collection, user_query)}
-    else:
-        raise HTTPException(404, f"Matches for user `{data.user_id}`, not found")
+    try:
+        if data.user_type == "mentor":
+            return get_mentor_matches(data.user_id)
+        elif data.user_type == "mentee":
+            return get_mentee_matches(data.user_id)
+    except Exception as e:
+        raise HTTPException(404, e)
 
 
 @Router.get("/matches/all")
