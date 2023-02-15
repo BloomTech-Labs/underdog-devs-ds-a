@@ -72,7 +72,7 @@ async def get_match(data: MatchQuery):
 
 @Router.get("/matches/all")
 async def read_all_matches():
-    """Retrieves all matches as ids """
+    """Retrieves all matches as ids"""
     return Router.db.read("Matches")
 
 
