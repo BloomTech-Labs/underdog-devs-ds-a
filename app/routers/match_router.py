@@ -44,14 +44,15 @@ async def delete_match(data: MatchUpdate):
 
 def get_mentor_matches(profile_id: str) -> List[dict]:
     """Retrieves of mentees matched with this mentor """
-    matches = Router.db.first("Matches", {"mentor_id": profile_id})["mentee_ids"]
-    return [Router.db.first("Mentees", {"profile_id": mentee}) for mentee in matches]
+    matched_ids = Router.db.first("Matches", {"mentor_id": profile_id})["mentee_ids"]
+    return Router.db.read("Mentees", {"profile_id": {"$in": matched_ids}})
 
 
 def get_mentee_matches(profile_id: str) -> List[dict]:
     """Retrieves mentors matched with this mentee """
     matches = Router.db.read("Matches", {"mentee_ids": profile_id})
-    return [Router.db.first("Mentors", {"profile_id": mentor}) for mentor in matches]
+    matched_ids = [match["mentor_id"] for match in matches]
+    return Router.db.read("Mentors", {"profile_id": {"$in": matched_ids}})
 
 
 @Router.post("/read/match")
@@ -61,13 +62,12 @@ async def get_match(data: MatchQuery):
     @param data: JSON[MatchQuery]
     @return JSON[Array[Mentor]] | JSON[Array[Mentee]]</pre></code>
     """
-    try:
-        if data.user_type == "mentor":
-            return get_mentor_matches(data.user_id)
-        elif data.user_type == "mentee":
-            return get_mentee_matches(data.user_id)
-    except Exception as e:
-        raise HTTPException(404, e)
+    if data.user_type == "mentor":
+        return get_mentor_matches(data.user_id)
+    elif data.user_type == "mentee":
+        return get_mentee_matches(data.user_id)
+    else:
+        raise HTTPException(404, f"User type {data.user_type}, not found. Try 'mentor' or 'mentee'.")
 
 
 @Router.get("/matches/all")
