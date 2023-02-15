@@ -1,4 +1,5 @@
 import os
+from itertools import chain
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -14,7 +15,7 @@ from app.routers import (graph_router,
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.53.7",
+    version="0.53.8",
     docs_url='/',
 )
 
@@ -47,6 +48,11 @@ async def collections():
     @return JSON[JSON[String,Integer]]</pre></code>
     """
     return {"result": API.db.get_database_info()}
+
+
+@API.get("/get/all")
+async def get_all():
+    return list(chain(API.db.read("Mentees"), API.db.read("Mentors")))
 
 
 for router in (mentor_router,
