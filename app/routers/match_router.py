@@ -72,5 +72,15 @@ async def get_match(data: MatchQuery):
 
 @Router.get("/matches/all")
 async def read_all_matches():
-    """Retrieves all matches"""
+    """Retrieves all matches as ids """
     return Router.db.read("Matches")
+
+
+@Router.get("/matches/all/obj")
+async def read_all_matches_obj():
+    """Retrieves all matches as objects"""
+    all_matches = Router.db.read("Matches")
+    return [{
+        "mentor": Router.db.first("Mentors", {"profile_id": match["mentor_id"]}),
+        "mentees": Router.db.read("Mentees", {"profile_id": {"$in": match["mentee_ids"]}}),
+    } for match in all_matches]
