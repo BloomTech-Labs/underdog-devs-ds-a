@@ -52,7 +52,14 @@ async def collections():
 
 @API.get("/get/all")
 async def get_all():
-    return list(chain(API.db.read("Mentees"), API.db.read("Mentors")))
+    mentees = API.db.read("Mentees")
+    mentors = API.db.read("Mentors")
+    def update_role(data: dict, role: str):
+        data.update({"role": role})
+        return data
+    mentees = map(lambda x: update_role(x, "mentee"), mentees)
+    mentors = map(lambda x: update_role(x, "mentor"), mentors)
+    return list(chain(mentees, mentors))
 
 
 for router in (mentor_router,
