@@ -33,10 +33,10 @@ async def read_mentor(query: MentorOptions):
     """
     return {
         "result": Router.db.read("Mentors", query.dict(exclude_none=True))
-        }
+    }
 
 
-@Router.post("/update/mentor/{profile_id}")
+@Router.patch("/update/mentor/{profile_id}")
 async def update_mentors(profile_id: str, update_data: MentorUpdate):
     """Updates a mentor
     <pre><code>

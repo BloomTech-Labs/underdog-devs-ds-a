@@ -36,7 +36,7 @@ async def read_mentee(query: MenteeOptions):
         }
 
 
-@Router.post("/update/mentee/{profile_id}")
+@Router.patch("/update/mentee/{profile_id}")
 async def update_mentees(profile_id: str, update_data: MenteeUpdate):
     """Updates a mentee
     <pre><code>

@@ -32,6 +32,7 @@ class Mentor(ExtraForbid):
 
 
 class MentorUpdate(ExtraForbid):
+    profile_id: Optional[constr(max_length=36)]
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]
@@ -97,6 +98,7 @@ class Mentee(ExtraForbid):
 
 
 class MenteeUpdate(ExtraForbid):
+    profile_id: Optional[constr(max_length=36)]
     first_name: Optional[constr(max_length=255)]
     last_name: Optional[constr(max_length=255)]
     email: Optional[EmailStr]

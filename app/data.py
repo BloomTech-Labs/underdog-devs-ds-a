@@ -34,8 +34,7 @@ class MongoDB:
         """Return first document in collection."""
         return self.collection(collection).find_one(query, {"_id": False})
 
-    def read(
-            self, collection: str, query: Optional[Dict] = None) -> List[Dict]:
+    def read(self, collection: str, query: Optional[Dict] = None) -> List[Dict]:
         """Query collection with optional parameters."""
         return list(self.collection(collection).find(query, {"_id": False}))
 
