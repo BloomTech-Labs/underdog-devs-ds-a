@@ -84,25 +84,25 @@ async def read_all_matches():
 #         "mentor": Router.db.first("Mentors", {"profile_id": match["mentor_id"]}),
 #         "mentees": Router.db.read("Mentees", {"profile_id": {"$in": match["mentee_ids"]}}),
 #     } for match in all_matches]
-#
-#
-# @Router.get("/mentor/matches")
-# async def all_mentor_matches():
-#     """Retrieves all mentee to mentor matches as objects"""
-#     mentors = Router.db.read("Mentors")
-#     result = [{
-#         "mentor": mentor,
-#         "mentees": get_mentor_matches(mentor["profile_id"]),
-#     } for mentor in mentors]
-#     return result
-#
-#
-# @Router.get("/mentee/matches")
-# async def all_mentee_matches():
-#     """Retrieves all mentor to mentee matches as objects"""
-#     mentees = Router.db.read("Mentees")
-#     result = [{
-#         "mentee": mentee,
-#         "mentors": get_mentee_matches(mentee["profile_id"]),
-#     } for mentee in mentees]
-#     return result
+
+
+@Router.get("/mentor/matches")
+async def all_mentor_matches():
+    """Retrieves all mentee to mentor matches as objects"""
+    mentors = Router.db.read("Mentors")
+    result = [{
+        "mentor": mentor,
+        "mentees": get_mentor_matches(mentor["profile_id"]),
+    } for mentor in mentors]
+    return result
+
+
+@Router.get("/mentee/matches")
+async def all_mentee_matches():
+    """Retrieves all mentor to mentee matches as objects"""
+    mentees = Router.db.read("Mentees")
+    result = [{
+        "mentee": mentee,
+        "mentors": get_mentee_matches(mentee["profile_id"]),
+    } for mentee in mentees]
+    return result
