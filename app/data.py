@@ -112,3 +112,8 @@ class MongoDB:
         """Generate a timestamp and apply it to a record."""
         data[label] = datetime.now()
         return data
+
+
+# if __name__ == '__main__':
+#     db = MongoDB()
+#     db.collection("Matches").create_index("mentor_id")
