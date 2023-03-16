@@ -44,7 +44,11 @@ async def delete_match(data: MatchUpdate):
 
 def get_mentor_matches(profile_id: str) -> List[dict]:
     """Retrieves of mentees matched with this mentor """
-    matched_ids = Router.db.first("Matches", {"mentor_id": profile_id}).get("mentee_ids")
+    mentor = Router.db.first("Matches", {"mentor_id": profile_id})
+    if mentor:
+        matched_ids = mentor.get("mentee_ids")
+    else:
+        matched_ids = []
     return Router.db.read("Mentees", {"profile_id": {"$in": matched_ids}})
 
 
