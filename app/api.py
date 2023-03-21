@@ -15,7 +15,7 @@ from app.routers import (graph_router,
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.54.0",
+    version="0.55.0",
     docs_url='/',
 )
 
@@ -29,7 +29,7 @@ API.add_middleware(
 )
 
 
-@API.get("/version")
+@API.get("/version", tags=["General Operations"])
 async def version():
     """API version and password
     <pre><code>
@@ -41,7 +41,7 @@ async def version():
     return {"result": {"Version": API.version, "Password": password}}
 
 
-@API.get("/collections")
+@API.get("/collections", tags=["General Operations"])
 async def collections():
     """Names of collections and the count of documents in each collection
     <pre><code>
@@ -50,23 +50,21 @@ async def collections():
     return {"result": API.db.get_database_info()}
 
 
-@API.get("/get/all")
+@API.get("/get/all", tags=["General Operations"])
 async def get_all():
     mentees = API.db.read("Mentees")
     mentors = API.db.read("Mentors")
-    def update_role(data: dict, role: str):
-        data.update({"role": role})
-        return data
-    mentees = map(lambda x: update_role(x, "mentee"), mentees)
-    mentors = map(lambda x: update_role(x, "mentor"), mentors)
+    # def update_role(data: dict, role: str):
+    #     data.update({"role": role})
+    #     return data
+    # mentees = map(lambda x: update_role(x, "mentee"), mentees)
+    # mentors = map(lambda x: update_role(x, "mentor"), mentors)
     return list(chain(mentees, mentors))
 
 
 for router in (mentor_router,
                mentee_router,
-               feedback_router,
                graph_router,
                model_router,
-               match_router,
-               meeting_router):
+               match_router):
     API.include_router(router.Router)

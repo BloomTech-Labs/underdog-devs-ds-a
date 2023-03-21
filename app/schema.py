@@ -184,6 +184,11 @@ class FeedbackOptions(ExtraForbid):
     mentor_id: Optional[constr(max_length=36)]
 
 
+class Match(ExtraForbid):
+    mentor_id: constr(max_length=36)
+    mentee_id: constr(max_length=36)
+
+
 class MatchUpdate(ExtraForbid):
     mentor_id: constr(max_length=36)
     mentee_id: constr(max_length=36)

@@ -15,7 +15,7 @@ class MongoDB:
         return MongoClient(
             getenv("MONGO_URL"),
             tlsCAFile=certifi.where()
-        )["UnderdogDevs"]
+        )["UnderdogDevsTest"]
 
     def collection(self, collection):
         return self.database()[collection]

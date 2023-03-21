@@ -1,12 +1,7 @@
-from random import choice, randint
+from random import choice
 
 from app.data import MongoDB
-from app.sentiment import apply_sentiment
-from data_generators.generators import (RandomMeeting,
-                                        RandomMentee,
-                                        RandomMenteeFeedback,
-                                        RandomMentor
-                                        )
+from data_generators.generators import RandomMentee, RandomMentor
 from tests.schema_validation import validate_schemas
 
 
@@ -34,55 +29,27 @@ class SeedMongo:
         mentors = (vars(RandomMentor()) for _ in range(count))
         self.db.create_many("Mentors", mentors)
 
-    def feedback(self, fresh_db: bool, count: int):
-        mentees = self.db.read("Mentees")
-        mentors = self.db.read("Mentors")
-        if not fresh_db:
-            self.db.delete("Feedback", {})
-        else:
-            self.db.make_field_unique("Feedback", "ticket_id")
-        raw_feedback = (vars(RandomMenteeFeedback(
-            choice(mentees)["profile_id"],
-            choice(mentors)["profile_id"],
-        )) for _ in range(count))
-
-        sentiment_feedback = map(apply_sentiment, raw_feedback)
-
-        self.db.create_many("Feedback", sentiment_feedback)
-
-    def meetings(self, fresh_db: bool, count: int):
-        mentees = self.db.read("Mentees")
-        mentors = self.db.read("Mentors")
-        if not fresh_db:
-            self.db.delete("Meetings", {})
-        else:
-            self.db.make_field_unique("Meetings", "meeting_id")
-        meetings = (vars(RandomMeeting(
-            choice(mentees)["profile_id"],
-            choice(mentors)["profile_id"],
-        )) for _ in range(count))
-        self.db.create_many("Meetings", meetings)
-
-    def matches(self, fresh_db: bool, count: int, count_mentees: int):
-        mentees = self.db.read("Mentees")
-        mentors = self.db.read("Mentors")
-        if not fresh_db:
-            self.db.delete("Matches", {})
-        matches = ({
-            'mentee_ids': [choice(mentees)["profile_id"] for _ in range(randint(1, count_mentees))],
-            'mentor_id': choice(mentors)["profile_id"]
-        }
-            for _ in range(count))
-        self.db.create_many("Matches", matches)
+    def make_matches(self):
+        mentees = tuple(self.db.collection("Mentees").find({}, {"_id": False}))
+        mentors = tuple(self.db.collection("Mentors").find({}, {"_id": False}))
+        for mentee in mentees:
+            mentor_id = choice(mentors).get("profile_id")
+            mentee_id = mentee.get("profile_id")
+            self.db.collection("Mentees").update_one(
+                {"profile_id": mentee_id},
+                {"$addToSet": {"matches": mentor_id}},
+            )
+            self.db.collection("Mentors").update_one(
+                {"profile_id": mentor_id},
+                {"$addToSet": {"matches": mentee_id}},
+            )
 
     def __call__(self, fresh: bool):
         self.mentees(fresh, 100)
         self.mentors(fresh, 20)
-        self.feedback(fresh, 50)
-        self.meetings(fresh, 150)
-        self.matches(fresh, 20, 5)
+        self.make_matches()
 
 
 if __name__ == '__main__':
     seed_mongo = SeedMongo()
-    seed_mongo(fresh=False)
+    seed_mongo(fresh=True)
