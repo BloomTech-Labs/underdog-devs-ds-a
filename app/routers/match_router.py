@@ -36,11 +36,11 @@ async def delete_match(data: Match):
     """
     Router.db.collection("Mentors").update_one(
         {"profile_id": data.mentor_id},
-        {"matches": {"$pull": data.mentee_id}}
+        {"$pull": {"matches": data.mentee_id}}
     )
     Router.db.collection("Mentees").update_one(
         {"profile_id": data.mentee_id},
-        {"matches": {"$pull": data.mentor_id}}
+        {"$pull": {"matches": data.mentor_id}}
     )
     return {"result": data}
 
