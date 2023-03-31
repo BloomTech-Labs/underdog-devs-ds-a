@@ -6,9 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.data import MongoDB
 from app.routers import (graph_router,
-                         feedback_router,
                          match_router,
-                         meeting_router,
                          mentee_router,
                          mentor_router,
                          model_router)
@@ -54,11 +52,6 @@ async def collections():
 async def get_all():
     mentees = API.db.read("Mentees")
     mentors = API.db.read("Mentors")
-    # def update_role(data: dict, role: str):
-    #     data.update({"role": role})
-    #     return data
-    # mentees = map(lambda x: update_role(x, "mentee"), mentees)
-    # mentors = map(lambda x: update_role(x, "mentor"), mentors)
     return list(chain(mentees, mentors))
 
 
