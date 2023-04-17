@@ -9,8 +9,75 @@ def title_fix(string: str) -> str:
     return string.title().replace("_", " ")
 
 
-def stacked_bar_chart(df: DataFrame, column_1: str, column_2: str,
-                      title: str) -> Chart:
+light_mode_props = {
+    "width": 480,
+    "height": 400,
+    "padding": 24,
+    "background": "#FFFFFF",
+}
+light_mode_config = {
+    "legend": {
+        "titleColor": "#000000",
+        "labelColor": "#000000",
+        "padding": 10,
+    },
+    "title": {
+        "color": "#000000",
+        "fontSize": 26,
+        "offset": 30,
+    },
+    "axis": {
+        "titlePadding": 20,
+        "titleColor": "#000000",
+        "labelPadding": 5,
+        "labelColor": "#000000",
+        "gridColor": "#AAAAAA",
+        "tickColor": "#AAAAAA",
+        "tickSize": 10,
+    },
+    "view": {
+        "stroke": "#AAAAAA",
+    },
+}
+dark_mode_props = {
+    "width": 480,
+    "height": 400,
+    "padding": 24,
+    "background": "#252525",
+}
+dark_mode_config = {
+    "legend": {
+        "titleColor": "#AAAAAA",
+        "labelColor": "#AAAAAA",
+        "padding": 10,
+    },
+    "title": {
+        "color": "#AAAAAA",
+        "fontSize": 26,
+        "offset": 30,
+    },
+    "axis": {
+        "titlePadding": 20,
+        "titleColor": "#AAAAAA",
+        "labelPadding": 5,
+        "labelColor": "#AAAAAA",
+        "gridColor": "#333333",
+        "tickColor": "#333333",
+        "tickSize": 10,
+    },
+    "view": {
+        "stroke": "#333333",
+    },
+}
+
+
+def stacked_bar_chart(df: DataFrame,
+                      column_1: str,
+                      column_2: str,
+                      title: str,
+                      dark=True) -> Chart:
+    props = dark_mode_props if dark else light_mode_props
+    config = dark_mode_config if dark else light_mode_config
     return Chart(
         df,
         title=title,
@@ -19,15 +86,7 @@ def stacked_bar_chart(df: DataFrame, column_1: str, column_2: str,
         y=Y(f"count({column_1})"),
         color=Color(column_2, title="Legend"),
         tooltip=Tooltip([column_2, column_1, f"count({column_1})"])
-    ).properties(
-        width=480,
-        height=400,
-        padding=24,
-    ).configure(
-        legend={"padding": 24},
-        title={"fontSize": 20, "offset": 24},
-        view={"stroke": "#FFF"},
-    )
+    ).properties(**props).configure(**config)
 
 
 def df_tech_stack_by_role(database: MongoDB) -> DataFrame:

@@ -13,7 +13,7 @@ from app.routers import (graph_router,
 
 API = FastAPI(
     title='Underdog Devs DS API',
-    version="0.55.1",
+    version="0.55.2",
     docs_url='/',
 )
 
