@@ -54,15 +54,3 @@ class MentorMatcherSearch:
             key=sort_mentees,
         )[:n_matches]
         return [mentee["profile_id"] for mentee in results]
-
-
-if __name__ == '__main__':
-    mentor_match = MentorMatcherSearch()
-    print(mentor_match("auth0|6451738451c15addbb2af5e5"))
-    # mentee_match = MenteeMatcherSearch()
-    # print(mentee_match("auth0|645296fc851584cd0e8fbda9"))
-    # print(mentor_match.db.read("Mentees", {
-    #     "tech_stack": "Design UI/UX",
-    #     "is_active": True,
-    #     "validate_status": 'approved'
-    # }))
