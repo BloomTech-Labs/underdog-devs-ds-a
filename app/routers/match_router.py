@@ -17,11 +17,11 @@ async def create_match(data: Match):
     """
     Router.db.collection("Mentors").update_one(
         {"profile_id": data.mentor_id},
-        {"matches": {"$addToSet": data.mentee_id}}
+        {"$push": {"matches": data.mentee_id}}
     )
     Router.db.collection("Mentees").update_one(
         {"profile_id": data.mentee_id},
-        {"matches": {"$addToSet": data.mentor_id}}
+        {"$push": {"matches": data.mentor_id}}
     )
     return {"result": data}
 
