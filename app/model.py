@@ -23,7 +23,8 @@ class MenteeMatcherSearch:
                 "tech_stack": mentee["tech_stack"],
                 "is_active": True,
                 "accepting_new_mentees": True,
-                "validate_status": 'approved'
+                "validate_status": "approved",
+                "profile_id": {"$nin": mentee["matches"]},
             }),
             key=sort_mentors,
         )[:n_matches]
@@ -49,7 +50,8 @@ class MentorMatcherSearch:
             self.db.read("Mentees", {
                 "tech_stack": {"$in": mentor["tech_stack"]},
                 "is_active": True,
-                "validate_status": 'approved'
+                "validate_status": "approved",
+                "profile_id": {"$nin": mentor["matches"]},
             }),
             key=sort_mentees,
         )[:n_matches]
