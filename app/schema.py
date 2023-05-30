@@ -29,7 +29,7 @@ class Mentor(ExtraForbid):
     validate_status: Literal['approved', 'rejected', 'pending']
     is_active: bool
     accepting_new_mentees: bool
-    matches: Optional[list]
+    matches: list
 
 
 class MentorUpdate(ExtraForbid):
@@ -98,7 +98,7 @@ class Mentee(ExtraForbid):
     validate_status: Literal['approved', 'rejected', 'pending']
     is_active: bool
     in_project_underdog: bool
-    matches: Optional[list]
+    matches: list
 
 
 class MenteeUpdate(ExtraForbid):
